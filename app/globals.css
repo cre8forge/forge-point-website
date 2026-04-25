@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Leaflet — must be global, not inside a dynamic import */
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  :root {
+    --bg:           #0C1929;
+    --orange:       #C85A00;
+    --amber:        #D4981A;
+    --text:         #FFFFFF;
+    --text-muted:   rgba(255, 255, 255, 0.65);
+    --card-surface: rgba(255, 255, 255, 0.05);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0C1929;
+    color: #FFFFFF;
+    font-family: var(--font-barlow), sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* H1 — Cinzel 900, hero scale, all caps, tracked */
+  h1 {
+    font-family: var(--font-cinzel), serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.35em;
+    color: #FFFFFF;
+  }
+
+  /* H2 — Cinzel 700 */
+  h2 {
+    font-family: var(--font-cinzel), serif;
+    font-weight: 700;
+    color: #FFFFFF;
+  }
+
+  /* H3 — Barlow Condensed 600, uppercase, orange */
+  h3 {
+    font-family: var(--font-barlow-condensed), sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #C85A00;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(200, 90, 0, 0.35);
+    color: #FFFFFF;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar        { width: 6px; }
+  ::-webkit-scrollbar-track  { background: #0C1929; }
+  ::-webkit-scrollbar-thumb  { background: #C85A00; border-radius: 3px; }
+}
+
+@layer utilities {
+  .text-muted      { color: rgba(255, 255, 255, 0.65); }
+  .bg-card         { background: rgba(255, 255, 255, 0.05); }
+  .border-card     { border-color: rgba(255, 255, 255, 0.08); }
+}
+
+/* ── University article prose ──────────────────────────────────── */
+.university-prose h2 {
+  font-family: var(--font-cinzel), serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  border-left: 2px solid #C85A00;
+}
+
+.university-prose h3 {
+  font-family: var(--font-barlow-condensed), sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #C85A00;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.university-prose p {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 1.25rem;
+}
+
+.university-prose ul,
+.university-prose ol {
+  margin: 1rem 0 1.5rem 1.25rem;
+}
+
+.university-prose ul { list-style-type: disc; }
+.university-prose ol { list-style-type: decimal; }
+
+.university-prose li {
+  font-family: var(--font-barlow), sans-serif;
+  font-weight: 300;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.4rem;
+}
+
+.university-prose blockquote {
+  border-left: 3px solid #D4981A;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  background: rgba(200, 146, 42, 0.08);
+}
+
+.university-prose blockquote p {
+  color: #D4981A;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.university-prose strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.university-prose img {
+  width: 100%;
+  border-radius: 2px;
+  margin: 1.5rem 0;
+  object-fit: cover;
+}
+
+.university-prose a {
+  color: #C85A00;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.university-prose a:hover { color: #D4981A; }
+
+.university-prose hr {
+  border-color: rgba(255, 255, 255, 0.08);
+  margin: 2.5rem 0;
+}

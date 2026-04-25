@@ -1,0 +1,834 @@
+// ================================================================
+// FORGE POINT PROPERTY SERVICES — PRISMA SCHEMA
+// Approved by Aaron 2026-03-29.
+// Run migration only after DATABASE_URL is set in .env
+// ================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// ================================================================
+// PHASE 1 — CORE PLATFORM
+// ================================================================
+
+// ── Admin Settings ───────────────────────────────────────────────
+// Key/value store for pricing multipliers and global config.
+// Seed values: MATERIAL_MARKUP=1.50, LABOR_RATE=85.00, MARKET_MULTIPLIER=1.10
+model AdminSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique  // MATERIAL_MARKUP | LABOR_RATE | MARKET_MULTIPLIER | ...
+  value     String
+  label     String?           // Human-readable label for admin UI
+  updatedAt DateTime @updatedAt
+
+  @@map("admin_settings")
+}
+
+// ── Estimate Categories ──────────────────────────────────────────
+// 8 categories grouping the 79 estimator services.
+model EstimateCategory {
+  id        String            @id @default(cuid())
+  name      String            @unique
+  slug      String            @unique
+  sortOrder Int               @default(0)
+  services  EstimateService[]
+
+  @@map("estimate_categories")
+}
+
+// ── Estimate Services ────────────────────────────────────────────
+// 79 services. Pricing formula:
+//   mat  = homewyse_material_low/high * MATERIAL_MARKUP
+//   lab  = homewyse_labor_hours_low/high * LABOR_RATE
+//   total = (mat + lab) * MARKET_MULTIPLIER * quantity
+// When override_low/high are set, formula is bypassed entirely.
+model EstimateService {
+  id          String           @id @default(cuid())
+  categoryId  String
+  category    EstimateCategory @relation(fields: [categoryId], references: [id])
+  name        String
+  description String?
+  unit        String           // "sq ft" | "linear ft" | "each" | "hour" | etc.
+  active      Boolean          @default(true)
+  sortOrder   Int              @default(0)
+
+  // Homewyse source data (cost per unit, material only)
+  homewyse_material_low     Decimal? @db.Decimal(10, 4)
+  homewyse_material_high    Decimal? @db.Decimal(10, 4)
+  // Homewyse labor (hours per unit)
+  homewyse_labor_hours_low  Decimal? @db.Decimal(8, 4)
+  homewyse_labor_hours_high Decimal? @db.Decimal(8, 4)
+  // Admin overrides — bypass all formula math when set
+  override_low  Decimal? @db.Decimal(10, 2)
+  override_high Decimal? @db.Decimal(10, 2)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Phase 2 relations
+  quoteLineItems   QuoteLineItem[]
+  invoiceLineItems InvoiceLineItem[]
+
+  @@index([categoryId])
+  @@map("estimate_services")
+}
+
+// ── Service Requests ─────────────────────────────────────────────
+// Captures contact form, quote requests, and estimator submissions.
+model ServiceRequest {
+  id   String      @id @default(cuid())
+  type RequestType @default(GENERAL)
+
+  // Contact info
+  name    String
+  email   String
+  phone   String?
+  address String?
+  city    String?
+  zip     String?
+
+  // Request details
+  serviceCategory String?
+  serviceNames    String[]
+  description     String?  @db.Text
+  urgency         Urgency  @default(STANDARD)
+
+  // Estimator snapshot (populated when submitted from estimator)
+  estimateLow     Decimal? @db.Decimal(10, 2)
+  estimateHigh    Decimal? @db.Decimal(10, 2)
+  estimateDetails Json?    // line-item snapshot at time of submission
+
+  // Photo uploads (Cloudinary URLs)
+  photoUrls String[]
+
+  // Admin workflow
+  status     RequestStatus @default(NEW)
+  adminNotes String?       @db.Text
+  assignedTo String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Phase 2 links (nullable — not used in Phase 1)
+  clientId String?
+  client   Client? @relation(fields: [clientId], references: [id])
+  jobId    String?
+  job      Job?    @relation(fields: [jobId], references: [id])
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("service_requests")
+}
+
+enum RequestType {
+  GENERAL
+  ESTIMATE
+  QUOTE
+  SERVICE
+}
+
+enum RequestStatus {
+  NEW
+  REVIEWED
+  QUOTED
+  SCHEDULED
+  COMPLETED
+  ARCHIVED
+}
+
+enum Urgency {
+  URGENT
+  STANDARD
+  FLEXIBLE
+}
+
+// ── Forge Point University ───────────────────────────────────────
+// 34 articles. AI drafts → Aaron reviews → Aaron publishes.
+// Nothing goes live with status != PUBLISHED.
+model UniversityCategory {
+  id          String              @id @default(cuid())
+  name        String              @unique
+  slug        String              @unique
+  description String?
+  sortOrder   Int                 @default(0)
+  articles    UniversityArticle[]
+
+  @@map("university_categories")
+}
+
+model UniversityArticle {
+  id         String             @id @default(cuid())
+  title      String
+  slug       String             @unique
+  excerpt    String?
+  content    String             @db.Text  // Markdown
+  coverImage String?                      // Cloudinary URL
+
+  categoryId String
+  category   UniversityCategory @relation(fields: [categoryId], references: [id])
+
+  status      ArticleStatus @default(DRAFT)
+  publishedAt DateTime?
+  authorName  String        @default("Forge Point Team")
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+
+  // AI generation tracking
+  aiDrafted   Boolean @default(false)
+  aiPromptRef String?
+
+  featured  Boolean @default(false)
+  sortOrder Int     @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([categoryId])
+  @@map("university_articles")
+}
+
+enum ArticleStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+// ── FAQ ──────────────────────────────────────────────────────────
+// 40+ questions, searchable by category.
+model FaqCategory {
+  id        String    @id @default(cuid())
+  name      String    @unique
+  slug      String    @unique
+  sortOrder Int       @default(0)
+  items     FaqItem[]
+
+  @@map("faq_categories")
+}
+
+model FaqItem {
+  id         String      @id @default(cuid())
+  question   String
+  answer     String      @db.Text
+  categoryId String
+  category   FaqCategory @relation(fields: [categoryId], references: [id])
+  sortOrder  Int         @default(0)
+  active     Boolean     @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([categoryId])
+  @@map("faq_items")
+}
+
+// ── Review Sources ───────────────────────────────────────────────
+// Pluggable config for Google / Facebook / Nextdoor embeds.
+model ReviewSource {
+  id         String  @id @default(cuid())
+  platform   String  @unique  // "google" | "facebook" | "nextdoor"
+  enabled    Boolean @default(true)
+  apiKey     String?
+  placeId    String?          // Google Place ID
+  pageId     String?          // Facebook Page ID
+  widgetCode String? @db.Text // embed/widget snippet
+  sortOrder  Int     @default(0)
+
+  @@map("review_sources")
+}
+
+// ── Media Assets ─────────────────────────────────────────────────
+// Images saved from Unsplash or uploaded to Cloudinary.
+// Unsplash credit fields are required by Unsplash API TOS.
+model MediaAsset {
+  id            String      @id @default(cuid())
+  source        MediaSource
+  cloudinaryUrl String?
+  cloudinaryId  String?
+  unsplashId    String?
+  unsplashRaw   String?     // full-resolution Unsplash URL
+  altText       String?
+  credit        String?     // photographer name (Unsplash TOS required)
+  creditUrl     String?     // link to photographer profile (Unsplash TOS required)
+  tags          String[]
+  usedIn        String[]    // e.g. ["homepage-hero", "article:sod-installation"]
+
+  createdAt DateTime @default(now())
+
+  @@map("media_assets")
+}
+
+enum MediaSource {
+  CLOUDINARY
+  UNSPLASH
+}
+
+
+// ================================================================
+// PHASE 2 — AUTH (NextAuth.js v5 required tables)
+// ================================================================
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  emailVerified DateTime?
+  image         String?
+  role          UserRole  @default(CLIENT)
+
+  accounts     Account[]
+  sessions     Session[]
+  client       Client?
+  adminProfile AdminProfile?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+enum UserRole {
+  CLIENT
+  CREW
+  ADMIN
+  SUPER_ADMIN
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+// Used for magic link email auth
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verification_tokens")
+}
+
+
+// ================================================================
+// PHASE 2 — CLIENT HUB + OPERATIONS
+// ================================================================
+
+// ── Client Profile ───────────────────────────────────────────────
+model Client {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id])
+
+  phone        String?
+  address      String?
+  city         String?
+  state        String  @default("CO")
+  zip          String?
+  companyName  String?
+  isCommercial Boolean @default(false)
+
+  // Portal
+  portalNotes      String? @db.Text
+  referralCode     String? @unique
+  referredById     String?
+  referredBy       Client?  @relation("ClientReferrals", fields: [referredById], references: [id])
+  referrals        Client[] @relation("ClientReferrals")
+
+  // Stripe
+  stripeCustomerId String? @unique
+
+  serviceRequests ServiceRequest[]
+  quotes          Quote[]
+  jobs            Job[]
+  invoices        Invoice[]
+  messages        Message[]
+  appointments    Appointment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("clients")
+}
+
+model AdminProfile {
+  id          String @id @default(cuid())
+  userId      String @unique
+  user        User   @relation(fields: [userId], references: [id])
+  displayName String?
+  phone       String?
+
+  @@map("admin_profiles")
+}
+
+// ── Crew Members ─────────────────────────────────────────────────
+model CrewMember {
+  id       String  @id @default(cuid())
+  name     String
+  role     String?
+  phone    String?
+  email    String?
+  photoUrl String?
+  active   Boolean @default(true)
+
+  jobAssignments JobCrew[]
+  appointments   Appointment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("crew_members")
+}
+
+// ── Quotes ───────────────────────────────────────────────────────
+model Quote {
+  id       String      @id @default(cuid())
+  number   String      @unique  // "FP-Q-2024-0001"
+  clientId String
+  client   Client      @relation(fields: [clientId], references: [id])
+  status   QuoteStatus @default(DRAFT)
+
+  validUntil    DateTime?
+  notes         String?   @db.Text
+  internalNotes String?   @db.Text
+
+  subtotal Decimal @default(0) @db.Decimal(10, 2)
+  tax      Decimal @default(0) @db.Decimal(10, 2)
+  total    Decimal @default(0) @db.Decimal(10, 2)
+
+  sentAt     DateTime?
+  approvedAt DateTime?
+  declinedAt DateTime?
+
+  lineItems QuoteLineItem[]
+  job       Job?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("quotes")
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  APPROVED
+  DECLINED
+  EXPIRED
+  CONVERTED
+}
+
+model QuoteLineItem {
+  id        String           @id @default(cuid())
+  quoteId   String
+  quote     Quote            @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  serviceId String?
+  service   EstimateService? @relation(fields: [serviceId], references: [id])
+
+  description String
+  quantity    Decimal @db.Decimal(10, 3)
+  unit        String?
+  unitPrice   Decimal @db.Decimal(10, 2)
+  total       Decimal @db.Decimal(10, 2)
+  sortOrder   Int     @default(0)
+
+  @@map("quote_line_items")
+}
+
+// ── Jobs ─────────────────────────────────────────────────────────
+model Job {
+  id       String    @id @default(cuid())
+  number   String    @unique  // "FP-J-2024-0001"
+  clientId String
+  client   Client    @relation(fields: [clientId], references: [id])
+  quoteId  String?   @unique
+  quote    Quote?    @relation(fields: [quoteId], references: [id])
+
+  title         String
+  description   String?   @db.Text
+  status        JobStatus @default(PENDING)
+
+  scheduledStart DateTime?
+  scheduledEnd   DateTime?
+  actualStart    DateTime?
+  actualEnd      DateTime?
+
+  address       String?
+  city          String?
+  zip           String?
+  internalNotes String?   @db.Text
+  photoUrls     String[]
+
+  crew            JobCrew[]
+  appointments    Appointment[]
+  invoices        Invoice[]
+  serviceRequests ServiceRequest[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([clientId])
+  @@map("jobs")
+}
+
+enum JobStatus {
+  PENDING
+  SCHEDULED
+  IN_PROGRESS
+  ON_HOLD
+  COMPLETED
+  INVOICED
+  CANCELLED
+}
+
+// Explicit join table — stores crew role per job assignment
+model JobCrew {
+  jobId        String
+  job          Job        @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  crewMemberId String
+  crewMember   CrewMember @relation(fields: [crewMemberId], references: [id])
+  role         String?    // "lead" | "helper" | etc.
+
+  @@id([jobId, crewMemberId])
+  @@map("job_crew")
+}
+
+// ── Appointments ─────────────────────────────────────────────────
+model Appointment {
+  id       String            @id @default(cuid())
+  clientId String
+  client   Client            @relation(fields: [clientId], references: [id])
+  jobId    String?
+  job      Job?              @relation(fields: [jobId], references: [id])
+
+  type   AppointmentType   @default(SERVICE)
+  status AppointmentStatus @default(SCHEDULED)
+  title  String
+  notes  String?
+
+  startTime DateTime
+  endTime   DateTime
+  allDay    Boolean @default(false)
+
+  googleCalendarEventId String?
+
+  crewMembers CrewMember[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([startTime])
+  @@index([clientId])
+  @@map("appointments")
+}
+
+enum AppointmentType {
+  ESTIMATE
+  SERVICE
+  FOLLOW_UP
+  INSPECTION
+}
+
+enum AppointmentStatus {
+  SCHEDULED
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+// ── Invoices ─────────────────────────────────────────────────────
+model Invoice {
+  id       String        @id @default(cuid())
+  number   String        @unique  // "FP-INV-2024-0001"
+  clientId String
+  client   Client        @relation(fields: [clientId], references: [id])
+  jobId    String?
+  job      Job?          @relation(fields: [jobId], references: [id])
+  status   InvoiceStatus @default(DRAFT)
+
+  dueDate DateTime?
+  notes   String?   @db.Text
+
+  subtotal   Decimal @default(0) @db.Decimal(10, 2)
+  tax        Decimal @default(0) @db.Decimal(10, 2)
+  tip        Decimal @default(0) @db.Decimal(10, 2)
+  total      Decimal @default(0) @db.Decimal(10, 2)
+  amountPaid Decimal @default(0) @db.Decimal(10, 2)
+  balance    Decimal @default(0) @db.Decimal(10, 2)  // kept in sync by app logic
+
+  sentAt DateTime?
+  paidAt DateTime?
+
+  stripePaymentIntentId String?
+  stripeInvoiceId       String?
+
+  lineItems InvoiceLineItem[]
+  payments  Payment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([clientId])
+  @@map("invoices")
+}
+
+enum InvoiceStatus {
+  DRAFT
+  SENT
+  PARTIAL
+  PAID
+  OVERDUE
+  VOID
+}
+
+model InvoiceLineItem {
+  id        String           @id @default(cuid())
+  invoiceId String
+  invoice   Invoice          @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  serviceId String?
+  service   EstimateService? @relation(fields: [serviceId], references: [id])
+
+  description String
+  quantity    Decimal @db.Decimal(10, 3)
+  unit        String?
+  unitPrice   Decimal @db.Decimal(10, 2)
+  total       Decimal @db.Decimal(10, 2)
+  sortOrder   Int     @default(0)
+
+  @@map("invoice_line_items")
+}
+
+// ── Payments ─────────────────────────────────────────────────────
+model Payment {
+  id        String        @id @default(cuid())
+  invoiceId String
+  invoice   Invoice       @relation(fields: [invoiceId], references: [id])
+  clientId  String
+
+  method PaymentMethod
+  amount Decimal       @db.Decimal(10, 2)
+  tip    Decimal       @default(0) @db.Decimal(10, 2)
+  status PaymentStatus @default(PENDING)
+
+  stripePaymentIntentId String?
+  stripeChargeId        String?
+
+  paidAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@map("payments")
+}
+
+enum PaymentMethod {
+  STRIPE_CARD
+  STRIPE_ACH
+  CASH
+  CHECK
+  OTHER
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  SUCCEEDED
+  FAILED
+  REFUNDED
+}
+
+// ── Messages (Two-way SMS via Twilio) ────────────────────────────
+model Message {
+  id       String           @id @default(cuid())
+  clientId String
+  client   Client           @relation(fields: [clientId], references: [id])
+
+  direction MessageDirection
+  body      String          @db.Text
+  mediaUrls String[]
+
+  twilioSid  String?
+  fromNumber String?
+  toNumber   String?
+  status     MessageStatus @default(SENT)
+
+  readAt DateTime?
+  sentAt DateTime  @default(now())
+
+  @@index([clientId])
+  @@index([sentAt])
+  @@map("messages")
+}
+
+enum MessageDirection {
+  INBOUND
+  OUTBOUND
+}
+
+enum MessageStatus {
+  QUEUED
+  SENT
+  DELIVERED
+  FAILED
+  RECEIVED
+}
+
+// ── Notification Queue ───────────────────────────────────────────
+model Notification {
+  id          String              @id @default(cuid())
+  type        NotificationType
+  channel     NotificationChannel
+  recipientId String
+  subject     String?
+  body        String              @db.Text
+  data        Json?
+
+  status       NotificationStatus @default(PENDING)
+  scheduledFor DateTime?
+  sentAt       DateTime?
+  error        String?
+
+  createdAt DateTime @default(now())
+
+  @@index([status, scheduledFor])
+  @@map("notifications")
+}
+
+enum NotificationType {
+  SERVICE_REQUEST_RECEIVED
+  QUOTE_SENT
+  QUOTE_APPROVED
+  JOB_SCHEDULED
+  JOB_REMINDER
+  JOB_COMPLETED
+  INVOICE_SENT
+  PAYMENT_RECEIVED
+  MESSAGE_RECEIVED
+  GENERAL
+}
+
+enum NotificationChannel {
+  EMAIL
+  SMS
+  IN_APP
+}
+
+enum NotificationStatus {
+  PENDING
+  SENT
+  FAILED
+  SKIPPED
+}
+
+
+// ================================================================
+// PHASE 2 — SOCIAL MEDIA MANAGER
+// ================================================================
+
+// IG: Wednesday 11am MT | FB: Thursday 12pm MT
+// Auto-generated Sunday 6pm → Aaron approves Monday morning
+model SocialPlatformConfig {
+  id       String  @id @default(cuid())
+  platform String  @unique  // "instagram" | "facebook"
+  enabled  Boolean @default(false)
+
+  publishDayOfWeek Int?
+  publishHour      Int?
+  publishMinute    Int?  @default(0)
+
+  // Meta API credentials (encrypted at application level)
+  accessToken        String?   @db.Text
+  accessTokenExpiry  DateTime?
+  pageId             String?
+  instagramAccountId String?
+
+  brandVoicePrompt String? @db.Text
+
+  updatedAt DateTime @updatedAt
+
+  @@map("social_platform_configs")
+}
+
+// AI drafts weekly content → Aaron approves → auto-publishes via cron
+model SocialPost {
+  id       String           @id @default(cuid())
+  platform String
+  status   SocialPostStatus @default(DRAFT)
+
+  caption  String   @db.Text
+  hashtags String[]
+  imageUrl String?          // Cloudinary URL (no AI-generated images per spec)
+  imageAlt String?
+
+  aiGenerated Boolean @default(false)
+  aiPromptRef String?
+
+  scheduledFor   DateTime?
+  publishedAt    DateTime?
+  platformPostId String?
+
+  approvedBy String?
+  approvedAt DateTime?
+
+  impressions        Int?
+  reach              Int?
+  likes              Int?
+  comments           Int?
+  shares             Int?
+  analyticsUpdatedAt DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([scheduledFor])
+  @@map("social_posts")
+}
+
+enum SocialPostStatus {
+  DRAFT
+  PENDING_APPROVAL
+  APPROVED
+  SCHEDULED
+  PUBLISHED
+  FAILED
+  ARCHIVED
+}
