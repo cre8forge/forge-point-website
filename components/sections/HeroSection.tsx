@@ -28,7 +28,7 @@ export function HeroSection() {
 
         {/* Eyebrow */}
         <p className="font-condensed font-600 text-xs uppercase tracking-[0.35em] text-amber mb-5">
-          Erie, Colorado · Licensed &amp; Insured · (303) 900-3230
+          Erie, Colorado · Licensed &amp; Insured · (720) 419-1961
         </p>
 
         {/* H1 */}
@@ -40,7 +40,7 @@ export function HeroSection() {
 
         {/* Tagline — from business card */}
         <p className="font-cormorant italic font-300 text-xl md:text-2xl text-amber mb-10 leading-relaxed">
-          remodel. restore. reimagine.
+          Your Property. Elevated.
         </p>
 
         {/* CTAs */}
@@ -48,8 +48,8 @@ export function HeroSection() {
           <Button href="/estimate" variant="primary" size="lg">
             Get a Free Estimate
           </Button>
-          <Button href="#showcase" variant="secondary" size="lg">
-            View Our Work
+          <Button href="/services" variant="secondary" size="lg">
+            Our Services
           </Button>
         </div>
 

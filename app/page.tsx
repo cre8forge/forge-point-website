@@ -6,7 +6,6 @@ import { HeroSection }          from "@/components/sections/HeroSection";
 import { ServicesSection }      from "@/components/sections/ServicesSection";
 import { HowItWorksSection }    from "@/components/sections/HowItWorksSection";
 import { WhyForgePointSection } from "@/components/sections/WhyForgePointSection";
-import { ProjectShowcase }      from "@/components/sections/ProjectShowcase";
 import { ReviewsSection }       from "@/components/sections/ReviewsSection";
 import { ServiceAreaMap }       from "@/components/sections/ServiceAreaMap";
 import { UniversityPreview }    from "@/components/sections/UniversityPreview";
@@ -47,8 +46,7 @@ export default async function HomePage() {
         <ServicesSection />
         <HowItWorksSection />
         <WhyForgePointSection />
-        <ProjectShowcase />
-        <ReviewsSection />
+<ReviewsSection />
         <ServiceAreaMap />
         {showUniversity && <UniversityPreview articles={featuredArticles} />}
         <CtaBanner />

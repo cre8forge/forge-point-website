@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -10,7 +11,7 @@ import { Button } from "@/components/ui/Button";
 
 const SERVICE_GROUPS = [
   {
-    label: "Custom Living",
+    label: "Custom Interiors",
     services: [
       { label: "Renovation & Remodel",    href: "/services/renovation-remodel" },
       { label: "Framing & Finishes",      href: "/services/framing-finishes" },
@@ -80,11 +81,17 @@ export function Nav() {
         <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-cinzel font-900 text-white text-lg tracking-[0.25em] uppercase hover:text-amber transition-colors"
-          >
-            <span className="text-orange mr-1">◆</span> FORGE POINT
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <Image
+              src="/logo.png"
+              alt="Forge Point Property Services"
+              width={38}
+              height={38}
+              className="object-contain"
+            />
+            <span className="font-cinzel font-900 text-white text-lg tracking-[0.25em] uppercase group-hover:text-amber transition-colors">
+              FORGE POINT
+            </span>
           </Link>
 
           {/* Desktop links */}
@@ -174,10 +181,19 @@ export function Nav() {
           <div className="flex items-center justify-between px-6 h-16 border-b border-white/10">
             <Link
               href="/"
-              className="font-cinzel font-900 text-white text-base tracking-[0.25em] uppercase"
+              className="flex items-center gap-2.5"
               onClick={() => setMobileOpen(false)}
             >
-              <span className="text-orange mr-1">◆</span> FORGE POINT
+              <Image
+                src="/logo.png"
+                alt="Forge Point Property Services"
+                width={32}
+                height={32}
+                className="object-contain"
+              />
+              <span className="font-cinzel font-900 text-white text-base tracking-[0.25em] uppercase">
+                FORGE POINT
+              </span>
             </Link>
             <button
               className="text-white p-1"

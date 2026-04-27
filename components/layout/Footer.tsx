@@ -1,10 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Divider } from "@/components/ui/Divider";
 import { Button } from "@/components/ui/Button";
 
 const SERVICE_GROUPS = [
   {
-    label: "Custom Living",
+    label: "Custom Interiors",
     links: [
       { label: "Renovation & Remodel",  href: "/services/renovation-remodel" },
       { label: "Framing & Finishes",    href: "/services/framing-finishes" },
@@ -50,23 +51,32 @@ export function Footer() {
 
           {/* ── Col 1: Brand ── */}
           <div className="space-y-5">
-            <Link href="/" className="inline-block group">
-              <span className="block font-cinzel font-900 text-white text-xl tracking-[0.25em] uppercase group-hover:text-amber transition-colors">
-                <span className="text-orange mr-1">◆</span> FORGE POINT
-              </span>
-              <span className="block font-condensed font-600 text-xs tracking-[0.3em] uppercase text-amber/80 mt-0.5 pl-5">
-                Property Services
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <Image
+                src="/logo.png"
+                alt="Forge Point Property Services"
+                width={44}
+                height={44}
+                className="object-contain"
+              />
+              <div>
+                <span className="block font-cinzel font-900 text-white text-xl tracking-[0.25em] uppercase group-hover:text-amber transition-colors">
+                  FORGE POINT
+                </span>
+                <span className="block font-condensed font-600 text-xs tracking-[0.3em] uppercase text-amber/80 mt-0.5">
+                  Property Services
+                </span>
+              </div>
             </Link>
             <p className="font-cormorant italic font-300 text-base text-amber leading-relaxed">
-              remodel. restore. reimagine.
+              Your Property. Elevated.
             </p>
             <p className="font-barlow font-300 text-sm text-muted leading-relaxed">
               Erie, Colorado 80516
             </p>
             <div className="space-y-1.5">
-              <a href="tel:+13039003230" className="block font-barlow font-300 text-sm text-muted hover:text-white transition-colors">
-                (303) 900-3230
+              <a href="tel:+17204191961" className="block font-barlow font-300 text-sm text-muted hover:text-white transition-colors">
+                (720) 419-1961
               </a>
               <a href="mailto:Hello@Cre8Forge.com" className="block font-barlow font-300 text-sm text-muted hover:text-white transition-colors">
                 Hello@Cre8Forge.com

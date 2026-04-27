@@ -32,12 +32,12 @@ export function CtaBanner() {
             Get a Free Estimate
           </Button>
           <Button
-            href="tel:+13039003230"
+            href="tel:+17204191961"
             variant="secondary"
             size="lg"
             className="border-white/50 text-white/80 hover:border-white hover:text-white hover:bg-white/10 hover:shadow-none"
           >
-            Call (303) 900-3230
+            Call (720) 419-1961
           </Button>
         </div>
 

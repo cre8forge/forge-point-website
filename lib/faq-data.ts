@@ -45,7 +45,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "How quickly do you respond to inquiries?",
         answer:
-          "We respond to all contact form submissions and calls within one business day. For urgent requests — like a fence down after a storm or a maintenance issue at a rental property — call us directly at (303) 900-3230 for the fastest response.",
+          "We respond to all contact form submissions and calls within one business day. For urgent requests — like a fence down after a storm or a maintenance issue at a rental property — call us directly at (720) 419-1961 for the fastest response.",
       },
       {
         question: "Do you work with HOAs and property managers?",

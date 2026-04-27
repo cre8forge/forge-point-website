@@ -290,8 +290,8 @@ export function EstimatorTool({ categories, settings, initialCategory }: Estimat
           <Button href="/contact" variant="primary">
             Request a Detailed Quote
           </Button>
-          <Button href="tel:+13039003230" variant="secondary">
-            Call (303) 900-3230
+          <Button href="tel:+17204191961" variant="secondary">
+            Call (720) 419-1961
           </Button>
         </div>
       </div>

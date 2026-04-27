@@ -20,10 +20,10 @@ export function ContactHero() {
               Phone
             </p>
             <a
-              href="tel:+13039003230"
+              href="tel:+17204191961"
               className="font-barlow font-300 text-white hover:text-orange transition-colors"
             >
-              (303) 900-3230
+              (720) 419-1961
             </a>
           </div>
           <div className="text-center">

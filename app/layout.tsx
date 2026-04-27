@@ -78,7 +78,7 @@ export default function RootLayout({
               "@type": "LocalBusiness",
               name: SITE_NAME,
               url: SITE_URL,
-              telephone: "+13039003230",
+              telephone: "+17204191961",
               email: "hello@cre8forge.com",
               address: {
                 "@type": "PostalAddress",
