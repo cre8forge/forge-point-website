@@ -1996,6 +1996,185 @@ For many residential projects, the total cost is similar. The deciding factor is
     ],
   },
 
+  // ── Property Management ───────────────────────────────────────
+  {
+    name: "Property Management",
+    slug: "property-management",
+    description: "How professional property management works — from boots-on-ground operations to commercial portfolio oversight.",
+    sortOrder: 10,
+    articles: [
+      {
+        title: "The Boots-on-Ground Model: What Real Property Management Actually Looks Like",
+        slug: "boots-on-ground-property-management",
+        excerpt: "Administrative management and operational management are not the same thing. Here's what it means to have a team physically at your property — and why it matters.",
+        coverImage: img("1560518883-ce09059eeffa"),
+        featured: true,
+        sortOrder: 1,
+        content: `## The Gap Between Administration and Operations
+
+Most people think of property management as a coordination service — someone who answers the phone, schedules vendors, collects rent, and sends reports. That's administrative property management, and it's genuinely useful. But it has a structural limitation: it depends entirely on the vendor network and response times of the third parties being coordinated.
+
+Boots-on-ground management is something different. It means the management team has people in the field — real crew members who physically go to your property, observe conditions, perform work, and respond to problems directly.
+
+![Property manager conducting a physical walkthrough and inspection](https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80)
+
+### What Happens When You Call at 11 PM
+
+In an administrative management model, an after-hours emergency triggers a call to a vendor dispatch system. That system contacts a contractor on an approved list. The contractor returns the call within some window. They assess whether it's an emergency worth a late-night trip. They arrive when they decide to arrive.
+
+In a boots-on-ground model, the call goes to the management team that has its own crew. Someone with knowledge of your specific property — its layout, access points, shutoffs, quirks — is dispatched. The response is faster, the cost is controlled, and the person showing up knows your property.
+
+For owners with properties they're not physically close to, this distinction is the difference between peace of mind and anxiety.
+
+### The On-Call Supplement Model
+
+One of the most effective property management arrangements is a hybrid: you keep your existing property management company for administrative functions (tenant screening, lease management, financial reporting, legal compliance) and you add Forge Point as the boots-on-ground operational layer.
+
+Your PM company handles the paperwork. Forge Point handles the physical:
+
+- Scheduled property walkthroughs with documented reports
+- Routine maintenance and grounds upkeep
+- 24/7 emergency response (month-to-month retainer + per-incident rate)
+- Tenant maintenance request coordination and completion
+- Before/after photo documentation for every service event
+
+This model is particularly valuable for property owners who have a PM company they trust administratively but find that vendor response times, maintenance quality, or physical presence are lacking.
+
+> **The key metric:** How quickly does someone physically show up at your property when something is wrong? That answer tells you everything about the operational quality of your property management.
+
+### What Regular Walkthroughs Actually Catch
+
+Properties that are visited regularly and documented consistently have dramatically better maintenance outcomes than properties where someone only shows up when something is broken.
+
+What regular physical presence catches before it becomes expensive:
+
+- Irrigation heads that are watering the sidewalk instead of the lawn (water waste + higher bills)
+- A gutter that has separated and is directing water against the foundation
+- Fence posts that have heaved slightly — easy to reset, expensive to replace
+- A crawlspace vent that has been blocked, creating moisture buildup underneath
+- Exterior lighting that's burned out, creating a security gap
+- Tenant modifications that are outside the lease agreement
+
+None of these show up in a monthly financial report. They show up during a walkthrough.
+
+### Documentation That Protects Ownership
+
+Every Forge Point property visit generates a written report with:
+
+- Date, time, and crew member(s) on-site
+- Conditions observed across the property
+- Maintenance items identified
+- Actions taken
+- Photo documentation of before and after for any work performed
+
+This documentation exists for the property owner's protection. At lease renewal disputes, insurance claims, or any ownership transition, a documented record of maintenance history has real value. Properties that can demonstrate consistent, professional maintenance retain value better and carry lower risk.`,
+      },
+      {
+        title: "Commercial and Industrial Property Management: What Scale Actually Requires",
+        slug: "commercial-industrial-property-management",
+        excerpt: "Managing millions of square feet is operationally different from managing a few homes. Here's what large-scale commercial and industrial management looks like in practice.",
+        coverImage: img("1486325212027-8081e485255e"),
+        featured: false,
+        sortOrder: 2,
+        content: `## The Scale Problem in Commercial Management
+
+Managing a single commercial building and managing a multi-site commercial or industrial portfolio are operationally different problems. The fundamentals are the same — maintenance response, vendor coordination, documentation, tenant relations — but the systems required to deliver consistent service across scale are fundamentally different from what works for one or two properties.
+
+![Large commercial and industrial property facility management](https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80)
+
+### What 4 Million Square Feet Teaches You
+
+At scale, patterns emerge that you don't see on individual properties. Certain mechanical systems fail at predictable intervals. Certain tenant types generate predictable maintenance categories. Certain seasonal cycles create recurring maintenance windows that need to be staffed and resourced in advance, not discovered in real time.
+
+Managing a large commercial and industrial portfolio over time teaches you:
+
+**Preventive maintenance pays at scale.** A $500 annual inspection of a rooftop HVAC unit on a 200,000 sq ft industrial building catches a developing problem before it becomes a $15,000 emergency repair during peak summer. At portfolio scale, preventive maintenance ROI is measurable and significant.
+
+**Vendor relationships determine response time.** Portfolio-scale operators have established relationships with mechanical, electrical, and structural contractors. When something breaks at a large facility, the call to a vendor who manages a significant portion of your work gets answered faster and dispatched sooner than a one-off call from a property they've never served.
+
+**Documentation is a risk management tool.** At commercial scale, maintenance documentation intersects with lease obligations, insurance requirements, and ownership reporting. Properties with clean, consistent records are easier to finance, easier to insure, and easier to sell.
+
+### The Categories of Commercial Maintenance
+
+Commercial and industrial properties have maintenance categories that residential properties don't have or have in much smaller scale:
+
+**Parking lots and site hardscape** — asphalt maintenance, striping, drainage management, snow removal logistics for large paved areas. A 50,000 sq ft parking lot requires a different approach than a residential driveway.
+
+**Loading dock and warehouse infrastructure** — dock levelers, dock seals, overhead doors, forklift-accessible surfaces, and the safety standards around all of it.
+
+**Mechanical and HVAC systems** — commercial rooftop units serve large floor plates. Failure is disruptive to tenants and expensive to repair in emergency conditions. A preventive maintenance schedule is standard operating procedure at this scale, not optional.
+
+**Exterior grounds and site presentation** — for commercial tenants, the exterior of the property is part of their brand presentation. Grounds maintenance standards are higher and more visible than residential.
+
+**Life safety systems** — fire suppression, exit lighting, extinguisher maintenance, emergency egress. These are regulatory requirements with inspection cycles that must be tracked and documented.
+
+> **The management difference:** A property manager who has operated at commercial and industrial scale for years has systems for all of these categories. A manager whose experience is primarily residential is learning on your portfolio.
+
+### What Tenants at Commercial Scale Need
+
+Commercial tenants — particularly industrial and logistics tenants operating at scale — have operational requirements that directly intersect with maintenance:
+
+- Dock equipment that works. A failed dock leveler stops deliveries.
+- HVAC that maintains temperature within spec for products or employees.
+- Lighting that meets safety standards.
+- Grounds that are clear and accessible.
+
+These aren't preferences — they're operational necessities. Commercial tenants in good facilities are sticky. Tenants who experience maintenance failures that affect operations look for facilities that don't have those problems.
+
+Management that understands the operational requirements of commercial tenants — not just the lease terms — retains them.`,
+      },
+      {
+        title: "Single-Family Property Management: Why Personal Attention Is the Standard",
+        slug: "single-family-property-management",
+        excerpt: "Single-family investment properties aren't managed like apartment complexes. Every property and every owner is different — and the management approach should reflect that.",
+        coverImage: img("1560185893-a55b8a6f7e89"),
+        featured: false,
+        sortOrder: 3,
+        content: `## Every Single-Family Investment Is Different
+
+The mistake most institutional property management approaches make with single-family rentals is treating them like scaled-down apartment management. They're not. Single-family investment properties are individually-owned assets, each with different owner goals, property conditions, tenant profiles, and maintenance histories.
+
+An owner who purchased a home in Erie as a long-term hold for retirement income has different priorities than an investor who is six months into a light renovation and planning to sell. Both are single-family owners — but they need different things from a management relationship.
+
+![Single family property in Northern Colorado prepared for rental occupancy](https://images.unsplash.com/photo-1560185893-a55b8a6f7e89?auto=format&fit=crop&w=900&q=80)
+
+### Starting With the Owner's Goals
+
+Good single-family property management starts with a conversation about what the owner actually wants, not a standard service package.
+
+Common owner priority profiles in Northern Colorado:
+
+**The long-term hold investor** — wants a quality tenant who stays, lower maintenance friction, and a property that holds its value. Maintenance decisions should prioritize longevity and tenant retention, not cost minimization on each ticket.
+
+**The accidental landlord** — relocated for work but kept the property, plans to return eventually or will sell when the market is right. Needs a management team that treats the property like it's theirs — because it used to be.
+
+**The portfolio builder** — acquiring properties systematically, focused on occupancy, margins, and maintenance cost control across multiple assets. Needs reporting, documentation, and consistent standards across properties.
+
+**The absentee owner** — out of state, out of the country, or simply unable to be involved. Needs total confidence that someone is physically watching the property and that nothing will surprise them.
+
+The management approach — communication frequency, maintenance approval thresholds, tenant selection criteria, documentation detail — should be calibrated to the owner.
+
+### The Tenant Relationship at the Single-Family Level
+
+In a multifamily building, tenants are part of a community with shared spaces, building-wide policies, and an arms-length relationship with ownership. In a single-family rental, the tenant is the only occupant of a standalone home — and the relationship is different.
+
+Single-family tenants tend to have higher expectations of responsiveness. They experience every maintenance issue directly, without the buffer of building systems that affect multiple units and trigger management action through volume.
+
+They also tend to stay longer when the property and the management relationship meet their expectations. A single-family tenant who is happy with their maintenance experience, gets responsive communication, and is treated fairly at lease renewal stays for years. Turnover — with its vacancy cost, cleaning, repairs, and re-leasing expense — is the single biggest drag on single-family rental returns.
+
+> **The retention equation:** One great tenant who stays five years costs less than three average tenants over the same period, even if the great tenant pays slightly below market rate. Management that understands tenant retention — not just tenant placement — generates better returns.
+
+### Property-Specific Maintenance Knowledge
+
+Single-family properties have idiosyncrasies. The irrigation system has a finicky valve at zone 3. The kitchen faucet runs cold before it runs hot. The back gate latch needs to be lifted slightly to latch. The driveway heaves every spring because there's a tree root below the concrete.
+
+Management teams that physically visit the property and maintain a detailed property profile know these things. They can communicate them to tenants, address them proactively when appropriate, and avoid the inefficiency of dispatching a vendor for a five-minute fix that requires knowing the property's quirks.
+
+This is what personalized, property-specific management looks like — and it's the standard, not the premium, when the relationship is built right.`,
+      },
+    ],
+  },
+
 ] as const;
 
 export async function seedUniversity(prisma: PrismaClient) {

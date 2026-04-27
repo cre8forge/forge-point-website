@@ -33,7 +33,6 @@ const SERVICE_GROUPS = [
       { label: "Grounds Maintenance",       href: "/services/grounds-maintenance" },
       { label: "Power & Window Washing",    href: "/services/power-window-washing" },
       { label: "Industrial Maintenance",    href: "/services/industrial-maintenance" },
-      { label: "HOA & Commercial Property", href: "/services/hoa-commercial-property" },
       { label: "Property Management",       href: "/services/property-management" },
       { label: "Junk Haul Off",             href: "/services/junk-haul-off" },
     ],

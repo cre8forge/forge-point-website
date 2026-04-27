@@ -60,6 +60,54 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
 
+  // ── Property Management ───────────────────────────────────────
+  {
+    slug:  "property-management",
+    label: "Property Management",
+    questions: [
+      {
+        question: "What types of properties does Forge Point manage?",
+        answer:
+          "We manage across all property classes — commercial and industrial facilities, multifamily residential portfolios, HOA communities, and single-family homes. On the commercial side, our team has direct experience managing over 4 million square feet of commercial and industrial space. In multifamily, we've managed portfolios with up to 115 tenants simultaneously. For single-family clients, every property gets individual attention because every owner's goals and preferences are different.",
+      },
+      {
+        question: "What makes Forge Point different from a traditional property management company?",
+        answer:
+          "Most property management companies are administrative-first — they schedule vendors and collect rent, but you're dependent on their preferred vendor network and their availability when something goes wrong. Forge Point is an operational team first. We have crews in the field every day handling grounds, maintenance, and property services. When something needs to happen at your property, we send our own people — not a third-party vendor on a two-week wait list. That is the difference between a management company and a true boots-on-ground property partner.",
+      },
+      {
+        question: "Can I keep my existing property management contract and still work with Forge Point?",
+        answer:
+          "Yes — and this is one of our most common arrangements. We work alongside traditional property management companies as the local, on-call boots-on-ground team. Your property manager handles the administrative side. Forge Point handles the physical: maintenance response, property walkthroughs, grounds upkeep, and emergency calls. It's a monthly service agreement plus a per-incident rate for dispatched work. You get around-the-clock local response without replacing your existing management relationship.",
+      },
+      {
+        question: "What does 'boots on ground' service mean in practice?",
+        answer:
+          "It means a real person from our team physically goes to your property when something is needed — not a phone call to a vendor dispatch queue. We conduct scheduled walkthroughs, respond to maintenance calls, document conditions with photos and written reports, handle tenant or occupant coordination, and flag issues before they become expensive. For owners who are out of state, out of the country, or simply too busy to deal with day-to-day property issues, this is the service that provides genuine peace of mind.",
+      },
+      {
+        question: "How are maintenance requests handled?",
+        answer:
+          "Maintenance requests come to us by phone, email, or through your property management platform. We triage requests by urgency — true emergencies get same-day or next-business-day response; non-urgent items are scheduled within the standard service window. We self-perform a wide range of maintenance work, which means faster response and no markup on subcontracted labor for routine items. When a job requires a licensed trade (electrical, plumbing, HVAC), we coordinate vetted partners and manage the work from start to close.",
+      },
+      {
+        question: "What documentation and reporting do you provide?",
+        answer:
+          "Every property walkthrough includes a written report with photo documentation of conditions observed, maintenance items noted, and any action taken. Commercial and HOA clients receive regular service reports that can be provided directly to board members, asset managers, or ownership. For single-family clients, we provide a simple summary after each visit. All documentation is retained and available on request — this matters at lease renewals, owner disputes, and insurance claims.",
+      },
+      {
+        question: "How do you handle after-hours emergencies?",
+        answer:
+          "We are available 24 hours a day, 7 days a week for genuine property emergencies. This includes water intrusion, break-ins, storm damage, HVAC failure in extreme temperatures, and similar urgent situations. Reach us directly by phone at (720) 419-1961. After-hours emergency response is billed at a per-incident rate as part of our service agreement — there is no guessing about what you'll be charged when you call us at midnight.",
+      },
+      {
+        question: "How is property management priced?",
+        answer:
+          "Our management services are structured as a flat monthly retainer — covering scheduled walkthroughs, routine coordination, and reporting — plus a per-incident rate for dispatched maintenance work and emergency response. This model is transparent: you know your baseline monthly cost and you're not paying a percentage of rent for work our team isn't actually doing. Retainer pricing is based on the number and type of properties and the service scope you need. Contact us for a custom quote.",
+      },
+    ],
+  },
+
   // ── Landscaping ──────────────────────────────────────────────
   {
     slug:  "landscaping",

@@ -25,7 +25,6 @@ const SERVICE_GROUPS = [
     label: "Grounds & Estates",
     links: [
       { label: "Full-Service Grounds Maintenance",  href: "/services/grounds-maintenance" },
-      { label: "HOA & Commercial Management",       href: "/services/hoa-commercial-property" },
       { label: "Industrial Property Maintenance",   href: "/services/industrial-maintenance" },
       { label: "Pressure Washing & Window Cleaning",href: "/services/power-window-washing" },
       { label: "Junk Haul Off",                     href: "/services/junk-haul-off" },
