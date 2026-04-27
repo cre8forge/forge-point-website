@@ -190,6 +190,9 @@ export const SERVICES_DATA: ServiceData[] = [
     overviewImage: "1560518883-ce09059eeffa",
     includes: [
       { title: "Parking Lot Sweeping & Blowing",    description: "Commercial riding and walk-behind sweeping for lots of all sizes. Removes debris, gravel, and sediment that damages pavement." },
+      { title: "Parking Lot Striping",             description: "Fresh line striping for stalls, fire lanes, directional arrows, loading zones, and curb markings. We stripe new lots and re-stripe faded or reconfigured layouts." },
+      { title: "Signage Installation & Replacement",description: "Stop signs, speed limit signs, no-parking, reserved, and directional signage installed or replaced to current standards. Post setting and hardware included." },
+      { title: "ADA Compliance Checks",            description: "Visual walkthrough audit of parking stalls, access aisles, ramps, curb cuts, signage, and path-of-travel for ADA compliance gaps. Written report provided." },
       { title: "Exterior Building Cleaning",        description: "Soft and pressure washing for commercial building facades, entrances, and loading areas." },
       { title: "Loading Dock & Bay Cleaning",       description: "Degreasing and pressure washing of loading docks and bays. Removes oil, fuel, and buildup that creates safety hazards." },
       { title: "Concrete Sealing & Degreasing",    description: "Surface degreasing and penetrating sealer application to extend pavement life and improve appearance." },
@@ -458,11 +461,14 @@ export const SERVICES_DATA: ServiceData[] = [
     overviewHeading: "Junk Removal Done Right — Same Week Service",
     overviewBody: [
       "Whether you're clearing out a rental property between tenants, prepping a house for sale, cleaning up after a renovation, or just finally dealing with that pile in the garage — Forge Point provides professional junk haul off service that's fast, clean, and responsible.",
-      "We handle everything from single-item pickups to full estate and property cleanouts. Our crew does the lifting, loading, and disposal so you don't have to make multiple dump runs or figure out what can be recycled and what can't.",
-      "All haul-off jobs are quoted upfront based on volume and material type. We donate and recycle where possible, and we handle the disposal so it's done correctly — not left at the curb for the neighbors to deal with.",
+      "We price by the cubic yard with up to 2 tons included. Heavy loads that push past 2 tons — concrete, soil, roofing — carry a straightforward per-ton overage charge that's disclosed before we start. No surprises on the invoice.",
+      "Prefer to sort and load it yourself? We also rent dumpsters and dump trailers — drop it off, you fill it, we haul it when you're done. Either way, we donate and recycle where possible.",
     ],
     overviewImage: "1560518883-ce09059eeffa",
     includes: [
+      { title: "Full-Service Haul Off",             description: "We load it, haul it, and dispose of it. Priced by the cubic yard with up to 2 tons included. Per-ton overage applies for heavy material exceeding 2 tons." },
+      { title: "Dumpster Rental",                   description: "We drop a dumpster, you fill it on your own timeline, we haul it when you're ready. Ideal for multi-day renovation projects and larger cleanouts." },
+      { title: "Dump Trailer Rental",               description: "Rent a dump trailer you load yourself. Good for contractors and homeowners who want to control the pace and sorting of the work." },
       { title: "Furniture & Appliance Removal",     description: "Sofas, mattresses, refrigerators, washers, dryers, and large items removed from any floor of the home." },
       { title: "Construction & Demo Debris",        description: "Drywall, lumber, concrete, tile, roofing material, and renovation waste cleared and hauled from your job site." },
       { title: "Yard Waste & Storm Debris",         description: "Branches, stumps, old landscaping material, soil, and storm debris hauled and disposed of properly." },
