@@ -8,8 +8,8 @@ export function WhyForgePointSection() {
 
       {/* Background image */}
       <Image
-        src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80&auto=format&fit=crop"
-        alt="Professional property maintenance crew at work"
+        src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=80&auto=format&fit=crop"
+        alt="Professionally landscaped garden in Northern Colorado"
         fill
         className="object-cover object-center"
         sizes="100vw"

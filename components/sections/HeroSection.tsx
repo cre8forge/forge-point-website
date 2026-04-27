@@ -28,7 +28,7 @@ export function HeroSection() {
 
         {/* Eyebrow */}
         <p className="font-condensed font-600 text-xs uppercase tracking-[0.35em] text-amber mb-5">
-          Erie, Colorado · Licensed &amp; Insured · (720) 419-1961
+          Erie, Colorado · Bonded &amp; Insured · (720) 419-1961
         </p>
 
         {/* H1 */}

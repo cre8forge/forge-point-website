@@ -1,6 +1,6 @@
 const STATS = [
   { value: "Since 2010",  label: "In the Field" },
-  { value: "15+",         label: "Zip Codes Served" },
+  { value: "20+",         label: "Cities Served" },
   { value: "Colorado",    label: "Native Team" },
   { value: "Maintenance", label: "First & Foremost" },
 ] as const;

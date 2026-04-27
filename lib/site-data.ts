@@ -123,7 +123,7 @@ export const HOW_IT_WORKS = [
 // ── Why Forge Point ───────────────────────────────────────────────
 export const DIFFERENTIATORS = [
   {
-    title: "Licensed & Insured",
+    title: "Bonded & Insured",
     description:
       "We carry full general liability and workers' compensation on every job. Your property and investment are fully protected.",
   },
@@ -213,22 +213,24 @@ export const PLACEHOLDER_REVIEWS = [
 
 // ── Service Area Map ──────────────────────────────────────────────
 export const SERVICE_ZIP_CODES = [
-  { zip: "80516", name: "Erie",         lat: 40.0505, lng: -105.0419 },
-  { zip: "80504", name: "Firestone",    lat: 40.1167, lng: -104.9389 },
-  { zip: "80529", name: "Windsor",      lat: 40.4775, lng: -104.9011 },
-  { zip: "80514", name: "Dacono",       lat: 40.0852, lng: -104.9422 },
-  { zip: "80520", name: "Firestone",    lat: 40.1522, lng: -104.9422 },
-  { zip: "80530", name: "Frederick",    lat: 40.1033, lng: -104.9302 },
-  { zip: "80026", name: "Lafayette",    lat: 39.9939, lng: -105.0894 },
-  { zip: "80027", name: "Louisville",   lat: 39.9778, lng: -105.1311 },
-  { zip: "80023", name: "Broomfield",   lat: 39.9722, lng: -104.9891 },
-  { zip: "80501", name: "Longmont",     lat: 40.1672, lng: -105.1019 },
-  { zip: "80503", name: "Gunbarrel",    lat: 40.1419, lng: -105.0775 },
-  { zip: "80301", name: "Boulder N",    lat: 40.0586, lng: -105.2405 },
-  { zip: "80303", name: "Boulder S",    lat: 40.0058, lng: -105.2130 },
-  { zip: "80602", name: "Northglenn",   lat: 39.9469, lng: -104.9700 },
-  { zip: "80603", name: "Brighton",     lat: 40.0247, lng: -104.8089 },
+  { zip: "80501", name: "Longmont",        lat: 40.1672, lng: -105.1019 },
+  { zip: "80516", name: "Erie",            lat: 40.0505, lng: -105.0419 },
+  { zip: "80520", name: "Firestone",       lat: 40.1522, lng: -104.9506 },
+  { zip: "80530", name: "Frederick",       lat: 40.1006, lng: -104.9281 },
+  { zip: "80514", name: "Dacono",          lat: 40.0852, lng: -104.9422 },
+  { zip: "80301", name: "Boulder",         lat: 40.0150, lng: -105.2705 },
+  { zip: "80503", name: "Gunbarrel",       lat: 40.0753, lng: -105.1558 },
+  { zip: "80026", name: "Lafayette",       lat: 39.9939, lng: -105.0894 },
+  { zip: "80027", name: "Louisville",      lat: 39.9778, lng: -105.1442 },
+  { zip: "80023", name: "Broomfield",      lat: 39.9241, lng: -105.0866 },
+  { zip: "80602", name: "Thornton",        lat: 39.9033, lng: -104.9719 },
+  { zip: "80234", name: "Northglenn",      lat: 39.9094, lng: -104.9897 },
+  { zip: "80229", name: "Westminster",     lat: 39.8614, lng: -104.9803 },
+  { zip: "80003", name: "Arvada",          lat: 39.8353, lng: -105.0844 },
+  { zip: "80603", name: "Brighton",        lat: 40.0247, lng: -104.8089 },
+  { zip: "80022", name: "Commerce City",   lat: 39.8083, lng: -104.9339 },
+  { zip: "80031", name: "Westminster N",   lat: 39.8967, lng: -105.0372 },
 ] as const;
 
-export const MAP_CENTER = { lat: 40.05, lng: -105.05 };
+export const MAP_CENTER = { lat: 39.98, lng: -105.04 };
 export const MAP_ZOOM   = 10;

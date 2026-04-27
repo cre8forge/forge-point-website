@@ -35,8 +35,9 @@ const SERVICE_GROUPS = [
 ];
 
 const serviceAreas = [
-  "Erie", "Longmont", "Lafayette", "Louisville", "Broomfield",
-  "Westminster", "Boulder", "Gunbarrel", "Brighton", "Thornton",
+  "Erie", "Longmont", "Boulder", "Lafayette", "Louisville",
+  "Broomfield", "Westminster", "Arvada", "Thornton", "Northglenn",
+  "Brighton", "Commerce City", "N. Denver Metro",
 ];
 
 export function Footer() {

@@ -10,7 +10,7 @@ import { CtaBanner } from "@/components/sections/CtaBanner";
 export const metadata: Metadata = {
   title: "Service Area",
   description:
-    "Forge Point Property Services serves Erie, Longmont, Boulder, Lafayette, Louisville, and 15+ zip codes across Northern Colorado. Colorado natives in landscaping and property maintenance since 2010.",
+    "Forge Point Property Services serves Erie, Longmont, Boulder, Lafayette, Broomfield, Westminster, Thornton, Arvada, Brighton, and the greater North Denver metro. Colorado natives in property services since 2010.",
 };
 
 export default function ServiceAreaPage() {
