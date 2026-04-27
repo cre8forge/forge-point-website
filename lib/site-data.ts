@@ -96,6 +96,41 @@ export const SERVICES = [
       "Fast property cleanouts — furniture, appliances, construction debris, and estate cleanouts.",
     href: "/services/junk-haul-off",
   },
+  {
+    category: "Domestic Services",
+    title: "Mobile Auto Detailing",
+    description:
+      "Professional vehicle detailing at your location — exterior wash, interior deep clean, and premium packages.",
+    href: "/services/mobile-auto-detailing",
+  },
+  {
+    category: "Domestic Services",
+    title: "Housekeeping & Cleaning",
+    description:
+      "Reliable recurring and one-time home cleaning — standard cleans, deep cleans, and move-in/move-out service.",
+    href: "/services/housekeeping-cleaning",
+  },
+  {
+    category: "Domestic Services",
+    title: "Poop Scooping",
+    description:
+      "Weekly and one-time pet waste removal — keeping your yard clean, safe, and odor-free.",
+    href: "/services/poop-scooping",
+  },
+  {
+    category: "Domestic Services",
+    title: "Home Safety Checks",
+    description:
+      "Scheduled property walkthroughs for vacant homes, travelers, and snowbirds — documented and reported after every visit.",
+    href: "/services/home-safety-checks",
+  },
+  {
+    category: "Domestic Services",
+    title: "Errand Services",
+    description:
+      "Local errand running, grocery pickup, prescription delivery, and trusted household support.",
+    href: "/services/errand-services",
+  },
 ] as const;
 
 // ── How It Works ──────────────────────────────────────────────────

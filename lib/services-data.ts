@@ -478,6 +478,178 @@ export const SERVICES_DATA: ServiceData[] = [
     category: "Grounds & Estates",
   },
 
+  // ── 14. Mobile Auto Detailing ─────────────────────────────────────────────
+  {
+    slug:     "mobile-auto-detailing",
+    name:     "Mobile Auto Detailing",
+    shortName:"Auto Detailing",
+    tagline:  "Professional vehicle detailing at your door — no drop-off, no waiting.",
+    metaDescription:
+      "Mobile auto detailing in Northern Colorado and Denver metro. Exterior wash, interior deep clean, and premium detail packages. We come to your home or office in Erie, Longmont, Boulder, and surrounding areas.",
+    heroImage:       "1530906374783-20f11a36e07d",
+    overviewHeading: "Professional Detailing — At Your Location",
+    overviewBody: [
+      "A professionally detailed vehicle doesn't require a trip across town or half a day in a waiting room. Forge Point brings full detailing services to your home, office, or job site — everything we need is in the truck.",
+      "We offer exterior-only washes for clients who want consistent vehicle cleanliness, full interior and exterior details for a top-to-bottom refresh, and premium packages that include paint decontamination, clay bar treatment, and sealant application for vehicles that deserve the full treatment.",
+      "Every detail is done by hand with professional-grade products — no automated washes, no shortcuts. The result is a vehicle that's genuinely clean, not just rinsed.",
+    ],
+    overviewImage: "1494976388531-d1058494cdd8",
+    includes: [
+      { title: "Exterior Hand Wash & Dry",        description: "Hand wash with pH-balanced soap and microfiber dry for a scratch-free finish on all painted surfaces, glass, and trim." },
+      { title: "Wheel & Tire Detail",             description: "Wheel faces, barrels, and lug nuts cleaned. Tires dressed with a matte or satin finish tire dressing." },
+      { title: "Interior Vacuum & Wipe-Down",     description: "Full interior vacuum including seats, carpets, and trunk. Dash, door panels, and console wiped clean and protected." },
+      { title: "Glass Cleaning — Interior & Exterior", description: "All glass cleaned streak-free inside and out. Windshield treated for improved visibility in rain and direct sun." },
+      { title: "Leather Conditioning",            description: "Leather seats and surfaces cleaned and conditioned to prevent cracking and fading — Colorado's UV and dry air are hard on leather." },
+      { title: "Paint Sealant Application",       description: "Machine-applied paint sealant providing 6–12 months of UV and contaminant protection for Colorado's intense sun exposure." },
+      { title: "Odor Treatment",                  description: "Enzyme-based or ozone odor treatment for smoke, pets, mildew, and stubborn interior odors that don't respond to standard cleaning." },
+      { title: "Engine Bay Cleaning",             description: "Light degreasing and rinse of engine bay surfaces for visual presentation and easier maintenance inspection access." },
+    ],
+    gallery: [
+      { id: "1530906374783-20f11a36e07d", alt: "Vehicle exterior being hand washed and detailed" },
+      { id: "1494976388531-d1058494cdd8", alt: "Clean car interior after professional detailing" },
+      { id: "1469854523086-cc02fe5d8800", alt: "Freshly detailed vehicle with a glossy exterior finish" },
+    ],
+    estimatorCategory: "mobile-auto-detailing",
+    related:  ["housekeeping-cleaning", "errand-services", "power-window-washing"],
+    category: "Domestic Services",
+  },
+
+  // ── 15. Housekeeping & Cleaning ───────────────────────────────────────────
+  {
+    slug:     "housekeeping-cleaning",
+    name:     "Housekeeping & Cleaning",
+    shortName:"Housekeeping",
+    tagline:  "Consistent, thorough home cleaning — done right every time, on a schedule that works for you.",
+    metaDescription:
+      "Professional housekeeping and home cleaning in Northern Colorado and Denver metro. Weekly, bi-weekly, and monthly cleaning programs, deep cleans, and move-in/move-out service in Erie, Longmont, Boulder, and surrounding areas.",
+    heroImage:       "1581578731548-c64695cc6952",
+    overviewHeading: "Reliable Home Cleaning You Can Count On",
+    overviewBody: [
+      "A clean home is more than an aesthetic — it's the foundation of a comfortable, healthy living environment. Forge Point provides recurring and one-time cleaning services for homeowners, rental property owners, and property managers who need a cleaning crew they can rely on without having to check up on.",
+      "Our standard clean covers all the essentials on every visit: kitchens, bathrooms, living areas, bedrooms, and floors. Deep cleans add the detail work that standard visits skip — inside appliances, baseboards, cabinet interiors, grout lines, and all the surfaces that accumulate grime between regular visits.",
+      "We work around your schedule and communicate proactively. Access instructions, cleaning priorities, and special requests are tracked through our client system so nothing gets missed — and you don't have to be home to get a great result.",
+    ],
+    overviewImage: "1556911220-bff31b7b2f2e",
+    includes: [
+      { title: "Kitchen Cleaning",              description: "Countertops, appliance exteriors, sink, microwave interior, backsplash, cabinet fronts, and floors cleaned and sanitized on every visit." },
+      { title: "Bathroom Cleaning",            description: "Toilet, sink, tub, and shower scrubbed and disinfected. Mirrors polished, fixtures wiped, floors cleaned, trash emptied." },
+      { title: "Living & Bedroom Areas",       description: "All surfaces dusted, floors vacuumed and mopped, baseboards wiped, ceiling fans dusted, and trash emptied." },
+      { title: "Deep Clean Add-On",            description: "Inside oven, inside refrigerator, cabinet interiors, grout scrubbing, blinds, ceiling fans, and detailed baseboard cleaning for a full reset." },
+      { title: "Move-In / Move-Out Cleaning",  description: "Top-to-bottom clean of all surfaces including inside every appliance, all cabinets, all fixtures, windows, and tracks — rental-ready standard." },
+      { title: "Laundry Service",              description: "Wash, dry, and fold service available as an add-on for weekly cleaning clients. We handle it while we're there." },
+    ],
+    gallery: [
+      { id: "1581578731548-c64695cc6952", alt: "Professional home cleaning service in progress" },
+      { id: "1556911220-bff31b7b2f2e",   alt: "Sparkling clean kitchen after professional housekeeping" },
+      { id: "1484154218962-a197022b5858", alt: "Clean, organized living space after professional cleaning" },
+    ],
+    estimatorCategory: "housekeeping-cleaning",
+    related:  ["mobile-auto-detailing", "home-safety-checks", "junk-haul-off"],
+    category: "Domestic Services",
+  },
+
+  // ── 16. Poop Scooping ────────────────────────────────────────────────────
+  {
+    slug:     "poop-scooping",
+    name:     "Poop Scooping",
+    shortName:"Poop Scooping",
+    tagline:  "Keep your yard clean, safe, and odor-free — without lifting a finger.",
+    metaDescription:
+      "Professional pet waste removal in Northern Colorado and Denver metro. Weekly and bi-weekly poop scooping for residential yards in Erie, Longmont, Boulder, Broomfield, and surrounding areas.",
+    heroImage:       "1587300003388-59208cc962cb",
+    overviewHeading: "Professional Pet Waste Removal — On Your Schedule",
+    overviewBody: [
+      "Pet ownership is a joy. Yard cleanup isn't. Forge Point provides recurring and one-time pet waste removal for residential properties across Northern Colorado and the Denver metro — a simple, affordable service that keeps your outdoor spaces clean, safe, and ready to actually use.",
+      "Dog waste isn't just unpleasant — it's a genuine health concern. Pathogens including E. coli and parasites like giardia and roundworm can survive in soil for months and are easily tracked indoors. Regular professional removal keeps your yard sanitary for children, guests, and your other pets.",
+      "We service your yard on your chosen schedule, bag all waste and remove it from the property, and send a notification when the job is done. No mess, no reminder calls, no checking whether they showed up.",
+    ],
+    overviewImage: "1548199085-dbc7db19e02c",
+    includes: [
+      { title: "Weekly Service",           description: "Scheduled weekly visits at a consistent day. One dog, two dogs, or a full pack — we keep pace with any yard." },
+      { title: "Bi-Weekly Service",        description: "Every-other-week scheduling for smaller dogs or lower-traffic yards. Same thorough cleanup, less frequent visits." },
+      { title: "One-Time Yard Clean-Up",   description: "Full yard clean for season opening, before outdoor events, post-winter, or whenever things get out of hand. We handle the backlog." },
+      { title: "Multi-Dog Pricing",        description: "Transparent pricing based on dog count. No hidden per-bag fees, no surprises." },
+      { title: "Waste Removal & Disposal", description: "All waste is bagged and hauled off the property on every visit. We don't leave bags at the curb." },
+      { title: "Service Notification",     description: "Automated notification after every completed visit so you always know the job is done." },
+    ],
+    gallery: [
+      { id: "1587300003388-59208cc962cb", alt: "Clean residential backyard maintained with regular pet waste removal" },
+      { id: "1548199085-dbc7db19e02c",   alt: "Happy dog in clean, well-maintained residential yard" },
+      { id: "1416879595882-3373a0480b5b", alt: "Clean residential lawn ready for outdoor use" },
+    ],
+    estimatorCategory: "poop-scooping",
+    related:  ["grounds-maintenance", "housekeeping-cleaning", "errand-services"],
+    category: "Domestic Services",
+  },
+
+  // ── 17. Home Safety Checks ────────────────────────────────────────────────
+  {
+    slug:     "home-safety-checks",
+    name:     "Home Safety Checks",
+    shortName:"Safety Checks",
+    tagline:  "Eyes on your property when you can't be there — peace of mind on a schedule.",
+    metaDescription:
+      "Home safety checks and vacant property monitoring in Northern Colorado and Denver metro. Scheduled walkthroughs, photographic reports, and emergency coordination for snowbirds, travelers, and rental owners.",
+    heroImage:       "1484154218962-a197022b5858",
+    overviewHeading: "Property Monitoring You Can Trust",
+    overviewBody: [
+      "Whether you're traveling for weeks, managing a vacant rental between tenants, or simply want regular eyes on your home while you're away — Forge Point's home safety check service provides scheduled property monitoring with clear, photographic reporting after every visit.",
+      "A missed pipe leak, a storm-damaged window, a package left on the porch for days, a breaker tripped in an empty house — small issues become expensive problems when no one is watching. Our check service catches problems early and keeps you informed before they escalate.",
+      "We're also the trusted local contact for snowbirds and second-home owners who need someone in the area to respond when something goes wrong. We coordinate with our vendor network so you don't have to manage repairs from across the country.",
+    ],
+    overviewImage: "1558618047-6e3b4b1ae965",
+    includes: [
+      { title: "Exterior Walkthrough",        description: "Full perimeter check covering all entry points, visible roof condition, storm or wind damage, driveway, exterior lighting, and general property appearance." },
+      { title: "Interior Check",              description: "Interior walkthroughs checking for water intrusion, HVAC operation, visible pest signs, odors, and any visible safety or maintenance concerns." },
+      { title: "Photographic Report",         description: "Photos of the property condition and any identified issues delivered after every visit — a clear visual record you can review from anywhere." },
+      { title: "Package & Mail Collection",   description: "Collect packages and visible mail accumulation to prevent porch piracy indicators and maintain an occupied property appearance." },
+      { title: "Seasonal Property Checks",    description: "Winterization verification, spring damage assessment, AC startup confirmation, and seasonal exterior condition checks timed to Colorado's weather patterns." },
+      { title: "Emergency Coordination",      description: "We serve as your local first-response contact for alarm company calls, utility access needs, or neighbor-reported concerns that need eyes on the ground." },
+    ],
+    gallery: [
+      { id: "1484154218962-a197022b5858", alt: "Residential property exterior being checked during safety walkthrough" },
+      { id: "1558618047-6e3b4b1ae965",   alt: "Property inspection in progress at a Northern Colorado home" },
+      { id: "1560518883-ce09059eeffa",   alt: "Well-maintained home exterior in Northern Colorado" },
+    ],
+    estimatorCategory: "home-safety-checks",
+    related:  ["property-management", "housekeeping-cleaning", "errand-services"],
+    category: "Domestic Services",
+  },
+
+  // ── 18. Errand Services ───────────────────────────────────────────────────
+  {
+    slug:     "errand-services",
+    name:     "Errand Services",
+    shortName:"Errands",
+    tagline:  "Local errands handled by a trusted neighbor — so you can focus on what matters.",
+    metaDescription:
+      "Professional errand services in Northern Colorado and Denver metro. Grocery shopping, prescription pickup, post office runs, returns, and local errand coordination in Erie, Longmont, Boulder, and surrounding areas.",
+    heroImage:       "1556742049-0cfed4f6a45d",
+    overviewHeading: "Your Local Errands, Handled Professionally",
+    overviewBody: [
+      "Time is the one resource you can't get back. Forge Point's errand service handles the local tasks that chip away at your day — grocery shopping, prescription pickup, post office runs, package returns, dry cleaning, and the dozen other small errands that pile up during a busy week.",
+      "We serve homeowners, seniors, busy professionals, and property managers who need a trusted local contact for regular or occasional errand support. Every team member is a vetted Forge Point employee — not a gig-economy stranger from an app.",
+      "Custom recurring schedules and one-off requests both work. Tell us what needs to be handled and we'll take care of it efficiently, accurately, and with a clear receipt of what was done and where.",
+    ],
+    overviewImage: "1543168256-42c851c0f886",
+    includes: [
+      { title: "Grocery Shopping & Delivery",    description: "Shop from your list at your preferred store and deliver to your door. Refrigerated and frozen items handled with proper care." },
+      { title: "Prescription Pickup",            description: "Pharmacy runs for prescriptions, over-the-counter items, and medical supplies — especially valuable for seniors and those with limited mobility." },
+      { title: "Post Office & Shipping",         description: "Drop off packages, mail letters, purchase postage, and handle shipping needs at the post office or any carrier location." },
+      { title: "Returns & Exchanges",            description: "Handle retail returns and exchanges on your behalf. We bring back your receipt or store credit and give you a full account of the transaction." },
+      { title: "Dry Cleaning & Laundry",         description: "Drop off and pick up dry cleaning, handle laundromat runs, or manage alterations drop-off and pickup." },
+      { title: "Custom Local Errands",           description: "If it can be done locally, we can handle it. Hardware store pickups, specialty grocery runs, event supply runs, and more." },
+    ],
+    gallery: [
+      { id: "1556742049-0cfed4f6a45d", alt: "Professional errand service delivering groceries" },
+      { id: "1543168256-42c851c0f886", alt: "Grocery shopping being handled professionally" },
+      { id: "1519003722823-9999e064aba5", alt: "Package being delivered to a residential home" },
+    ],
+    estimatorCategory: "errand-services",
+    related:  ["housekeeping-cleaning", "home-safety-checks", "poop-scooping"],
+    category: "Domestic Services",
+  },
+
 ] as const;
 
 export function getServiceBySlug(slug: string): ServiceData | undefined {

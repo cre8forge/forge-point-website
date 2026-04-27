@@ -38,6 +38,16 @@ const SERVICE_GROUPS = [
       { label: "Junk Haul Off",             href: "/services/junk-haul-off" },
     ],
   },
+  {
+    label: "Domestic Services",
+    services: [
+      { label: "Mobile Auto Detailing",  href: "/services/mobile-auto-detailing" },
+      { label: "Housekeeping & Cleaning",href: "/services/housekeeping-cleaning" },
+      { label: "Poop Scooping",          href: "/services/poop-scooping" },
+      { label: "Home Safety Checks",     href: "/services/home-safety-checks" },
+      { label: "Errand Services",        href: "/services/errand-services" },
+    ],
+  },
 ];
 
 const navLinks = [
@@ -111,9 +121,9 @@ export function Nav() {
               </button>
 
               {/* Wide grouped dropdown panel */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover/services:block w-[600px]">
+              <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover/services:block w-[820px]">
                 <div className="mt-0 bg-navy border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
-                  <div className="grid grid-cols-3 divide-x divide-white/10">
+                  <div className="grid grid-cols-4 divide-x divide-white/10">
                     {SERVICE_GROUPS.map((group) => (
                       <div key={group.label} className="py-4">
                         <p className="px-5 pb-2 font-condensed font-600 text-xs uppercase tracking-widest text-orange">

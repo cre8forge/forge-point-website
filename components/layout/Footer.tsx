@@ -32,6 +32,16 @@ const SERVICE_GROUPS = [
       { label: "Property Management",               href: "/services/property-management" },
     ],
   },
+  {
+    label: "Domestic Services",
+    links: [
+      { label: "Mobile Auto Detailing",   href: "/services/mobile-auto-detailing" },
+      { label: "Housekeeping & Cleaning", href: "/services/housekeeping-cleaning" },
+      { label: "Poop Scooping",           href: "/services/poop-scooping" },
+      { label: "Home Safety Checks",      href: "/services/home-safety-checks" },
+      { label: "Errand Services",         href: "/services/errand-services" },
+    ],
+  },
 ];
 
 const serviceAreas = [
@@ -47,8 +57,8 @@ export function Footer() {
 
         <Divider className="mb-12" />
 
-        {/* Four-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        {/* Five-column grid */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
 
           {/* ── Col 1: Brand ── */}
           <div className="space-y-5">
