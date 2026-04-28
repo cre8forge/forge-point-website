@@ -160,6 +160,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Deck & Patio Cleaning",         description: "Deck washing for wood, composite, and concrete patios. Prep work for staining and sealing available." },
       { title: "Window Cleaning",               description: "Interior and exterior window cleaning for residential and commercial properties. Screens removed and cleaned separately." },
       { title: "Gutter Cleaning & Flush",       description: "Debris removal, downspout flushing, and inspection. We confirm your gutters are draining correctly before we leave." },
+      { title: "Warehouse Floor Scrubbing",     description: "Industrial floor scrubbing for warehouses, manufacturing floors, and large commercial interiors. Removes oil, debris, and buildup from high-traffic concrete surfaces." },
+      { title: "Roof Cleaning",                 description: "Soft-wash roof cleaning to remove algae, moss, lichen, and biological staining from shingle, tile, and metal roofing without voiding warranties." },
       { title: "Commercial Surface Cleaning",   description: "Storefronts, parking structures, sidewalks, and commercial exteriors. Graffiti removal available." },
     ],
     gallery: [
@@ -190,9 +192,7 @@ export const SERVICES_DATA: ServiceData[] = [
     overviewImage: "1560518883-ce09059eeffa",
     includes: [
       { title: "Parking Lot Sweeping & Blowing",    description: "Commercial riding and walk-behind sweeping for lots of all sizes. Removes debris, gravel, and sediment that damages pavement." },
-      { title: "Parking Lot Striping",             description: "Fresh line striping for stalls, fire lanes, directional arrows, loading zones, and curb markings. We stripe new lots and re-stripe faded or reconfigured layouts." },
-      { title: "Signage Installation & Replacement",description: "Stop signs, speed limit signs, no-parking, reserved, and directional signage installed or replaced to current standards. Post setting and hardware included." },
-      { title: "ADA Compliance Checks",            description: "Visual walkthrough audit of parking stalls, access aisles, ramps, curb cuts, signage, and path-of-travel for ADA compliance gaps. Written report provided." },
+      { title: "Striping, Signage & ADA Compliance", description: "Parking lot line striping for stalls, fire lanes, arrows, and loading zones. Signage installation and replacement to current standards. ADA walkthrough audit of stalls, access aisles, ramps, curb cuts, and path-of-travel with written report." },
       { title: "Exterior Building Cleaning",        description: "Soft and pressure washing for commercial building facades, entrances, and loading areas." },
       { title: "Loading Dock & Bay Cleaning",       description: "Degreasing and pressure washing of loading docks and bays. Removes oil, fuel, and buildup that creates safety hazards." },
       { title: "Concrete Sealing & Degreasing",    description: "Surface degreasing and penetrating sealer application to extend pavement life and improve appearance." },
