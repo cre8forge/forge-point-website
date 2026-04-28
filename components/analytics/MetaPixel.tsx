@@ -17,7 +17,7 @@
  */
 
 import Script from "next/script";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
@@ -90,10 +90,17 @@ export function trackMetaEvent(
 // ── Component ─────────────────────────────────────────────────────
 
 export function MetaPixel() {
-  const pathname = usePathname();
+  const pathname      = usePathname();
+  const initialRender = useRef(true);
 
-  // Fire PageView on every SPA route change
+  // Fire PageView on every SPA route change.
+  // Skip the first render — the inline script already fires PageView on load,
+  // so we only track subsequent client-side navigations to avoid double-counting.
   useEffect(() => {
+    if (initialRender.current) {
+      initialRender.current = false;
+      return;
+    }
     if (typeof window !== "undefined" && typeof window.fbq === "function") {
       window.fbq("track", "PageView");
     }
