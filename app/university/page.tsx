@@ -342,20 +342,17 @@ export default async function UniversityHubPage() {
           </div>
         </section>
 
-        {/* ── White Content Area ── */}
-        <div className="bg-white">
-
-          {/* ── Search Bar ── */}
-          <section className="bg-[#F9FAFB] border-b border-[#E5E7EB] py-10 px-6">
-            <div className="max-w-2xl mx-auto">
-              <p className="font-barlow font-300 text-sm text-[#6B7280] text-center mb-4">
+        {/* ── Search Bar ── */}
+        <section className="border-b border-white/8 py-10 px-6">
+          <div className="max-w-2xl mx-auto">
+            <p className="font-barlow font-300 text-sm text-white/55 text-center mb-4">
                 Over 40 articles, guides, and how-tos — search by topic or scroll by reader type below.
-              </p>
-              <UniversitySearchBar />
-            </div>
-          </section>
+            </p>
+            <UniversitySearchBar />
+          </div>
+        </section>
 
-          {/* ── Reader-Identity Sections ── */}
+        {/* ── Reader-Identity Sections ── */}
           {SECTIONS.map((section, sectionIndex) => (
             <div key={section.id}>
 
@@ -375,10 +372,10 @@ export default async function UniversityHubPage() {
                       <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-[#C85A00] mb-2">
                         {section.label}
                       </p>
-                      <h2 className="font-cinzel font-700 text-[#0D1B2A] text-2xl md:text-3xl normal-case leading-tight mb-3">
+                      <h2 className="font-cinzel font-700 text-white text-2xl md:text-3xl normal-case leading-tight mb-3">
                         {section.heading}
                       </h2>
-                      <p className="font-barlow font-300 text-sm text-[#6B7280] leading-relaxed max-w-xl">
+                      <p className="font-barlow font-300 text-sm text-white/55 leading-relaxed max-w-xl">
                         {section.description}
                       </p>
                     </div>
@@ -401,7 +398,7 @@ export default async function UniversityHubPage() {
                           <Link
                             key={article.slug}
                             href={href}
-                            className="group flex flex-col bg-white border border-[#E5E7EB] hover:border-[#C85A00]/30 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden shadow-sm hover:shadow-md"
+                            className="group flex flex-col bg-card border border-white/8 hover:border-orange/40 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
                           >
                             <div className="aspect-[16/9] overflow-hidden bg-gray-100">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -415,10 +412,10 @@ export default async function UniversityHubPage() {
                               <p className="font-condensed font-600 text-[10px] uppercase tracking-[0.2em] text-[#C85A00] mb-2">
                                 {section.label}
                               </p>
-                              <h3 className="font-cinzel font-700 text-[#0D1B2A] text-sm leading-snug mb-3 normal-case group-hover:text-[#C85A00] transition-colors">
+                              <h3 className="font-cinzel font-700 text-white text-sm leading-snug mb-3 normal-case group-hover:text-orange transition-colors">
                                 {article.title}
                               </h3>
-                              <p className="font-barlow font-300 text-xs text-[#6B7280] leading-relaxed line-clamp-3 flex-1">
+                              <p className="font-barlow font-300 text-xs text-white/60 leading-relaxed line-clamp-3 flex-1">
                                 {article.excerpt}
                               </p>
                               <p className="font-condensed text-xs uppercase tracking-wide text-[#C85A00] mt-4 group-hover:text-[#D4981A] transition-colors">
@@ -433,7 +430,7 @@ export default async function UniversityHubPage() {
                       return (
                         <div
                           key={article.slug}
-                          className="flex flex-col bg-white border border-[#E5E7EB] overflow-hidden"
+                          className="flex flex-col bg-card border border-white/5 overflow-hidden opacity-50"
                         >
                           <div className="aspect-[16/9] overflow-hidden bg-gray-100">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -444,16 +441,16 @@ export default async function UniversityHubPage() {
                             />
                           </div>
                           <div className="flex flex-col flex-1 p-5">
-                            <p className="font-condensed font-600 text-[10px] uppercase tracking-[0.2em] text-[#9CA3AF] mb-2">
+                            <p className="font-condensed font-600 text-[10px] uppercase tracking-[0.2em] text-white/30 mb-2">
                               {section.label}
                             </p>
-                            <h3 className="font-cinzel font-700 text-[#9CA3AF] text-sm leading-snug mb-3 normal-case">
+                            <h3 className="font-cinzel font-700 text-white/30 text-sm leading-snug mb-3 normal-case">
                               {article.title}
                             </h3>
-                            <p className="font-barlow font-300 text-xs text-[#D1D5DB] leading-relaxed line-clamp-3 flex-1">
+                            <p className="font-barlow font-300 text-xs text-white/20 leading-relaxed line-clamp-3 flex-1">
                               {article.excerpt}
                             </p>
-                            <p className="font-condensed text-xs uppercase tracking-wide text-[#9CA3AF] mt-4">
+                            <p className="font-condensed text-xs uppercase tracking-wide text-white/30 mt-4">
                               Coming Soon
                             </p>
                           </div>
@@ -466,8 +463,6 @@ export default async function UniversityHubPage() {
               </section>
             </div>
           ))}
-
-        </div>{/* /bg-white */}
 
         <CtaBanner />
       </main>
