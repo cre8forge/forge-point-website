@@ -125,7 +125,8 @@ export function Nav() {
 
             {/* Services grouped dropdown */}
             <li className="relative group/services">
-              <button
+              <Link
+                href="/services"
                 className="flex items-center gap-1 font-condensed font-600 text-sm uppercase tracking-wide text-white/80 hover:text-white transition-colors py-5"
                 aria-haspopup="true"
               >
@@ -134,7 +135,7 @@ export function Nav() {
                   size={14}
                   className="transition-transform duration-200 group-hover/services:rotate-180"
                 />
-              </button>
+              </Link>
 
               {/* Wide grouped dropdown panel */}
               <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover/services:block w-[1060px] max-w-[calc(100vw-3rem)]">
