@@ -6,6 +6,8 @@ import {
   cormorantGaramond,
 } from "@/lib/fonts";
 import "./globals.css";
+import { GTMHead, GTMBody } from "@/components/analytics/GTMScript";
+import { CookieBanner } from "@/components/analytics/CookieBanner";
 
 const SITE_URL = "https://cre8forge.com";
 const SITE_NAME = "Forge Point Property Services";
@@ -68,7 +70,11 @@ export default function RootLayout({
         cormorantGaramond.variable,
       ].join(" ")}
     >
+      <head>
+        <GTMHead />
+      </head>
       <body>
+        <GTMBody />
         {/* LocalBusiness structured data */}
         <script
           type="application/ld+json"
@@ -111,6 +117,7 @@ export default function RootLayout({
           }}
         />
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
