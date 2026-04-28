@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: false, // Leaflet doesn't support React 18 Strict Mode double-invoke
-  serverActions: {
-    bodySizeLimit: "6mb", // allow up to 3 photo uploads (~2MB each compressed)
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "6mb", // allow up to 3 photo uploads (~2MB each compressed)
+    },
   },
   images: {
     remotePatterns: [
