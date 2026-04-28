@@ -12,40 +12,56 @@ import { SiteSearch } from "@/components/ui/SiteSearch";
 
 const SERVICE_GROUPS = [
   {
+    label:    "Forge Point Advisory",
+    accent:   true, // amber highlight treatment
+    services: [
+      { label: "Buyer Representation",          href: "/services/buyer-representation" },
+      { label: "Seller Representation",         href: "/services/seller-representation" },
+      { label: "Investment Acquisition Analysis",href: "/services/investment-acquisition-analysis" },
+      { label: "Commercial Leasing Advisory",   href: "/services/commercial-leasing-advisory" },
+      { label: "Portfolio Strategy",            href: "/services/portfolio-strategy" },
+      { label: "1031 Exchange Coordination",    href: "/services/1031-exchange" },
+    ],
+  },
+  {
+    label: "Property & Portfolio Mgmt",
+    services: [
+      { label: "Commercial & Industrial Mgmt",  href: "/services/property-management" },
+      { label: "Multifamily & HOA Management",  href: "/services/property-management" },
+      { label: "Single Family Home Management", href: "/services/property-management" },
+      { label: "Boots-on-Ground Response",      href: "/services/property-management" },
+      { label: "Maintenance Coordination",      href: "/services/property-management" },
+    ],
+  },
+  {
     label: "Custom Interiors",
     services: [
-      { label: "Renovation & Remodel",    href: "/services/renovation-remodel" },
-      { label: "Framing & Finishes",      href: "/services/framing-finishes" },
-      { label: "Kitchen, Bath & More",    href: "/services/kitchen-bath-more" },
+      { label: "Renovation & Remodel",  href: "/services/renovation-remodel" },
+      { label: "Framing & Finishes",    href: "/services/framing-finishes" },
+      { label: "Kitchen, Bath & More",  href: "/services/kitchen-bath-more" },
     ],
   },
   {
-    label: "Outdoor Living",
+    label: "Outdoor Living & Grounds",
     services: [
-      { label: "Landscape Design & Install", href: "/services/landscape-design-install" },
-      { label: "Decks, Pergolas & Patios",   href: "/services/decks-pergolas-patios" },
-      { label: "Custom Water Features",      href: "/services/custom-water-features" },
-      { label: "Fencing",                    href: "/services/fencing" },
+      { label: "Landscape Design & Install",     href: "/services/landscape-design-install" },
+      { label: "Decks, Pergolas & Patios",        href: "/services/decks-pergolas-patios" },
+      { label: "Custom Water Features",           href: "/services/custom-water-features" },
+      { label: "Fencing & Retaining Walls",       href: "/services/fencing" },
+      { label: "Grounds Maintenance",             href: "/services/grounds-maintenance" },
+      { label: "Industrial Maintenance",          href: "/services/industrial-maintenance" },
+      { label: "Pressure Washing & Windows",      href: "/services/power-window-washing" },
+      { label: "Junk Haul Off & Cleanouts",       href: "/services/junk-haul-off" },
     ],
   },
   {
-    label: "Grounds & Estates",
+    label: "Concierge & Estate Services",
     services: [
-      { label: "Grounds Maintenance",       href: "/services/grounds-maintenance" },
-      { label: "Power & Window Washing",    href: "/services/power-window-washing" },
-      { label: "Industrial Maintenance",    href: "/services/industrial-maintenance" },
-      { label: "Property Management",       href: "/services/property-management" },
-      { label: "Junk Haul Off",             href: "/services/junk-haul-off" },
-    ],
-  },
-  {
-    label: "Domestic Services",
-    services: [
-      { label: "Mobile Auto Detailing",  href: "/services/mobile-auto-detailing" },
-      { label: "Housekeeping & Cleaning",href: "/services/housekeeping-cleaning" },
-      { label: "Poop Scooping",          href: "/services/poop-scooping" },
-      { label: "Home Safety Checks",     href: "/services/home-safety-checks" },
-      { label: "Errand Services",        href: "/services/errand-services" },
+      { label: "Estate Housekeeping",          href: "/services/housekeeping-cleaning" },
+      { label: "Home Safety & Wellness Checks",href: "/services/home-safety-checks" },
+      { label: "Mobile Auto Detailing",        href: "/services/mobile-auto-detailing" },
+      { label: "Yard & Pet Waste Management",  href: "/services/poop-scooping" },
+      { label: "Concierge Errands",            href: "/services/errand-services" },
     ],
   },
 ];
@@ -121,19 +137,22 @@ export function Nav() {
               </button>
 
               {/* Wide grouped dropdown panel */}
-              <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover/services:block w-[820px]">
+              <div className="absolute left-1/2 -translate-x-1/2 top-full hidden group-hover/services:block w-[1060px] max-w-[calc(100vw-3rem)]">
                 <div className="mt-0 bg-navy border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.5)]">
-                  <div className="grid grid-cols-4 divide-x divide-white/10">
+                  <div className="grid grid-cols-5 divide-x divide-white/10">
                     {SERVICE_GROUPS.map((group) => (
-                      <div key={group.label} className="py-4">
-                        <p className="px-5 pb-2 font-condensed font-600 text-xs uppercase tracking-widest text-orange">
+                      <div key={group.label} className={cn("py-4", group.accent && "border-t-2 border-amber/60")}>
+                        <p className={cn(
+                          "px-4 pb-2 font-condensed font-600 text-xs uppercase tracking-widest",
+                          group.accent ? "text-amber" : "text-orange"
+                        )}>
                           {group.label}
                         </p>
                         {group.services.map((s) => (
                           <Link
-                            key={s.href}
+                            key={s.label}
                             href={s.href}
-                            className="block px-5 py-2 font-barlow font-400 text-sm text-white/75 hover:text-white hover:bg-white/5 hover:border-l-[2px] hover:border-l-orange transition-all"
+                            className="block px-4 py-1.5 font-barlow font-400 text-xs text-white/70 hover:text-white hover:bg-white/5 hover:border-l-[2px] hover:border-l-orange transition-all"
                           >
                             {s.label}
                           </Link>
@@ -263,8 +282,8 @@ export function Nav() {
 
                       {openGroup === group.label && (
                         <ul className="pl-4 mb-1">
-                          {group.services.map((s) => (
-                            <li key={s.href}>
+                          {group.services.map((s, i) => (
+                            <li key={`${s.href}-${i}`}>
                               <Link
                                 href={s.href}
                                 className="block font-barlow font-300 text-sm text-white/65 hover:text-white py-2 border-b border-white/5 transition-colors"

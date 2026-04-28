@@ -6,6 +6,26 @@ import { SiteSearch } from "@/components/ui/SiteSearch";
 
 const SERVICE_GROUPS = [
   {
+    label: "Advisory",
+    links: [
+      { label: "Buyer Representation",          href: "/services/buyer-representation" },
+      { label: "Seller Representation",         href: "/services/seller-representation" },
+      { label: "Acquisition Analysis",          href: "/services/investment-acquisition-analysis" },
+      { label: "Commercial Leasing",            href: "/services/commercial-leasing-advisory" },
+      { label: "Portfolio Strategy",            href: "/services/portfolio-strategy" },
+      { label: "1031 Exchange",                 href: "/services/1031-exchange" },
+    ],
+  },
+  {
+    label: "Property Management",
+    links: [
+      { label: "Commercial & Industrial",       href: "/services/property-management" },
+      { label: "Multifamily & HOA",             href: "/services/property-management" },
+      { label: "Single Family Homes",           href: "/services/property-management" },
+      { label: "Boots-on-Ground Response",      href: "/services/property-management" },
+    ],
+  },
+  {
     label: "Custom Interiors",
     links: [
       { label: "Renovation & Remodel",  href: "/services/renovation-remodel" },
@@ -14,32 +34,25 @@ const SERVICE_GROUPS = [
     ],
   },
   {
-    label: "Outdoor Living",
+    label: "Outdoor Living & Grounds",
     links: [
-      { label: "Bespoke Landscaping",      href: "/services/landscape-design-install" },
-      { label: "Decks, Pergolas & Patios", href: "/services/decks-pergolas-patios" },
-      { label: "Fencing & Retaining Walls",href: "/services/fencing" },
-      { label: "Custom Water Features",    href: "/services/custom-water-features" },
+      { label: "Landscape Design & Install",  href: "/services/landscape-design-install" },
+      { label: "Decks, Pergolas & Patios",    href: "/services/decks-pergolas-patios" },
+      { label: "Fencing & Retaining Walls",   href: "/services/fencing" },
+      { label: "Grounds Maintenance",         href: "/services/grounds-maintenance" },
+      { label: "Industrial Maintenance",      href: "/services/industrial-maintenance" },
+      { label: "Pressure Washing & Windows",  href: "/services/power-window-washing" },
+      { label: "Junk Haul Off & Cleanouts",   href: "/services/junk-haul-off" },
     ],
   },
   {
-    label: "Grounds & Estates",
+    label: "Concierge & Estate",
     links: [
-      { label: "Full-Service Grounds Maintenance",  href: "/services/grounds-maintenance" },
-      { label: "Industrial Property Maintenance",   href: "/services/industrial-maintenance" },
-      { label: "Pressure Washing & Window Cleaning",href: "/services/power-window-washing" },
-      { label: "Junk Haul Off",                     href: "/services/junk-haul-off" },
-      { label: "Property Management",               href: "/services/property-management" },
-    ],
-  },
-  {
-    label: "Domestic Services",
-    links: [
-      { label: "Mobile Auto Detailing",   href: "/services/mobile-auto-detailing" },
-      { label: "Housekeeping & Cleaning", href: "/services/housekeeping-cleaning" },
-      { label: "Poop Scooping",           href: "/services/poop-scooping" },
-      { label: "Home Safety Checks",      href: "/services/home-safety-checks" },
-      { label: "Errand Services",         href: "/services/errand-services" },
+      { label: "Estate Housekeeping",          href: "/services/housekeeping-cleaning" },
+      { label: "Home Safety Checks",           href: "/services/home-safety-checks" },
+      { label: "Mobile Auto Detailing",        href: "/services/mobile-auto-detailing" },
+      { label: "Yard & Pet Waste",             href: "/services/poop-scooping" },
+      { label: "Concierge Errands",            href: "/services/errand-services" },
     ],
   },
 ];
@@ -57,11 +70,11 @@ export function Footer() {
 
         <Divider className="mb-12" />
 
-        {/* Five-column grid */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-12 mb-12">
+        {/* Brand + 5 service category columns */}
+        <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-8 mb-12">
 
-          {/* ── Col 1: Brand ── */}
-          <div className="space-y-5">
+          {/* ── Col 1: Brand (spans 2 cols on xl to keep proportions) ── */}
+          <div className="space-y-5 col-span-2 md:col-span-3 xl:col-span-1">
             <Link href="/" className="inline-flex items-center gap-3 group">
               <Image
                 src="/logo.png"
@@ -146,9 +159,14 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted font-barlow font-300">
-          <p>© {new Date().getFullYear()} Forge Point Property Services · Aaron Dolph, Proprietor</p>
-          <div className="flex items-center gap-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted font-barlow font-300">
+          <div>
+            <p>© {new Date().getFullYear()} Forge Point Property Services · Aaron Dolph, Proprietor</p>
+            <p className="text-[10px] text-white/25 mt-0.5">
+              Aaron R. Dolph · Colorado Real Estate Broker · License #FA100100755 · Employing Broker: Triumph Real Estate Corporation #ER1325490
+            </p>
+          </div>
+          <div className="flex items-center gap-4 flex-shrink-0">
             <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <span className="text-white/20">·</span>
             <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>

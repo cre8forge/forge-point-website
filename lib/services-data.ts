@@ -29,9 +29,207 @@ export interface ServiceData {
   estimatorCategory: string;     // matches EstimateCategory slug
   related:           string[];   // up to 3 other slugs
   category:          string;     // badge label
+  disclaimer?:       string;     // legal disclosure shown at bottom of page (Advisory services)
 }
 
+const RE_DISCLAIMER =
+  "Aaron R. Dolph is a licensed Colorado Real Estate Broker, License #FA100100755, " +
+  "operating under Employing Broker Triumph Real Estate Corporation, License #ER1325490. " +
+  "Forge Point Real Estate, LLC.";
+
 export const SERVICES_DATA: ServiceData[] = [
+
+  // ── Advisory 1. Buyer Representation ─────────────────────────
+  {
+    slug:     "buyer-representation",
+    name:     "Buyer Representation",
+    shortName:"Buyer Rep",
+    tagline:  "We've managed the properties you're buying. That changes every question we ask and every offer we write.",
+    metaDescription:
+      "Licensed Colorado real estate buyer representation for residential, investment, and commercial properties across Northern Colorado. Forge Point Advisory — 15 years of Front Range market experience.",
+    heroImage:       "1486406146926-c627a92ad1ab",
+    overviewHeading: "Buyer Representation Built on Property Management Experience",
+    overviewBody: [
+      "Forge Point Advisory represents buyers of residential, investment, and commercial properties across Northern Colorado and Colorado's Front Range. Our edge is direct: we've managed the properties you're buying. We know what deferred maintenance looks like before the inspector finds it. We know what a realistic cap rate is versus what a seller's pro forma says it is. We know the questions an agent who hasn't managed commercial space won't think to ask.",
+      "Full service page content coming soon. In the meantime, contact us directly to discuss your purchase — we'll bring the same depth to your search that we bring to every property we manage.",
+    ],
+    overviewImage: "1486406146926-c627a92ad1ab",
+    includes: [
+      { title: "Property Search & Off-Market Sourcing", description: "Active representation and off-market sourcing for residential, investment, and commercial buyers across Northern Colorado." },
+      { title: "Investment Property Analysis",          description: "Cap rate, cash-on-cash return, deferred maintenance exposure, and market comp review before any offer is written." },
+      { title: "Offer Strategy & Negotiation",          description: "Competitive offer structuring, contingency management, and experienced negotiation representation." },
+      { title: "Contract-to-Close Coordination",        description: "Title, inspections, lender communication, and closing logistics managed from accepted offer to keys in hand." },
+    ],
+    gallery: [
+      { id: "1486406146926-c627a92ad1ab", alt: "Commercial property for acquisition analysis" },
+      { id: "1486325212027-8081e485255e", alt: "Northern Colorado investment property" },
+      { id: "1450101449119-2e7615b5c702", alt: "Real estate purchase contract review" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
+    category: "Advisory",
+    disclaimer: RE_DISCLAIMER,
+  },
+
+  // ── Advisory 2. Seller Representation ────────────────────────
+  {
+    slug:     "seller-representation",
+    name:     "Seller Representation",
+    shortName:"Seller Rep",
+    tagline:  "Positioning, pricing, and closing strategy for sellers who want results — not just a listing.",
+    metaDescription:
+      "Licensed Colorado real estate seller representation. Strategic pricing, renovation guidance, and vetted buyer relationships for residential and investment property sellers across Northern Colorado.",
+    heroImage:       "1486406146926-c627a92ad1ab",
+    overviewHeading: "Seller Representation — Strategy First, Listing Second",
+    overviewBody: [
+      "Forge Point Advisory brings real market data, renovation guidance, and vetted buyer relationships to sellers who want to maximize their sale price before they ever list. We don't take listings and wait — we assess the property, identify improvements with measurable return, and position the asset correctly from day one.",
+      "Full service page content coming soon. Contact us to discuss your sale timeline and we'll start with an honest assessment of where your property stands and what it could stand to gain.",
+    ],
+    overviewImage: "1486406146926-c627a92ad1ab",
+    includes: [
+      { title: "Pre-Listing Property Assessment", description: "Honest evaluation of condition, deferred maintenance, and improvement opportunities with measurable return on investment." },
+      { title: "Strategic Pricing Analysis",      description: "Comp-based pricing analysis with a clear pricing strategy — not just a number, but a rationale for how we get to close." },
+      { title: "Renovation & Staging Guidance",   description: "Specific recommendations for presale improvements that move the needle — backed by our renovation and property management experience." },
+      { title: "Transaction Management",          description: "Offer review, negotiation, contingency management, and contract-to-close coordination." },
+    ],
+    gallery: [
+      { id: "1486406146926-c627a92ad1ab", alt: "Property positioned for sale" },
+      { id: "1486325212027-8081e485255e", alt: "Northern Colorado residential property listing" },
+      { id: "1450101449119-2e7615b5c702", alt: "Seller representation contract review" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
+    category: "Advisory",
+    disclaimer: RE_DISCLAIMER,
+  },
+
+  // ── Advisory 3. Investment Acquisition Analysis ───────────────
+  {
+    slug:     "investment-acquisition-analysis",
+    name:     "Investment Acquisition Analysis",
+    shortName:"Acquisition Analysis",
+    tagline:  "Before you buy, know what you're buying — cap rate, cash-on-cash, deferred maintenance, and market comps delivered as a written report.",
+    metaDescription:
+      "Investment property acquisition analysis for Colorado Front Range properties. Cap rate, cash-on-cash return, deferred maintenance exposure, and market comp analysis delivered as a written report.",
+    heroImage:       "1486406146926-c627a92ad1ab",
+    overviewHeading: "Acquisition Analysis — Know Before You Buy",
+    overviewBody: [
+      "Forge Point Advisory analyzes investment properties across Colorado's Front Range for buyers who want an independent, experienced perspective before committing. Our analysis covers cap rate and cash-on-cash return, deferred maintenance exposure (based on a real property manager's eye, not just an inspector's checklist), market comps, and a realistic assessment of the seller's pro forma. Delivered as a written report — not a sales pitch.",
+      "Full service page content coming soon. If you have a property under contract or are evaluating an off-market deal, contact us — we can typically turn around an analysis within a week.",
+    ],
+    overviewImage: "1486406146926-c627a92ad1ab",
+    includes: [
+      { title: "Cap Rate & Cash-on-Cash Analysis",      description: "Market-grounded return analysis that models actual operating expenses, not seller-optimized assumptions." },
+      { title: "Deferred Maintenance Assessment",        description: "Experienced review of condition-related risk — informed by years of managing similar asset types." },
+      { title: "Market Comp & Rent Analysis",           description: "Current comparable sales and rental rate analysis to validate pricing and pro forma income assumptions." },
+      { title: "Written Acquisition Report",            description: "Delivered as a clear written document with a recommendation: proceed, negotiate, or pass — and why." },
+    ],
+    gallery: [
+      { id: "1486406146926-c627a92ad1ab", alt: "Investment property acquisition analysis" },
+      { id: "1486325212027-8081e485255e", alt: "Colorado Front Range investment property" },
+      { id: "1450101449119-2e7615b5c702", alt: "Acquisition analysis report review" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
+    category: "Advisory",
+    disclaimer: RE_DISCLAIMER,
+  },
+
+  // ── Advisory 4. Commercial Leasing Advisory ───────────────────
+  {
+    slug:     "commercial-leasing-advisory",
+    name:     "Commercial Leasing Advisory",
+    shortName:"Leasing Advisory",
+    tagline:  "Tenant representation and landlord advisory for commercial leases — we've sat on both sides of the table.",
+    metaDescription:
+      "Commercial leasing advisory for office, retail, industrial, and flex space across Northern Colorado. Tenant representation and landlord advisory backed by 4M+ sq ft of commercial management experience.",
+    heroImage:       "1486406146926-c627a92ad1ab",
+    overviewHeading: "Commercial Leasing — From Both Sides of the Table",
+    overviewBody: [
+      "Forge Point Advisory provides tenant representation and landlord advisory for commercial leases across Northern Colorado — office, retail, industrial, and flex. Having managed over 4 million square feet of commercial space, we know what both sides of a commercial lease negotiation are thinking. That knowledge is worth more than a standard agent's market survey.",
+      "Full service page content coming soon. Whether you're a tenant evaluating space or a landlord structuring a lease, contact us to discuss how we can represent your interests.",
+    ],
+    overviewImage: "1486406146926-c627a92ad1ab",
+    includes: [
+      { title: "Tenant Representation",         description: "Space search, lease negotiation, and tenant improvement coordination for office, retail, industrial, and flex tenants." },
+      { title: "Landlord Leasing Advisory",     description: "Positioning, marketing strategy, tenant screening, and lease structuring advisory for commercial landlords." },
+      { title: "Lease Review & Analysis",        description: "Plain-language review of lease terms — CAM reconciliation, escalation clauses, exclusivity provisions, and renewal options." },
+      { title: "Tenant Improvement Coordination",description: "Coordination of tenant improvement buildouts from landlord allowance negotiation through construction completion." },
+    ],
+    gallery: [
+      { id: "1486406146926-c627a92ad1ab", alt: "Commercial space under lease negotiation" },
+      { id: "1486325212027-8081e485255e", alt: "Northern Colorado commercial real estate" },
+      { id: "1450101449119-2e7615b5c702", alt: "Commercial lease document review" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
+    category: "Advisory",
+    disclaimer: RE_DISCLAIMER,
+  },
+
+  // ── Advisory 5. Portfolio Strategy & Disposition ──────────────
+  {
+    slug:     "portfolio-strategy",
+    name:     "Portfolio Strategy & Disposition",
+    shortName:"Portfolio Strategy",
+    tagline:  "Hold, sell, refinance, or 1031 — think through the full picture before you move.",
+    metaDescription:
+      "Investment property portfolio strategy and disposition advisory for Colorado Front Range property owners. Hold-sell analysis, 1031 coordination, and refinance evaluation with CPA and attorney coordination.",
+    heroImage:       "1486406146926-c627a92ad1ab",
+    overviewHeading: "Portfolio Strategy — The Full Picture Before You Move",
+    overviewBody: [
+      "Forge Point Advisory helps investment property owners think through portfolio decisions with the depth the stakes require — hold, sell, refinance, or 1031. We coordinate with your CPA and attorney, model the scenarios, and give you an informed recommendation. No transaction fee unless we represent the deal.",
+      "Full service page content coming soon. If you're evaluating a hold-sell decision or planning a portfolio repositioning, contact us to start the conversation.",
+    ],
+    overviewImage: "1486406146926-c627a92ad1ab",
+    includes: [
+      { title: "Hold-Sell Analysis",               description: "Scenario modeling for hold versus disposition — factoring current value, carry costs, depreciation recapture, and opportunity cost." },
+      { title: "1031 Exchange Planning",            description: "Replacement property identification strategy, timeline planning, and coordination with your qualified intermediary." },
+      { title: "Refinance Evaluation",             description: "Cash-out refinance analysis as an alternative to disposition — modeled against current rates and portfolio goals." },
+      { title: "CPA & Attorney Coordination",       description: "We work alongside your tax and legal advisors to ensure the financial and legal dimensions of your decision are fully accounted for." },
+    ],
+    gallery: [
+      { id: "1486406146926-c627a92ad1ab", alt: "Investment property portfolio strategy session" },
+      { id: "1486325212027-8081e485255e", alt: "Colorado investment property portfolio" },
+      { id: "1450101449119-2e7615b5c702", alt: "Portfolio strategy documentation" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
+    category: "Advisory",
+    disclaimer: RE_DISCLAIMER,
+  },
+
+  // ── Advisory 6. 1031 Exchange Coordination ───────────────────
+  {
+    slug:     "1031-exchange",
+    name:     "1031 Exchange Coordination",
+    shortName:"1031 Exchange",
+    tagline:  "Time-sensitive and unforgiving — we coordinate replacement property identification and acquisition with the precision the timeline demands.",
+    metaDescription:
+      "1031 exchange coordination for Colorado investment property owners. Replacement property identification, analysis, and acquisition coordination backed by licensed real estate and property management experience.",
+    heroImage:       "1486406146926-c627a92ad1ab",
+    overviewHeading: "1031 Exchange — Precision When the Clock Is Running",
+    overviewBody: [
+      "A 1031 exchange is one of the most powerful tax deferral tools available to investment property owners — and one of the most unforgiving if the timeline is mismanaged. Forge Point Advisory coordinates the identification, analysis, and acquisition of 1031 replacement properties with the precision the 45-day identification and 180-day closing windows demand.",
+      "Full service page content coming soon. If you have a property under contract for sale and are considering a 1031 exchange, contact us immediately — the clock starts at closing.",
+    ],
+    overviewImage: "1486406146926-c627a92ad1ab",
+    includes: [
+      { title: "Replacement Property Identification", description: "Active search and analysis of qualified replacement properties within the 45-day identification window." },
+      { title: "Acquisition Analysis",               description: "Cap rate, cash-on-cash return, and condition assessment on replacement candidates before identification deadlines." },
+      { title: "Qualified Intermediary Coordination", description: "We work with your QI to ensure proper handling of exchange funds and documentation throughout the process." },
+      { title: "Contract-to-Close Management",        description: "Offer writing, negotiation, and closing coordination calibrated to meet the 180-day exchange deadline." },
+    ],
+    gallery: [
+      { id: "1486406146926-c627a92ad1ab", alt: "1031 exchange replacement property analysis" },
+      { id: "1486325212027-8081e485255e", alt: "Colorado investment property for 1031 exchange" },
+      { id: "1450101449119-2e7615b5c702", alt: "1031 exchange coordination documentation" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
+    category: "Advisory",
+    disclaimer: RE_DISCLAIMER,
+  },
 
   // ── 1. Landscape Design & Install ───────────────────────────
   {

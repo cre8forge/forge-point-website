@@ -76,6 +76,17 @@ export default async function ServicePage({
           estimatorCategory={service.estimatorCategory}
         />
         <ServiceRelated services={related} />
+
+        {/* RE license disclosure — Advisory services only */}
+        {service.disclaimer && (
+          <div className="bg-navy px-6 pb-12">
+            <div className="max-w-4xl mx-auto border-t border-white/8 pt-6">
+              <p className="font-barlow font-300 text-white/30 text-xs leading-relaxed italic">
+                {service.disclaimer}
+              </p>
+            </div>
+          </div>
+        )}
       </main>
       <Footer />
     </>
