@@ -28,9 +28,13 @@ const SERVICE_GROUPS = [
   {
     label: "Custom Interiors",
     links: [
-      { label: "Renovation & Remodel",  href: "/services/renovation-remodel" },
-      { label: "Framing & Finishes",    href: "/services/framing-finishes" },
-      { label: "Kitchen, Bath & More",  href: "/services/kitchen-bath-more" },
+      { label: "Renovation & Remodel",       href: "/services/renovation-remodel" },
+      { label: "Framing & Finishes",         href: "/services/framing-finishes" },
+      { label: "Kitchen & Bath Remodels",    href: "/services/kitchen-bath-more" },
+      { label: "Basement Finishing",         href: "/services/basement-finishing" },
+      { label: "Additions & Expansions",     href: "/services/additions-expansions" },
+      { label: "Investment Property Rehab",  href: "/services/investment-property-rehab" },
+      { label: "Flooring & Tile",            href: "/services/flooring-tile" },
     ],
   },
   {

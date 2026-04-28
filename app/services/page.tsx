@@ -116,7 +116,7 @@ const CATEGORIES: Category[] = [
     description:
       "Whole-home renovations, targeted remodels, and precision finish work — all delivered by the same crew from start to finish. No subcontractor roulette. No handoff gaps. Forge Point manages the build the same way we manage the property: with accountability at every stage.",
     cards: SERVICES_DATA.filter((s) =>
-      ["renovation-remodel", "framing-finishes", "kitchen-bath-more"].includes(s.slug)
+      ["renovation-remodel", "framing-finishes", "kitchen-bath-more", "basement-finishing", "additions-expansions", "investment-property-rehab", "flooring-tile"].includes(s.slug)
     ).map((s) => ({
       label:       s.name,
       description: s.tagline,

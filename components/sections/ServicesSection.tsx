@@ -49,8 +49,9 @@ const CARDS = [
       "The same company managing your property is the one swinging the hammer. No handoffs. No finger-pointing. One team accountable from demo to done.",
     services: [
       "Renovation & Remodel",
-      "Framing & Finishes",
-      "Kitchen, Bath & More",
+      "Basement Finishing & Additions",
+      "Investment Property Rehab",
+      "Kitchen, Bath & Flooring",
     ],
     ctaLabel: "Explore Interiors →",
     href: "/services/renovation-remodel",

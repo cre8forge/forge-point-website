@@ -260,7 +260,7 @@ export const SERVICES_DATA: ServiceData[] = [
     gallery: [
       { id: "1558618666-fcd25c85cd64",   alt: "Lush landscaped yard after professional design and installation" },
       { id: "1558618047-6e3b4b1ae965",   alt: "Garden bed with native Colorado plantings and stone edging" },
-      { id: "1517022812379-23952977f6e7", alt: "Newly installed sod lawn with clean edging" },
+      { id: "1416879595882-3373a0480b5b", alt: "Newly installed sod lawn with clean edging" },
     ],
     estimatorCategory: "landscape-design-install",
     related:  ["grounds-maintenance", "power-window-washing", "fencing"],
@@ -275,14 +275,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Consistent, reliable care that keeps your property looking its best — week after week.",
     metaDescription:
       "Professional grounds maintenance for residential, HOA, and commercial properties in Northern Colorado. Weekly mowing, edging, fertilization, seasonal clean-ups, and weed control.",
-    heroImage:       "1416879595882-3373a0480b5b",
+    heroImage:       "1558618666-fcd25c85cd64",
     overviewHeading: "Professional Grounds Maintenance You Can Count On",
     overviewBody: [
       "A well-maintained property doesn't happen by accident — it takes consistent, skilled care on a reliable schedule. Forge Point provides weekly and bi-weekly grounds maintenance programs for homeowners, HOAs, and commercial properties across Northern Colorado.",
       "Every visit follows the same high-standard checklist: mow at the correct height for the season, edge all hard surfaces, trim around obstacles, blow all clippings from driveways and walks, and leave the property looking sharp. No shortcuts.",
       "We handle the work that needs doing whether you're there or not. Communicate any adjustments through our client portal, and we'll take care of the rest."
     ],
-    overviewImage: "1571954411453-2fc3f4f8c26d",
+    overviewImage: "1416879595882-3373a0480b5b",
     includes: [
       { title: "Weekly & Bi-Weekly Mowing",  description: "Mowed at the correct seasonal height using commercial-grade equipment. We never scalp, never rush." },
       { title: "Edging All Hard Surfaces",   description: "Crisp edges along driveways, sidewalks, curbs, and beds — the detail that separates maintained from professional." },
@@ -293,9 +293,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Spring & Fall Clean-Ups",    description: "Full seasonal service: leaf removal, bed clean-out, edge re-definition, and debris hauling." },
     ],
     gallery: [
-      { id: "1416879595882-3373a0480b5b", alt: "Freshly mowed and edged residential lawn" },
-      { id: "1491553895291-0a57f6a0b2ef", alt: "Clean, well-maintained grounds of a commercial property" },
-      { id: "1558618666-fcd25c85cd64",   alt: "Manicured landscape after seasonal clean-up" },
+      { id: "1558618666-fcd25c85cd64", alt: "Freshly mowed and edged residential lawn" },
+      { id: "1571954411453-2fc3f4f8c26d", alt: "Clean, well-maintained grounds of a commercial property" },
+      { id: "1558618047-6e3b4b1ae965",   alt: "Manicured landscape after seasonal clean-up" },
     ],
     estimatorCategory: "grounds-maintenance",
     related:  ["landscape-design-install", "power-window-washing", "hoa-commercial-property"],
@@ -317,7 +317,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We work with homeowners replacing aging privacy fences, HOAs selecting community-wide styles, and commercial operators securing large perimeters. We can supply materials, install materials you've already purchased, or manage the full project end-to-end.",
       "Every fence quote includes post placement mapping, materials list, and a clear timeline. No vague estimates."
     ],
-    overviewImage: "1544984243-ec14f12dd8aa",
+    overviewImage: "1570129477492-61a28b2f9e3f",
     includes: [
       { title: "Wood Fencing",         description: "Cedar and pine privacy fence in 6' and 8' heights. Dog-ear, board-on-board, and shadowbox styles. Staining and sealing available." },
       { title: "Vinyl Fencing",        description: "Low-maintenance vinyl in privacy, picket, and ranch rail styles. Popular with HOAs for uniformity and longevity." },
@@ -328,8 +328,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1558618047-3c8c76ca7d04",   alt: "Clean white vinyl fence installed on a residential property" },
-      { id: "1544984243-ec14f12dd8aa",   alt: "White vinyl picket fence on a Colorado property" },
-      { id: "1503614472-8c253e53fca9",   alt: "Ornamental iron fence and gate at a property entrance" },
+      { id: "1570129477492-61a28b2f9e3f",   alt: "White vinyl picket fence on a Colorado property" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Ornamental iron fence and gate at a property entrance" },
     ],
     estimatorCategory: "fencing",
     related:  ["landscape-design-install", "power-window-washing", "industrial-maintenance"],
@@ -351,7 +351,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We match pressure, temperature, and cleaning agents to the surface — concrete gets a different treatment than painted siding, and wood decks require a different approach than brick. The right method matters as much as the machine.",
       "Window cleaning is available as a standalone service or bundled with exterior washing. Interior and exterior window cleaning available for residential and commercial properties."
     ],
-    overviewImage: "1558618666-fcd25c85cd64",
+    overviewImage: "1599686102-9a4af6b85e49",
     includes: [
       { title: "Driveway & Concrete Cleaning",  description: "High-pressure cleaning for driveways, sidewalks, and concrete surfaces. Removes oil stains, dirt, algae, and discoloration." },
       { title: "House & Siding Wash",           description: "Soft-wash technique for painted wood, vinyl, stucco, and brick siding. Removes mold, mildew, and oxidation without damage." },
@@ -362,8 +362,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1527515637462-cff94aca208b", alt: "Pressure washing a driveway surface — before and after" },
-      { id: "1558618666-fcd25c85cd64",   alt: "Sparkling clean windows on a Colorado home" },
-      { id: "1599686102-9a4af6b85e49",   alt: "Clean deck after professional pressure washing" },
+      { id: "1599686102-9a4af6b85e49",   alt: "Sparkling clean windows on a Colorado home" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Clean deck after professional pressure washing" },
     ],
     estimatorCategory: "power-window-washing",
     related:  ["grounds-maintenance", "fencing", "landscape-design-install"],
@@ -537,7 +537,7 @@ export const SERVICES_DATA: ServiceData[] = [
     gallery: [
       { id: "1504307651254-35680f356dbe", alt: "Framing in progress on a residential addition" },
       { id: "1517022812379-23952977f6e7", alt: "Finished interior with trim and paint complete" },
-      { id: "1544984243-ec14f12dd8aa", alt: "Clean finish work on new construction interior" },
+      { id: "1558618047-3c8c76ca7d04", alt: "Clean finish work on new construction interior" },
     ],
     estimatorCategory: "framing-finishes",
     related:  ["renovation-remodel", "kitchen-bath-more", "decks-pergolas-patios"],
@@ -547,7 +547,7 @@ export const SERVICES_DATA: ServiceData[] = [
   // ── 10. Kitchen, Bath & More ─────────────────────────────────
   {
     slug:     "kitchen-bath-more",
-    name:     "Kitchen, Bath & More",
+    name:     "Kitchen & Bath Remodels",
     shortName:"Kitchen & Bath",
     tagline:  "The rooms that sell homes and define daily life — done right, the first time.",
     metaDescription:
@@ -559,7 +559,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We handle full gut-and-rebuild transformations as well as targeted refreshes — new countertops and backsplash, cabinet refinishing, fixture replacement, and tile work. Tell us your budget and your goals, and we'll scope the work that makes the most sense.",
       "Every kitchen and bath project includes design consultation, material sourcing support, and a detailed written scope before work begins. You know exactly what you're getting before we start.",
     ],
-    overviewImage: "1503614472-8c253e53fca9",
+    overviewImage: "1552321554-5fefe8c9ef14",
     includes: [
       { title: "Cabinet Installation & Refinishing", description: "New cabinet installation, door replacement, and refinishing to modernize kitchens and baths without full replacement cost." },
       { title: "Countertops & Surfaces",             description: "Quartz, granite, butcher block, and solid surface countertop installation with proper undermount sink cutouts." },
@@ -570,11 +570,151 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1556909114-f6e7ad7d3136", alt: "Modern kitchen after full renovation with new cabinets and countertops" },
-      { id: "1503614472-8c253e53fca9", alt: "Renovated bathroom with tile and new fixtures" },
-      { id: "1491553895291-0a57f6a0b2ef", alt: "Kitchen with new backsplash tile and countertops" },
+      { id: "1552321554-5fefe8c9ef14", alt: "Renovated bathroom with tile and new fixtures" },
+      { id: "1556909196-b37f2d7b5e7e", alt: "Kitchen with new backsplash tile and countertops" },
     ],
     estimatorCategory: "kitchen-bath-more",
     related:  ["renovation-remodel", "framing-finishes", "grounds-maintenance"],
+    category: "Custom Living",
+  },
+
+  // ── 10b. Basement Finishing ──────────────────────────────────
+  {
+    slug:     "basement-finishing",
+    name:     "Basement Finishing",
+    shortName:"Basement",
+    tagline:  "Colorado's most underused square footage — finished right, permitted properly, and built to last.",
+    metaDescription:
+      "Professional basement finishing in Northern Colorado. Egress windows, framing, insulation, drywall, flooring, and full basement conversions for Erie, Longmont, Boulder, and surrounding areas.",
+    heroImage:       "1600585154340-be6161a56a0c",
+    overviewHeading: "Finished Basements That Add Real Value",
+    overviewBody: [
+      "In Northern Colorado, an unfinished basement is money sitting on the floor. A well-finished basement adds legal living square footage, increases appraised value, and creates usable space that families actually use — home offices, bedrooms, media rooms, gyms, or income-generating rental suites.",
+      "Forge Point handles basement finishing from initial framing through final punch list — egress windows, insulation, framing, electrical rough-in coordination, drywall, flooring, trim, and paint. We pull permits, schedule inspections, and build to code so the space is legal, insurable, and marketable when you go to sell.",
+      "We also work with investment property owners on basement conversions for ADU rental income — a growing opportunity in Northern Colorado's housing market.",
+    ],
+    overviewImage: "1504307651254-35680f356dbe",
+    includes: [
+      { title: "Egress Window Installation",          description: "Colorado requires egress windows in any basement bedroom. We cut, frame, and install compliant egress windows — handled in-house, not subbed out." },
+      { title: "Framing & Partition Walls",           description: "Load-bearing assessment and non-structural partition framing to create your planned layout. Bedroom walls, bathroom enclosures, utility room separation." },
+      { title: "Insulation & Moisture Control",       description: "Proper below-grade insulation with moisture barrier installation — critical in Colorado's climate for both comfort and building longevity." },
+      { title: "Drywall, Mud & Paint",                description: "Hang, tape, finish, and paint to level-4 standard. No basement-grade shortcuts." },
+      { title: "Flooring Installation",               description: "LVP, carpet, tile, or epoxy depending on use and budget. Proper subfloor prep for below-grade moisture management." },
+      { title: "Bathroom Rough-In & Finish",          description: "Rough-in plumbing coordination and full bathroom finish for basement bath additions. Licensed plumbing partners on call." },
+      { title: "Trim, Doors & Hardware",              description: "Baseboard, door casings, interior doors, and hardware to match the rest of the home." },
+      { title: "Lighting & Electrical Coordination",  description: "Recessed lighting layout and electrical rough-in coordination with licensed electrical partners." },
+    ],
+    gallery: [
+      { id: "1600585154340-be6161a56a0c", alt: "Finished basement living space with clean drywall and LVP flooring" },
+      { id: "1504307651254-35680f356dbe", alt: "Basement framing in progress with partition walls roughed in" },
+      { id: "1556909114-f6e7ad7d3136",   alt: "Finished basement with egress window and clean paint" },
+    ],
+    estimatorCategory: "renovation-remodel",
+    related:  ["renovation-remodel", "framing-finishes", "kitchen-bath-more"],
+    category: "Custom Living",
+  },
+
+  // ── 10c. Additions & Expansions ─────────────────────────────
+  {
+    slug:     "additions-expansions",
+    name:     "Additions & Expansions",
+    shortName:"Additions",
+    tagline:  "More space without moving — designed, permitted, and built by the same crew that manages your property.",
+    metaDescription:
+      "Residential additions and expansions in Northern Colorado. Room additions, bump-outs, above-garage buildouts, and sunrooms. Permitted and built by Forge Point in Erie, Longmont, Boulder, and surrounding areas.",
+    heroImage:       "1503387762-592deb58ef4e",
+    overviewHeading: "Build Out, Not Up. Or Up. We Do Both.",
+    overviewBody: [
+      "Moving is expensive. A well-designed addition gives you the space you need while keeping the neighborhood, the schools, and the equity you've already built. Forge Point plans and builds residential additions of all types — bump-outs, room additions, sunrooms, above-garage buildouts, and second-story additions.",
+      "Every addition starts with a detailed scope and permit drawings. We coordinate with structural engineers where required, pull all necessary permits, and schedule inspections from foundation through final. No gray-area work that creates problems at resale.",
+      "Our project management approach means you have a single point of contact from design concept through move-in — not a general contractor managing a rotating cast of subcontractors you've never met.",
+    ],
+    overviewImage: "1504307651254-35680f356dbe",
+    includes: [
+      { title: "Room Additions",                       description: "Full room additions from foundation or slab through finished interior — new bedrooms, home offices, family rooms, and flex spaces." },
+      { title: "Bump-Outs & Pop-Tops",                description: "Smaller structural expansions that maximize existing footprints — kitchen bump-outs, master bath expansions, entry additions." },
+      { title: "Above-Garage Buildouts",              description: "Convert underutilized above-garage space into finished living area, home office, or bonus room. Structural assessment included." },
+      { title: "Sunrooms & Three-Season Rooms",       description: "Insulated and non-insulated sunroom additions with proper foundation, framing, glazing, and finish work." },
+      { title: "Structural Engineering Coordination", description: "For additions requiring structural engineering sign-off, we coordinate with licensed engineers and incorporate drawings into the permit set." },
+      { title: "Permit Management",                   description: "We pull permits, schedule all required inspections, and deliver a closed permit on every structural addition. No open permits at resale." },
+      { title: "Foundation & Site Work Coordination", description: "Excavation, concrete, and foundation work coordinated with licensed civil contractors where required." },
+    ],
+    gallery: [
+      { id: "1503387762-592deb58ef4e", alt: "Residential addition framing in progress showing new room structure" },
+      { id: "1504307651254-35680f356dbe", alt: "Structural framing for home addition with new walls and ceiling joists" },
+      { id: "1600585154340-be6161a56a0c", alt: "Finished addition interior with new living space complete" },
+    ],
+    estimatorCategory: "renovation-remodel",
+    related:  ["renovation-remodel", "basement-finishing", "framing-finishes"],
+    category: "Custom Living",
+  },
+
+  // ── 10d. Investment Property Rehab ───────────────────────────
+  {
+    slug:     "investment-property-rehab",
+    name:     "Investment Property Rehab",
+    shortName:"Property Rehab",
+    tagline:  "High-ROI renovations for rental properties and fix-and-flip projects — scoped by someone who has managed thousands of units.",
+    metaDescription:
+      "Investment property rehab and renovation in Northern Colorado. BRRRR rehabs, fix-and-flip, turnover renovations, and multifamily unit upgrades. ROI-focused scoping from a team with 15 years of property management experience.",
+    heroImage:       "1560185893-a55b8a6f7e89",
+    overviewHeading: "Rehab Scoped for Return, Not Aesthetics",
+    overviewBody: [
+      "Most contractors build what you ask for. Forge Point tells you what actually moves the needle on rent and resale — because we've managed the properties on the other side of the transaction for 15 years.",
+      "Investment property rehab is a different discipline than primary residence renovation. The decisions are financial: which upgrades command higher rent, which finishes hold up to tenant wear, which improvements are required for code compliance, and which are vanity spending that never pays back.",
+      "We scope, bid, and build investment property rehabs with ROI as the primary lens. Single-family rentals, multifamily units, BRRRR properties, and fix-and-flip projects across Northern Colorado.",
+    ],
+    overviewImage: "1556909114-f6e7ad7d3136",
+    includes: [
+      { title: "Turnover Renovation",               description: "Between-tenant unit refreshes — paint, flooring, fixtures, hardware, and punch list repairs. Scoped for durability and speed, not showmanship." },
+      { title: "BRRRR Rehab",                       description: "Full-scope buy-rehab-rent-refinance-repeat renovations. We work with your ARV targets and build to appraisal." },
+      { title: "Fix & Flip Renovation",             description: "Targeted improvements that maximize resale value for the specific market and price point. We know what Northern Colorado buyers pay a premium for." },
+      { title: "Multifamily Unit Renovation",       description: "Coordinated renovation of multiple units on an occupied property — scheduling and scope managed to minimize vacancy and disruption." },
+      { title: "Code Compliance & Safety Upgrades", description: "GFCI, smoke and CO detector compliance, egress, handrail, and habitability upgrades required for rental licensing or resale." },
+      { title: "Punch List & Final Prep",           description: "Final walk, punch list completion, cleaning, and photography prep to get the property leased or listed as fast as possible." },
+    ],
+    gallery: [
+      { id: "1560185893-a55b8a6f7e89", alt: "Investment rental property exterior with clean curb appeal" },
+      { id: "1556909114-f6e7ad7d3136", alt: "Renovated rental unit kitchen with new cabinets and countertops" },
+      { id: "1503387762-592deb58ef4e", alt: "Investment property renovation in progress, interior gut" },
+    ],
+    estimatorCategory: "renovation-remodel",
+    related:  ["renovation-remodel", "property-management", "buyer-representation"],
+    category: "Custom Living",
+  },
+
+  // ── 10e. Flooring & Tile ─────────────────────────────────────
+  {
+    slug:     "flooring-tile",
+    name:     "Flooring & Tile",
+    shortName:"Flooring",
+    tagline:  "Every surface underfoot — installed with the prep and precision that makes it last.",
+    metaDescription:
+      "Professional flooring and tile installation in Northern Colorado. Hardwood, LVP, carpet, porcelain tile, natural stone, and heated floors for Erie, Longmont, Boulder, and surrounding areas.",
+    heroImage:       "1588854337236-6889d631faa8",
+    overviewHeading: "Flooring Done Right Starts Below the Surface",
+    overviewBody: [
+      "Most flooring failures start before the first plank is laid — improper subfloor prep, skipped acclimation, wrong product for the application. Forge Point approaches every flooring installation the way finish carpenters do: substrate first, product second, installation third.",
+      "We install hardwood, engineered wood, luxury vinyl plank, carpet, porcelain tile, ceramic tile, and natural stone across residential and light commercial applications. We also handle full tile work for kitchens, bathrooms, mudrooms, and entryways — straight lines, tight grout joints, and proper waterproofing where it matters.",
+      "Available as a standalone service or as part of a larger renovation scope.",
+    ],
+    overviewImage: "1517022812379-23952977f6e7",
+    includes: [
+      { title: "Hardwood Flooring",           description: "Solid and engineered hardwood installation with proper acclimation, subfloor assessment, and nailing or gluing to manufacturer spec." },
+      { title: "Luxury Vinyl Plank (LVP)",    description: "Click-lock and glue-down LVP for moisture-prone areas, rentals, and high-traffic spaces. Proper underlayment and transition strips included." },
+      { title: "Carpet Installation",         description: "Bedroom and living area carpet with quality pad. Seaming, stretching, and threshold transitions done right." },
+      { title: "Porcelain & Ceramic Tile",    description: "Floor and wall tile for kitchens, bathrooms, entryways, laundry rooms, and mudrooms. Large-format, subway, mosaic, and custom patterns." },
+      { title: "Natural Stone Installation",  description: "Travertine, slate, marble, and limestone installation with appropriate sealing and grout selection." },
+      { title: "Subfloor Repair & Leveling",  description: "Squeaky subfloor repair, leveling compound, and substrate correction before any surface installation begins." },
+      { title: "Heated Floor Systems",        description: "Electric radiant heat underlayment under tile for bathrooms and entryways — significant comfort upgrade for Colorado winters." },
+    ],
+    gallery: [
+      { id: "1588854337236-6889d631faa8", alt: "LVP flooring installation in progress in residential home" },
+      { id: "1556909114-f6e7ad7d3136",   alt: "Kitchen floor tile with clean grout lines and modern finish" },
+      { id: "1517022812379-23952977f6e7", alt: "Finished hardwood floor in bright residential living space" },
+    ],
+    estimatorCategory: "framing-finishes",
+    related:  ["framing-finishes", "kitchen-bath-more", "renovation-remodel"],
     category: "Custom Living",
   },
 
@@ -593,7 +733,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We handle every phase: design, permitting, site preparation, framing, decking, railings, and finish details. Our structures are built to code, documented for permit, and designed to add lasting value to your property.",
       "From a simple concrete patio to a multi-level composite deck with integrated pergola and lighting, we scope the project to your budget and build it to last.",
     ],
-    overviewImage: "1558618666-fcd25c85cd64",
+    overviewImage: "1568605114967-8130f3a36994",
     includes: [
       { title: "Composite Decking",           description: "Trex, TimberTech, and other premium composite decking systems. Low maintenance, UV-resistant, and warrantied for Colorado conditions." },
       { title: "Pressure-Treated & Cedar Decks", description: "Traditional wood decks with proper flashing, post bases, and hardware to resist moisture and freeze-thaw movement." },
@@ -604,7 +744,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1591474200742-8e512e6f98f8", alt: "Wood deck with outdoor furniture and pergola" },
-      { id: "1558618666-fcd25c85cd64",   alt: "Stone paver patio with outdoor seating area and landscaping" },
+      { id: "1568605114967-8130f3a36994",   alt: "Stone paver patio with outdoor seating area and landscaping" },
       { id: "1571954411453-2fc3f4f8c26d", alt: "Pergola with string lights over outdoor living space" },
     ],
     estimatorCategory: "decks-pergolas-patios",
@@ -627,7 +767,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We build pondless waterfalls for low-maintenance installations, koi ponds for enthusiasts who want a living ecosystem, and decorative fountains for courtyards, entryways, and patios. Every system is designed with proper filtration, winterization planning, and liner systems rated for freeze-thaw conditions.",
       "We integrate water features with existing landscape designs or build standalone focal points. Every project includes a maintenance plan and winterization walkthrough so you know exactly how to care for your investment.",
     ],
-    overviewImage: "1558618047-6e3b4b1ae965",
+    overviewImage: "1544551763-46a013bb70d5",
     includes: [
       { title: "Pondless Waterfalls",        description: "Self-contained waterfall systems with underground reservoir — all the visual and sound impact with minimal maintenance and no open pond." },
       { title: "Koi Ponds",                  description: "Custom koi ponds with biological filtration, UV clarifiers, aeration, and liner systems designed to support a healthy fish habitat year-round." },
@@ -638,8 +778,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1519710164239-da123dc03ef4", alt: "Garden water feature with natural pond and waterfall" },
-      { id: "1558618047-6e3b4b1ae965", alt: "Pondless waterfall feature in residential garden" },
-      { id: "1558618666-fcd25c85cd64",   alt: "Decorative fountain in landscaped patio setting" },
+      { id: "1544551763-46a013bb70d5", alt: "Pondless waterfall feature in residential garden" },
+      { id: "1558618047-6e3b4b1ae965",   alt: "Decorative fountain in landscaped patio setting" },
     ],
     estimatorCategory: "custom-water-features",
     related:  ["decks-pergolas-patios", "landscape-design-install", "grounds-maintenance"],
@@ -661,7 +801,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We price by the cubic yard with up to 2 tons included. Heavy loads that push past 2 tons — concrete, soil, roofing — carry a straightforward per-ton overage charge that's disclosed before we start. No surprises on the invoice.",
       "Prefer to sort and load it yourself? We also rent dumpsters and dump trailers — drop it off, you fill it, we haul it when you're done. Either way, we donate and recycle where possible.",
     ],
-    overviewImage: "1560518883-ce09059eeffa",
+    overviewImage: "1558618666-fcd25c85cd64",
     includes: [
       { title: "Full-Service Haul Off",             description: "We load it, haul it, and dispose of it. Priced by the cubic yard with up to 2 tons included. Per-ton overage applies for heavy material exceeding 2 tons." },
       { title: "Dumpster Rental",                   description: "We drop a dumpster, you fill it on your own timeline, we haul it when you're ready. Ideal for multi-day renovation projects and larger cleanouts." },
@@ -675,7 +815,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1615672968435-75c1e5d17d62", alt: "Clean property after professional junk haul off" },
-      { id: "1560518883-ce09059eeffa",   alt: "Property cleanout in progress" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Property cleanout in progress" },
       { id: "1486325212027-8081e485255e", alt: "Clean commercial property after debris removal" },
     ],
     estimatorCategory: "junk-haul-off",
@@ -698,7 +838,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We offer exterior-only washes for clients who want consistent vehicle cleanliness, full interior and exterior details for a top-to-bottom refresh, and premium packages that include paint decontamination, clay bar treatment, and sealant application for vehicles that deserve the full treatment.",
       "Every detail is done by hand with professional-grade products — no automated washes, no shortcuts. The result is a vehicle that's genuinely clean, not just rinsed.",
     ],
-    overviewImage: "1494976388531-d1058494cdd8",
+    overviewImage: "1545327859-578be6a2561a",
     includes: [
       { title: "Exterior Hand Wash & Dry",        description: "Hand wash with pH-balanced soap and microfiber dry for a scratch-free finish on all painted surfaces, glass, and trim." },
       { title: "Wheel & Tire Detail",             description: "Wheel faces, barrels, and lug nuts cleaned. Tires dressed with a matte or satin finish tire dressing." },
@@ -711,8 +851,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1520340356584-f9917d1eea6f", alt: "Car being professionally detailed — clean shine on exterior" },
-      { id: "1494976388531-d1058494cdd8", alt: "Clean car interior after professional detailing" },
-      { id: "1469854523086-cc02fe5d8800", alt: "Freshly detailed vehicle with a glossy exterior finish" },
+      { id: "1545327859-578be6a2561a", alt: "Clean car interior after professional detailing" },
+      { id: "1558618047-3c8c76ca7d04", alt: "Freshly detailed vehicle with a glossy exterior finish" },
     ],
     estimatorCategory: "mobile-auto-detailing",
     related:  ["housekeeping-cleaning", "errand-services", "power-window-washing"],
@@ -727,14 +867,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Consistent, thorough home cleaning — done right every time, on a schedule that works for you.",
     metaDescription:
       "Professional housekeeping and home cleaning in Northern Colorado and Denver metro. Weekly, bi-weekly, and monthly cleaning programs, deep cleans, and move-in/move-out service in Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1558618047-3c8c76ca7d04",
+    heroImage:       "1581578731548-c64695cc6952",
     overviewHeading: "Reliable Home Cleaning You Can Count On",
     overviewBody: [
       "A clean home is more than an aesthetic — it's the foundation of a comfortable, healthy living environment. Forge Point provides recurring and one-time cleaning services for homeowners, rental property owners, and property managers who need a cleaning crew they can rely on without having to check up on.",
       "Our standard clean covers all the essentials on every visit: kitchens, bathrooms, living areas, bedrooms, and floors. Deep cleans add the detail work that standard visits skip — inside appliances, baseboards, cabinet interiors, grout lines, and all the surfaces that accumulate grime between regular visits.",
       "We work around your schedule and communicate proactively. Access instructions, cleaning priorities, and special requests are tracked through our client system so nothing gets missed — and you don't have to be home to get a great result.",
     ],
-    overviewImage: "1556911220-bff31b7b2f2e",
+    overviewImage: "1527515673-2d7b2f5e0b4a",
     includes: [
       { title: "Kitchen Cleaning",              description: "Countertops, appliance exteriors, sink, microwave interior, backsplash, cabinet fronts, and floors cleaned and sanitized on every visit." },
       { title: "Bathroom Cleaning",            description: "Toilet, sink, tub, and shower scrubbed and disinfected. Mirrors polished, fixtures wiped, floors cleaned, trash emptied." },
@@ -744,9 +884,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Laundry Service",              description: "Wash, dry, and fold service available as an add-on for weekly cleaning clients. We handle it while we're there." },
     ],
     gallery: [
-      { id: "1558618047-3c8c76ca7d04",   alt: "Clean, organized home interior after professional housekeeping" },
-      { id: "1556911220-bff31b7b2f2e",   alt: "Sparkling clean kitchen after professional housekeeping" },
-      { id: "1558618047-3c8c76ca7d04",   alt: "Clean, organized living space after professional cleaning" },
+      { id: "1581578731548-c64695cc6952",   alt: "Clean, organized home interior after professional housekeeping" },
+      { id: "1484154218962-a197022b5858",   alt: "Sparkling clean kitchen after professional housekeeping" },
+      { id: "1556909114-f6e7ad7d3136",   alt: "Clean, organized living space after professional cleaning" },
     ],
     estimatorCategory: "housekeeping-cleaning",
     related:  ["mobile-auto-detailing", "home-safety-checks", "junk-haul-off"],
@@ -768,7 +908,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "Dog waste isn't just unpleasant — it's a genuine health concern. Pathogens including E. coli and parasites like giardia and roundworm can survive in soil for months and are easily tracked indoors. Regular professional removal keeps your yard sanitary for children, guests, and your other pets.",
       "We service your yard on your chosen schedule, bag all waste and remove it from the property, and send a notification when the job is done. No mess, no reminder calls, no checking whether they showed up.",
     ],
-    overviewImage: "1548199085-dbc7db19e02c",
+    overviewImage: "1587300003388-59208cc962cb",
     includes: [
       { title: "Weekly Service",           description: "Scheduled weekly visits at a consistent day. One dog, two dogs, or a full pack — we keep pace with any yard." },
       { title: "Bi-Weekly Service",        description: "Every-other-week scheduling for smaller dogs or lower-traffic yards. Same thorough cleanup, less frequent visits." },
@@ -779,8 +919,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1558618666-fcd25c85cd64",   alt: "Clean green lawn maintained with regular pet waste removal" },
-      { id: "1548199085-dbc7db19e02c",   alt: "Happy dog in clean, well-maintained residential yard" },
-      { id: "1558618666-fcd25c85cd64",   alt: "Clean residential lawn ready for outdoor use" },
+      { id: "1587300003388-59208cc962cb",   alt: "Happy dog in clean, well-maintained residential yard" },
+      { id: "1416879595882-3373a0480b5b",   alt: "Clean residential lawn ready for outdoor use" },
     ],
     estimatorCategory: "poop-scooping",
     related:  ["grounds-maintenance", "housekeeping-cleaning", "errand-services"],
@@ -802,7 +942,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "A missed pipe leak, a storm-damaged window, a package on the porch for three days, a tripped breaker in an empty house — small issues become expensive problems when no one is watching. Our check service catches problems early and keeps you informed before they escalate.",
       "We also offer safety checks as an add-on to our housekeeping and grounds services — making each visit more valuable, especially for elderly clients, busy families, and property owners who want proactive hazard identification without scheduling a separate appointment. We know what to look for, and we look every time.",
     ],
-    overviewImage: "1558618047-6e3b4b1ae965",
+    overviewImage: "1560518883-ce09059eeffa",
     includes: [
       { title: "Life Safety Device Checks",    description: "Smoke detectors, carbon monoxide detectors, and fire extinguishers verified functional and current. Battery replacement and documentation included as part of every scheduled visit." },
       { title: "Trip & Fall Hazard Assessment",description: "Identification of loose rugs, cluttered walkways, inadequate lighting, and other fall-risk conditions — particularly valuable for elderly clients and properties transitioning between tenants." },
@@ -815,7 +955,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1558981403-c5f9899a28bc",   alt: "Home exterior security and safety check walkthrough" },
-      { id: "1558618047-6e3b4b1ae965",   alt: "Property inspection in progress at a Northern Colorado home" },
+      { id: "1484154218962-a197022b5858",   alt: "Property inspection in progress at a Northern Colorado home" },
       { id: "1560518883-ce09059eeffa",   alt: "Well-maintained home exterior in Northern Colorado" },
     ],
     estimatorCategory: "home-safety-checks",
@@ -838,7 +978,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We serve homeowners, seniors, busy professionals, and property managers who need a trusted local contact for regular or occasional errand support. Every team member is a vetted Forge Point employee — not a gig-economy stranger from an app.",
       "Custom recurring schedules and one-off requests both work. Tell us what needs to be handled and we'll take care of it efficiently, accurately, and with a clear receipt of what was done and where.",
     ],
-    overviewImage: "1543168256-42c851c0f886",
+    overviewImage: "1484154218962-a197022b5858",
     includes: [
       { title: "Grocery Shopping & Delivery",    description: "Shop from your list at your preferred store and deliver to your door. Refrigerated and frozen items handled with proper care." },
       { title: "Prescription Pickup",            description: "Pharmacy runs for prescriptions, over-the-counter items, and medical supplies — especially valuable for seniors and those with limited mobility." },
@@ -849,8 +989,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1556742049-0cfed4f6a45d", alt: "Professional errand service delivering groceries" },
-      { id: "1543168256-42c851c0f886", alt: "Grocery shopping being handled professionally" },
-      { id: "1519003722823-9999e064aba5", alt: "Package being delivered to a residential home" },
+      { id: "1484154218962-a197022b5858", alt: "Grocery shopping being handled professionally" },
+      { id: "1560518883-ce09059eeffa", alt: "Package being delivered to a residential home" },
     ],
     estimatorCategory: "errand-services",
     related:  ["housekeeping-cleaning", "home-safety-checks", "poop-scooping"],
