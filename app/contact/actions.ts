@@ -24,7 +24,34 @@ export async function submitContactForm(formData: FormData): Promise<ContactResu
       ? (urgencyRaw as "URGENT" | "STANDARD" | "FLEXIBLE")
       : "STANDARD";
 
-    // Handle photo uploads — convert to base64 data URLs (Phase 1, no cloud storage)
+    // ── Parse estimate data if passed from /estimate ──────────────
+    let estimateDetails: object | undefined;
+    let estimateLow:     number | undefined;
+    let estimateHigh:    number | undefined;
+    let serviceNames:    string[] = [];
+    let requestType:     "GENERAL" | "ESTIMATE" = "GENERAL";
+
+    const estimateRaw = formData.get("estimateData") as string | null;
+    if (estimateRaw) {
+      try {
+        const parsed = JSON.parse(estimateRaw) as {
+          items: Array<{ name: string; qty: number; unit: string; cat: string; low: number; high: number }>;
+          low:   number;
+          high:  number;
+        };
+        if (parsed && Array.isArray(parsed.items)) {
+          estimateDetails = parsed;
+          estimateLow     = parsed.low;
+          estimateHigh    = parsed.high;
+          serviceNames    = parsed.items.map((i) => `${i.name} (${i.qty} ${i.unit})`);
+          requestType     = "ESTIMATE";
+        }
+      } catch {
+        // Malformed estimate JSON — continue as GENERAL
+      }
+    }
+
+    // ── Handle photo uploads (Phase 1: base64 data URLs) ──────────
     const photoUrls: string[] = [];
     const files = formData.getAll("photos") as File[];
     for (const file of files.slice(0, 3)) {
@@ -37,7 +64,7 @@ export async function submitContactForm(formData: FormData): Promise<ContactResu
 
     await prisma.serviceRequest.create({
       data: {
-        type: "GENERAL",
+        type: requestType,
         name,
         email,
         phone,
@@ -45,8 +72,12 @@ export async function submitContactForm(formData: FormData): Promise<ContactResu
         city,
         zip,
         serviceCategory,
+        serviceNames,
         description,
         urgency,
+        estimateLow,
+        estimateHigh,
+        estimateDetails,
         photoUrls,
       },
     });

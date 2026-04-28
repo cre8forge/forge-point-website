@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { Upload, X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { submitContactForm } from "@/app/contact/actions";
+
+// ── Service categories (matches estimator category names exactly) ──
 
 const SERVICE_CATEGORIES = [
   "Landscape Design & Install",
@@ -11,30 +13,98 @@ const SERVICE_CATEGORIES = [
   "Fencing",
   "Power & Window Washing",
   "Industrial Maintenance",
-  "HOA & Commercial Property",
-  "Irrigation & Drainage",
   "Property Management",
+  "Renovation & Remodel",
+  "Framing & Finishes",
+  "Kitchen, Bath & More",
+  "Decks, Pergolas & Patios",
+  "Custom Water Features",
+  "Junk Haul Off",
+  "Mobile Auto Detailing",
+  "Housekeeping & Cleaning",
+  "Poop Scooping",
+  "Home Safety Checks",
+  "Errand Services",
   "Other / Not Sure",
 ];
 
+// ── Estimate types ────────────────────────────────────────────────
+
+interface EstimateItem {
+  name: string;
+  qty:  number;
+  unit: string;
+  cat:  string;
+  low:  number;
+  high: number;
+}
+
+interface EstimatePayload {
+  items: EstimateItem[];
+  low:   number;
+  high:  number;
+}
+
+function parseEstimate(raw: string | undefined | null): EstimatePayload | null {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(decodeURIComponent(raw));
+    if (parsed && Array.isArray(parsed.items) && typeof parsed.low === "number") {
+      return parsed as EstimatePayload;
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
+function fmt(n: number): string {
+  return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+}
+
+// ── Photo types ───────────────────────────────────────────────────
+
 interface PhotoPreview {
   name: string;
-  url: string;
+  url:  string;
   file: File;
 }
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export function ContactForm() {
-  const [status, setStatus]         = useState<Status>("idle");
-  const [errorMsg, setErrorMsg]     = useState("");
-  const [photos, setPhotos]         = useState<PhotoPreview[]>([]);
-  const fileInputRef                = useRef<HTMLInputElement>(null);
+// ── Component ─────────────────────────────────────────────────────
+
+interface ContactFormProps {
+  initialEstimate?: string;
+}
+
+export function ContactForm({ initialEstimate }: ContactFormProps) {
+  const estimate = useMemo(() => parseEstimate(initialEstimate), [initialEstimate]);
+
+  // Auto-check categories that appear in the estimate
+  const defaultCategories = useMemo(() => {
+    if (!estimate || estimate.items.length === 0) return [];
+    return [...new Set(estimate.items.map((i) => i.cat))].filter((cat) =>
+      SERVICE_CATEGORIES.includes(cat)
+    );
+  }, [estimate]);
+
+  const [status, setStatus]                       = useState<Status>("idle");
+  const [errorMsg, setErrorMsg]                   = useState("");
+  const [photos, setPhotos]                       = useState<PhotoPreview[]>([]);
+  const [selectedCategories, setSelectedCategories] = useState<string[]>(defaultCategories);
+  const fileInputRef                              = useRef<HTMLInputElement>(null);
+
+  function toggleCategory(cat: string) {
+    setSelectedCategories((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  }
 
   function handlePhotoChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const files = Array.from(e.target.files ?? []);
+    const files     = Array.from(e.target.files ?? []);
     const remaining = 3 - photos.length;
-    const toAdd = files.slice(0, remaining).map((file) => ({
+    const toAdd     = files.slice(0, remaining).map((file) => ({
       name: file.name,
       url:  URL.createObjectURL(file),
       file,
@@ -58,8 +128,16 @@ export function ContactForm() {
     const form = e.currentTarget;
     const fd   = new FormData(form);
 
+    // Send selected categories as a joined string
+    fd.set("serviceCategory", selectedCategories.join(", "));
+
     // Attach photo files
     photos.forEach((p) => fd.append("photos", p.file));
+
+    // Attach estimate JSON if present
+    if (estimate) {
+      fd.set("estimateData", JSON.stringify(estimate));
+    }
 
     const result = await submitContactForm(fd);
 
@@ -67,6 +145,7 @@ export function ContactForm() {
       setStatus("success");
       form.reset();
       setPhotos([]);
+      setSelectedCategories([]);
     } else {
       setStatus("error");
       setErrorMsg(result.error);
@@ -83,8 +162,8 @@ export function ContactForm() {
         <p className="font-barlow font-300 text-white/60 text-sm">
           Thank you — we&apos;ll get back to you within one business day. If it&apos;s
           urgent, call us directly at{" "}
-          <a href="tel:+19705550100" className="text-orange hover:text-amber transition-colors">
-            (970) 555-0100
+          <a href="tel:+17204191961" className="text-orange hover:text-amber transition-colors">
+            (720) 419-1961
           </a>
           .
         </p>
@@ -94,6 +173,41 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
+
+      {/* ── Estimate summary (shown when arriving from /estimate) ── */}
+      {estimate && estimate.items.length > 0 && (
+        <div className="border border-orange/30 bg-orange/5 p-5">
+          <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-3">
+            Your Estimate — Attached to This Request
+          </p>
+          <div className="space-y-2 mb-3">
+            {estimate.items.map((item, i) => (
+              <div key={i} className="flex items-start justify-between gap-4 text-xs">
+                <div className="flex-1 min-w-0">
+                  <span className="font-barlow font-300 text-white/90 block truncate">{item.name}</span>
+                  <span className="font-condensed text-white/40">
+                    {item.qty.toLocaleString()} {item.unit} · {item.cat}
+                  </span>
+                </div>
+                <span className="font-condensed font-600 text-white/70 whitespace-nowrap flex-shrink-0">
+                  {fmt(item.low)} – {fmt(item.high)}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="border-t border-orange/20 pt-3 flex items-center justify-between">
+            <span className="font-condensed font-600 text-xs uppercase tracking-wide text-white/50">
+              Total Range
+            </span>
+            <span className="font-condensed font-700 text-orange text-sm tracking-wide">
+              {fmt(estimate.low)} – {fmt(estimate.high)}
+            </span>
+          </div>
+          <p className="font-barlow font-300 text-white/35 text-xs mt-2 leading-relaxed">
+            These selections will be included in your request so we can quote accurately.
+          </p>
+        </div>
+      )}
 
       {/* Name + Email */}
       <div className="grid sm:grid-cols-2 gap-4">
@@ -158,22 +272,40 @@ export function ContactForm() {
         </div>
       </div>
 
-      {/* Service category */}
+      {/* Service categories — checkbox grid */}
       <div>
-        <label className="block font-condensed font-600 text-xs uppercase tracking-widest text-white/50 mb-2">
-          Service Category
+        <label className="block font-condensed font-600 text-xs uppercase tracking-widest text-white/50 mb-3">
+          Services Needed{" "}
+          <span className="text-white/30 normal-case font-barlow font-300 tracking-normal">
+            — select all that apply
+          </span>
+          {estimate && defaultCategories.length > 0 && (
+            <span className="ml-2 text-orange normal-case font-barlow font-300 tracking-normal">
+              · pre-filled from your estimate
+            </span>
+          )}
         </label>
-        <select
-          name="serviceCategory"
-          className="w-full bg-card border border-white/12 text-white
-                     font-barlow font-300 text-sm px-4 py-3 outline-none
-                     focus:border-orange/50 transition-colors appearance-none"
-        >
-          <option value="">— Select a service —</option>
-          {SERVICE_CATEGORIES.map((s) => (
-            <option key={s} value={s}>{s}</option>
-          ))}
-        </select>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          {SERVICE_CATEGORIES.map((cat) => {
+            const checked = selectedCategories.includes(cat);
+            return (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => toggleCategory(cat)}
+                className={cn(
+                  "text-left px-3 py-2.5 border text-xs font-barlow font-300 transition-all duration-150 leading-snug",
+                  checked
+                    ? "border-orange bg-orange/10 text-white"
+                    : "border-white/12 bg-card text-white/50 hover:border-white/30 hover:text-white/80"
+                )}
+              >
+                {checked && <span className="text-orange mr-1.5">✓</span>}
+                {cat}
+              </button>
+            );
+          })}
+        </div>
       </div>
 
       {/* Urgency */}
@@ -224,7 +356,10 @@ export function ContactForm() {
       {/* Photo upload */}
       <div>
         <label className="block font-condensed font-600 text-xs uppercase tracking-widest text-white/50 mb-2">
-          Photos <span className="text-white/30 normal-case font-barlow font-300 tracking-normal">— up to 3 images, max 3 MB each</span>
+          Photos{" "}
+          <span className="text-white/30 normal-case font-barlow font-300 tracking-normal">
+            — up to 3 images, max 3 MB each
+          </span>
         </label>
 
         {photos.length < 3 && (

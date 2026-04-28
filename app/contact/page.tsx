@@ -11,7 +11,12 @@ export const metadata: Metadata = {
     "Get in touch with Forge Point Property Services. Request a quote, ask a question, or schedule a service — we respond within one business day.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ estimate?: string }>;
+}) {
+  const params = await searchParams;
   return (
     <>
       <Nav />
@@ -19,7 +24,7 @@ export default function ContactPage() {
         <ContactHero />
 
         <section className="bg-navy py-16 px-6">
-          <ContactForm />
+          <ContactForm initialEstimate={params.estimate} />
         </section>
 
         <CtaBanner />

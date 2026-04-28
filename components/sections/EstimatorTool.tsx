@@ -124,6 +124,23 @@ export function EstimatorTool({ categories, settings, initialCategory }: Estimat
     [lineItems]
   );
 
+  const contactHref = useMemo(() => {
+    if (lineItems.length === 0) return "/contact";
+    const payload = {
+      items: lineItems.map(({ svc, qty, low, high, catName }) => ({
+        name: svc.name,
+        qty,
+        unit: svc.unit,
+        cat:  catName,
+        low:  Math.round(low),
+        high: Math.round(high),
+      })),
+      low:  Math.round(total.low),
+      high: Math.round(total.high),
+    };
+    return `/contact?estimate=${encodeURIComponent(JSON.stringify(payload))}`;
+  }, [lineItems, total]);
+
   function setQty(id: string, val: number) {
     setQuantities((prev) => ({ ...prev, [id]: Math.max(0, val) }));
   }
@@ -287,7 +304,7 @@ export function EstimatorTool({ categories, settings, initialCategory }: Estimat
 
         {/* CTA */}
         <div className="flex flex-wrap gap-3">
-          <Button href="/contact" variant="primary">
+          <Button href={contactHref} variant="primary">
             Request a Detailed Quote
           </Button>
           <Button href="tel:+17204191961" variant="secondary">
