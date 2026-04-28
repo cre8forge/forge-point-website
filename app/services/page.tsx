@@ -29,7 +29,6 @@ type ServiceCard = {
 type Category = {
   label:       string;
   description: string;
-  badge?:      string;
   accent?:     boolean;   // amber highlight for Advisory
   disclosure?: boolean;   // show RE license disclosure
   cards:       ServiceCard[];
@@ -39,7 +38,6 @@ const CATEGORIES: Category[] = [
   // ── 1. Forge Point Advisory ────────────────────────────────────
   {
     label:    "Forge Point Advisory",
-    badge:    "Highest & Best",
     accent:   true,
     disclosure: true,
     description:
@@ -47,12 +45,12 @@ const CATEGORIES: Category[] = [
     cards: [
       {
         label:       "Buyer Representation",
-        description: "We represent buyers of residential, investment, and commercial properties across Northern Colorado. Our edge: we've managed the properties you're buying — we know what deferred maintenance looks like and what questions most agents won't think to ask.",
+        description: "Whether you're buying your first home, upgrading, or adding to an investment portfolio — we represent you with the same depth. We've managed the properties you're buying. We see deferred maintenance, realistic rent potential, and HOA red flags that most agents miss entirely.",
         href:        "/services/buyer-representation",
       },
       {
         label:       "Seller Representation",
-        description: "Positioning, pricing, and closing strategy for sellers who want results — not just a listing. Real market data, vetted buyer relationships, and renovation guidance to maximize your sale price before you ever list.",
+        description: "For homeowners, landlords, and investors who want results — not just a sign in the yard. We bring honest pricing strategy, presale improvement guidance, and real buyer relationships. Residential, investment, and commercial.",
         href:        "/services/seller-representation",
       },
       {
@@ -249,11 +247,6 @@ export default function ServicesPage() {
                     <h2 className={`font-condensed font-700 text-sm uppercase tracking-[0.2em] ${cat.accent ? "text-amber" : "text-orange"}`}>
                       {cat.label}
                     </h2>
-                    {cat.badge && (
-                      <span className="font-condensed font-600 text-[10px] uppercase tracking-widest px-2 py-0.5 border border-amber/40 text-amber/80 bg-amber/5">
-                        {cat.badge}
-                      </span>
-                    )}
                     <div className="flex-1 border-t border-white/6" />
                   </div>
 

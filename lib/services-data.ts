@@ -44,14 +44,14 @@ export const SERVICES_DATA: ServiceData[] = [
     slug:     "buyer-representation",
     name:     "Buyer Representation",
     shortName:"Buyer Rep",
-    tagline:  "We've managed the properties you're buying. That changes every question we ask and every offer we write.",
+    tagline:  "Whether you're buying your first home or your fifteenth investment property — we see what most agents miss, because we've managed what you're buying.",
     metaDescription:
-      "Licensed Colorado real estate buyer representation for residential, investment, and commercial properties across Northern Colorado. Forge Point Advisory — 15 years of Front Range market experience.",
+      "Licensed Colorado real estate buyer representation for homebuyers, move-up buyers, and investors across Northern Colorado. Forge Point Advisory — 15 years of Front Range market and property management experience.",
     heroImage:       "1486406146926-c627a92ad1ab",
-    overviewHeading: "Buyer Representation Built on Property Management Experience",
+    overviewHeading: "Buyer Representation — For Every Buyer, at Every Scale",
     overviewBody: [
-      "Forge Point Advisory represents buyers of residential, investment, and commercial properties across Northern Colorado and Colorado's Front Range. Our edge is direct: we've managed the properties you're buying. We know what deferred maintenance looks like before the inspector finds it. We know what a realistic cap rate is versus what a seller's pro forma says it is. We know the questions an agent who hasn't managed commercial space won't think to ask.",
-      "Full service page content coming soon. In the meantime, contact us directly to discuss your purchase — we'll bring the same depth to your search that we bring to every property we manage.",
+      "Forge Point Advisory represents buyers across the full spectrum — first-time homebuyers, move-up families, residential investors, and commercial acquirers — all across Northern Colorado and the Front Range. What sets us apart isn't just market knowledge: it's that we've managed the properties you're buying. We see deferred maintenance before the inspector writes it up. We recognize realistic rental potential versus a seller's optimistic pro forma. We know the HOA flags, the mechanical questions, and the neighborhood dynamics that a purely transactional agent won't think to raise.",
+      "Full service page content coming soon. In the meantime, contact us to discuss your purchase — whether it's your primary home or your next investment, we'll bring the same depth to your search.",
     ],
     overviewImage: "1486406146926-c627a92ad1ab",
     includes: [
@@ -76,14 +76,14 @@ export const SERVICES_DATA: ServiceData[] = [
     slug:     "seller-representation",
     name:     "Seller Representation",
     shortName:"Seller Rep",
-    tagline:  "Positioning, pricing, and closing strategy for sellers who want results — not just a listing.",
+    tagline:  "For homeowners, landlords, and investors who want results — not just a sign in the yard. Honest pricing, presale guidance, and a strategy built around your property.",
     metaDescription:
-      "Licensed Colorado real estate seller representation. Strategic pricing, renovation guidance, and vetted buyer relationships for residential and investment property sellers across Northern Colorado.",
+      "Licensed Colorado real estate seller representation for homeowners, landlords, and investors across Northern Colorado. Strategic pricing, presale improvement guidance, and real buyer relationships.",
     heroImage:       "1486406146926-c627a92ad1ab",
     overviewHeading: "Seller Representation — Strategy First, Listing Second",
     overviewBody: [
-      "Forge Point Advisory brings real market data, renovation guidance, and vetted buyer relationships to sellers who want to maximize their sale price before they ever list. We don't take listings and wait — we assess the property, identify improvements with measurable return, and position the asset correctly from day one.",
-      "Full service page content coming soon. Contact us to discuss your sale timeline and we'll start with an honest assessment of where your property stands and what it could stand to gain.",
+      "Forge Point Advisory represents sellers of every property type — primary homes, rental properties, and commercial assets — across Northern Colorado and the Front Range. We don't take listings and wait. We start with an honest assessment of your property's condition and market position, identify presale improvements with a real return on investment, and price it correctly based on actual comps — not optimism. Whether you're selling the home you raised your family in or repositioning a commercial asset, the standard is the same: maximum result, no surprises.",
+      "Full service page content coming soon. Contact us to discuss your sale timeline — we'll start with an honest property assessment and tell you exactly where you stand.",
     ],
     overviewImage: "1486406146926-c627a92ad1ab",
     includes: [
