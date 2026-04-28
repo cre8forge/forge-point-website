@@ -160,8 +160,6 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Deck & Patio Cleaning",         description: "Deck washing for wood, composite, and concrete patios. Prep work for staining and sealing available." },
       { title: "Window Cleaning",               description: "Interior and exterior window cleaning for residential and commercial properties. Screens removed and cleaned separately." },
       { title: "Gutter Cleaning & Flush",       description: "Debris removal, downspout flushing, and inspection. We confirm your gutters are draining correctly before we leave." },
-      { title: "Warehouse Floor Scrubbing",     description: "Industrial floor scrubbing for warehouses, manufacturing floors, and large commercial interiors. Removes oil, debris, and buildup from high-traffic concrete surfaces." },
-      { title: "Roof Cleaning",                 description: "Soft-wash roof cleaning to remove algae, moss, lichen, and biological staining from shingle, tile, and metal roofing without voiding warranties." },
       { title: "Commercial Surface Cleaning",   description: "Storefronts, parking structures, sidewalks, and commercial exteriors. Graffiti removal available." },
     ],
     gallery: [
@@ -196,7 +194,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Exterior Building Cleaning",        description: "Soft and pressure washing for commercial building facades, entrances, and loading areas." },
       { title: "Loading Dock & Bay Cleaning",       description: "Degreasing and pressure washing of loading docks and bays. Removes oil, fuel, and buildup that creates safety hazards." },
       { title: "Concrete Sealing & Degreasing",    description: "Surface degreasing and penetrating sealer application to extend pavement life and improve appearance." },
-      { title: "Large-Scale Power Washing",         description: "Warehouse floors, manufacturing exteriors, storage yards, and commercial pads. We have the equipment for the job." },
+      { title: "Large-Scale Power Washing & Floor Scrubbing", description: "Warehouse floors, manufacturing interiors, storage yards, and commercial pads. Pressure washing and industrial floor scrubbing to clear oil, debris, and buildup from high-traffic concrete surfaces." },
     ],
     gallery: [
       { id: "1486325212027-8081e485255e", alt: "Clean commercial building exterior and parking facility" },
