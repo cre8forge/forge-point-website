@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Divider } from "@/components/ui/Divider";
 import { Button } from "@/components/ui/Button";
+import { SiteSearch } from "@/components/ui/SiteSearch";
 
 const SERVICE_GROUPS = [
   {
@@ -120,6 +121,16 @@ export function Footer() {
             </div>
           ))}
 
+        </div>
+
+        {/* Search */}
+        <div className="mb-8">
+          <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-2">
+            Search
+          </p>
+          <div className="max-w-sm">
+            <SiteSearch variant="input" />
+          </div>
         </div>
 
         {/* Service areas + CTA */}

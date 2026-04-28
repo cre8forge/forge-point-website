@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import { SiteSearch } from "@/components/ui/SiteSearch";
 
 // ── Grouped service navigation ────────────────────────────────────
 
@@ -165,8 +166,9 @@ export function Nav() {
             ))}
           </ul>
 
-          {/* Desktop CTA */}
-          <div className="hidden lg:block">
+          {/* Desktop search + CTA */}
+          <div className="hidden lg:flex items-center gap-3">
+            <SiteSearch variant="icon" />
             <Button href="/estimate" variant="primary" size="sm">
               Get Estimate
             </Button>
@@ -215,6 +217,10 @@ export function Nav() {
 
           {/* Links */}
           <nav className="flex-1 overflow-y-auto px-6 py-8 space-y-1">
+            {/* Mobile search */}
+            <div className="mb-4">
+              <SiteSearch variant="input" />
+            </div>
 
             {/* Services accordion — grouped */}
             <div>
