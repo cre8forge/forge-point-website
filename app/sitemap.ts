@@ -1,31 +1,23 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
+import { SERVICES_DATA } from "@/lib/services-data";
 
 const BASE_URL = "https://cre8forge.com";
 
 const STATIC_ROUTES: MetadataRoute.Sitemap = [
-  { url: BASE_URL,                  priority: 1.0,  changeFrequency: "weekly" },
-  { url: `${BASE_URL}/services`,    priority: 0.9,  changeFrequency: "monthly" },
-  { url: `${BASE_URL}/service-area`,priority: 0.8,  changeFrequency: "monthly" },
-  { url: `${BASE_URL}/estimate`,    priority: 0.9,  changeFrequency: "monthly" },
-  { url: `${BASE_URL}/university`,  priority: 0.8,  changeFrequency: "weekly"  },
-  { url: `${BASE_URL}/faq`,         priority: 0.7,  changeFrequency: "monthly" },
-  { url: `${BASE_URL}/contact`,     priority: 0.8,  changeFrequency: "monthly" },
-];
-
-const SERVICE_SLUGS = [
-  "landscape-design-install",
-  "grounds-maintenance",
-  "fencing",
-  "power-window-washing",
-  "industrial-maintenance",
-  "hoa-commercial-property",
-  "property-management",
+  { url: BASE_URL,                 priority: 1.0, changeFrequency: "weekly"  },
+  { url: `${BASE_URL}/services`,   priority: 0.9, changeFrequency: "monthly" },
+  { url: `${BASE_URL}/estimate`,   priority: 0.9, changeFrequency: "monthly" },
+  { url: `${BASE_URL}/contact`,    priority: 0.8, changeFrequency: "monthly" },
+  { url: `${BASE_URL}/university`, priority: 0.8, changeFrequency: "weekly"  },
+  { url: `${BASE_URL}/faq`,        priority: 0.7, changeFrequency: "monthly" },
+  { url: `${BASE_URL}/privacy`,    priority: 0.3, changeFrequency: "yearly"  },
+  { url: `${BASE_URL}/terms`,      priority: 0.3, changeFrequency: "yearly"  },
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const serviceRoutes: MetadataRoute.Sitemap = SERVICE_SLUGS.map((slug) => ({
-    url:             `${BASE_URL}/services/${slug}`,
+  const serviceRoutes: MetadataRoute.Sitemap = SERVICES_DATA.map((s) => ({
+    url:             `${BASE_URL}/services/${s.slug}`,
     priority:        0.85,
     changeFrequency: "monthly",
   }));

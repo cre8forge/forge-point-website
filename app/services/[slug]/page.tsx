@@ -9,6 +9,7 @@ import { ServiceGallery } from "@/components/sections/ServiceGallery";
 import { ServiceEstimatorCallout } from "@/components/sections/ServiceEstimatorCallout";
 import { ServiceRelated } from "@/components/sections/ServiceRelated";
 import { SERVICES_DATA, getServiceBySlug, getRelatedServices } from "@/lib/services-data";
+import { ServiceViewTracker } from "@/components/analytics/ServiceViewTracker";
 
 export function generateStaticParams() {
   return SERVICES_DATA.map((s) => ({ slug: s.slug }));
@@ -55,6 +56,7 @@ export default async function ServicePage({
   return (
     <>
       <Nav />
+      <ServiceViewTracker name={service.name} slug={service.slug} />
       <main>
         <ServiceHero
           name={service.name}

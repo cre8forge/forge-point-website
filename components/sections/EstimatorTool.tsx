@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
+import { analytics } from "@/lib/analytics";
 
 // ── Types (serialisable from server) ─────────────────────────────
 
@@ -304,7 +305,15 @@ export function EstimatorTool({ categories, settings, initialCategory }: Estimat
 
         {/* CTA */}
         <div className="flex flex-wrap gap-3">
-          <Button href={contactHref} variant="primary">
+          <Button
+            href={contactHref}
+            variant="primary"
+            onClick={() => {
+              if (lineItems.length > 0) {
+                analytics.estimateRequested([...new Set(lineItems.map((i) => i.catName))]);
+              }
+            }}
+          >
             Request a Detailed Quote
           </Button>
           <Button href="tel:+17204191961" variant="secondary">

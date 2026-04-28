@@ -4,6 +4,8 @@ import { useState, useRef, useMemo } from "react";
 import { Upload, X, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { submitContactForm } from "@/app/contact/actions";
+import { analytics, buildEnhancedConversionData } from "@/lib/analytics";
+import { setAdvancedMatching } from "@/components/analytics/MetaPixel";
 
 // ── Service categories (matches estimator category names exactly) ──
 
@@ -139,6 +141,11 @@ export function ContactForm({ initialEstimate }: ContactFormProps) {
       fd.set("estimateData", JSON.stringify(estimate));
     }
 
+    // Capture values before reset
+    const nameVal  = (fd.get("name")  as string) ?? "";
+    const emailVal = (fd.get("email") as string) ?? "";
+    const phoneVal = (fd.get("phone") as string) ?? "";
+
     const result = await submitContactForm(fd);
 
     if (result.success) {
@@ -146,6 +153,18 @@ export function ContactForm({ initialEstimate }: ContactFormProps) {
       form.reset();
       setPhotos([]);
       setSelectedCategories([]);
+
+      // Fire Meta Advanced Matching (hashes PII client-side before sending)
+      const [firstName, ...rest] = nameVal.trim().split(" ");
+      setAdvancedMatching({ email: emailVal, phone: phoneVal, firstName, lastName: rest.join(" ") });
+
+      // Fire analytics + Enhanced Conversions
+      const userData = await buildEnhancedConversionData({ email: emailVal, phone: phoneVal,
+        firstName, lastName: rest.join(" ") });
+      analytics.contactFormSubmitted(!!estimate, selectedCategories.join(", "), {
+        conversionId: process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_ID,
+        userData,
+      });
     } else {
       setStatus("error");
       setErrorMsg(result.error);
