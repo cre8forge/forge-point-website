@@ -8,6 +8,8 @@ import {
 import "./globals.css";
 import { GTMHead, GTMBody } from "@/components/analytics/GTMScript";
 import { CookieBanner } from "@/components/analytics/CookieBanner";
+import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
+import { MetaPixel } from "@/components/analytics/MetaPixel";
 
 const SITE_URL = "https://cre8forge.com";
 const SITE_NAME = "Forge Point Property Services";
@@ -117,6 +119,8 @@ export default function RootLayout({
           }}
         />
         {children}
+        <AnalyticsProvider />
+        <MetaPixel />
         <CookieBanner />
       </body>
     </html>
