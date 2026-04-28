@@ -195,6 +195,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Loading Dock & Bay Cleaning",       description: "Degreasing and pressure washing of loading docks and bays. Removes oil, fuel, and buildup that creates safety hazards." },
       { title: "Concrete Sealing & Degreasing",    description: "Surface degreasing and penetrating sealer application to extend pavement life and improve appearance." },
       { title: "Large-Scale Power Washing & Floor Scrubbing", description: "Warehouse floors, manufacturing interiors, storage yards, and commercial pads. Pressure washing and industrial floor scrubbing to clear oil, debris, and buildup from high-traffic concrete surfaces." },
+      { title: "TPO & Flat Roof Cleaning",         description: "Low-pressure washing of TPO, EPDM, and built-up flat roofs to remove dirt, debris, and standing sediment. Clean surfaces allow for accurate visual inspection of seams, punctures, and membrane defects before they become leaks." },
     ],
     gallery: [
       { id: "1486325212027-8081e485255e", alt: "Clean commercial building exterior and parking facility" },
