@@ -83,7 +83,7 @@ export async function GET(req: NextRequest) {
       results.push({
         type:        "university",
         title:       a.title,
-        description: a.excerpt,
+        description: a.excerpt ?? "",
         href:        `/university/${a.slug}`,
         badge:       a.category?.name ?? "University",
       });
