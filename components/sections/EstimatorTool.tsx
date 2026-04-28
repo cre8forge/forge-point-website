@@ -2,11 +2,16 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/Button";
 import { analytics } from "@/lib/analytics";
+import {
+  ESTIMATOR_TABS,
+  type StaticService,
+} from "@/lib/estimator-data";
 
-// ── Types (serialisable from server) ─────────────────────────────
+// ── Keep exported types for backward compatibility with any importers ─
 
 export interface EstimatorService {
   id:            string;
@@ -15,124 +20,319 @@ export interface EstimatorService {
   description:   string | null;
   override_low:  number | null;
   override_high: number | null;
-  homewyse_material_low:    number | null;
-  homewyse_material_high:   number | null;
-  homewyse_labor_hours_low: number | null;
-  homewyse_labor_hours_high:number | null;
+  homewyse_material_low:     number | null;
+  homewyse_material_high:    number | null;
+  homewyse_labor_hours_low:  number | null;
+  homewyse_labor_hours_high: number | null;
 }
-
 export interface EstimatorCategory {
   id:       string;
   name:     string;
   slug:     string;
   services: EstimatorService[];
 }
-
 export interface PricingSettings {
   MATERIAL_MARKUP:   number;
   LABOR_RATE:        number;
   MARKET_MULTIPLIER: number;
 }
 
-interface EstimatorToolProps {
-  categories:      EstimatorCategory[];
-  settings:        PricingSettings;
-  initialCategory?: string; // slug from ?category= param
-}
-
-// ── Price calc ────────────────────────────────────────────────────
-
-function calcRange(
-  svc: EstimatorService,
-  qty: number,
-  s: PricingSettings
-): { low: number; high: number } {
-  if (qty <= 0) return { low: 0, high: 0 };
-
-  if (svc.override_low !== null && svc.override_high !== null) {
-    return { low: svc.override_low * qty, high: svc.override_high * qty };
-  }
-
-  const matLow  = (svc.homewyse_material_low    ?? 0) * s.MATERIAL_MARKUP;
-  const matHigh = (svc.homewyse_material_high   ?? 0) * s.MATERIAL_MARKUP;
-  const labLow  = (svc.homewyse_labor_hours_low  ?? 0) * s.LABOR_RATE;
-  const labHigh = (svc.homewyse_labor_hours_high ?? 0) * s.LABOR_RATE;
-
-  return {
-    low:  (matLow  + labLow)  * s.MARKET_MULTIPLIER * qty,
-    high: (matHigh + labHigh) * s.MARKET_MULTIPLIER * qty,
-  };
-}
+// ── Helpers ───────────────────────────────────────────────────────
 
 function fmt(n: number): string {
-  return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+  return n.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
 }
 
-// Default qty suggestions per unit type
-function defaultQty(unit: string): number {
-  const u = unit.toLowerCase();
-  if (u.includes("sq ft"))     return 500;
-  if (u.includes("linear ft")) return 100;
-  if (u.includes("1,000 sq"))  return 5;
-  if (u.includes("zone"))      return 4;
-  if (u.includes("window"))    return 10;
-  if (u.includes("yard"))      return 5;
-  return 1;
+function calcRange(svc: StaticService, qty: number): { low: number; high: number } {
+  if (svc.isFree) return { low: 0, high: 0 };
+  const q = svc.isFlat ? 1 : qty;
+  return { low: svc.lowPerUnit * q, high: svc.highPerUnit * q };
 }
 
-// ── Component ─────────────────────────────────────────────────────
+// ── Advisory callout (inline tab version) ────────────────────────
 
-export function EstimatorTool({ categories, settings, initialCategory }: EstimatorToolProps) {
-  const searchParams = useSearchParams();
-  const paramCat = searchParams.get("category") ?? initialCategory ?? "";
+function AdvisoryCalloutTab() {
+  return (
+    <div className="border border-amber/20 bg-[#0D1B2A] p-8 md:p-10">
+      <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-amber mb-3">
+        Forge Point Advisory
+      </p>
+      <h3 className="font-cinzel font-700 text-white text-xl md:text-2xl uppercase tracking-wide mb-4 normal-case">
+        Real Estate Advisory Isn&apos;t Estimated Online
+      </h3>
+      <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-2 max-w-2xl">
+        Buying, selling, or evaluating an investment property isn&apos;t a quantity-times-rate
+        calculation. The value Forge Point Advisory delivers is in the analysis, the market
+        knowledge, and the judgment built from 15 years managing the properties you&apos;re
+        considering.
+      </p>
+      <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-6 max-w-2xl">
+        There&apos;s no form for that. There&apos;s a conversation.
+      </p>
 
-  // Active category slug
-  const [activeCat, setActiveCat] = useState<string>(() => {
-    const match = categories.find((c) => c.slug === paramCat);
-    return match?.slug ?? categories[0]?.slug ?? "";
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-6">
+        {[
+          {
+            title: "Buyer & Seller Representation",
+            body:  "Commission-based. No upfront cost to buyers. Competitive seller rates. Ask us.",
+          },
+          {
+            title: "Investment Acquisition Analysis",
+            body:  "Flat-fee written report. Cap rate, cash-on-cash, deferred maintenance assessment.",
+          },
+          {
+            title: "Portfolio Strategy & 1031 Coordination",
+            body:  "Hourly or flat-fee engagement. Scope defined at first consultation.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="flex items-start gap-3">
+            <span className="text-amber text-[10px] mt-1 flex-shrink-0">◆</span>
+            <div>
+              <p className="font-condensed font-600 text-xs uppercase tracking-wide text-amber mb-1">
+                {item.title}
+              </p>
+              <p className="font-barlow font-300 text-xs text-white/55 leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <Button href="/contact" variant="primary">
+        Schedule a No-Obligation Consultation →
+      </Button>
+
+      <p className="font-barlow font-300 text-[10px] text-white/22 mt-5 leading-relaxed">
+        Aaron R. Dolph · Licensed CO Broker #FA100100755 · Employing Broker: Triumph Real Estate Corporation #ER1325490
+      </p>
+    </div>
+  );
+}
+
+// ── Management callout (inline tab version) ───────────────────────
+
+function ManagementCalloutTab() {
+  return (
+    <div className="border border-amber/15 bg-card p-8 md:p-10">
+      <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-amber mb-3">
+        Property &amp; Portfolio Management
+      </p>
+      <h3 className="font-cinzel font-700 text-white text-xl md:text-2xl uppercase tracking-wide mb-4 normal-case">
+        Management Fees Are Scoped to Your Property
+      </h3>
+      <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-2 max-w-2xl">
+        Management pricing depends on property type, number of units, scope of services, and
+        current condition. A single-family rental is priced differently than a 20-unit
+        multifamily or a commercial warehouse.
+      </p>
+      <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-6 max-w-2xl">
+        The fastest path to an accurate management quote is a 15-minute call. We&apos;ll ask the
+        right questions and give you a real number — not a range that&apos;s useless until you call
+        anyway.
+      </p>
+
+      <div className="space-y-2 mb-6 pl-4 border-l-2 border-amber/30">
+        {[
+          "Single Family Homes: typically 8–12% of monthly rent",
+          "Multifamily & HOA: scoped per unit count and service level",
+          "Commercial & Industrial: scoped per square footage and services",
+        ].map((line) => (
+          <p key={line} className="font-barlow font-300 text-xs text-white/50 leading-relaxed">
+            {line}
+          </p>
+        ))}
+        <p className="font-barlow font-300 text-[10px] text-white/30 leading-relaxed italic pt-1">
+          These are general market ranges. Your actual fee depends on scope, condition, and services included.
+        </p>
+      </div>
+
+      <Link
+        href="/contact"
+        className="font-condensed font-600 text-sm uppercase tracking-widest text-amber hover:text-white transition-colors"
+      >
+        Request a Management Consultation →
+      </Link>
+    </div>
+  );
+}
+
+// ── Estimator row ─────────────────────────────────────────────────
+
+interface RowProps {
+  svc:   StaticService;
+  qty:   number;
+  onQty: (val: number) => void;
+}
+
+function EstimatorRow({ svc, qty, onQty }: RowProps) {
+  const { low, high } = calcRange(svc, qty);
+  const hasQty = qty > 0;
+
+  if (svc.isFree) {
+    return (
+      <div className="bg-card border border-white/8 p-4 flex items-center justify-between gap-4">
+        <div>
+          <p className="font-condensed font-600 text-white text-xs uppercase tracking-wide">
+            {svc.name}
+          </p>
+          <p className="font-barlow font-300 text-[10px] text-muted mt-0.5">{svc.unit}</p>
+        </div>
+        <span className="font-condensed font-600 text-xs text-amber tracking-wide flex-shrink-0">
+          Free
+        </span>
+      </div>
+    );
+  }
+
+  if (svc.isFlat) {
+    return (
+      <div
+        className={cn(
+          "bg-card border p-4 flex items-center justify-between gap-4 transition-all duration-150",
+          hasQty ? "border-orange/50" : "border-white/8 hover:border-white/20"
+        )}
+      >
+        <div className="flex-1 min-w-0">
+          <p className="font-condensed font-600 text-white text-xs uppercase tracking-wide leading-snug">
+            {svc.name}
+          </p>
+          <p className="font-barlow font-300 text-[10px] text-muted mt-0.5">
+            {fmt(svc.lowPerUnit)} – {fmt(svc.highPerUnit)}
+          </p>
+        </div>
+        <button
+          onClick={() => onQty(hasQty ? 0 : 1)}
+          className={cn(
+            "font-condensed font-600 text-[10px] uppercase tracking-wide px-3 py-1.5 border transition-all flex-shrink-0",
+            hasQty
+              ? "bg-orange text-white border-orange"
+              : "bg-transparent text-white/50 border-white/20 hover:border-orange/50 hover:text-white"
+          )}
+        >
+          {hasQty ? "✓ Added" : "Add"}
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={cn(
+        "bg-card border p-4 transition-all duration-150",
+        hasQty ? "border-orange/50" : "border-white/8 hover:border-white/20"
+      )}
+    >
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <p className="font-condensed font-600 text-white text-xs uppercase tracking-wide leading-snug">
+          {svc.name}
+        </p>
+        {hasQty && <span className="text-orange text-[10px] flex-shrink-0 mt-0.5">◆</span>}
+      </div>
+
+      <div className="flex items-center gap-2 bg-navy/60 border border-white/12 px-3 py-2">
+        <input
+          type="number"
+          min="0"
+          placeholder="0"
+          value={qty === 0 ? "" : qty}
+          onChange={(e) => onQty(Math.max(0, parseFloat(e.target.value) || 0))}
+          className="w-full bg-transparent font-barlow text-sm text-white placeholder:text-white/30 outline-none"
+        />
+        <span className="font-condensed text-[10px] text-muted whitespace-nowrap flex-shrink-0">
+          {svc.unit}
+        </span>
+      </div>
+
+      {hasQty && (
+        <p className="font-condensed font-600 text-orange text-xs mt-2 tracking-wide">
+          {fmt(low)} – {fmt(high)}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// ── Main component ────────────────────────────────────────────────
+
+export function EstimatorTool({
+  // Legacy props accepted but unused (DB-driven arch kept for future admin panel)
+  categories: _categories,
+  settings:   _settings,
+  initialCategory,
+}: {
+  categories?:      EstimatorCategory[];
+  settings?:        PricingSettings;
+  initialCategory?: string;
+}) {
+  const searchParams  = useSearchParams();
+  const paramTab      = searchParams.get("tab") ?? searchParams.get("category") ?? initialCategory ?? "";
+
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    const match = ESTIMATOR_TABS.find((t) => t.id === paramTab);
+    return match?.id ?? ESTIMATOR_TABS[2].id; // default to Custom Interiors
   });
 
-  // quantities: { [serviceId]: number }
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
-  // Sync activeCat when URL param changes
   useEffect(() => {
-    const slug = searchParams.get("category");
-    if (slug && categories.find((c) => c.slug === slug)) {
-      setActiveCat(slug);
+    const slug = searchParams.get("tab") ?? searchParams.get("category");
+    if (slug) {
+      const match = ESTIMATOR_TABS.find((t) => t.id === slug);
+      if (match) setActiveTab(match.id);
     }
-  }, [searchParams, categories]);
+  }, [searchParams]);
 
-  const currentCategory = categories.find((c) => c.slug === activeCat);
+  const currentTab = ESTIMATOR_TABS.find((t) => t.id === activeTab);
 
-  // Line items: all services with qty > 0, across all categories
+  function setQty(id: string, val: number) {
+    setQuantities((prev) => ({ ...prev, [id]: Math.max(0, val) }));
+  }
+
+  // All added line items across all tabs
   const lineItems = useMemo(() => {
-    const items: { svc: EstimatorService; qty: number; low: number; high: number; catName: string }[] = [];
-    for (const cat of categories) {
-      for (const svc of cat.services) {
+    const items: {
+      svc:     StaticService;
+      qty:     number;
+      low:     number;
+      high:    number;
+      tabName: string;
+    }[] = [];
+
+    for (const tab of ESTIMATOR_TABS) {
+      if (!tab.services) continue;
+      for (const svc of tab.services) {
         const qty = quantities[svc.id] ?? 0;
         if (qty > 0) {
-          const { low, high } = calcRange(svc, qty, settings);
-          items.push({ svc, qty, low, high, catName: cat.name });
+          const { low, high } = calcRange(svc, qty);
+          items.push({ svc, qty, low, high, tabName: tab.shortLabel });
         }
       }
     }
     return items;
-  }, [quantities, categories, settings]);
+  }, [quantities]);
 
   const total = useMemo(
-    () => lineItems.reduce((acc, i) => ({ low: acc.low + i.low, high: acc.high + i.high }), { low: 0, high: 0 }),
+    () =>
+      lineItems.reduce(
+        (acc, i) => ({ low: acc.low + i.low, high: acc.high + i.high }),
+        { low: 0, high: 0 }
+      ),
     [lineItems]
   );
 
   const contactHref = useMemo(() => {
     if (lineItems.length === 0) return "/contact";
     const payload = {
-      items: lineItems.map(({ svc, qty, low, high, catName }) => ({
+      items: lineItems.map(({ svc, qty, low, high, tabName }) => ({
         name: svc.name,
         qty,
         unit: svc.unit,
-        cat:  catName,
+        cat:  tabName,
         low:  Math.round(low),
         high: Math.round(high),
       })),
@@ -142,185 +342,135 @@ export function EstimatorTool({ categories, settings, initialCategory }: Estimat
     return `/contact?estimate=${encodeURIComponent(JSON.stringify(payload))}`;
   }, [lineItems, total]);
 
-  function setQty(id: string, val: number) {
-    setQuantities((prev) => ({ ...prev, [id]: Math.max(0, val) }));
-  }
-
-  function removeItem(id: string) {
-    setQuantities((prev) => ({ ...prev, [id]: 0 }));
-  }
-
   return (
     <div className="max-w-5xl mx-auto px-6 py-16">
 
-      {/* ── Category tabs ─────────────────────────────────────── */}
-      <div className="mb-10">
+      {/* ── Tab selector ────────────────────────────────────────── */}
+      <div className="mb-8">
         <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-4">
-          Step 1 — Choose a Category
+          Select a Category
         </p>
-
         <div className="flex flex-wrap gap-2">
-          {categories.map((cat) => (
+          {ESTIMATOR_TABS.map((tab) => (
             <button
-              key={cat.slug}
-              onClick={() => setActiveCat(cat.slug)}
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
               className={cn(
                 "font-condensed font-600 text-xs uppercase tracking-wide px-4 py-2 border transition-all duration-150",
-                activeCat === cat.slug
-                  ? "bg-orange text-white border-orange"
+                activeTab === tab.id
+                  ? tab.type === "callout-advisory"
+                    ? "bg-amber text-navy border-amber"
+                    : "bg-orange text-white border-orange"
                   : "bg-transparent text-white/60 border-white/20 hover:border-orange/50 hover:text-white"
               )}
             >
-              {cat.name}
+              {tab.shortLabel}
             </button>
           ))}
         </div>
       </div>
 
-      {/* ── Service cards ──────────────────────────────────────── */}
-      {currentCategory && (
-        <div className="mb-12">
-          <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-4">
-            Step 2 — Enter Quantities
-          </p>
+      {/* ── Tab content ─────────────────────────────────────────── */}
+      {currentTab?.type === "callout-advisory" && <AdvisoryCalloutTab />}
+      {currentTab?.type === "callout-management" && <ManagementCalloutTab />}
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {currentCategory.services.map((svc) => {
-              const qty = quantities[svc.id] ?? 0;
-              const { low, high } = calcRange(svc, qty, settings);
-              const hasQty = qty > 0;
-
-              return (
-                <div
+      {currentTab?.type === "estimator" && currentTab.services && (
+        <>
+          <div className="mb-10">
+            <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-4">
+              Enter Quantities
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {currentTab.services.map((svc) => (
+                <EstimatorRow
                   key={svc.id}
-                  className={cn(
-                    "bg-card border rounded-sm p-5 transition-all duration-150",
-                    hasQty ? "border-orange/50" : "border-white/8 hover:border-white/20"
-                  )}
-                >
-                  <div className="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                      <h3 className="font-condensed font-600 text-white text-sm uppercase tracking-wide leading-snug">
-                        {svc.name}
-                      </h3>
-                      {svc.description && (
-                        <p className="font-barlow font-300 text-muted text-xs mt-1 leading-snug">
-                          {svc.description}
-                        </p>
-                      )}
-                    </div>
-                    {hasQty && (
-                      <span className="text-orange text-xs flex-shrink-0 mt-0.5">◆</span>
-                    )}
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="flex-1 flex items-center gap-2 bg-navy/60 border border-white/12 px-3 py-2">
-                      <input
-                        type="number"
-                        min="0"
-                        placeholder={String(defaultQty(svc.unit))}
-                        value={qty === 0 ? "" : qty}
-                        onChange={(e) => setQty(svc.id, parseFloat(e.target.value) || 0)}
-                        className="w-full bg-transparent font-barlow text-sm text-white placeholder:text-white/30 outline-none"
-                      />
-                      <span className="font-condensed text-xs text-muted whitespace-nowrap flex-shrink-0">
-                        {svc.unit}
-                      </span>
-                    </div>
-                  </div>
-
-                  {hasQty && (
-                    <p className="font-condensed font-600 text-orange text-xs mt-2 tracking-wide">
-                      {fmt(low)} – {fmt(high)}
-                    </p>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* ── Estimate summary ───────────────────────────────────── */}
-      <div className="border border-white/12 rounded-sm p-6 bg-card">
-        <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-5">
-          Step 3 — Your Estimate
-        </p>
-
-        {lineItems.length === 0 ? (
-          <p className="font-barlow font-300 text-muted text-sm">
-            Enter quantities above to see your estimate here.
-          </p>
-        ) : (
-          <>
-            {/* Line items */}
-            <div className="space-y-3 mb-5">
-              {lineItems.map(({ svc, qty, low, high, catName }) => (
-                <div key={svc.id} className="flex items-start justify-between gap-4 text-sm">
-                  <div className="flex-1 min-w-0">
-                    <span className="font-barlow font-300 text-white block truncate">
-                      {svc.name}
-                    </span>
-                    <span className="font-condensed text-xs text-muted">
-                      {qty.toLocaleString()} {svc.unit} · {catName}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3 flex-shrink-0">
-                    <span className="font-condensed font-600 text-white text-xs whitespace-nowrap">
-                      {fmt(low)} – {fmt(high)}
-                    </span>
-                    <button
-                      onClick={() => removeItem(svc.id)}
-                      className="text-white/30 hover:text-white/70 text-xs transition-colors"
-                      aria-label={`Remove ${svc.name}`}
-                    >
-                      ✕
-                    </button>
-                  </div>
-                </div>
+                  svc={svc}
+                  qty={quantities[svc.id] ?? 0}
+                  onQty={(v) => setQty(svc.id, v)}
+                />
               ))}
             </div>
+          </div>
 
-            {/* Divider */}
-            <div className="border-t border-white/12 pt-4 mb-5">
-              <div className="flex items-center justify-between">
-                <span className="font-cinzel font-700 text-white text-sm uppercase tracking-wide">
-                  Total Estimate Range
-                </span>
-                <span className="font-cinzel font-700 text-orange text-base tracking-wide">
-                  {fmt(total.low)} – {fmt(total.high)}
-                </span>
-              </div>
+          {/* ── Summary panel ─────────────────────────────────── */}
+          <div className="border border-white/12 p-6 bg-card">
+            <p className="font-condensed font-600 text-xs uppercase tracking-[0.2em] text-orange mb-5">
+              Your Estimate
+            </p>
+
+            {lineItems.length === 0 ? (
+              <p className="font-barlow font-300 text-muted text-sm">
+                Enter quantities above to see your estimate here.
+              </p>
+            ) : (
+              <>
+                <div className="space-y-3 mb-5">
+                  {lineItems.map(({ svc, qty, low, high, tabName }) => (
+                    <div key={svc.id} className="flex items-start justify-between gap-4 text-sm">
+                      <div className="flex-1 min-w-0">
+                        <span className="font-barlow font-300 text-white block truncate">
+                          {svc.name}
+                        </span>
+                        <span className="font-condensed text-xs text-muted">
+                          {svc.isFlat ? "flat" : `${qty.toLocaleString()} ${svc.unit}`} · {tabName}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3 flex-shrink-0">
+                        <span className="font-condensed font-600 text-white text-xs whitespace-nowrap">
+                          {fmt(low)} – {fmt(high)}
+                        </span>
+                        <button
+                          onClick={() => setQty(svc.id, 0)}
+                          className="text-white/30 hover:text-white/70 text-xs transition-colors"
+                          aria-label={`Remove ${svc.name}`}
+                        >
+                          ✕
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="border-t border-white/12 pt-4 mb-5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-cinzel font-700 text-white text-sm uppercase tracking-wide">
+                      Total Estimate Range
+                    </span>
+                    <span className="font-cinzel font-700 text-orange text-base tracking-wide">
+                      {fmt(total.low)} – {fmt(total.high)}
+                    </span>
+                  </div>
+                </div>
+              </>
+            )}
+
+            <p className="font-barlow font-300 text-muted text-xs leading-relaxed mb-5">
+              Ranges are estimates based on typical Northern Colorado pricing. Final cost depends
+              on site conditions, material selection, and project scope. A site visit is required
+              for firm pricing.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              <Button
+                href={contactHref}
+                variant="primary"
+                onClick={() => {
+                  if (lineItems.length > 0) {
+                    analytics.estimateRequested([
+                      ...new Set(lineItems.map((i) => i.tabName)),
+                    ]);
+                  }
+                }}
+              >
+                Request a Detailed Quote
+              </Button>
+              <Button href="tel:+17204191961" variant="secondary">
+                Call (720) 419-1961
+              </Button>
             </div>
-          </>
-        )}
-
-        {/* Disclaimer */}
-        <p className="font-barlow font-300 text-muted text-xs leading-relaxed mb-5">
-          ℹ Ranges are estimates based on typical Northern Colorado pricing. Final cost
-          depends on site conditions, material selection, and project scope. A site visit
-          is required for firm pricing.
-        </p>
-
-        {/* CTA */}
-        <div className="flex flex-wrap gap-3">
-          <Button
-            href={contactHref}
-            variant="primary"
-            onClick={() => {
-              if (lineItems.length > 0) {
-                analytics.estimateRequested([...new Set(lineItems.map((i) => i.catName))]);
-              }
-            }}
-          >
-            Request a Detailed Quote
-          </Button>
-          <Button href="tel:+17204191961" variant="secondary">
-            Call (720) 419-1961
-          </Button>
-        </div>
-      </div>
+          </div>
+        </>
+      )}
 
     </div>
   );
