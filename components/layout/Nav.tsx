@@ -26,11 +26,11 @@ const SERVICE_GROUPS = [
   {
     label: "Property & Portfolio Mgmt",
     services: [
-      { label: "Commercial & Industrial Mgmt",  href: "/services/property-management" },
-      { label: "Multifamily & HOA Management",  href: "/services/property-management" },
-      { label: "Single Family Home Management", href: "/services/property-management" },
-      { label: "Boots-on-Ground Response",      href: "/services/property-management" },
-      { label: "Maintenance Coordination",      href: "/services/property-management" },
+      { label: "Commercial & Industrial Mgmt",  href: "/services/commercial-industrial-management" },
+      { label: "Multifamily & HOA Management",  href: "/services/multifamily-hoa-management" },
+      { label: "Single Family Home Management", href: "/services/single-family-management" },
+      { label: "Boots-on-Ground Response",      href: "/services/boots-on-ground-response" },
+      { label: "Maintenance Coordination",      href: "/services/maintenance-coordination" },
     ],
   },
   {

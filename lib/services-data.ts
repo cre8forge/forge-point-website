@@ -14,6 +14,13 @@ export interface ServiceGalleryImage {
   alt: string;
 }
 
+export interface ServiceCtaPanel {
+  heading:  string;
+  body:     string;
+  ctaHref:  string;
+  ctaLabel: string;
+}
+
 export interface ServiceData {
   slug:              string;
   name:              string;
@@ -24,6 +31,8 @@ export interface ServiceData {
   overviewHeading:   string;     // H2 with orange left-bar
   overviewBody:      string[];   // paragraphs
   overviewImage:     string;     // Unsplash photo ID
+  pullQuote?:        string;     // blockquote rendered between Includes and Gallery
+  ctaPanel?:         ServiceCtaPanel; // CTA block rendered between pullQuote and Gallery
   includes:          ServiceIncludesItem[];
   gallery:           ServiceGalleryImage[];
   estimatorCategory: string;     // matches EstimateCategory slug
@@ -472,6 +481,219 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     estimatorCategory: "property-management",
     related:  ["grounds-maintenance", "home-safety-checks", "industrial-maintenance"],
+    category: "Management",
+  },
+
+  // ── 7a. Commercial & Industrial Management ──────────────────
+  {
+    slug:     "commercial-industrial-management",
+    name:     "Commercial & Industrial Management",
+    shortName:"Commercial Mgmt",
+    tagline:  "4M+ square feet of commercial and industrial space managed across Northern Colorado and the Denver metro.",
+    metaDescription:
+      "Commercial and industrial property management in Northern Colorado and Denver metro. Office parks, retail centers, warehouses, and industrial facilities managed by a team with over 4 million square feet of real experience.",
+    heroImage:       "1486325212027-8081e485255e",
+    overviewHeading: "Commercial Management Built on Real Scale",
+    overviewBody: [
+      "Most property management companies work in residential and dabble in commercial. Forge Point is different: we've managed over 4 million square feet of commercial and industrial space across Northern Colorado and the Denver metro. That breadth of experience shapes every system, every vendor relationship, and every inspection standard we apply to your portfolio.",
+      "Commercial and industrial properties demand a different level of management rigor than residential — CAM reconciliation, longer lease terms, higher-stakes tenant relationships, and facilities that can't afford to be offline. Our team knows the difference between a landlord's obligation and a tenant's obligation, and we enforce both.",
+      "We manage the full range of commercial and industrial assets: office parks, retail centers, flex space, warehouse and distribution facilities, and mixed-use properties. Single assets and multi-property portfolios both welcome.",
+    ],
+    overviewImage: "1560185893-a55b8a6f7e89",
+    pullQuote: "We've managed over 4 million square feet of commercial and industrial space. That's not a marketing claim — it's the foundation of every decision we make on behalf of your property.",
+    ctaPanel: {
+      heading:  "Managing a Commercial Asset in Northern Colorado?",
+      body:     "Whether it's a single office suite or a multi-building industrial portfolio, let's talk about what professional management actually looks like at scale.",
+      ctaHref:  "/contact",
+      ctaLabel: "Schedule a Consultation",
+    },
+    includes: [
+      { title: "Office & Retail Property Management",  description: "Day-to-day management for office parks, retail centers, and mixed-use properties — tenant communications, vendor coordination, inspection schedules, and landlord compliance." },
+      { title: "Industrial & Warehouse Oversight",     description: "Management for industrial facilities, warehouses, flex space, and manufacturing properties. We understand the operational realities of high-traffic, high-stakes commercial environments." },
+      { title: "Tenant Relations & Communications",    description: "Single point of contact for all tenant needs, lease questions, and maintenance requests. We document everything so there are no disputes at lease renewal." },
+      { title: "Lease Administration Support",         description: "Lease abstract tracking, rent escalation management, CAM reconciliation support, and renewal coordination. Nothing falls through the cracks on complex, long-term leases." },
+      { title: "Vendor & Contractor Management",       description: "We manage all property vendors — HVAC contractors, cleaning crews, landscapers, and trade specialists — so you have one point of accountability across your entire portfolio." },
+      { title: "Preventive Maintenance Programs",      description: "Documented PM schedules for HVAC systems, roofing, parking facilities, and major building systems. Planned maintenance costs a fraction of emergency response." },
+      { title: "Documented Inspections & Reporting",   description: "Routine inspections with photo documentation, written reports, and financial statements delivered on a consistent schedule. Board-ready and lender-ready formats available." },
+      { title: "Emergency & After-Hours Response",     description: "24/7 on-call response for property emergencies — site visits, vendor dispatch, and tenant notification handled immediately when issues arise outside business hours." },
+    ],
+    gallery: [
+      { id: "1486325212027-8081e485255e", alt: "Commercial office park exterior with well-maintained grounds and parking" },
+      { id: "1560518883-ce09059eeffa",   alt: "Industrial warehouse property under professional management" },
+      { id: "1560185893-a55b8a6f7e89",   alt: "Retail center property management in Northern Colorado" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["multifamily-hoa-management", "single-family-management", "industrial-maintenance"],
+    category: "Management",
+  },
+
+  // ── 7b. Multifamily & HOA Management ────────────────────────
+  {
+    slug:     "multifamily-hoa-management",
+    name:     "Multifamily & HOA Management",
+    shortName:"Multifamily Mgmt",
+    tagline:  "Community management for multifamily properties and HOAs — up to 115 units, handled with consistent systems and board-ready reporting.",
+    metaDescription:
+      "Multifamily and HOA management in Northern Colorado and Denver metro. Communities up to 115 units managed with board-ready reporting, responsive vendor coordination, and thorough common area oversight.",
+    heroImage:       "1560185893-a55b8a6f7e89",
+    overviewHeading: "Multifamily & HOA Management — Systems, Reporting, Presence",
+    overviewBody: [
+      "Multifamily communities and HOAs don't run on good intentions — they run on consistent systems, clear communication, and someone who shows up. Forge Point has managed multifamily portfolios of up to 115 tenants and HOA communities with active boards that expect documentation, responsiveness, and professional vendor management.",
+      "HOA boards deal with a rotating cast of well-meaning volunteers who inherit whatever the last board set up — or didn't. We bring standardized systems, written vendor contracts, documented inspection protocols, and financial reporting that makes board transitions manageable and board meetings productive.",
+      "For multifamily owners, our approach is equally structured: every tenant gets a single point of contact, every maintenance request is tracked and resolved, and every owner gets consistent financial reporting that shows exactly how their asset is performing.",
+    ],
+    overviewImage: "1486325212027-8081e485255e",
+    pullQuote: "HOA boards and multifamily owners deserve reporting that reads like a business — not a list of complaints. We deliver the documentation, the transparency, and the accountability that professional management requires.",
+    ctaPanel: {
+      heading:  "HOA Board or Multifamily Owner?",
+      body:     "Let's talk about what a management transition looks like, what documentation we deliver, and how we handle the vendor relationships that have been giving your board headaches.",
+      ctaHref:  "/contact",
+      ctaLabel: "Schedule a Consultation",
+    },
+    includes: [
+      { title: "Multifamily Community Management",  description: "Full management for apartment communities and multifamily properties — tenant relations, maintenance oversight, and consistent financial reporting." },
+      { title: "HOA Common Area Oversight",         description: "Grounds, common areas, walkways, and amenity spaces maintained to board standards with photographic reporting after every service." },
+      { title: "Board Reporting & Documentation",   description: "Written reports, photo documentation, and financial summaries prepared for HOA boards and multifamily owners on a consistent, predictable schedule." },
+      { title: "Tenant & Resident Communications",  description: "Single point of contact for all resident needs and community communications. We track every request, every resolution, and every interaction." },
+      { title: "Vendor Coordination & Oversight",   description: "We manage all community vendors — landscapers, cleaning crews, irrigation specialists, and trade contractors — under written service agreements with clear scopes." },
+      { title: "Move-In / Move-Out Management",     description: "Documented move-in and move-out inspections with photos, written condition reports, and coordinated turnover preparation between tenants." },
+      { title: "Seasonal Enhancement Planning",     description: "Annual and perennial plantings, mulch refresh, seasonal color rotations, and exterior improvements timed to your community's standards and annual budget." },
+      { title: "Emergency Response",                description: "On-call response for after-hours property and community emergencies. Site visits, vendor dispatch, and resident notification handled promptly." },
+    ],
+    gallery: [
+      { id: "1560185893-a55b8a6f7e89",   alt: "Multifamily apartment community with well-maintained grounds and entry" },
+      { id: "1486325212027-8081e485255e", alt: "HOA common area maintained to community standards" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Residential community landscaping managed by Forge Point" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["commercial-industrial-management", "single-family-management", "grounds-maintenance"],
+    category: "Management",
+  },
+
+  // ── 7c. Single Family Home Management ────────────────────────
+  {
+    slug:     "single-family-management",
+    name:     "Single Family Home Management",
+    shortName:"Single Family Mgmt",
+    tagline:  "Personalized management for individual rental homes — a dedicated contact who knows your property, your tenants, and your preferences.",
+    metaDescription:
+      "Single family home management in Northern Colorado and Denver metro. Dedicated contact, documented inspections, maintenance coordination, and tenant relations for individual rental homes and small portfolios.",
+    heroImage:       "1560518883-ce09059eeffa",
+    overviewHeading: "Single Family Management — Personal, Not Transactional",
+    overviewBody: [
+      "Single family rental properties deserve better than a work order queue and a management company that treats them like an afterthought. Forge Point provides genuinely personalized management for individual rental homes and small portfolios — each property gets a dedicated point of contact who knows the address, the tenant history, the quirks of the mechanicals, and the owner's preferences.",
+      "We handle the full scope of single family management: tenant communication, maintenance coordination, documented inspections, and consistent financial reporting. Owners who live out of state or are simply too busy to manage day-to-day get a true partner — not a transaction processor.",
+      "Our management model means our incentives align with yours: a well-maintained, fully-tenanted property that generates reliable income and holds its value.",
+    ],
+    overviewImage: "1558618047-6e3b4b1ae965",
+    pullQuote: "Your rental home isn't a line item. It's an asset — and it deserves a manager who treats it like one.",
+    ctaPanel: {
+      heading:  "Own a Rental Home in Northern Colorado?",
+      body:     "Single family management is where most companies cut corners. Let's talk about what a management relationship that actually protects your asset looks like.",
+      ctaHref:  "/contact",
+      ctaLabel: "Schedule a Consultation",
+    },
+    includes: [
+      { title: "Dedicated Property Contact",         description: "One person who knows your property, your tenants, and your preferences — not a call center, not a rotating roster of assistants." },
+      { title: "Tenant Communication & Relations",   description: "All tenant communications handled on your behalf. We maintain a complete record of every interaction so you're never in the dark on your own property." },
+      { title: "Routine Inspections",                description: "Scheduled interior and exterior inspections with photo documentation — completed quarterly or semi-annually with written reports delivered to the owner." },
+      { title: "Maintenance Coordination",           description: "24/7 maintenance request intake, vendor dispatch, and resolution follow-up. We use vetted local contractors, not whoever is available that day." },
+      { title: "Move-In / Move-Out Documentation",   description: "Thorough move-in and move-out inspections with timestamped photo records. Clear documentation protects your deposit and prevents disputes." },
+      { title: "Financial Reporting",                description: "Monthly income and expense statements delivered consistently. We give you clean, clear numbers — not a black box." },
+      { title: "Compliance & Habitability Oversight",description: "We track and flag code compliance requirements, habitability standards, and local rental licensing requirements so you stay legally protected." },
+      { title: "Vendor & Contractor Oversight",      description: "We manage trades, vendors, and service calls on your behalf — with written scopes, documented completion, and no padded invoices." },
+    ],
+    gallery: [
+      { id: "1560518883-ce09059eeffa",   alt: "Single family rental home with well-maintained curb appeal" },
+      { id: "1558618047-6e3b4b1ae965",   alt: "Residential rental property managed by Forge Point — Northern Colorado" },
+      { id: "1560185893-a55b8a6f7e89",   alt: "Single family home exterior inspection and documentation" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["boots-on-ground-response", "maintenance-coordination", "investment-property-rehab"],
+    category: "Management",
+  },
+
+  // ── 7d. Boots-on-Ground Response ─────────────────────────────
+  {
+    slug:     "boots-on-ground-response",
+    name:     "Boots-on-Ground Response",
+    shortName:"Boots on Ground",
+    tagline:  "Keep your existing property manager — add Forge Point as your trusted local 24/7 response partner.",
+    metaDescription:
+      "On-call boots-on-ground property response in Northern Colorado and Denver metro. Emergency site visits, vendor dispatch, and physical property presence for remote owners and managers who need a local partner.",
+    heroImage:       "1504307651254-35680f356dbe",
+    overviewHeading: "Local Presence When Your Manager Can't Get There",
+    overviewBody: [
+      "Remote property ownership has a permanent blind spot: your property manager isn't physically at your property. When an emergency happens — a burst pipe, a tenant lockout, storm damage, a security concern — someone needs to get eyes on it fast. If your management company is 45 minutes away or operating off an answering service, that gap has a real cost.",
+      "Forge Point's boots-on-ground response service fills that gap without replacing your existing management relationship. Keep your current property manager. Add Forge Point as your local on-call response partner — the person who actually drives to the property, assesses the situation, coordinates vendors, and reports back to you and your manager with photos and documentation.",
+      "Our model is simple: a monthly retainer covers program availability, and per-response pricing applies when we're dispatched. No long-term management contract required. Cancel any time.",
+    ],
+    overviewImage: "1558981403-c5f9899a28bc",
+    pullQuote: "Physical presence is the one thing remote management can't replicate. We're the local eyes, hands, and judgment your property needs when something actually happens.",
+    ctaPanel: {
+      heading:  "Remote Owner or Out-of-Area Manager?",
+      body:     "Add Forge Point as your local response partner without changing your existing management relationship. Monthly retainer plus per-response pricing — no long-term contract.",
+      ctaHref:  "/contact",
+      ctaLabel: "Ask About the Program",
+    },
+    includes: [
+      { title: "24/7 Emergency Site Response",          description: "We drive to your property when something happens — burst pipes, storm damage, security concerns, or any situation that requires physical presence to assess and manage." },
+      { title: "Vendor Dispatch & Coordination",        description: "We have vetted relationships with plumbers, electricians, roofers, and general trades across Northern Colorado. When something breaks, we dispatch and follow through to resolution." },
+      { title: "Property Condition Documentation",      description: "Every site visit is documented with timestamped photos and a written report delivered to the owner and primary manager within hours of the visit." },
+      { title: "Owner & Manager Notification",          description: "We communicate clearly and promptly to both the property owner and the primary management contact — so everyone has the same information at the same time." },
+      { title: "Seasonal & Storm Damage Assessment",    description: "After significant weather events, we drive the property, document any damage, and coordinate emergency repairs before small problems become large ones." },
+      { title: "Utility & Access Coordination",         description: "We serve as the local access contact for utility companies, inspectors, insurance adjusters, and other parties who need physical access to the property." },
+      { title: "Monthly Retainer + Per-Response Pricing", description: "A flat monthly retainer covers program availability and periodic check-ins. Per-response pricing applies when we're dispatched. No management contract, no long-term commitment." },
+    ],
+    gallery: [
+      { id: "1504307651254-35680f356dbe", alt: "Property inspection and emergency response site visit in Northern Colorado" },
+      { id: "1558981403-c5f9899a28bc",   alt: "On-site property assessment and documentation" },
+      { id: "1560518883-ce09059eeffa",   alt: "Property exterior assessment after storm damage" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["single-family-management", "maintenance-coordination", "home-safety-checks"],
+    category: "Management",
+  },
+
+  // ── 7e. Maintenance Coordination ─────────────────────────────
+  {
+    slug:     "maintenance-coordination",
+    name:     "Maintenance Coordination",
+    shortName:"Maintenance Coord.",
+    tagline:  "24/7 maintenance intake, vendor dispatch, and resolution follow-up — so issues get resolved, not queued.",
+    metaDescription:
+      "Property maintenance coordination in Northern Colorado and Denver metro. 24/7 request intake, vendor dispatch, vetted contractor network, and resolution tracking for residential and commercial properties.",
+    heroImage:       "1558981403-c5f9899a28bc",
+    overviewHeading: "Maintenance Coordination — From Request to Resolution",
+    overviewBody: [
+      "The most common failure point in property management isn't strategy — it's maintenance response. A tenant submits a request, and it sits in a queue for 72 hours. A contractor quotes the job, and no one follows up to confirm the work was done. A small leak becomes a large repair because no one was watching.",
+      "Forge Point's maintenance coordination service covers the full cycle: 24/7 request intake, priority triage, vetted contractor dispatch, work order tracking, resolution verification, and documentation delivered to the owner. Nothing falls into a black box.",
+      "We maintain active relationships with licensed contractors across all trades in Northern Colorado — plumbing, electrical, HVAC, roofing, general construction, and grounds. When a request comes in, we dispatch someone who actually shows up and does the work — not whoever is first on a generic vendor list.",
+    ],
+    overviewImage: "1560518883-ce09059eeffa",
+    pullQuote: "A 48-hour response time on a maintenance request isn't acceptable. We maintain vetted relationships with contractors across all trades so problems get resolved — not queued.",
+    ctaPanel: {
+      heading:  "Maintenance Response Letting You Down?",
+      body:     "Whether you need a complete maintenance coordination program or just reliable vendor dispatch for your existing management, we can build a program around your needs.",
+      ctaHref:  "/contact",
+      ctaLabel: "Talk to Us",
+    },
+    includes: [
+      { title: "24/7 Maintenance Request Intake",    description: "Tenants and owners can submit maintenance requests at any time through multiple channels. After-hours emergencies are triaged and dispatched immediately." },
+      { title: "Emergency vs. Routine Triage",       description: "We distinguish between genuine emergencies that need same-day response and routine requests that can be scheduled — so contractors' time is used well and tenants aren't left waiting." },
+      { title: "Vetted Contractor Network",          description: "We use licensed, insured contractors we've worked with and verified across all trades — not whoever answers the phone first. Every contractor in our network has earned their place." },
+      { title: "Vendor Dispatch & Scheduling",       description: "We contact the contractor, confirm availability, schedule the work, and communicate the appointment to the tenant. You don't coordinate any of it." },
+      { title: "Resolution Follow-Up & Verification",description: "After work is completed, we follow up with the tenant to confirm the issue is resolved. If it isn't, we go back — not to you for direction, but back to the contractor." },
+      { title: "Maintenance Log & Documentation",    description: "Every request, dispatch, completion, and cost is logged and available in your owner reporting. A clear maintenance history protects you at lease renewal and at sale." },
+      { title: "Owner Reporting",                    description: "Monthly maintenance summary delivered with your financial statements — completed work, open items, costs, and any recurring issues that may require capital attention." },
+    ],
+    gallery: [
+      { id: "1558981403-c5f9899a28bc",   alt: "Property maintenance coordination and inspection in Northern Colorado" },
+      { id: "1504307651254-35680f356dbe", alt: "Contractor on-site for maintenance work at a managed property" },
+      { id: "1560518883-ce09059eeffa",   alt: "Property exterior maintenance and condition documentation" },
+    ],
+    estimatorCategory: "property-management",
+    related:  ["boots-on-ground-response", "single-family-management", "home-safety-checks"],
     category: "Management",
   },
 

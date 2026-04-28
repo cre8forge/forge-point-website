@@ -85,27 +85,27 @@ const CATEGORIES: Category[] = [
       {
         label:       "Commercial & Industrial Management",
         description: "Full-service management for office parks, retail centers, warehouses, and industrial facilities. We've managed 4M+ sq ft of commercial space — we know what owners, tenants, and inspectors expect at scale.",
-        href:        "/services/property-management",
+        href:        "/services/commercial-industrial-management",
       },
       {
         label:       "Multifamily & HOA Management",
         description: "Community management for multifamily properties and HOA communities up to 115 tenants. Board-ready reporting, consistent systems, and responsive vendor coordination.",
-        href:        "/services/property-management",
+        href:        "/services/multifamily-hoa-management",
       },
       {
         label:       "Single Family Home Management",
         description: "Personalized management for individual rental homes. A dedicated point of contact who knows the property, the tenants, and the owner's preferences — not just a work order queue.",
-        href:        "/services/property-management",
+        href:        "/services/single-family-management",
       },
       {
         label:       "On-Call Boots-on-Ground Response",
         description: "Keep your existing management contract. Add Forge Point as your local 24/7 response partner for site visits, emergency coordination, and physical presence when your primary manager can't be there.",
-        href:        "/services/property-management",
+        href:        "/services/boots-on-ground-response",
       },
       {
         label:       "Maintenance Coordination",
         description: "24/7 maintenance intake, vendor dispatch, and resolution follow-up. Vetted relationships across all trades — issues are addressed promptly, not put on a list.",
-        href:        "/services/property-management",
+        href:        "/services/maintenance-coordination",
       },
     ],
   },

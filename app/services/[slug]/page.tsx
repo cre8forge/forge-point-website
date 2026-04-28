@@ -70,6 +70,42 @@ export default async function ServicePage({
           overviewImage={service.overviewImage}
         />
         <ServiceIncludes items={service.includes} />
+
+        {/* Pull quote — rendered when present */}
+        {service.pullQuote && (
+          <section className="bg-[#0D1B2A] px-6 py-14 border-y border-white/8">
+            <div className="max-w-4xl mx-auto">
+              <blockquote className="border-l-4 border-orange pl-6">
+                <p className="font-barlow font-300 text-white/80 text-lg md:text-xl leading-relaxed italic">
+                  &ldquo;{service.pullQuote}&rdquo;
+                </p>
+              </blockquote>
+            </div>
+          </section>
+        )}
+
+        {/* Mid-page CTA panel — rendered when present */}
+        {service.ctaPanel && (
+          <section className="bg-navy px-6 py-14 border-b border-white/8">
+            <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8">
+              <div className="flex-1">
+                <h3 className="font-cinzel font-700 text-white text-xl mb-3 normal-case">
+                  {service.ctaPanel.heading}
+                </h3>
+                <p className="font-barlow font-300 text-white/60 text-base leading-relaxed">
+                  {service.ctaPanel.body}
+                </p>
+              </div>
+              <a
+                href={service.ctaPanel.ctaHref}
+                className="flex-shrink-0 bg-orange hover:bg-orange/90 text-white font-condensed font-700 text-sm uppercase tracking-widest px-8 py-4 transition-colors"
+              >
+                {service.ctaPanel.ctaLabel}
+              </a>
+            </div>
+          </section>
+        )}
+
         <ServiceGallery images={service.gallery} />
         <ServiceEstimatorCallout
           serviceName={service.name}

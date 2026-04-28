@@ -5,7 +5,6 @@ import { prisma } from "@/lib/prisma";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
-import { ArticleCard } from "@/components/university/ArticleCard";
 
 export const metadata: Metadata = {
   title: "Forge Point University",
@@ -15,7 +14,46 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600;
 
-// ── Static "Start Here" articles (shown even before DB articles exist) ──
+// ── Canonical category slugs (filter out legacy/old categories) ───
+
+const CANONICAL_SLUGS = [
+  "investment-strategy",
+  "property-management",
+  "renovation-rehab",
+  "outdoor-living",
+  "property-maintenance",
+  "lawn-turf",
+  "hoa-commercial",
+  "colorado-living",
+];
+
+// ── Static featured articles ──────────────────────────────────────
+
+const STATIC_FEATURED = [
+  {
+    title:      "The BRRRR Strategy in Northern Colorado: A Complete Field Guide",
+    excerpt:    "Buy, Rehab, Rent, Refinance, Repeat — how the strategy actually works in Colorado's Front Range market, what it costs, and where investors get it wrong.",
+    coverImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
+    label:      "Investment Strategy",
+    href:       "/university/investment-strategy/brrrr-strategy-northern-colorado",
+  },
+  {
+    title:      "The Boots-on-Ground Model: What Real Property Management Actually Looks Like",
+    excerpt:    "Administrative management and operational management are not the same thing. Here's what it means to have a team physically at your property — and why it matters.",
+    coverImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
+    label:      "Property Management",
+    href:       "/university/property-management/boots-on-ground-property-management",
+  },
+  {
+    title:      "Which Renovations Actually Pay Back in Northern Colorado? A Landlord's Guide",
+    excerpt:    "Not every renovation dollar comes back at resale or lease-up. Here's what Northern Colorado buyers and tenants actually pay for — and what's vanity spending.",
+    coverImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80",
+    label:      "Renovation & Rehab ROI",
+    href:       "/university/renovation-rehab/renovations-that-pay-back-northern-colorado",
+  },
+];
+
+// ── Start Here articles ───────────────────────────────────────────
 
 const START_HERE = [
   {
@@ -35,49 +73,16 @@ const START_HERE = [
   },
 ];
 
-// ── Static featured fallback (shown when DB has no featured articles) ──
-
-const STATIC_FEATURED = [
-  {
-    title:      "The BRRRR Strategy in Northern Colorado: A Complete Field Guide",
-    excerpt:    "Buy, Rehab, Rent, Refinance, Repeat — how the strategy actually works in Colorado's Front Range market, what it costs, and where investors get it wrong.",
-    coverImage: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
-    label:      "Investment Strategy",
-    href:       "/university/investment-strategy/brrrr-strategy-northern-colorado",
-  },
-  {
-    title:      "The Boots-on-Ground Model: What Real Property Management Actually Looks Like",
-    excerpt:    "Administrative management and operational management are not the same thing. Here is what physical presence on your property actually changes.",
-    coverImage: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80",
-    label:      "Property Management",
-    href:       "/university/property-management/boots-on-ground-property-management",
-  },
-  {
-    title:      "Which Renovations Actually Pay Back in Northern Colorado? A Landlord's Guide",
-    excerpt:    "Not every renovation dollar comes back at resale or lease-up. Here's what Northern Colorado buyers and tenants actually pay for — and what's vanity spending.",
-    coverImage: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80",
-    label:      "Renovation & Rehab ROI",
-    href:       "/university/renovation-rehab/renovations-that-pay-back-northern-colorado",
-  },
-];
+// ── Page ──────────────────────────────────────────────────────────
 
 export default async function UniversityHubPage() {
-  const [categories, featured] = await Promise.all([
-    prisma.universityCategory.findMany({
-      orderBy: { sortOrder: "asc" },
-      include: {
-        _count: { select: { articles: { where: { status: "PUBLISHED" } } } },
-      },
-    }),
-    prisma.universityArticle.findMany({
-      where: { status: "PUBLISHED", featured: true },
-      orderBy: { publishedAt: "desc" },
-      take: 3,
-      include: { category: { select: { slug: true } } },
-    }),
-  ]);
-
-  const showDbFeatured = featured.length >= 3;
+  const categories = await prisma.universityCategory.findMany({
+    where:   { slug: { in: CANONICAL_SLUGS } },
+    orderBy: { sortOrder: "asc" },
+    include: {
+      _count: { select: { articles: { where: { status: "PUBLISHED" } } } },
+    },
+  });
 
   return (
     <>
@@ -107,56 +112,39 @@ export default async function UniversityHubPage() {
             <h2 className="font-cinzel font-700 text-white text-xs uppercase tracking-widest mb-8 border-l-2 border-orange pl-4">
               Featured Articles
             </h2>
-
-            {showDbFeatured ? (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {featured.map((article) => (
-                  <ArticleCard
-                    key={article.id}
-                    title={article.title}
-                    excerpt={article.excerpt}
-                    slug={article.slug}
-                    categorySlug={article.category.slug}
-                    coverImage={article.coverImage}
-                    featured
-                  />
-                ))}
-              </div>
-            ) : (
-              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {STATIC_FEATURED.map((article) => (
-                  <Link
-                    key={article.href}
-                    href={article.href}
-                    className="group bg-card border border-white/8 hover:border-orange/30 transition-all duration-200 overflow-hidden flex flex-col hover:-translate-y-1"
-                  >
-                    <div className="relative aspect-[16/9] overflow-hidden bg-navy/50">
-                      <Image
-                        src={article.coverImage}
-                        alt={article.title}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, 33vw"
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <p className="font-condensed font-600 text-xs uppercase tracking-[0.15em] text-orange mb-2">
-                        {article.label}
-                      </p>
-                      <h3 className="font-cinzel font-700 text-white text-base leading-snug mb-3 normal-case group-hover:text-amber transition-colors">
-                        {article.title}
-                      </h3>
-                      <p className="font-barlow font-300 text-sm text-muted leading-relaxed flex-1 line-clamp-3">
-                        {article.excerpt}
-                      </p>
-                      <p className="font-condensed text-xs uppercase tracking-wide text-orange mt-4 group-hover:text-amber transition-colors">
-                        Read Article →
-                      </p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {STATIC_FEATURED.map((article) => (
+                <Link
+                  key={article.href}
+                  href={article.href}
+                  className="group bg-card border border-white/8 hover:border-orange/30 transition-all duration-200 overflow-hidden flex flex-col hover:-translate-y-1"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden bg-navy/50">
+                    <Image
+                      src={article.coverImage}
+                      alt={article.title}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 640px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <p className="font-condensed font-600 text-xs uppercase tracking-[0.15em] text-orange mb-2">
+                      {article.label}
+                    </p>
+                    <h3 className="font-cinzel font-700 text-white text-base leading-snug mb-3 normal-case group-hover:text-amber transition-colors">
+                      {article.title}
+                    </h3>
+                    <p className="font-barlow font-300 text-sm text-muted leading-relaxed flex-1 line-clamp-3">
+                      {article.excerpt}
+                    </p>
+                    <p className="font-condensed text-xs uppercase tracking-wide text-orange mt-4 group-hover:text-amber transition-colors">
+                      Read Article →
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 

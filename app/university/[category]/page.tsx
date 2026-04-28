@@ -33,7 +33,7 @@ export default async function CategoryPage({ params }: Props) {
     include: {
       articles: {
         where: { status: "PUBLISHED" },
-        orderBy: [{ featured: "desc" }, { publishedAt: "desc" }],
+        orderBy: [{ featured: "desc" }, { sortOrder: "asc" }, { publishedAt: "desc" }],
       },
     },
   });
