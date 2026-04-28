@@ -139,43 +139,53 @@ export const HOW_IT_WORKS = [
     number: "01",
     title: "Request Your Estimate",
     description:
-      "Tell us about your property and the work you need. Use our online estimator or call us directly. We respond within 24 hours.",
+      "Tell us about your property and what you need. Use our online estimator or call us directly. We respond within 24 hours — not a week.",
   },
   {
     number: "02",
     title: "We Plan & Schedule",
     description:
-      "We visit your property, assess the scope, provide a detailed written quote, and lock in a schedule that works for you.",
+      "We visit your property, assess the scope, provide a clear written quote, and lock in a schedule that works for you. No vague ranges. No surprise add-ons.",
   },
   {
     number: "03",
     title: "You Enjoy the Results",
     description:
-      "Our crew shows up on time, delivers on budget, and leaves your property looking better than you imagined.",
+      "Our crew shows up on time, delivers on budget, and leaves your property better than we found it. That's the standard — every job, every time.",
   },
 ] as const;
 
 // ── Why Forge Point ───────────────────────────────────────────────
 export const DIFFERENTIATORS = [
   {
-    title: "Bonded & Insured",
+    title: "Licensed & Experienced",
     description:
-      "We carry full general liability and workers' compensation on every job. Your property and investment are fully protected.",
+      "Aaron Dolph is a licensed Colorado real estate broker and former commercial property manager with 15 years and over 4 million square feet of experience. This is not a startup crew — this is a seasoned operator.",
+  },
+  {
+    title: "One Company, Full Scope",
+    description:
+      "Most property service companies do one thing. Forge Point does everything — advisory, management, renovation, grounds, and estate services. One relationship. One point of accountability.",
   },
   {
     title: "Northern Colorado Specialists",
     description:
-      "We know Northern Colorado — the soil, the climate, HOA requirements, and local codes. No learning curve on your dime.",
+      "We know the Front Range — the soil, the climate, the HOA covenants, and the local codes. We've worked in this market for years. No learning curve on your property.",
   },
   {
     title: "Transparent Pricing",
     description:
-      "We give you a clear range estimate before scheduling a visit. No surprise invoices. No hidden fees. Ever.",
+      "An honest range before we visit. No lowball estimates. No surprise invoices. Every quote scoped in writing before a dollar is spent.",
   },
   {
-    title: "HOA & Commercial Expertise",
+    title: "Bonded & Insured",
     description:
-      "Trusted by HOA boards and commercial property managers across Northern Colorado for reliable, professional service.",
+      "Full general liability and workers' compensation on every job. Your property and your investment are fully protected — not just on paper, but in practice.",
+  },
+  {
+    title: "The Same Crew Every Time",
+    description:
+      "You get to know the people on your property. They get to know your property. That consistency is not an accident — it is how we operate.",
   },
 ] as const;
 
@@ -191,8 +201,8 @@ export const SHOWCASE_PROJECTS = [
       alt: "Before: overgrown yard needing landscape design",
     },
     after: {
-      id: "1416879595882-3373a0480b5b",
-      alt: "After: professionally landscaped garden",
+      id: "1558618666-fcd25c85cd64",
+      alt: "After: professionally landscaped yard and grounds",
     },
   },
   {

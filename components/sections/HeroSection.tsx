@@ -8,8 +8,8 @@ export function HeroSection() {
 
       {/* Background image — high-end modern property */}
       <Image
-        src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=1920&q=85&auto=format&fit=crop"
-        alt="High-end property transformation by Forge Point — Northern Colorado contractors"
+        src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1920&q=85"
+        alt="Clean Colorado-style home exterior representing Forge Point property services"
         fill
         priority
         className="object-cover object-center"

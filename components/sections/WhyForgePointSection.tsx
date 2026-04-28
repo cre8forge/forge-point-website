@@ -8,8 +8,8 @@ export function WhyForgePointSection() {
 
       {/* Background image */}
       <Image
-        src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=80&auto=format&fit=crop"
-        alt="Professionally landscaped garden in Northern Colorado"
+        src="https://images.unsplash.com/photo-1504307651254-35680f356dbe?auto=format&fit=crop&w=1600&q=80"
+        alt="Forge Point crew at work on a renovation project in Northern Colorado"
         fill
         className="object-cover object-center"
         sizes="100vw"
@@ -21,11 +21,11 @@ export function WhyForgePointSection() {
         <SectionHeader
           eyebrow="Our Commitment"
           heading="Why Forge Point"
-          subheading="We don't just maintain properties — we protect your investment."
+          subheading="Fifteen years of managing, building, and maintaining properties across Northern Colorado. Here is what that experience means for you."
           className="mb-16"
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {DIFFERENTIATORS.map((item) => (
             <div
               key={item.title}

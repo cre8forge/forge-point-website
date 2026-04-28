@@ -13,13 +13,13 @@ export function CtaBanner() {
         </div>
 
         <h2 className="font-cinzel font-900 text-white text-3xl md:text-4xl lg:text-5xl uppercase tracking-[0.15em] mb-5 leading-tight">
-          Ready to Transform
+          Ready to Elevate
           <br />
           Your Property?
         </h2>
 
         <p className="font-cormorant italic font-300 text-white/90 text-xl md:text-2xl mb-10 leading-relaxed">
-          Get a free estimate — no obligation, no pressure.
+          One conversation covers everything — advisory, management, renovation, grounds, or concierge. Get a free estimate with no obligation and no pressure.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

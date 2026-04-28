@@ -239,7 +239,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Design through completion — turnkey outdoor transformations for Northern Colorado properties.",
     metaDescription:
       "Professional landscape design and installation serving Erie, Longmont, Boulder, and Northern Colorado. Custom sod, plantings, irrigation, hardscaping, and grading.",
-    heroImage:       "1416879595882-3373a0480b5b",
+    heroImage:       "1558618666-fcd25c85cd64",
     overviewHeading: "Full-Service Landscape Design & Installation",
     overviewBody: [
       "A great landscape isn't just grass and plants — it's a thoughtful system of design, drainage, soil, and materials working together. Forge Point handles every phase from initial site assessment and grading through final planting and irrigation commissioning.",
@@ -258,7 +258,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Outdoor Lighting",                  description: "Low-voltage landscape lighting to highlight plantings, illuminate pathways, and add security after dark." },
     ],
     gallery: [
-      { id: "1416879595882-3373a0480b5b", alt: "Professionally landscaped backyard with lush plantings" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Lush landscaped yard after professional design and installation" },
       { id: "1558618047-6e3b4b1ae965",   alt: "Garden bed with native Colorado plantings and stone edging" },
       { id: "1517022812379-23952977f6e7", alt: "Newly installed sod lawn with clean edging" },
     ],
@@ -275,7 +275,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Consistent, reliable care that keeps your property looking its best — week after week.",
     metaDescription:
       "Professional grounds maintenance for residential, HOA, and commercial properties in Northern Colorado. Weekly mowing, edging, fertilization, seasonal clean-ups, and weed control.",
-    heroImage:       "1558618666-fcd25c85cd64",
+    heroImage:       "1416879595882-3373a0480b5b",
     overviewHeading: "Professional Grounds Maintenance You Can Count On",
     overviewBody: [
       "A well-maintained property doesn't happen by accident — it takes consistent, skilled care on a reliable schedule. Forge Point provides weekly and bi-weekly grounds maintenance programs for homeowners, HOAs, and commercial properties across Northern Colorado.",
@@ -293,9 +293,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Spring & Fall Clean-Ups",    description: "Full seasonal service: leaf removal, bed clean-out, edge re-definition, and debris hauling." },
     ],
     gallery: [
-      { id: "1558618666-fcd25c85cd64",   alt: "Freshly mowed and edged residential lawn" },
+      { id: "1416879595882-3373a0480b5b", alt: "Freshly mowed and edged residential lawn" },
       { id: "1491553895291-0a57f6a0b2ef", alt: "Clean, well-maintained grounds of a commercial property" },
-      { id: "1416879595882-3373a0480b5b", alt: "Manicured landscape after seasonal clean-up" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Manicured landscape after seasonal clean-up" },
     ],
     estimatorCategory: "grounds-maintenance",
     related:  ["landscape-design-install", "power-window-washing", "hoa-commercial-property"],
@@ -310,7 +310,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Supply & install for residential, HOA, and commercial properties — built to last Colorado's seasons.",
     metaDescription:
       "Professional fence installation in Northern Colorado. Wood, vinyl, chain link, and ornamental iron fencing for residential, HOA, and commercial properties. Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1570129477492-61a28b2f9e3f",
+    heroImage:       "1558618047-3c8c76ca7d04",
     overviewHeading: "Fencing Built for Northern Colorado",
     overviewBody: [
       "Colorado's freeze-thaw cycles, high wind, and intense UV exposure are hard on fences that weren't built for the region. Forge Point installs fencing with the hardware, post depth, and materials selection that our climate demands — not what works in California or Texas.",
@@ -327,7 +327,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Repairs & Board Replacement",description: "Leaning posts, broken boards, damaged gates, and full section replacement. We repair all fence types." },
     ],
     gallery: [
-      { id: "1570129477492-61a28b2f9e3f", alt: "Newly installed cedar privacy fence in residential backyard" },
+      { id: "1558618047-3c8c76ca7d04",   alt: "Clean white vinyl fence installed on a residential property" },
       { id: "1544984243-ec14f12dd8aa",   alt: "White vinyl picket fence on a Colorado property" },
       { id: "1503614472-8c253e53fca9",   alt: "Ornamental iron fence and gate at a property entrance" },
     ],
@@ -344,7 +344,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Restore curb appeal fast — driveways, siding, decks, patios, and windows.",
     metaDescription:
       "Professional power washing and window cleaning in Northern Colorado. Driveways, house washing, decks, patios, gutters, and commercial surfaces. Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1599686102-9a4af6b85e49",
+    heroImage:       "1527515637462-cff94aca208b",
     overviewHeading: "Power Washing & Window Cleaning That Shows",
     overviewBody: [
       "Northern Colorado's combination of construction dust, wind, cottonwood, and UV exposure leaves properties looking worn fast. Forge Point's power and soft-wash services restore surfaces to their best without damaging materials that high-pressure washing can harm.",
@@ -361,9 +361,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Commercial Surface Cleaning",   description: "Storefronts, parking structures, sidewalks, and commercial exteriors. Graffiti removal available." },
     ],
     gallery: [
-      { id: "1599686102-9a4af6b85e49",   alt: "Before and after power washing on a residential driveway" },
+      { id: "1527515637462-cff94aca208b", alt: "Pressure washing a driveway surface — before and after" },
       { id: "1558618666-fcd25c85cd64",   alt: "Sparkling clean windows on a Colorado home" },
-      { id: "1416879595882-3373a0480b5b", alt: "Clean deck after professional pressure washing" },
+      { id: "1599686102-9a4af6b85e49",   alt: "Clean deck after professional pressure washing" },
     ],
     estimatorCategory: "power-window-washing",
     related:  ["grounds-maintenance", "fencing", "landscape-design-install"],
@@ -420,7 +420,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We've managed over 4 million square feet of commercial and industrial space and served HOA communities with up to 115 units across Northern Colorado and the Denver metro. That depth of experience is now built into a single, scalable management program.",
       "See our full Property & Portfolio Management page for complete details on commercial, multifamily, on-call, and single-family management programs.",
     ],
-    overviewImage: "1416879595882-3373a0480b5b",
+    overviewImage: "1558618666-fcd25c85cd64",
     includes: [
       { title: "HOA Common Area Management",       description: "Grounds, common areas, walkways, and amenity spaces maintained to board standards with photographic reporting after every service." },
       { title: "Commercial Property Oversight",    description: "Office, retail, and industrial property management including vendor coordination, routine inspections, and tenant communications." },
@@ -431,7 +431,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1560518883-ce09059eeffa",    alt: "Well-maintained HOA community common area" },
-      { id: "1416879595882-3373a0480b5b", alt: "Commercial property with professional landscaping and grounds" },
+      { id: "1558618666-fcd25c85cd64",    alt: "Commercial property with professional landscaping and grounds" },
       { id: "1486325212027-8081e485255e", alt: "Multifamily property exterior with maintained grounds" },
     ],
     estimatorCategory: "hoa-commercial-property",
@@ -491,7 +491,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We handle complete gut-and-rebuild renovations as well as targeted updates that maximize ROI for rental property owners and homeowners preparing to sell. Every project is planned before a single nail is pulled, so surprises stay off the job site.",
       "From framing to finish, we self-perform the work our team is licensed for and bring in vetted trade partners — electrical, plumbing, HVAC — so you have a single point of accountability from demo to move-in.",
     ],
-    overviewImage: "1560185893-a55b8a6f7e89",
+    overviewImage: "1556909114-f6e7ad7d3136",
     includes: [
       { title: "Full Home Renovation",           description: "Complete renovation of existing structures — floor plan modifications, structural changes, systems updates, and all finishes." },
       { title: "Basement Finishing & Conversion", description: "Transform unfinished basements into legal living space: egress, insulation, framing, drywall, flooring, and lighting." },
@@ -502,8 +502,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1503387762-592deb58ef4e", alt: "Modern home interior after full renovation" },
-      { id: "1560185893-a55b8a6f7e89", alt: "Renovated living space with clean finishes" },
-      { id: "1486325212027-8081e485255e", alt: "Renovation project in progress" },
+      { id: "1556909114-f6e7ad7d3136", alt: "Renovated kitchen with clean finishes and modern design" },
+      { id: "1504307651254-35680f356dbe", alt: "Framing in progress on a renovation project" },
     ],
     estimatorCategory: "renovation-remodel",
     related:  ["framing-finishes", "kitchen-bath-more", "decks-pergolas-patios"],
@@ -552,7 +552,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "The rooms that sell homes and define daily life — done right, the first time.",
     metaDescription:
       "Professional kitchen and bathroom remodeling in Northern Colorado. Cabinet installation, countertops, tile, fixtures, and full room transformations for Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1556909114-44e3e9c56d95",
+    heroImage:       "1556909114-f6e7ad7d3136",
     overviewHeading: "Kitchen & Bath Remodels That Deliver ROI",
     overviewBody: [
       "Kitchens and bathrooms are where homeowners get their money back — and where they spend their mornings. Forge Point brings contractor-level execution to these high-impact spaces without the contractor markup that comes from managing multiple subs.",
@@ -569,7 +569,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Laundry Room & Mudroom Buildouts",   description: "Custom cabinetry, shelving, utility sinks, and built-in storage for laundry and mudroom spaces." },
     ],
     gallery: [
-      { id: "1556909114-44e3e9c56d95", alt: "Modern kitchen after full renovation with new cabinets and countertops" },
+      { id: "1556909114-f6e7ad7d3136", alt: "Modern kitchen after full renovation with new cabinets and countertops" },
       { id: "1503614472-8c253e53fca9", alt: "Renovated bathroom with tile and new fixtures" },
       { id: "1491553895291-0a57f6a0b2ef", alt: "Kitchen with new backsplash tile and countertops" },
     ],
@@ -586,14 +586,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Custom outdoor living structures built for Colorado's climate and your lifestyle.",
     metaDescription:
       "Custom deck, pergola, and patio construction in Northern Colorado. Composite and wood decks, pergolas, concrete patios, and outdoor living spaces for Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1533090161-9d2efb8c5897",
+    heroImage:       "1591474200742-8e512e6f98f8",
     overviewHeading: "Outdoor Living Structures Built for Northern Colorado",
     overviewBody: [
       "Colorado's 300 days of sunshine deserve an outdoor space that's actually worth using. Forge Point designs and builds decks, pergolas, and patios that stand up to freeze-thaw cycles, intense UV, and high wind — with materials and fastener systems specified for this climate, not Florida.",
       "We handle every phase: design, permitting, site preparation, framing, decking, railings, and finish details. Our structures are built to code, documented for permit, and designed to add lasting value to your property.",
       "From a simple concrete patio to a multi-level composite deck with integrated pergola and lighting, we scope the project to your budget and build it to last.",
     ],
-    overviewImage: "1416879595882-3373a0480b5b",
+    overviewImage: "1558618666-fcd25c85cd64",
     includes: [
       { title: "Composite Decking",           description: "Trex, TimberTech, and other premium composite decking systems. Low maintenance, UV-resistant, and warrantied for Colorado conditions." },
       { title: "Pressure-Treated & Cedar Decks", description: "Traditional wood decks with proper flashing, post bases, and hardware to resist moisture and freeze-thaw movement." },
@@ -603,8 +603,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Railings & Stairs",           description: "Deck railings in composite, aluminum, cable, and glass systems. Built to IRC code with proper post spacing and attachment." },
     ],
     gallery: [
-      { id: "1533090161-9d2efb8c5897", alt: "Custom composite deck with pergola in Colorado backyard" },
-      { id: "1416879595882-3373a0480b5b", alt: "Stone paver patio with outdoor seating area" },
+      { id: "1591474200742-8e512e6f98f8", alt: "Wood deck with outdoor furniture and pergola" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Stone paver patio with outdoor seating area and landscaping" },
       { id: "1571954411453-2fc3f4f8c26d", alt: "Pergola with string lights over outdoor living space" },
     ],
     estimatorCategory: "decks-pergolas-patios",
@@ -620,7 +620,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Ponds, waterfalls, fountains, and pondless systems custom-built for your outdoor space.",
     metaDescription:
       "Custom water feature design and installation in Northern Colorado. Koi ponds, pondless waterfalls, fountains, and stream features for residential properties in Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1544551763-46a013bb70d5",
+    heroImage:       "1519710164239-da123dc03ef4",
     overviewHeading: "Water Features That Bring Your Property to Life",
     overviewBody: [
       "A well-designed water feature transforms a yard into a retreat. The sound of moving water, the visual focal point, the wildlife it attracts — Forge Point designs and builds custom water features that are beautiful, balanced, and properly engineered to run reliably through Colorado's seasons.",
@@ -637,9 +637,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Winterization & Maintenance",description: "Annual winterization service to protect pumps, lines, and liner systems. Spring startup and ongoing maintenance programs available." },
     ],
     gallery: [
-      { id: "1544551763-46a013bb70d5", alt: "Custom koi pond with waterfall and naturalistic landscaping" },
+      { id: "1519710164239-da123dc03ef4", alt: "Garden water feature with natural pond and waterfall" },
       { id: "1558618047-6e3b4b1ae965", alt: "Pondless waterfall feature in residential garden" },
-      { id: "1416879595882-3373a0480b5b", alt: "Decorative fountain in landscaped patio setting" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Decorative fountain in landscaped patio setting" },
     ],
     estimatorCategory: "custom-water-features",
     related:  ["decks-pergolas-patios", "landscape-design-install", "grounds-maintenance"],
@@ -654,7 +654,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Fast, professional junk removal and property cleanouts — we haul it so you don't have to.",
     metaDescription:
       "Junk removal and property cleanout services in Northern Colorado. Furniture, appliances, construction debris, yard waste, and estate cleanouts for Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1558618666-fcd25c85cd64",
+    heroImage:       "1615672968435-75c1e5d17d62",
     overviewHeading: "Junk Removal Done Right — Same Week Service",
     overviewBody: [
       "Whether you're clearing out a rental property between tenants, prepping a house for sale, cleaning up after a renovation, or just finally dealing with that pile in the garage — Forge Point provides professional junk haul off service that's fast, clean, and responsible.",
@@ -674,7 +674,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Donation & Recycling Coordination", description: "We sort and separate usable items for donation and recyclable materials to keep as much out of the landfill as possible." },
     ],
     gallery: [
-      { id: "1558618666-fcd25c85cd64",   alt: "Clean property after professional junk haul off" },
+      { id: "1615672968435-75c1e5d17d62", alt: "Clean property after professional junk haul off" },
       { id: "1560518883-ce09059eeffa",   alt: "Property cleanout in progress" },
       { id: "1486325212027-8081e485255e", alt: "Clean commercial property after debris removal" },
     ],
@@ -691,7 +691,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Professional vehicle detailing at your door — no drop-off, no waiting.",
     metaDescription:
       "Mobile auto detailing in Northern Colorado and Denver metro. Exterior wash, interior deep clean, and premium detail packages. We come to your home or office in Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1530906374783-20f11a36e07d",
+    heroImage:       "1520340356584-f9917d1eea6f",
     overviewHeading: "Professional Detailing — At Your Location",
     overviewBody: [
       "A professionally detailed vehicle doesn't require a trip across town or half a day in a waiting room. Forge Point brings full detailing services to your home, office, or job site — everything we need is in the truck.",
@@ -710,7 +710,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Engine Bay Cleaning",             description: "Light degreasing and rinse of engine bay surfaces for visual presentation and easier maintenance inspection access." },
     ],
     gallery: [
-      { id: "1530906374783-20f11a36e07d", alt: "Vehicle exterior being hand washed and detailed" },
+      { id: "1520340356584-f9917d1eea6f", alt: "Car being professionally detailed — clean shine on exterior" },
       { id: "1494976388531-d1058494cdd8", alt: "Clean car interior after professional detailing" },
       { id: "1469854523086-cc02fe5d8800", alt: "Freshly detailed vehicle with a glossy exterior finish" },
     ],
@@ -727,7 +727,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Consistent, thorough home cleaning — done right every time, on a schedule that works for you.",
     metaDescription:
       "Professional housekeeping and home cleaning in Northern Colorado and Denver metro. Weekly, bi-weekly, and monthly cleaning programs, deep cleans, and move-in/move-out service in Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1581578731548-c64695cc6952",
+    heroImage:       "1558618047-3c8c76ca7d04",
     overviewHeading: "Reliable Home Cleaning You Can Count On",
     overviewBody: [
       "A clean home is more than an aesthetic — it's the foundation of a comfortable, healthy living environment. Forge Point provides recurring and one-time cleaning services for homeowners, rental property owners, and property managers who need a cleaning crew they can rely on without having to check up on.",
@@ -744,9 +744,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Laundry Service",              description: "Wash, dry, and fold service available as an add-on for weekly cleaning clients. We handle it while we're there." },
     ],
     gallery: [
-      { id: "1581578731548-c64695cc6952", alt: "Professional home cleaning service in progress" },
+      { id: "1558618047-3c8c76ca7d04",   alt: "Clean, organized home interior after professional housekeeping" },
       { id: "1556911220-bff31b7b2f2e",   alt: "Sparkling clean kitchen after professional housekeeping" },
-      { id: "1484154218962-a197022b5858", alt: "Clean, organized living space after professional cleaning" },
+      { id: "1558618047-3c8c76ca7d04",   alt: "Clean, organized living space after professional cleaning" },
     ],
     estimatorCategory: "housekeeping-cleaning",
     related:  ["mobile-auto-detailing", "home-safety-checks", "junk-haul-off"],
@@ -761,7 +761,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Keep your yard clean, safe, and odor-free — without lifting a finger.",
     metaDescription:
       "Professional pet waste removal in Northern Colorado and Denver metro. Weekly and bi-weekly poop scooping for residential yards in Erie, Longmont, Boulder, Broomfield, and surrounding areas.",
-    heroImage:       "1587300003388-59208cc962cb",
+    heroImage:       "1558618666-fcd25c85cd64",
     overviewHeading: "Professional Pet Waste Removal — On Your Schedule",
     overviewBody: [
       "Pet ownership is a joy. Yard cleanup isn't. Forge Point provides recurring and one-time pet waste removal for residential properties across Northern Colorado and the Denver metro — a simple, affordable service that keeps your outdoor spaces clean, safe, and ready to actually use.",
@@ -778,9 +778,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Service Notification",     description: "Automated notification after every completed visit so you always know the job is done." },
     ],
     gallery: [
-      { id: "1587300003388-59208cc962cb", alt: "Clean residential backyard maintained with regular pet waste removal" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Clean green lawn maintained with regular pet waste removal" },
       { id: "1548199085-dbc7db19e02c",   alt: "Happy dog in clean, well-maintained residential yard" },
-      { id: "1416879595882-3373a0480b5b", alt: "Clean residential lawn ready for outdoor use" },
+      { id: "1558618666-fcd25c85cd64",   alt: "Clean residential lawn ready for outdoor use" },
     ],
     estimatorCategory: "poop-scooping",
     related:  ["grounds-maintenance", "housekeeping-cleaning", "errand-services"],
@@ -795,7 +795,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Eyes on your property when you can't be there — peace of mind on a schedule.",
     metaDescription:
       "Home safety checks and vacant property monitoring in Northern Colorado and Denver metro. Scheduled walkthroughs, photographic reports, and emergency coordination for snowbirds, travelers, and rental owners.",
-    heroImage:       "1484154218962-a197022b5858",
+    heroImage:       "1558981403-c5f9899a28bc",
     overviewHeading: "Property Monitoring You Can Trust",
     overviewBody: [
       "Whether you're traveling for weeks, managing a vacant rental between tenants, or simply want regular eyes on your home while you're away — Forge Point's home safety check service provides scheduled property monitoring with clear, photographic reporting after every visit.",
@@ -814,7 +814,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Emergency Coordination",       description: "We serve as the local first-response contact for alarm company calls, utility access needs, and neighbor-reported concerns that require immediate eyes on the property." },
     ],
     gallery: [
-      { id: "1484154218962-a197022b5858", alt: "Residential property exterior being checked during safety walkthrough" },
+      { id: "1558981403-c5f9899a28bc",   alt: "Home exterior security and safety check walkthrough" },
       { id: "1558618047-6e3b4b1ae965",   alt: "Property inspection in progress at a Northern Colorado home" },
       { id: "1560518883-ce09059eeffa",   alt: "Well-maintained home exterior in Northern Colorado" },
     ],

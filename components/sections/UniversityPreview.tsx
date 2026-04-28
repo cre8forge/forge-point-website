@@ -21,7 +21,7 @@ export function UniversityPreview({ articles }: UniversityPreviewProps) {
         <SectionHeader
           eyebrow="Forge Point University"
           heading="Learn From the Pros"
-          subheading="Free guides, seasonal tips, and expert advice for Colorado homeowners and HOAs."
+          subheading="Free guides, market insights, and expert advice from 15 years on the ground in Northern Colorado."
           className="mb-16"
         />
 
