@@ -6,7 +6,7 @@ import { SiteSearch } from "@/components/ui/SiteSearch";
 
 const SERVICE_GROUPS = [
   {
-    label: "Forge Point Advisory",
+    label: "Forge Point Real Estate",
     links: [
       { label: "Buyer Representation",          href: "/services/buyer-representation" },
       { label: "Seller Representation",         href: "/services/seller-representation" },

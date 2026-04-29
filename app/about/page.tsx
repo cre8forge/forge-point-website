@@ -19,7 +19,7 @@ const STATS = [
 
 const SERVICE_ARMS = [
   {
-    name:        "Forge Point Advisory",
+    name:        "Forge Point Real Estate",
     description: "Licensed real estate brokerage — buyer rep, seller rep, investment acquisition, commercial leasing, portfolio strategy, and 1031 coordination.",
     href:        "/services/buyer-representation",
     accent:      true,

@@ -130,7 +130,7 @@ function sha256(s: string): string {
 // ─── KB structure definition ──────────────────────────────────────────────────
 
 type KBCat =
-  | "Forge Point Advisory"
+  | "Forge Point Real Estate"
   | "Property & Portfolio Management"
   | "Custom Interiors"
   | "Outdoor Living & Grounds"
@@ -140,7 +140,7 @@ type KBCat =
 
 // Order matters — Crisp displays categories in creation order
 const KB_CATS: KBCat[] = [
-  "Forge Point Advisory",
+  "Forge Point Real Estate",
   "Property & Portfolio Management",
   "Custom Interiors",
   "Outdoor Living & Grounds",
@@ -151,7 +151,7 @@ const KB_CATS: KBCat[] = [
 
 // Map service.category field → KB category
 const SVC_TO_KB: Record<string, KBCat> = {
-  "Advisory":          "Forge Point Advisory",
+  "Advisory":          "Forge Point Real Estate",
   "Management":        "Property & Portfolio Management",
   "HOA":               "Property & Portfolio Management",
   "Custom Living":     "Custom Interiors",
@@ -345,7 +345,7 @@ Founded by Aaron Dolph — a licensed Colorado Real Estate Broker (License #FA10
 
 ## What We Do
 
-**Forge Point Advisory** — Licensed real estate brokerage for buyers, sellers, investors, and commercial clients. We offer Broker's Opinions of Value (BOVs) as a complimentary introductory service, and provide honest market analysis and transaction representation grounded in real property management experience.
+**Forge Point Real Estate** — Licensed real estate brokerage for buyers, sellers, investors, and commercial clients. We offer Broker's Opinions of Value (BOVs) as a complimentary introductory service, and provide honest market analysis and transaction representation grounded in real property management experience.
 
 **Property & Portfolio Management** — Residential, commercial, and HOA management delivered by a team with direct field presence. We have managed over 4 million sq ft of commercial and industrial space, and portfolios with up to 115 tenants simultaneously.
 

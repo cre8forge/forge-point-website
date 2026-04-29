@@ -8,7 +8,7 @@ const ADVISORY = {
   photo:
     "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80",
   label: "Advisory",
-  heading: "Forge Point Advisory",
+  heading: "Forge Point Real Estate",
   quote:
     "We've managed millions of square feet of the properties you're buying or selling. That's not an agent — that's an advantage.",
   services: [
@@ -112,7 +112,7 @@ export function ServicesSection() {
           <div className="relative aspect-[16/7] sm:aspect-[16/6] lg:aspect-[16/5]">
             <Image
               src={ADVISORY.photo}
-              alt="Aerial view of residential neighborhood representing Forge Point Advisory real estate services"
+              alt="Aerial view of residential neighborhood representing Forge Point Real Estate services"
               fill
               className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
               sizes="100vw"

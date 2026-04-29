@@ -12,7 +12,7 @@ import { SiteSearch } from "@/components/ui/SiteSearch";
 
 const SERVICE_GROUPS = [
   {
-    label:    "Forge Point Advisory",
+    label:    "Forge Point Real Estate",
     accent:   true, // amber highlight treatment
     services: [
       { label: "Buyer Representation",          href: "/services/buyer-representation" },

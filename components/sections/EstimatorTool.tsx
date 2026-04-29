@@ -59,14 +59,14 @@ function AdvisoryCalloutTab() {
   return (
     <div className="border border-amber/20 bg-[#0D1B2A] p-8 md:p-10">
       <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-amber mb-3">
-        Forge Point Advisory
+        Forge Point Real Estate
       </p>
       <h3 className="font-cinzel font-700 text-white text-xl md:text-2xl uppercase tracking-wide mb-4 normal-case">
         Real Estate Advisory Isn&apos;t Estimated Online
       </h3>
       <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-2 max-w-2xl">
         Buying, selling, or evaluating an investment property isn&apos;t a quantity-times-rate
-        calculation. The value Forge Point Advisory delivers is in the analysis, the market
+        calculation. The value Forge Point Real Estate delivers is in the analysis, the market
         knowledge, and the judgment built from 15 years managing the properties you&apos;re
         considering.
       </p>
@@ -118,8 +118,8 @@ function AdvisoryCalloutTab() {
 
 function ManagementCalloutTab() {
   return (
-    <div className="border border-amber/15 bg-card p-8 md:p-10">
-      <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-amber mb-3">
+    <div className="border border-white/10 bg-card p-8 md:p-10">
+      <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-orange mb-3">
         Property &amp; Portfolio Management
       </p>
       <h3 className="font-cinzel font-700 text-white text-xl md:text-2xl uppercase tracking-wide mb-4 normal-case">
@@ -131,32 +131,47 @@ function ManagementCalloutTab() {
         multifamily or a commercial warehouse.
       </p>
       <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-6 max-w-2xl">
-        The fastest path to an accurate management quote is a 15-minute call. We&apos;ll ask the
-        right questions and give you a real number — not a range that&apos;s useless until you call
+        The fastest path to an accurate number is a 15-minute call. We&apos;ll ask the right
+        questions and give you a real figure — not a range that&apos;s useless until you call
         anyway.
       </p>
 
-      <div className="space-y-2 mb-6 pl-4 border-l-2 border-amber/30">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
         {[
-          "Single Family Homes: typically 8–12% of monthly rent",
-          "Multifamily & HOA: scoped per unit count and service level",
-          "Commercial & Industrial: scoped per square footage and services",
-        ].map((line) => (
-          <p key={line} className="font-barlow font-300 text-xs text-white/50 leading-relaxed">
-            {line}
-          </p>
+          {
+            title: "Single Family Homes",
+            body:  "Typically 8–12% of monthly rent. Tenant placement, rent collection, maintenance coordination, and inspections.",
+          },
+          {
+            title: "Multifamily & HOA",
+            body:  "Scoped per unit count and service level. Full-service or maintenance-only packages available.",
+          },
+          {
+            title: "Commercial & Industrial",
+            body:  "Scoped per square footage and services. Triple-net, gross, and modified gross leases all handled.",
+          },
+          {
+            title: "Boots-on-Ground Response",
+            body:  "24-hour field response for emergencies in our service area — no call centers, no delays.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="flex items-start gap-3">
+            <span className="text-orange text-[10px] mt-1 flex-shrink-0">◆</span>
+            <div>
+              <p className="font-condensed font-600 text-xs uppercase tracking-wide text-orange mb-1">
+                {item.title}
+              </p>
+              <p className="font-barlow font-300 text-xs text-white/55 leading-relaxed">
+                {item.body}
+              </p>
+            </div>
+          </div>
         ))}
-        <p className="font-barlow font-300 text-[10px] text-white/30 leading-relaxed italic pt-1">
-          These are general market ranges. Your actual fee depends on scope, condition, and services included.
-        </p>
       </div>
 
-      <Link
-        href="/contact"
-        className="font-condensed font-600 text-sm uppercase tracking-widest text-amber hover:text-white transition-colors"
-      >
+      <Button href="/contact" variant="primary">
         Request a Management Consultation →
-      </Link>
+      </Button>
     </div>
   );
 }

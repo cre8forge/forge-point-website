@@ -25,14 +25,14 @@ function AdvisorySection() {
           {/* Left — copy */}
           <div>
             <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-amber mb-3">
-              Forge Point Advisory
+              Forge Point Real Estate
             </p>
             <h2 className="font-cinzel font-700 text-white text-2xl md:text-3xl uppercase tracking-wide mb-5 normal-case">
               Real Estate Advisory Isn&apos;t Estimated Online
             </h2>
             <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-4">
               Buying, selling, or evaluating an investment property isn&apos;t a
-              quantity-times-rate calculation. The value Forge Point Advisory delivers is in
+              quantity-times-rate calculation. The value Forge Point Real Estate delivers is in
               the analysis, the market knowledge, and the judgment built from 15 years managing
               the properties you&apos;re considering.
             </p>
@@ -87,51 +87,67 @@ function AdvisorySection() {
 
 function ManagementSection() {
   return (
-    <section className="px-6 py-12 bg-navy border-b border-white/8">
+    <section className="px-6 py-14 bg-navy border-b border-white/8">
       <div className="max-w-5xl mx-auto">
-        <div className="border-l-4 border-amber/40 pl-7">
-          <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-amber mb-2">
-            Property &amp; Portfolio Management
-          </p>
-          <h3 className="font-cinzel font-700 text-white text-xl md:text-2xl uppercase tracking-wide mb-4 normal-case">
-            Management Fees Are Scoped to Your Property
-          </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-            <div>
-              <p className="font-barlow font-300 text-white/60 text-sm leading-relaxed mb-3">
-                Management pricing depends on property type, number of units, scope of services,
-                and current condition. A single-family rental is priced differently than a 20-unit
-                multifamily or a commercial warehouse.
-              </p>
-              <p className="font-barlow font-300 text-white/60 text-sm leading-relaxed mb-5">
-                The fastest path to an accurate management quote is a 15-minute call. We&apos;ll
-                ask the right questions and give you a real number — not a range that&apos;s
-                useless until you call anyway.
-              </p>
-              <Link
-                href="/contact"
-                className="font-condensed font-600 text-sm uppercase tracking-widest text-amber hover:text-white transition-colors"
-              >
-                Request a Management Consultation →
-              </Link>
-            </div>
-
-            <div className="space-y-1.5">
-              {[
-                "Single Family Homes: typically 8–12% of monthly rent",
-                "Multifamily & HOA: scoped per unit count and service level",
-                "Commercial & Industrial: scoped per square footage and services",
-              ].map((line) => (
-                <p key={line} className="font-barlow font-300 text-xs text-white/45 leading-relaxed">
-                  {line}
-                </p>
-              ))}
-              <p className="font-barlow font-300 text-[10px] text-white/28 leading-relaxed italic pt-1">
-                These are general market ranges. Your actual fee depends on scope, condition, and services included.
-              </p>
-            </div>
+          {/* Left — copy + CTA */}
+          <div>
+            <p className="font-condensed font-600 text-xs uppercase tracking-[0.25em] text-orange mb-3">
+              Property &amp; Portfolio Management
+            </p>
+            <h2 className="font-cinzel font-700 text-white text-2xl md:text-3xl uppercase tracking-wide mb-5 normal-case">
+              Management Fees Are Scoped to Your Property
+            </h2>
+            <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-4">
+              Management pricing depends on property type, number of units, scope of services,
+              and current condition. A single-family rental is priced differently than a 20-unit
+              multifamily or a commercial warehouse.
+            </p>
+            <p className="font-barlow font-300 text-white/65 text-sm leading-relaxed mb-7">
+              The fastest path to an accurate number is a 15-minute call. We&apos;ll ask the
+              right questions and give you a real figure — not a range that&apos;s useless until
+              you call anyway.
+            </p>
+            <Button href="/contact" variant="primary">
+              Request a Management Consultation →
+            </Button>
           </div>
+
+          {/* Right — property type breakdown */}
+          <div className="space-y-6">
+            {[
+              {
+                title: "Single Family Homes",
+                body:  "Typically 8–12% of monthly rent. Covers tenant placement, rent collection, maintenance coordination, and inspections.",
+              },
+              {
+                title: "Multifamily & HOA",
+                body:  "Scoped per unit count and service level. Full-service or maintenance-only packages available.",
+              },
+              {
+                title: "Commercial & Industrial",
+                body:  "Scoped per square footage and scope of services. Triple-net, gross, and modified gross leases all handled.",
+              },
+              {
+                title: "Boots-on-Ground Response",
+                body:  "24-hour field response for any property emergency in our service area — no call centers, no delays.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="flex items-start gap-4">
+                <span className="text-orange text-[10px] mt-1.5 flex-shrink-0">◆</span>
+                <div>
+                  <p className="font-condensed font-600 text-xs uppercase tracking-[0.15em] text-orange mb-1.5">
+                    {item.title}
+                  </p>
+                  <p className="font-barlow font-300 text-sm text-white/55 leading-relaxed">
+                    {item.body}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>

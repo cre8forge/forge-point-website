@@ -60,15 +60,15 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
 
-  // ── Forge Point Advisory ─────────────────────────────────────
+  // ── Forge Point Real Estate ─────────────────────────────────────
   {
     slug:  "forge-point-advisory",
-    label: "Forge Point Advisory",
+    label: "Forge Point Real Estate",
     questions: [
       {
         question: "Is Forge Point a real estate brokerage or a property services company?",
         answer:
-          "Both. Forge Point Advisory is our licensed Colorado real estate brokerage practice — buyer representation, seller representation, investment acquisition analysis, and commercial leasing. Forge Point Property Services is our full-service property operations arm — management, renovation, grounds, and estate services. Most clients use both sides of the business, which is what makes our model unique: the people advising your real estate transaction are the same people who have managed hundreds of properties like it.",
+          "Both. Forge Point Real Estate is our licensed Colorado real estate brokerage practice — buyer representation, seller representation, investment acquisition analysis, and commercial leasing. Forge Point Property Services is our full-service property operations arm — management, renovation, grounds, and estate services. Most clients use both sides of the business, which is what makes our model unique: the people advising your real estate transaction are the same people who have managed hundreds of properties like it.",
       },
       {
         question: "Do you represent buyers and sellers in residential real estate?",
@@ -81,7 +81,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
           "A BOV is a professional assessment of a property's market value delivered as a written document — not a full certified appraisal, but a detailed market-grounded analysis. For residential property owners, it answers: what is this property worth today, what would improve its value, and what should you do before listing? We offer BOVs as a no-cost introductory service for qualified property owners. Contact us to request one.",
       },
       {
-        question: "Do I need to already own a property to use Forge Point Advisory?",
+        question: "Do I need to already own a property to use Forge Point Real Estate?",
         answer:
           "No. We work with buyers at every stage — pre-purchase analysis, active representation, and acquisition coordination. We also work with owners evaluating whether to sell, hold, refinance, or execute a 1031 exchange. If you're thinking about a real estate decision, that's when to call us — not after you've already committed.",
       },
@@ -101,7 +101,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: "How do I analyze an investment property before buying?",
         answer:
-          "At minimum, you need: cap rate (Net Operating Income ÷ purchase price), cash-on-cash return (annual cash flow ÷ total cash invested), a realistic deferred maintenance estimate, and current market rent comps. Where most investors go wrong is taking the seller's pro forma at face value. Forge Point Advisory provides independent acquisition analysis — a written report covering all of these factors with real-world assumptions, not optimistic seller projections.",
+          "At minimum, you need: cap rate (Net Operating Income ÷ purchase price), cash-on-cash return (annual cash flow ÷ total cash invested), a realistic deferred maintenance estimate, and current market rent comps. Where most investors go wrong is taking the seller's pro forma at face value. Forge Point Real Estate provides independent acquisition analysis — a written report covering all of these factors with real-world assumptions, not optimistic seller projections.",
       },
       {
         question: "What returns should I expect from a rental property in Northern Colorado?",

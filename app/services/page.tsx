@@ -37,14 +37,14 @@ type Category = {
 };
 
 const CATEGORIES: Category[] = [
-  // ── 1. Forge Point Advisory ────────────────────────────────────
+  // ── 1. Forge Point Real Estate ────────────────────────────────────
   {
-    label:    "Forge Point Advisory",
+    label:    "Forge Point Real Estate",
     photo:    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
     accent:   true,
     disclosure: true,
     description:
-      "Forge Point Advisory is a licensed Colorado real estate brokerage practice bringing 15 years of commercial and residential market experience to buyers, sellers, and investors who need more than an agent — they need a strategic partner who has managed the assets they're buying or selling. We represent your interests from first analysis through close.",
+      "Forge Point Real Estate is a licensed Colorado real estate brokerage practice bringing 15 years of commercial and residential market experience to buyers, sellers, and investors who need more than an agent — they need a strategic partner who has managed the assets they're buying or selling. We represent your interests from first analysis through close.",
     cards: [
       {
         label:       "Buyer Representation",

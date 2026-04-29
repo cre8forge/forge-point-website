@@ -27,7 +27,7 @@ export interface EstimatorTab {
 export const ESTIMATOR_TABS: EstimatorTab[] = [
   {
     id:         "advisory",
-    label:      "Forge Point Advisory",
+    label:      "Forge Point Real Estate",
     shortLabel: "Advisory",
     type:       "callout-advisory",
   },

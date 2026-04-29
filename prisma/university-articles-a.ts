@@ -424,7 +424,7 @@ The identification must be in writing, signed, and delivered to your QI by midni
 
 **The 45-day identification window moves fast.**
 
-Forge Point Advisory can identify and analyze qualified replacement properties before your clock runs out.
+Forge Point Real Estate can identify and analyze qualified replacement properties before your clock runs out.
 
 [Talk to a Forge Point Advisor →](/services/1031-exchange)
 
@@ -518,7 +518,7 @@ Investment property cash-out refinances are typically capped at 75–80% of the 
 
 **Not sure whether to hold, sell, or refinance?**
 
-Forge Point Advisory helps investment property owners think through the full picture before they make a move.
+Forge Point Real Estate helps investment property owners think through the full picture before they make a move.
 
 [Schedule a Portfolio Strategy Consultation →](/services/portfolio-strategy)
 
@@ -890,7 +890,7 @@ Residential lease renewals are typically a form and a phone call. Commercial lea
 
 **Considering your first commercial acquisition?**
 
-Forge Point Advisory has managed millions of square feet of commercial space. We bring that operational knowledge to the acquisition analysis.
+Forge Point Real Estate has managed millions of square feet of commercial space. We bring that operational knowledge to the acquisition analysis.
 
 [Request a Commercial Acquisition Analysis →](/services/commercial-leasing-advisory)
 
