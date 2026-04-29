@@ -15,7 +15,9 @@
     "kb:import": "tsx scripts/crisp-kb-import.ts",
     "kb:dry": "tsx scripts/crisp-kb-import.ts --dry",
     "kb:force": "tsx scripts/crisp-kb-import.ts --force",
-    "hubspot:bootstrap": "tsx scripts/hubspot-bootstrap.ts"
+    "hubspot:bootstrap": "tsx scripts/hubspot-bootstrap.ts",
+    "images:source": "tsx scripts/image-source.ts",
+    "images:apply": "tsx scripts/image-apply.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
