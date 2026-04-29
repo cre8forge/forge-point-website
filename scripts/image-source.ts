@@ -23,7 +23,7 @@ import path from "path";
 const PEXELS_KEY   = process.env.PEXELS_API_KEY  ?? "";
 const PIXABAY_KEY  = process.env.PIXABAY_API_KEY ?? "";
 const THROTTLE_MS  = 20_000; // 20 s → stays comfortably under 200 req/hr
-const PER_PAGE     = 5;
+const PER_PAGE     = 15;    // Pexels supports up to 80; 15 gives filter more to work with
 
 const LOG_FILE        = path.join("scripts", ".image-sourcing.log");
 const CANDIDATES_FILE = path.join("scripts", ".image-candidates.json");
@@ -734,6 +734,18 @@ function appendLog(slotId: string, result: SlotResult) {
   fs.appendFileSync(LOG_FILE, JSON.stringify(entry) + "\n", "utf-8");
 }
 
+// ── Helpers ───────────────────────────────────────────────────────────────────
+
+/** Remove duplicate photos by downloadUrl (same photo can appear across passes). */
+function dedup(candidates: Candidate[]): Candidate[] {
+  const seen = new Set<string>();
+  return candidates.filter(c => {
+    if (seen.has(c.downloadUrl)) return false;
+    seen.add(c.downloadUrl);
+    return true;
+  });
+}
+
 // ── Source a single slot ──────────────────────────────────────────────────────
 
 async function sourceSlot(s: SlotDef, cached?: SlotResult): Promise<SlotResult> {
@@ -743,19 +755,40 @@ async function sourceSlot(s: SlotDef, cached?: SlotResult): Promise<SlotResult> 
   }
   process.stdout.write(`  → ${s.id}\n`);
 
+  // ── Pass 1: primary query ─────────────────────────────────────────────────
   let raw = await fetchPexels(s.query);
-  const { passing, rejected } = filterAndScore(raw, s.antiKeywords);
+  const { passing: pass1, rejected } = filterAndScore(raw, s.antiKeywords);
   let fallbackUsed = false;
+  let candidates: Candidate[] = pass1;
 
-  let candidates = passing;
+  // Pixabay supplement if Pexels pass 1 is thin
   if (candidates.length < 3 && PIXABAY_KEY) {
     const pb = await fetchPixabay(s.query);
     const { passing: pbPass } = filterAndScore(pb, s.antiKeywords);
-    candidates = [...candidates, ...pbPass].slice(0, 5);
+    candidates = dedup([...candidates, ...pbPass]);
     fallbackUsed = pbPass.length > 0;
   }
 
-  // Sort by docScore descending (most documentary first)
+  // ── Pass 2: broader fallback query if still under 3 ─────────────────────
+  if (candidates.length < 3) {
+    const words = s.query.split(" ");
+    // Drop the last 2 words — keeps subject, drops the most specific modifiers
+    const broaderQuery = words.slice(0, Math.max(2, words.length - 2)).join(" ");
+    if (broaderQuery !== s.query) {
+      process.stdout.write(`    ↳ broader retry: "${broaderQuery}"\n`);
+      const raw2 = await fetchPexels(broaderQuery);
+      const { passing: pass2 } = filterAndScore(raw2, s.antiKeywords);
+      candidates = dedup([...candidates, ...pass2]);
+      if (candidates.length < 3 && PIXABAY_KEY) {
+        const pb2 = await fetchPixabay(broaderQuery);
+        const { passing: pbPass2 } = filterAndScore(pb2, s.antiKeywords);
+        candidates = dedup([...candidates, ...pbPass2]);
+        if (pbPass2.length > 0) fallbackUsed = true;
+      }
+    }
+  }
+
+  // Sort by docScore descending (most documentary first), cap at 3
   candidates.sort((a, b) => b.docScore - a.docScore);
   candidates = candidates.slice(0, 3);
 
