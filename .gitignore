@@ -37,3 +37,6 @@ next-env.d.ts
 # prisma
 prisma/migrations/dev.db
 prisma/migrations/dev.db-journal
+
+# crisp kb import manifest (local state, not committed)
+scripts/.crisp-kb-manifest.json

@@ -11,7 +11,10 @@
     "db:migrate": "prisma migrate dev",
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "kb:import": "tsx scripts/crisp-kb-import.ts",
+    "kb:dry": "tsx scripts/crisp-kb-import.ts --dry",
+    "kb:force": "tsx scripts/crisp-kb-import.ts --force"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -38,8 +41,10 @@
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "autoprefixer": "^10.0.0",
+    "dotenv": "^17.4.2",
     "eslint": "^8.0.0",
     "eslint-config-next": "^15.5.14",
+    "fast-glob": "^3.3.3",
     "postcss": "^8.0.0",
     "prisma": "^5.0.0",
     "tailwindcss": "^3.4.0",
