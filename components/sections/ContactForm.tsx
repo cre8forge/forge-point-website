@@ -211,6 +211,23 @@ export function ContactForm({ initialEstimate }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6">
 
+      {/* Honeypot — invisible to real users; bots fill it and are silently dropped */}
+      <input
+        type="text"
+        name="website"
+        aria-hidden="true"
+        tabIndex={-1}
+        autoComplete="off"
+        style={{ display: "none" }}
+      />
+
+      {/* Source tracking — used by HubSpot integration */}
+      <input
+        type="hidden"
+        name="source"
+        value={estimate ? "estimate_form" : "contact_form"}
+      />
+
       {/* ── Estimate summary (shown when arriving from /estimate) ── */}
       {estimate && estimate.items.length > 0 && (
         <div className="border border-orange/30 bg-orange/5 p-5">

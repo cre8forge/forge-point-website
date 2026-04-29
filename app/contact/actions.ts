@@ -1,11 +1,19 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { upsertContact, createDeal, createTask } from "@/lib/hubspot";
 
 export type ContactResult = { success: true } | { success: false; error: string };
 
 export async function submitContactForm(formData: FormData): Promise<ContactResult> {
   try {
+    // ── Honeypot ─────────────────────────────────────────────────────────────
+    const honeypot = ((formData.get("website") as string | null) ?? "").trim();
+    if (honeypot.length > 0) {
+      // Silently succeed — bots should not learn they were rejected
+      return { success: true };
+    }
+
     const name  = (formData.get("name")  as string | null)?.trim();
     const email = (formData.get("email") as string | null)?.trim();
 
@@ -81,6 +89,56 @@ export async function submitContactForm(formData: FormData): Promise<ContactResu
         photoUrls,
       },
     });
+
+    // ── HubSpot CRM ───────────────────────────────────────────────────────────
+    // Wrapped in its own try/catch — a HubSpot failure must never break the
+    // form submission for the user.
+    try {
+      const source  = (formData.get("source") as string | null)?.trim()
+        ?? (estimateDetails ? "estimate_form" : "contact_form");
+
+      const [firstName, ...rest] = name.trim().split(" ");
+
+      const estimateRangeLabel =
+        estimateLow && estimateHigh
+          ? `$${estimateLow.toLocaleString()} – $${estimateHigh.toLocaleString()}`
+          : undefined;
+
+      const contactId = await upsertContact({
+        email,
+        firstName,
+        lastName:        rest.join(" "),
+        phone:           phone           ?? undefined,
+        address:         address         ?? undefined,
+        leadSource:      source,
+        serviceInterest: serviceCategory ?? undefined,
+        urgency:         urgency         ?? undefined,
+        estimateRange:   estimateRangeLabel,
+      });
+
+      const dealName =
+        requestType === "ESTIMATE"
+          ? `Estimate Request — ${name}${estimateRangeLabel ? ` — ${estimateRangeLabel}` : ""}`
+          : `Service Request — ${name}${serviceCategory ? ` — ${serviceCategory}` : ""}`;
+
+      const dealId = await createDeal(contactId, {
+        name:        dealName,
+        description: description ?? undefined,
+        amount:      estimateLow ? Number(estimateLow) : undefined,
+      });
+
+      await createTask(contactId, dealId, {
+        subject: `Follow up with ${name} (${source.replace(/_/g, " ")})`,
+        body:
+          `Source: ${source}\n` +
+          `Service: ${serviceCategory || "n/a"}\n` +
+          `Urgency: ${urgency || "n/a"}\n` +
+          (estimateRangeLabel ? `Estimate: ${estimateRangeLabel}\n` : "") +
+          (description ? `\nNotes: ${description}` : ""),
+      });
+    } catch (hsErr) {
+      console.error("[HubSpot] contact action error:", hsErr);
+    }
 
     return { success: true };
   } catch (err) {

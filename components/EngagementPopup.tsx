@@ -175,6 +175,15 @@ export function EngagementPopup({ onClose }: EngagementPopupProps) {
               </p>
 
               <form onSubmit={handleFormSubmit} className="space-y-3">
+                {/* Honeypot — hidden from real users; bots fill it and get silently dropped */}
+                <input
+                  type="text"
+                  name="website"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  style={{ display: "none" }}
+                />
                 <input
                   type="text"
                   required

@@ -14,7 +14,8 @@
     "db:seed": "tsx prisma/seed.ts",
     "kb:import": "tsx scripts/crisp-kb-import.ts",
     "kb:dry": "tsx scripts/crisp-kb-import.ts --dry",
-    "kb:force": "tsx scripts/crisp-kb-import.ts --force"
+    "kb:force": "tsx scripts/crisp-kb-import.ts --force",
+    "hubspot:bootstrap": "tsx scripts/hubspot-bootstrap.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
