@@ -76,6 +76,11 @@ interface SlotResult {
 const UNIVERSAL_ANTI = [
   "model", "posing", "posed", "studio", "business meeting",
   "handshake", "smiling", "happy", "success", "corporate",
+  // Extended anti-glamour terms
+  "perfect", "stunning", "beautiful", "elegant", "sophisticated", "upscale",
+  "five star", "resort", "spa", "tropical", "palm", "mediterranean", "tuscan",
+  "ocean", "beach", "coastal", "manhattan", "skyscraper", "dubai",
+  "magazine cover", "editorial fashion", "wedding", "event venue",
 ];
 
 // ── Slot definitions (159 static slots) ──────────────────────────────────────
@@ -90,23 +95,23 @@ function slot(
 const SLOTS: SlotDef[] = [
   // ── Homepage ──────────────────────────────────────────────────────────────
   slot("homepage/home-hero",       "images/hero/home-hero.jpg",         "Colorado ranch home exterior", "Homepage",
-       "colorado ranch home exterior",           ["mansion","palm","ocean","tropical","pool"],  "Single-family home, dry-climate landscape", "hero"),
+       "front range foothills home exterior morning",  ["mansion","palm","ocean","tropical","pool","beach","mediterranean"],  "Single-family home, dry-climate landscape", "hero"),
   slot("homepage/how-it-works",    "images/hero/home-how-it-works.jpg", "Contractor walking property with clipboard", "Homepage",
-       "contractor walking property clipboard",  ["office","desk","meeting","handshake"],       "Worker outdoors, eyes-down on property", "inline"),
+       "property inspector tablet exterior walkway",   ["office","desk","meeting","handshake","model smiling","corporate"],   "Worker outdoors, eyes-down on property", "inline"),
 
   // ── Advisory / Buyer Representation ──────────────────────────────────────
   slot("advisory/buyer-rep-hero",      "images/services/advisory/buyer-rep-hero.jpg",      "House keys on wooden surface",          "Forge Point Real Estate", "house keys close up wooden surface",         ["model holding keys smiling","business"],   "Keys on real surface, no human or hands at edge", "hero"),
   slot("advisory/buyer-rep-inline",    "images/services/advisory/buyer-rep-inline.jpg",    "Real estate document signing with pen", "Forge Point Real Estate", "real estate document signing pen",           ["model","corporate","handshake"],           "Documents, pen, signing in progress, top-down", "inline"),
-  slot("advisory/buyer-rep-gallery-1", "images/services/advisory/buyer-rep-gallery-1.jpg", "Colorado suburban home with yard sign",  "Forge Point Real Estate", "colorado suburban home for sale sign yard",  ["mansion","palm"],                          "House with yard sign, residential", "gallery"),
-  slot("advisory/buyer-rep-gallery-2", "images/services/advisory/buyer-rep-gallery-2.jpg", "Home inspector with clipboard",          "Forge Point Real Estate", "home inspection contractor with clipboard",  ["model","smiling at camera"],               "Inspector looking at home feature, not at camera", "gallery"),
-  slot("advisory/buyer-rep-gallery-3", "images/services/advisory/buyer-rep-gallery-3.jpg", "Front door knob detail",                 "Forge Point Real Estate", "front door colorado home knob detail",       ["christmas","wreath"],                      "Door close-up, real residential entry", "gallery"),
+  slot("advisory/buyer-rep-gallery-1", "images/services/advisory/buyer-rep-gallery-1.jpg", "Colorado suburban home with yard sign",  "Forge Point Real Estate", "for sale sign suburban front yard",          ["mansion","palm","luxury home","tropical"],  "House with yard sign, residential", "gallery"),
+  slot("advisory/buyer-rep-gallery-2", "images/services/advisory/buyer-rep-gallery-2.jpg", "Home inspector with clipboard",          "Forge Point Real Estate", "home inspector tape measure foundation",      ["model","smiling","corporate","handshake"],  "Inspector looking at home feature, not at camera", "gallery"),
+  slot("advisory/buyer-rep-gallery-3", "images/services/advisory/buyer-rep-gallery-3.jpg", "Front door knob detail",                 "Forge Point Real Estate", "residential front door wood entry detail",    ["christmas","wreath","holiday","mansion"],   "Door close-up, real residential entry", "gallery"),
 
   // ── Advisory / Seller Representation ─────────────────────────────────────
-  slot("advisory/seller-rep-hero",      "images/services/advisory/seller-rep-hero.jpg",      "Home for sale sign in yard",           "Forge Point Real Estate", "home for sale sign yard residential",        ["palm","mansion","beachfront"],             "Real yard sign, lawn, suburban context", "hero"),
-  slot("advisory/seller-rep-inline",    "images/services/advisory/seller-rep-inline.jpg",    "Living room interior, natural light",  "Forge Point Real Estate", "living room interior natural light",          ["staged","model","luxury","mansion"],       "Lived-in tidy room, natural light, no people", "inline"),
+  slot("advisory/seller-rep-hero",      "images/services/advisory/seller-rep-hero.jpg",      "Home for sale sign in yard",           "Forge Point Real Estate", "real estate yard sign sunset residential",    ["palm","mansion","beachfront","luxury","tropical"],  "Real yard sign, lawn, suburban context", "hero"),
+  slot("advisory/seller-rep-inline",    "images/services/advisory/seller-rep-inline.jpg",    "Living room interior, natural light",  "Forge Point Real Estate", "living room interior natural light",          ["staged","model","luxury","mansion"],        "Lived-in tidy room, natural light, no people", "inline"),
   slot("advisory/seller-rep-gallery-1", "images/services/advisory/seller-rep-gallery-1.jpg", "Front yard curb appeal",               "Forge Point Real Estate", "front yard curb appeal residential home",    ["mansion","palm"],                          "House front, walkway, modest landscaping", "gallery"),
   slot("advisory/seller-rep-gallery-2", "images/services/advisory/seller-rep-gallery-2.jpg", "Kitchen interior daylight",             "Forge Point Real Estate", "kitchen interior daylight",                  ["model","staged","luxury"],                 "Real kitchen, mid-range, daylight", "gallery"),
-  slot("advisory/seller-rep-gallery-3", "images/services/advisory/seller-rep-gallery-3.jpg", "Sold real estate sign in yard",         "Forge Point Real Estate", "sold real estate sign yard",                 ["model holding sign smiling"],              "Sold sign on real yard", "gallery"),
+  slot("advisory/seller-rep-gallery-3", "images/services/advisory/seller-rep-gallery-3.jpg", "Sold real estate sign in yard",         "Forge Point Real Estate", "sold sign red residential yard",             ["model","smiling","corporate","handshake"], "Sold sign on real yard", "gallery"),
 
   // ── Advisory / Investment Acquisition ────────────────────────────────────
   slot("advisory/acquisition-hero",      "images/services/advisory/acquisition-hero.jpg",      "Financial docs, calculator, desk",     "Forge Point Real Estate", "real estate financial documents calculator desk", ["model","business meeting","handshake"],  "Top-down spreadsheet/docs/calculator, no faces", "hero"),
@@ -125,9 +130,9 @@ const SLOTS: SlotDef[] = [
   // ── Advisory / Commercial Leasing ────────────────────────────────────────
   slot("advisory/commercial-leasing-hero",      "images/services/advisory/commercial-leasing-hero.jpg",      "Mid-rise commercial building",         "Forge Point Real Estate", "mid rise commercial office building exterior", ["skyscraper Manhattan","dubai","palm"],   "3-6 story commercial building, suburban/small-city", "hero"),
   slot("advisory/commercial-leasing-inline",    "images/services/advisory/commercial-leasing-inline.jpg",    "Commercial lease document",            "Forge Point Real Estate", "commercial lease document with pen",           ["model","handshake"],                    "Lease paperwork, real document", "inline"),
-  slot("advisory/commercial-leasing-gallery-1", "images/services/advisory/commercial-leasing-gallery-1.jpg", "Vacant retail storefront for lease",   "Forge Point Real Estate", "vacant retail storefront for lease sign",      ["mall holiday","crowded"],               "Empty retail space with for-lease signage", "gallery"),
+  slot("advisory/commercial-leasing-gallery-1", "images/services/advisory/commercial-leasing-gallery-1.jpg", "Vacant retail storefront for lease",   "Forge Point Real Estate", "empty commercial space windows for lease",     ["mall","crowded","tourist","luxury retail"],  "Empty retail space with for-lease signage", "gallery"),
   slot("advisory/commercial-leasing-gallery-2", "images/services/advisory/commercial-leasing-gallery-2.jpg", "Office park exterior parking lot",      "Forge Point Real Estate", "office park exterior parking lot",            ["skyscraper","palm","dubai"],            "Suburban office park, parking visible", "gallery"),
-  slot("advisory/commercial-leasing-gallery-3", "images/services/advisory/commercial-leasing-gallery-3.jpg", "Commercial building entry sign",        "Forge Point Real Estate", "commercial building entry sign",              ["corporate logo specific","palm"],       "Generic commercial building entrance", "gallery"),
+  slot("advisory/commercial-leasing-gallery-3", "images/services/advisory/commercial-leasing-gallery-3.jpg", "Commercial building entry sign",        "Forge Point Real Estate", "office building entrance signage suburban",    ["skyscraper","dubai","palm","crowded"],  "Generic commercial building entrance", "gallery"),
 
   // ── Advisory / 1031 Exchange ──────────────────────────────────────────────
   slot("advisory/1031-hero",      "images/services/advisory/1031-hero.jpg",      "Tax documents with calendar deadline",  "Forge Point Real Estate", "tax documents calendar deadline",        ["model","corporate"],       "Documents with calendar visible", "hero"),
@@ -141,7 +146,7 @@ const SLOTS: SlotDef[] = [
   slot("pm/overview-inline", "images/services/pm/pm-overview-inline.jpg", "Inspection clipboard pen detail",        "Property & Portfolio Management", "inspection clipboard pen detail",             ["model","corporate"],"Clipboard close-up, hands at edge OK", "inline"),
 
   // ── Property Management / Commercial & Industrial ─────────────────────────
-  slot("pm/commercial-industrial-hero",      "images/services/pm/commercial-industrial-hero.jpg",      "Industrial warehouse exterior morning",  "Property & Portfolio Management", "industrial warehouse exterior morning",    ["dubai","china manufacturing","port containers"], "Suburban or rural warehouse, low-rise", "hero"),
+  slot("pm/commercial-industrial-hero",      "images/services/pm/commercial-industrial-hero.jpg",      "Industrial warehouse exterior morning",  "Property & Portfolio Management", "warehouse loading dock exterior gray sky",     ["dubai","port containers","factory china","skyscraper","palm"], "Suburban or rural warehouse, low-rise", "hero"),
   slot("pm/commercial-industrial-inline",    "images/services/pm/commercial-industrial-inline.jpg",    "Suburban office park exterior",          "Property & Portfolio Management", "office park exterior parking lot suburban", ["skyscraper","palm","dubai"],              "Office park, low-rise, suburban", "inline"),
   slot("pm/commercial-industrial-gallery-1", "images/services/pm/commercial-industrial-gallery-1.jpg", "Loading dock with truck at warehouse",   "Property & Portfolio Management", "loading dock truck warehouse",             ["port","cargo ship","container yard"],     "Single warehouse with truck at dock", "gallery"),
   slot("pm/commercial-industrial-gallery-2", "images/services/pm/commercial-industrial-gallery-2.jpg", "Retail strip mall exterior daylight",    "Property & Portfolio Management", "retail strip mall exterior daylight",       ["tourist","crowded","palm"],               "Suburban strip mall", "gallery"),
@@ -163,31 +168,31 @@ const SLOTS: SlotDef[] = [
 
   // ── Property Management / Boots on Ground ────────────────────────────────
   slot("pm/boots-on-ground-hero",      "images/services/pm/boots-on-ground-hero.jpg",      "Worker walking property with tablet",      "Property & Portfolio Management", "worker walking property tablet inspection",   ["model smiling","corporate"],            "Worker outdoors with tablet, eyes on property", "hero"),
-  slot("pm/boots-on-ground-inline",    "images/services/pm/boots-on-ground-inline.jpg",    "Property assessment exterior",             "Property & Portfolio Management", "emergency property assessment exterior",       ["disaster news","model"],                "Worker examining building feature", "inline"),
-  slot("pm/boots-on-ground-gallery-1", "images/services/pm/boots-on-ground-gallery-1.jpg", "Storm damage assessment at house",         "Property & Portfolio Management", "storm damage assessment house exterior",       ["disaster news media","flood victims"],  "Visible weather damage, contractor assessing", "gallery"),
-  slot("pm/boots-on-ground-gallery-2", "images/services/pm/boots-on-ground-gallery-2.jpg", "Contractor on phone at jobsite",            "Property & Portfolio Management", "contractor on phone at jobsite",               ["office","model corporate"],             "Worker on phone outdoors at property", "gallery"),
-  slot("pm/boots-on-ground-gallery-3", "images/services/pm/boots-on-ground-gallery-3.jpg", "Service truck at residential property",    "Property & Portfolio Management", "vendor truck residential property",            ["delivery package","model"],             "Service truck or van at residential property", "gallery"),
+  slot("pm/boots-on-ground-inline",    "images/services/pm/boots-on-ground-inline.jpg",    "Property assessment exterior",             "Property & Portfolio Management", "property manager hardhat exterior inspection", ["disaster news","tornado","model smiling","corporate"], "Worker examining building feature", "inline"),
+  slot("pm/boots-on-ground-gallery-1", "images/services/pm/boots-on-ground-gallery-1.jpg", "Storm damage assessment at house",         "Property & Portfolio Management", "hail damage roof shingles inspection",         ["disaster news","tornado","flooding","catastrophic"],   "Visible weather damage, contractor assessing", "gallery"),
+  slot("pm/boots-on-ground-gallery-2", "images/services/pm/boots-on-ground-gallery-2.jpg", "Contractor on phone at jobsite",            "Property & Portfolio Management", "property manager phone notebook outdoor",       ["office","corporate","model smiling","handshake"],      "Worker on phone outdoors at property", "gallery"),
+  slot("pm/boots-on-ground-gallery-3", "images/services/pm/boots-on-ground-gallery-3.jpg", "Service truck at residential property",    "Property & Portfolio Management", "service van pickup truck residential driveway", ["delivery package","amazon","model smiling"],           "Service truck or van at residential property", "gallery"),
 
   // ── Property Management / Maintenance Coordination ────────────────────────
-  slot("pm/maintenance-coord-hero",      "images/services/pm/maintenance-coord-hero.jpg",      "Maintenance tech with toolbox at entry",  "Property & Portfolio Management", "maintenance technician toolbox residential entry", ["model smiling","corporate"],  "Worker at door with tools, from side or behind", "hero"),
-  slot("pm/maintenance-coord-inline",    "images/services/pm/maintenance-coord-inline.jpg",    "Tradesman hands on tablet work order",   "Property & Portfolio Management", "work order tablet hands tradesman",               ["office desk","model"],        "Hands holding tablet, work order on screen", "inline"),
-  slot("pm/maintenance-coord-gallery-1", "images/services/pm/maintenance-coord-gallery-1.jpg", "HVAC tech at outdoor unit",              "Property & Portfolio Management", "hvac technician at outdoor unit",                ["model","corporate ad"],       "Worker servicing AC unit", "gallery"),
-  slot("pm/maintenance-coord-gallery-2", "images/services/pm/maintenance-coord-gallery-2.jpg", "Plumber under sink with wrench",         "Property & Portfolio Management", "plumber under sink with wrench",                  ["model","staged"],             "Plumber working, hands on pipes", "gallery"),
-  slot("pm/maintenance-coord-gallery-3", "images/services/pm/maintenance-coord-gallery-3.jpg", "Electrician at electrical panel",        "Property & Portfolio Management", "electrician electrical panel work",               ["model","safety ad"],          "Electrician at panel, real work in progress", "gallery"),
+  slot("pm/maintenance-coord-hero",      "images/services/pm/maintenance-coord-hero.jpg",      "Maintenance tech with toolbox at entry",  "Property & Portfolio Management", "toolbox open tools residential porch",             ["model smiling","corporate","commercial ad","staged"], "Worker at door with tools, from side or behind", "hero"),
+  slot("pm/maintenance-coord-inline",    "images/services/pm/maintenance-coord-inline.jpg",    "Tradesman hands on tablet work order",   "Property & Portfolio Management", "work order tablet greasy hands jobsite",            ["office desk","model","corporate","clean hands"],      "Hands holding tablet, work order on screen", "inline"),
+  slot("pm/maintenance-coord-gallery-1", "images/services/pm/maintenance-coord-gallery-1.jpg", "HVAC tech at outdoor unit",              "Property & Portfolio Management", "hvac technician at outdoor unit",                  ["model","corporate ad"],       "Worker servicing AC unit", "gallery"),
+  slot("pm/maintenance-coord-gallery-2", "images/services/pm/maintenance-coord-gallery-2.jpg", "Plumber under sink with wrench",         "Property & Portfolio Management", "plumber wrench pipe under sink real",              ["model smiling","staged","commercial ad"], "Plumber working, hands on pipes", "gallery"),
+  slot("pm/maintenance-coord-gallery-3", "images/services/pm/maintenance-coord-gallery-3.jpg", "Electrician at electrical panel",        "Property & Portfolio Management", "electrician electrical panel work",                ["model","safety ad"],          "Electrician at panel, real work in progress", "gallery"),
 
   // ── Custom Interiors / Renovation & Remodel ──────────────────────────────
-  slot("interiors/renovation-hero",      "images/services/interiors/renovation-hero.jpg",      "Home renovation in progress, exposed framing",  "Custom Interiors", "home renovation in progress framing",          ["staged finished","model"],           "Mid-renovation interior, exposed framing", "hero"),
-  slot("interiors/renovation-inline",    "images/services/interiors/renovation-inline.jpg",    "Construction tools on floor",                   "Custom Interiors", "home renovation construction tools floor",      ["staged","magazine"],                 "Tools on floor, work-in-progress", "inline"),
-  slot("interiors/renovation-gallery-1", "images/services/interiors/renovation-gallery-1.jpg", "Gut renovation exposed studs",                   "Custom Interiors", "gut renovation interior exposed studs",         ["staged","magazine cover"],           "Studs visible, drywall removed", "gallery"),
-  slot("interiors/renovation-gallery-2", "images/services/interiors/renovation-gallery-2.jpg", "Worker installing drywall",                      "Custom Interiors", "construction worker installing drywall",        ["model","posed"],                     "Worker holding/installing drywall sheet", "gallery"),
-  slot("interiors/renovation-gallery-3", "images/services/interiors/renovation-gallery-3.jpg", "Finished interior, modest",                       "Custom Interiors", "home renovation finished interior simple",      ["luxury","mansion","magazine"],        "Modest finished space, not over-styled", "gallery"),
+  slot("interiors/renovation-hero",      "images/services/interiors/renovation-hero.jpg",      "Home renovation in progress, exposed framing",  "Custom Interiors", "gut renovation exposed studs drywall dust",         ["staged finished","luxury","magazine","model"],  "Mid-renovation interior, exposed framing", "hero"),
+  slot("interiors/renovation-inline",    "images/services/interiors/renovation-inline.jpg",    "Construction tools on floor",                   "Custom Interiors", "renovation tools sawdust hardwood floor",            ["staged","magazine","luxury","model"],           "Tools on floor, work-in-progress", "inline"),
+  slot("interiors/renovation-gallery-1", "images/services/interiors/renovation-gallery-1.jpg", "Gut renovation exposed studs",                   "Custom Interiors", "interior demolition exposed studs partial",         ["staged","luxury","magazine cover","finished room"], "Studs visible, drywall removed", "gallery"),
+  slot("interiors/renovation-gallery-2", "images/services/interiors/renovation-gallery-2.jpg", "Worker installing drywall",                      "Custom Interiors", "drywall sheet installation screws tools",           ["model","posed","commercial ad","luxury"],       "Worker holding/installing drywall sheet", "gallery"),
+  slot("interiors/renovation-gallery-3", "images/services/interiors/renovation-gallery-3.jpg", "Finished interior, modest",                       "Custom Interiors", "home renovation finished interior simple",          ["luxury","mansion","magazine"],                  "Modest finished space, not over-styled", "gallery"),
 
   // ── Custom Interiors / Framing & Finishes ────────────────────────────────
   slot("interiors/framing-hero",      "images/services/interiors/framing-hero.jpg",      "Wood framing house construction",        "Custom Interiors", "wood framing house construction",          ["model","commercial"],        "New wood framing, sun through studs", "hero"),
   slot("interiors/framing-inline",    "images/services/interiors/framing-inline.jpg",    "Trim carpentry crown molding install",   "Custom Interiors", "trim carpentry crown molding installation", ["staged","magazine"],          "Hands installing trim, real work", "inline"),
   slot("interiors/framing-gallery-1", "images/services/interiors/framing-gallery-1.jpg", "Drywall installation at wall corner",    "Custom Interiors", "drywall installation wall corner",          ["model","staged"],             "Drywall going up, screws/tools visible", "gallery"),
-  slot("interiors/framing-gallery-2", "images/services/interiors/framing-gallery-2.jpg", "Crown molding corner detail",            "Custom Interiors", "crown molding corner detail",               ["staged","magazine"],          "Trim detail, real installation", "gallery"),
-  slot("interiors/framing-gallery-3", "images/services/interiors/framing-gallery-3.jpg", "Paint roller on wall",                   "Custom Interiors", "paint roller wall fresh",                   ["model","commercial ad"],      "Roller on wall, paint can visible", "gallery"),
+  slot("interiors/framing-gallery-2", "images/services/interiors/framing-gallery-2.jpg", "Crown molding corner detail",            "Custom Interiors", "baseboard trim installation hammer nail",    ["staged","magazine","luxury","model"], "Trim detail, real installation", "gallery"),
+  slot("interiors/framing-gallery-3", "images/services/interiors/framing-gallery-3.jpg", "Paint roller on wall",                   "Custom Interiors", "paint roller drop cloth ladder room",        ["model","commercial ad","staged","luxury"], "Roller on wall, paint can visible", "gallery"),
 
   // ── Custom Interiors / Kitchen & Bath ────────────────────────────────────
   slot("interiors/kitchen-bath-hero",      "images/services/interiors/kitchen-bath-hero.jpg",      "Kitchen renovation new cabinets",    "Custom Interiors", "kitchen renovation new cabinets",          ["magazine luxury","dream kitchen"],   "Modest renovated kitchen, real materials", "hero"),
@@ -197,16 +202,16 @@ const SLOTS: SlotDef[] = [
   slot("interiors/kitchen-bath-gallery-3", "images/services/interiors/kitchen-bath-gallery-3.jpg", "Kitchen backsplash tile detail",     "Custom Interiors", "kitchen backsplash tile detail",            ["luxury","magazine"],                 "Backsplash close-up, real install", "gallery"),
 
   // ── Custom Interiors / Basement Finishing ────────────────────────────────
-  slot("interiors/basement-hero",      "images/services/interiors/basement-hero.jpg",      "Finished basement family room",       "Custom Interiors", "finished basement family room sectional",  ["luxury","mansion","magazine"],  "Real basement living space, modest scale", "hero"),
+  slot("interiors/basement-hero",      "images/services/interiors/basement-hero.jpg",      "Finished basement family room",       "Custom Interiors", "basement framing in progress concrete walls", ["luxury","mansion","magazine","staged finished"], "Real basement living space, modest scale", "hero"),
   slot("interiors/basement-inline",    "images/services/interiors/basement-inline.jpg",    "Basement bar installation",           "Custom Interiors", "basement bar installation",                ["luxury","mansion"],             "Basement bar, real materials", "inline"),
-  slot("interiors/basement-gallery-1", "images/services/interiors/basement-gallery-1.jpg", "Basement media room couch TV",        "Custom Interiors", "basement media room couch tv",             ["luxury home theater","magazine"],"Modest basement TV area", "gallery"),
+  slot("interiors/basement-gallery-1", "images/services/interiors/basement-gallery-1.jpg", "Basement media room couch TV",        "Custom Interiors", "basement drywall installation framing",     ["luxury home theater","magazine","staged"], "Modest basement TV area", "gallery"),
   slot("interiors/basement-gallery-2", "images/services/interiors/basement-gallery-2.jpg", "Basement bedroom egress window",      "Custom Interiors", "basement bedroom egress window",           ["luxury","magazine"],             "Basement bedroom, regular finishes", "gallery"),
   slot("interiors/basement-gallery-3", "images/services/interiors/basement-gallery-3.jpg", "Home gym in basement",                "Custom Interiors", "home gym basement equipment",              ["commercial gym","luxury"],       "Modest home gym setup", "gallery"),
 
   // ── Custom Interiors / Additions & Expansions ────────────────────────────
-  slot("interiors/additions-hero",      "images/services/interiors/additions-hero.jpg",      "Home addition new construction",      "Custom Interiors", "home addition new construction siding",  ["mansion","luxury","palm"],    "New addition under construction or recent", "hero"),
+  slot("interiors/additions-hero",      "images/services/interiors/additions-hero.jpg",      "Home addition new construction",      "Custom Interiors", "home addition framing wrap exposed sheathing", ["mansion","luxury","palm","completed"],  "New addition under construction or recent", "hero"),
   slot("interiors/additions-inline",    "images/services/interiors/additions-inline.jpg",    "Sunroom interior windows daylight",   "Custom Interiors", "sunroom interior windows daylight",      ["luxury","magazine"],          "Modest sunroom, real", "inline"),
-  slot("interiors/additions-gallery-1", "images/services/interiors/additions-gallery-1.jpg", "Home expansion framing exterior",     "Custom Interiors", "home expansion framing exterior",        ["mansion","luxury"],           "Addition framing visible", "gallery"),
+  slot("interiors/additions-gallery-1", "images/services/interiors/additions-gallery-1.jpg", "Home expansion framing exterior",     "Custom Interiors", "second story addition framing house",    ["mansion","luxury","completed","palm"],  "Addition framing visible", "gallery"),
   slot("interiors/additions-gallery-2", "images/services/interiors/additions-gallery-2.jpg", "Master bedroom addition large window","Custom Interiors", "master bedroom addition large window",   ["luxury suite","mansion"],     "Bedroom with addition feel", "gallery"),
   slot("interiors/additions-gallery-3", "images/services/interiors/additions-gallery-3.jpg", "Garage apartment exterior",           "Custom Interiors", "garage apartment exterior",              ["mansion","luxury"],           "Above-garage living space exterior", "gallery"),
 
@@ -218,79 +223,79 @@ const SLOTS: SlotDef[] = [
   slot("interiors/investment-rehab-gallery-3", "images/services/interiors/investment-rehab-gallery-3.jpg", "Investment home exterior fresh paint",  "Custom Interiors", "investment home exterior fresh paint",      ["mansion","luxury"],           "Modest home, exterior refresh", "gallery"),
 
   // ── Custom Interiors / Flooring & Tile ───────────────────────────────────
-  slot("interiors/flooring-tile-hero",      "images/services/interiors/flooring-tile-hero.jpg",      "Hardwood floor installation in progress","Custom Interiors", "hardwood floor installation in progress", ["luxury","magazine"],          "Floor partially installed, tools/cuts visible", "hero"),
-  slot("interiors/flooring-tile-inline",    "images/services/interiors/flooring-tile-inline.jpg",    "Tile floor pattern installation",        "Custom Interiors", "tile floor pattern installation",          ["luxury","magazine"],          "Tile being laid, spacers visible", "inline"),
+  slot("interiors/flooring-tile-hero",      "images/services/interiors/flooring-tile-hero.jpg",      "Hardwood floor installation in progress","Custom Interiors", "hardwood plank installation tools tongue groove", ["luxury","magazine","staged room","mansion"], "Floor partially installed, tools/cuts visible", "hero"),
+  slot("interiors/flooring-tile-inline",    "images/services/interiors/flooring-tile-inline.jpg",    "Tile floor pattern installation",        "Custom Interiors", "tile spacers grout floor installation hands",    ["luxury","magazine","mansion","commercial ad"], "Tile being laid, spacers visible", "inline"),
   slot("interiors/flooring-tile-gallery-1", "images/services/interiors/flooring-tile-gallery-1.jpg", "Luxury vinyl plank installation",        "Custom Interiors", "luxury vinyl plank installation",          ["magazine","staged room"],     "LVP installation in progress", "gallery"),
   slot("interiors/flooring-tile-gallery-2", "images/services/interiors/flooring-tile-gallery-2.jpg", "Bathroom tile installation with grout",  "Custom Interiors", "bathroom tile installation grout",         ["magazine","staged"],          "Bathroom tile work in progress", "gallery"),
-  slot("interiors/flooring-tile-gallery-3", "images/services/interiors/flooring-tile-gallery-3.jpg", "Finished hardwood floor empty room",     "Custom Interiors", "hardwood floor finished room empty",       ["luxury","magazine"],          "Empty room with finished floor", "gallery"),
+  slot("interiors/flooring-tile-gallery-3", "images/services/interiors/flooring-tile-gallery-3.jpg", "Finished hardwood floor empty room",     "Custom Interiors", "hardwood floor partial install row",        ["luxury","magazine","mansion","staged"], "Empty room with finished floor", "gallery"),
 
   // ── Outdoor / Landscape Design & Install ─────────────────────────────────
-  slot("outdoor/landscape-hero",      "images/services/outdoor/landscape-hero.jpg",      "Xeriscape Colorado front yard",          "Outdoor Living & Grounds", "xeriscape colorado front yard rocks plants",  ["tropical","english garden","palm"], "Xeriscape with rocks, native plants", "hero"),
+  slot("outdoor/landscape-hero",      "images/services/outdoor/landscape-hero.jpg",      "Xeriscape Colorado front yard",          "Outdoor Living & Grounds", "front range xeriscape gravel native grasses",  ["tropical","english garden","palm","manicured lawn"], "Xeriscape with rocks, native plants", "hero"),
   slot("outdoor/landscape-inline",    "images/services/outdoor/landscape-inline.jpg",    "Landscaper installing plants",           "Outdoor Living & Grounds", "landscaper installing plants shovel",         ["model","posed"],                   "Worker planting, hands or back to camera", "inline"),
-  slot("outdoor/landscape-gallery-1", "images/services/outdoor/landscape-gallery-1.jpg", "Native plants garden bed with mulch",    "Outdoor Living & Grounds", "native plants colorado garden bed mulch",     ["tropical","english garden","palm"], "Native plantings, mulch visible", "gallery"),
+  slot("outdoor/landscape-gallery-1", "images/services/outdoor/landscape-gallery-1.jpg", "Native plants garden bed with mulch",    "Outdoor Living & Grounds", "prairie grass blue grama native bed",         ["tropical","english garden","palm"], "Native plantings, mulch visible", "gallery"),
   slot("outdoor/landscape-gallery-2", "images/services/outdoor/landscape-gallery-2.jpg", "Sod installation lawn rolls",            "Outdoor Living & Grounds", "sod installation residential lawn",           ["model","staged"],                  "Sod rolls being laid", "gallery"),
-  slot("outdoor/landscape-gallery-3", "images/services/outdoor/landscape-gallery-3.jpg", "Drip irrigation tubing installation",   "Outdoor Living & Grounds", "drip irrigation tubing installation garden",  ["model","commercial ad"],           "Irrigation lines visible at install", "gallery"),
+  slot("outdoor/landscape-gallery-3", "images/services/outdoor/landscape-gallery-3.jpg", "Drip irrigation tubing installation",   "Outdoor Living & Grounds", "drip line emitter mulch garden install",       ["model","commercial ad","sprinkler","tropical"],  "Irrigation lines visible at install", "gallery"),
 
   // ── Outdoor / Decks, Pergolas & Patios ───────────────────────────────────
-  slot("outdoor/decks-hero",      "images/services/outdoor/decks-hero.jpg",      "Composite deck with mountain view",     "Outdoor Living & Grounds", "composite deck residential mountain view", ["tropical","oceanfront","palm"],   "Real deck, mountain or open view", "hero"),
+  slot("outdoor/decks-hero",      "images/services/outdoor/decks-hero.jpg",      "Composite deck with mountain view",     "Outdoor Living & Grounds", "deck construction joists boards backyard",  ["tropical","oceanfront","palm","resort"],  "Real deck, mountain or open view", "hero"),
   slot("outdoor/decks-inline",    "images/services/outdoor/decks-inline.jpg",    "Pergola wood structure backyard",       "Outdoor Living & Grounds", "pergola wood structure backyard",          ["tropical","wedding","magazine"],  "Pergola in real backyard", "inline"),
   slot("outdoor/decks-gallery-1", "images/services/outdoor/decks-gallery-1.jpg", "Paver patio fire pit backyard",         "Outdoor Living & Grounds", "paver patio fire pit backyard",            ["luxury resort","tropical"],       "Patio with fire pit, real backyard", "gallery"),
   slot("outdoor/decks-gallery-2", "images/services/outdoor/decks-gallery-2.jpg", "Cedar deck railing installation",       "Outdoor Living & Grounds", "cedar deck railing installation",          ["magazine","staged"],              "Deck under construction or recent", "gallery"),
-  slot("outdoor/decks-gallery-3", "images/services/outdoor/decks-gallery-3.jpg", "Pergola with string lights evening",    "Outdoor Living & Grounds", "pergola string lights evening",            ["wedding","event venue"],          "Real pergola, simple string lights", "gallery"),
+  slot("outdoor/decks-gallery-3", "images/services/outdoor/decks-gallery-3.jpg", "Pergola with string lights evening",    "Outdoor Living & Grounds", "pergola wood beams backyard residential",   ["wedding","event venue","tropical","resort"], "Real pergola, simple string lights", "gallery"),
 
   // ── Outdoor / Custom Water Features ──────────────────────────────────────
-  slot("outdoor/water-features-hero",      "images/services/outdoor/water-features-hero.jpg",      "Pondless waterfall garden rocks",     "Outdoor Living & Grounds", "pondless waterfall garden rocks",      ["tropical resort","commercial"],    "Waterfall in real garden setting", "hero"),
-  slot("outdoor/water-features-inline",    "images/services/outdoor/water-features-inline.jpg",    "Koi pond residential backyard",       "Outdoor Living & Grounds", "koi pond residential backyard",        ["commercial garden","tropical"],    "Real koi pond, residential scale", "inline"),
-  slot("outdoor/water-features-gallery-1", "images/services/outdoor/water-features-gallery-1.jpg", "Garden stream feature with rocks",    "Outdoor Living & Grounds", "garden stream feature rocks",          ["commercial","tropical resort"],    "Stream in landscape", "gallery"),
-  slot("outdoor/water-features-gallery-2", "images/services/outdoor/water-features-gallery-2.jpg", "Stone fountain in garden basin",      "Outdoor Living & Grounds", "stone fountain garden basin",          ["commercial","mall"],               "Real residential fountain", "gallery"),
+  slot("outdoor/water-features-hero",      "images/services/outdoor/water-features-hero.jpg",      "Pondless waterfall garden rocks",     "Outdoor Living & Grounds", "natural stone waterfall backyard pond",    ["tropical resort","commercial fountain","mall","mansion"],  "Waterfall in real garden setting", "hero"),
+  slot("outdoor/water-features-inline",    "images/services/outdoor/water-features-inline.jpg",    "Koi pond residential backyard",       "Outdoor Living & Grounds", "backyard pond stones water plants",        ["commercial garden","tropical resort","mansion"],    "Real koi pond, residential scale", "inline"),
+  slot("outdoor/water-features-gallery-1", "images/services/outdoor/water-features-gallery-1.jpg", "Garden stream feature with rocks",    "Outdoor Living & Grounds", "stream rocks landscape backyard",          ["commercial","tropical resort","mountain wild"],    "Stream in landscape", "gallery"),
+  slot("outdoor/water-features-gallery-2", "images/services/outdoor/water-features-gallery-2.jpg", "Stone fountain in garden basin",      "Outdoor Living & Grounds", "stone basin water bubbler garden",          ["commercial fountain","mall","mansion","tropical"],  "Real residential fountain", "gallery"),
   slot("outdoor/water-features-gallery-3", "images/services/outdoor/water-features-gallery-3.jpg", "Backyard pond with water lilies",     "Outdoor Living & Grounds", "backyard pond water lilies",           ["commercial","tropical resort"],    "Backyard pond, residential scale", "gallery"),
 
   // ── Outdoor / Fencing & Retaining Walls ──────────────────────────────────
-  slot("outdoor/fencing-hero",      "images/services/outdoor/fencing-hero.jpg",      "Cedar privacy fence backyard",         "Outdoor Living & Grounds", "cedar privacy fence backyard residential", ["mansion","luxury"],              "New cedar fence, real backyard", "hero"),
-  slot("outdoor/fencing-inline",    "images/services/outdoor/fencing-inline.jpg",    "Wood fence installation post visible", "Outdoor Living & Grounds", "wood fence installation post",             ["model","staged"],                "Fence going in, post visible", "inline"),
+  slot("outdoor/fencing-hero",      "images/services/outdoor/fencing-hero.jpg",      "Cedar privacy fence backyard",         "Outdoor Living & Grounds", "cedar fence boards installation residential", ["mansion","luxury","tropical","white picket"],    "New cedar fence, real backyard", "hero"),
+  slot("outdoor/fencing-inline",    "images/services/outdoor/fencing-inline.jpg",    "Wood fence installation post visible", "Outdoor Living & Grounds", "fence post hole concrete shovel",              ["model","staged","mansion","white picket"],       "Fence going in, post visible", "inline"),
   slot("outdoor/fencing-gallery-1", "images/services/outdoor/fencing-gallery-1.jpg", "Wrought iron fence gate residential",  "Outdoor Living & Grounds", "wrought iron fence gate residential",      ["mansion","victorian decoration"], "Iron fence section, real property", "gallery"),
-  slot("outdoor/fencing-gallery-2", "images/services/outdoor/fencing-gallery-2.jpg", "Block retaining wall landscape",       "Outdoor Living & Grounds", "block retaining wall landscape colorado",  ["commercial","parking lot"],       "Retaining wall in residential context", "gallery"),
-  slot("outdoor/fencing-gallery-3", "images/services/outdoor/fencing-gallery-3.jpg", "Board on board wood fence detail",     "Outdoor Living & Grounds", "board on board wood fence",                ["mansion","luxury"],               "Wood fence detail", "gallery"),
+  slot("outdoor/fencing-gallery-2", "images/services/outdoor/fencing-gallery-2.jpg", "Block retaining wall landscape",       "Outdoor Living & Grounds", "stacked block retaining wall residential",  ["commercial","parking lot","mansion","tropical"],  "Retaining wall in residential context", "gallery"),
+  slot("outdoor/fencing-gallery-3", "images/services/outdoor/fencing-gallery-3.jpg", "Board on board wood fence detail",     "Outdoor Living & Grounds", "board on board cedar fence detail",         ["mansion","luxury","white picket","tropical"],    "Wood fence detail", "gallery"),
 
   // ── Outdoor / Grounds Maintenance ────────────────────────────────────────
-  slot("outdoor/grounds-hero",      "images/services/outdoor/grounds-hero.jpg",      "Commercial lawn mower on lawn",        "Outdoor Living & Grounds", "lawn mower commercial residential lawn",  ["model smiling","commercial ad"],  "Mower on lawn, worker behind/side", "hero"),
+  slot("outdoor/grounds-hero",      "images/services/outdoor/grounds-hero.jpg",      "Commercial lawn mower on lawn",        "Outdoor Living & Grounds", "push mower stripes residential lawn",      ["model smiling","commercial ad","golf course","perfect lawn"], "Mower on lawn, worker behind/side", "hero"),
   slot("outdoor/grounds-inline",    "images/services/outdoor/grounds-inline.jpg",    "Lawn edging tool in progress",         "Outdoor Living & Grounds", "lawn edging tool work in progress",       ["model","staged"],                 "Edger in use, real work", "inline"),
-  slot("outdoor/grounds-gallery-1", "images/services/outdoor/grounds-gallery-1.jpg", "Fresh mulch installed in garden bed",  "Outdoor Living & Grounds", "mulch fresh garden bed install",          ["staged","magazine"],              "Fresh mulch in bed", "gallery"),
+  slot("outdoor/grounds-gallery-1", "images/services/outdoor/grounds-gallery-1.jpg", "Fresh mulch installed in garden bed",  "Outdoor Living & Grounds", "wheelbarrow mulch garden bed shovel",      ["staged","magazine","commercial ad","model"],  "Fresh mulch in bed", "gallery"),
   slot("outdoor/grounds-gallery-2", "images/services/outdoor/grounds-gallery-2.jpg", "Fall leaf cleanup with rake",          "Outdoor Living & Grounds", "fall leaves cleanup rake yard",           ["staged kids playing","model"],    "Real leaf cleanup, tools visible", "gallery"),
-  slot("outdoor/grounds-gallery-3", "images/services/outdoor/grounds-gallery-3.jpg", "Hedge trimmer work landscaping",       "Outdoor Living & Grounds", "hedge trimmer work landscaping",          ["model","staged"],                 "Trimmer in use on hedges", "gallery"),
+  slot("outdoor/grounds-gallery-3", "images/services/outdoor/grounds-gallery-3.jpg", "Hedge trimmer work landscaping",       "Outdoor Living & Grounds", "hedge trimmer cutting shrub residential",  ["model","staged","commercial ad","golf course"], "Trimmer in use on hedges", "gallery"),
 
   // ── Outdoor / Industrial Maintenance ─────────────────────────────────────
-  slot("outdoor/industrial-hero",      "images/services/outdoor/industrial-hero.jpg",      "Parking lot striping line painting",   "Outdoor Living & Grounds", "parking lot striping line painting",       ["airport","racetrack"],            "Real parking lot with fresh striping", "hero"),
-  slot("outdoor/industrial-inline",    "images/services/outdoor/industrial-inline.jpg",    "Concrete pressure washing",            "Outdoor Living & Grounds", "concrete pressure washing commercial",     ["model","commercial ad"],          "Concrete being cleaned, water spray", "inline"),
-  slot("outdoor/industrial-gallery-1", "images/services/outdoor/industrial-gallery-1.jpg", "Parking lot sweeper truck",            "Outdoor Living & Grounds", "parking lot sweeper truck",                ["airport","news media"],           "Sweeper truck on lot", "gallery"),
-  slot("outdoor/industrial-gallery-2", "images/services/outdoor/industrial-gallery-2.jpg", "Loading dock cleaning concrete",       "Outdoor Living & Grounds", "loading dock cleaning concrete",            ["model","staged"],                 "Loading dock area being maintained", "gallery"),
-  slot("outdoor/industrial-gallery-3", "images/services/outdoor/industrial-gallery-3.jpg", "Warehouse floor scrubber machine",     "Outdoor Living & Grounds", "warehouse floor scrubber machine",         ["commercial ad","model"],          "Floor scrubbing equipment in use", "gallery"),
+  slot("outdoor/industrial-hero",      "images/services/outdoor/industrial-hero.jpg",      "Parking lot striping line painting",   "Outdoor Living & Grounds", "freshly painted parking lines lot",         ["airport","racetrack","commercial ad","tourist"],  "Real parking lot with fresh striping", "hero"),
+  slot("outdoor/industrial-inline",    "images/services/outdoor/industrial-inline.jpg",    "Concrete pressure washing",            "Outdoor Living & Grounds", "concrete loading dock pressure spray",       ["model","commercial ad","staged","new concrete"],  "Concrete being cleaned, water spray", "inline"),
+  slot("outdoor/industrial-gallery-1", "images/services/outdoor/industrial-gallery-1.jpg", "Parking lot sweeper truck",            "Outdoor Living & Grounds", "sweeper truck parking lot pavement",        ["airport","news media","tourist"],             "Sweeper truck on lot", "gallery"),
+  slot("outdoor/industrial-gallery-2", "images/services/outdoor/industrial-gallery-2.jpg", "Loading dock cleaning concrete",       "Outdoor Living & Grounds", "warehouse loading dock concrete pad",        ["model","staged","port containers"],           "Loading dock area being maintained", "gallery"),
+  slot("outdoor/industrial-gallery-3", "images/services/outdoor/industrial-gallery-3.jpg", "Warehouse floor scrubber machine",     "Outdoor Living & Grounds", "floor scrubber industrial concrete in use",  ["commercial ad","model","new floor"],          "Floor scrubbing equipment in use", "gallery"),
 
   // ── Outdoor / Pressure Washing & Windows ─────────────────────────────────
-  slot("outdoor/pressure-wash-hero",      "images/services/outdoor/pressure-wash-hero.jpg",      "Pressure washer cleaning driveway",      "Outdoor Living & Grounds", "pressure washer driveway concrete cleaning",  ["model","commercial ad"],   "Pressure washer in use, before-after visible", "hero"),
-  slot("outdoor/pressure-wash-inline",    "images/services/outdoor/pressure-wash-inline.jpg",    "Window cleaning with squeegee",          "Outdoor Living & Grounds", "window cleaning squeegee residential",        ["model","commercial ad"],   "Squeegee on window, real work", "inline"),
-  slot("outdoor/pressure-wash-gallery-1", "images/services/outdoor/pressure-wash-gallery-1.jpg", "Deck pressure washing wood boards",      "Outdoor Living & Grounds", "deck pressure washing wood",                  ["model","commercial ad"],   "Pressure washer on deck boards", "gallery"),
-  slot("outdoor/pressure-wash-gallery-2", "images/services/outdoor/pressure-wash-gallery-2.jpg", "House siding soft wash with wand",       "Outdoor Living & Grounds", "house siding soft wash",                      ["model","commercial ad"],   "Wand on siding, water visible", "gallery"),
-  slot("outdoor/pressure-wash-gallery-3", "images/services/outdoor/pressure-wash-gallery-3.jpg", "Window squeegee detail, clean glass",    "Outdoor Living & Grounds", "clean window squeegee detail",                ["model","magazine"],        "Squeegee on glass, real work", "gallery"),
+  slot("outdoor/pressure-wash-hero",      "images/services/outdoor/pressure-wash-hero.jpg",      "Pressure washer cleaning driveway",      "Outdoor Living & Grounds", "pressure washer driveway streak before after", ["model","commercial ad","new concrete"],  "Pressure washer in use, before-after visible", "hero"),
+  slot("outdoor/pressure-wash-inline",    "images/services/outdoor/pressure-wash-inline.jpg",    "Window cleaning with squeegee",          "Outdoor Living & Grounds", "window squeegee streak water residential",     ["model","commercial ad","skyscraper","mansion"],  "Squeegee on window, real work", "inline"),
+  slot("outdoor/pressure-wash-gallery-1", "images/services/outdoor/pressure-wash-gallery-1.jpg", "Deck pressure washing wood boards",      "Outdoor Living & Grounds", "pressure washer wand wood deck spray",         ["model","commercial ad","new deck"],   "Pressure washer on deck boards", "gallery"),
+  slot("outdoor/pressure-wash-gallery-2", "images/services/outdoor/pressure-wash-gallery-2.jpg", "House siding soft wash with wand",       "Outdoor Living & Grounds", "vinyl siding wash before after streaks",        ["model","commercial ad","mansion","new house"],  "Wand on siding, water visible", "gallery"),
+  slot("outdoor/pressure-wash-gallery-3", "images/services/outdoor/pressure-wash-gallery-3.jpg", "Window squeegee detail, clean glass",    "Outdoor Living & Grounds", "window squeegee close up water",               ["model","magazine","skyscraper"],      "Squeegee on glass, real work", "gallery"),
 
   // ── Outdoor / Junk Haul Off ───────────────────────────────────────────────
-  slot("outdoor/junk-hero",      "images/services/outdoor/junk-hero.jpg",      "Junk removal truck loaded",           "Outdoor Living & Grounds", "junk removal truck loaded furniture",    ["model","news media"],              "Truck with junk loaded, real work", "hero"),
-  slot("outdoor/junk-inline",    "images/services/outdoor/junk-inline.jpg",    "Dumpster in residential driveway",    "Outdoor Living & Grounds", "dumpster residential driveway rental",   ["news media","commercial site"],    "Dumpster on real driveway", "inline"),
+  slot("outdoor/junk-hero",      "images/services/outdoor/junk-hero.jpg",      "Junk removal truck loaded",           "Outdoor Living & Grounds", "loaded box truck junk hauling residential", ["model","news media","commercial ad","disaster"],  "Truck with junk loaded, real work", "hero"),
+  slot("outdoor/junk-inline",    "images/services/outdoor/junk-inline.jpg",    "Dumpster in residential driveway",    "Outdoor Living & Grounds", "roll off dumpster house driveway",           ["news media","commercial waste","disaster site"],  "Dumpster on real driveway", "inline"),
   slot("outdoor/junk-gallery-1", "images/services/outdoor/junk-gallery-1.jpg", "Furniture loading onto truck",        "Outdoor Living & Grounds", "furniture loading truck hauling",        ["model smiling","commercial ad"],   "Furniture being moved to truck", "gallery"),
-  slot("outdoor/junk-gallery-2", "images/services/outdoor/junk-gallery-2.jpg", "Construction debris pile cleanout",   "Outdoor Living & Grounds", "construction debris pile cleanout",      ["disaster","news media"],           "Real debris pile, contractor context", "gallery"),
-  slot("outdoor/junk-gallery-3", "images/services/outdoor/junk-gallery-3.jpg", "Empty cleared garage before-after",  "Outdoor Living & Grounds", "empty cleared garage organized",         ["magazine","staged"],               "Cleared garage, before-after feel", "gallery"),
+  slot("outdoor/junk-gallery-2", "images/services/outdoor/junk-gallery-2.jpg", "Construction debris pile cleanout",   "Outdoor Living & Grounds", "construction debris pile drywall lumber", ["disaster news","tornado","flooding"],  "Real debris pile, contractor context", "gallery"),
+  slot("outdoor/junk-gallery-3", "images/services/outdoor/junk-gallery-3.jpg", "Empty cleared garage before-after",  "Outdoor Living & Grounds", "empty garage swept concrete residential", ["magazine","staged","luxury","commercial"],  "Cleared garage, before-after feel", "gallery"),
 
   // ── Concierge / Housekeeping ──────────────────────────────────────────────
-  slot("concierge/housekeeping-hero",      "images/services/concierge/housekeeping-hero.jpg",      "Clean kitchen counter daylight",       "Concierge & Estate Services", "clean kitchen counter wiped daylight",   ["luxury","magazine","staged"],  "Real clean kitchen, modest", "hero"),
-  slot("concierge/housekeeping-inline",    "images/services/concierge/housekeeping-inline.jpg",    "Cleaning supplies bucket and gloves",  "Concierge & Estate Services", "cleaning supplies bucket gloves",        ["model","commercial ad"],       "Real cleaning supplies on counter", "inline"),
-  slot("concierge/housekeeping-gallery-1", "images/services/concierge/housekeeping-gallery-1.jpg", "Vacuum on carpet living room",         "Concierge & Estate Services", "vacuum carpet living room",              ["model","commercial ad"],       "Vacuum in use or staged on carpet", "gallery"),
-  slot("concierge/housekeeping-gallery-2", "images/services/concierge/housekeeping-gallery-2.jpg", "Clean bathroom counter sink fixture",  "Concierge & Estate Services", "clean bathroom counter sink fixture",   ["luxury spa","magazine"],       "Modest clean bathroom", "gallery"),
-  slot("concierge/housekeeping-gallery-3", "images/services/concierge/housekeeping-gallery-3.jpg", "Mopping hardwood floor",               "Concierge & Estate Services", "mop hardwood floor cleaning",           ["model","commercial ad"],       "Mop on floor, real work", "gallery"),
+  slot("concierge/housekeeping-hero",      "images/services/concierge/housekeeping-hero.jpg",      "Clean kitchen counter daylight",       "Concierge & Estate Services", "kitchen counter morning sunlight modest",   ["luxury","magazine","staged","mansion"],  "Real clean kitchen, modest", "hero"),
+  slot("concierge/housekeeping-inline",    "images/services/concierge/housekeeping-inline.jpg",    "Cleaning supplies bucket and gloves",  "Concierge & Estate Services", "yellow gloves spray bottle counter",        ["model","commercial ad","staged","luxury"], "Real cleaning supplies on counter", "inline"),
+  slot("concierge/housekeeping-gallery-1", "images/services/concierge/housekeeping-gallery-1.jpg", "Vacuum on carpet living room",         "Concierge & Estate Services", "upright vacuum carpet residential simple",  ["model","commercial ad","staged","luxury"], "Vacuum in use or staged on carpet", "gallery"),
+  slot("concierge/housekeeping-gallery-2", "images/services/concierge/housekeeping-gallery-2.jpg", "Clean bathroom counter sink fixture",  "Concierge & Estate Services", "bathroom counter sink soap natural light",  ["luxury spa","magazine","mansion","resort"], "Modest clean bathroom", "gallery"),
+  slot("concierge/housekeeping-gallery-3", "images/services/concierge/housekeeping-gallery-3.jpg", "Mopping hardwood floor",               "Concierge & Estate Services", "mop bucket hardwood floor real",            ["model","commercial ad","staged","luxury"], "Mop on floor, real work", "gallery"),
 
   // ── Concierge / Home Safety & Wellness Checks ────────────────────────────
-  slot("concierge/home-safety-hero",      "images/services/concierge/home-safety-hero.jpg",      "Smoke detector ceiling test",          "Concierge & Estate Services", "smoke detector ceiling test",          ["commercial ad","model"],        "Smoke detector close-up, hands testing", "hero"),
+  slot("concierge/home-safety-hero",      "images/services/concierge/home-safety-hero.jpg",      "Smoke detector ceiling test",          "Concierge & Estate Services", "smoke detector ceiling close up button",   ["commercial ad","model","staged","new construction"], "Smoke detector close-up, hands testing", "hero"),
   slot("concierge/home-safety-inline",    "images/services/concierge/home-safety-inline.jpg",    "Door lock check exterior home",        "Concierge & Estate Services", "door lock check exterior home",        ["commercial ad","model"],        "Door lock detail, hand on knob", "inline"),
-  slot("concierge/home-safety-gallery-1", "images/services/concierge/home-safety-gallery-1.jpg", "Home walkthrough checklist clipboard", "Concierge & Estate Services", "home walkthrough checklist clipboard", ["model smiling","corporate"],    "Worker with clipboard outside home", "gallery"),
+  slot("concierge/home-safety-gallery-1", "images/services/concierge/home-safety-gallery-1.jpg", "Home walkthrough checklist clipboard", "Concierge & Estate Services", "clipboard pen residential porch entry",    ["model smiling","corporate","staged","commercial ad"], "Worker with clipboard outside home", "gallery"),
   slot("concierge/home-safety-gallery-2", "images/services/concierge/home-safety-gallery-2.jpg", "Mail and packages on front porch",     "Concierge & Estate Services", "mail packages porch front door",       ["holiday","christmas"],          "Packages or mail on real porch", "gallery"),
   slot("concierge/home-safety-gallery-3", "images/services/concierge/home-safety-gallery-3.jpg", "Fire extinguisher inspection",         "Concierge & Estate Services", "fire extinguisher inspection check",   ["commercial ad","model"],        "Extinguisher with hands or alone", "gallery"),
 
@@ -310,11 +315,208 @@ const SLOTS: SlotDef[] = [
 
   // ── Concierge / Concierge Errands ────────────────────────────────────────
   slot("concierge/errands-hero",      "images/services/concierge/errands-hero.jpg",      "Grocery bags loading into car trunk",   "Concierge & Estate Services", "grocery bags car trunk loading",           ["commercial ad","model smiling"], "Bags going into trunk, real", "hero"),
-  slot("concierge/errands-inline",    "images/services/concierge/errands-inline.jpg",    "Pharmacy counter prescription pickup",  "Concierge & Estate Services", "pharmacy counter prescription pickup",     ["commercial ad","model"],         "Real pharmacy counter context", "inline"),
+  slot("concierge/errands-inline",    "images/services/concierge/errands-inline.jpg",    "Pharmacy counter prescription pickup",  "Concierge & Estate Services", "pharmacy bag prescription bottle counter",  ["commercial ad","model","staged","tourist"],  "Real pharmacy counter context", "inline"),
   slot("concierge/errands-gallery-1", "images/services/concierge/errands-gallery-1.jpg", "Package delivery on porch doorstep",    "Concierge & Estate Services", "package porch delivery doorstep",          ["holiday","christmas","model"],   "Package on real porch", "gallery"),
   slot("concierge/errands-gallery-2", "images/services/concierge/errands-gallery-2.jpg", "Dry cleaning hangers at shop",          "Concierge & Estate Services", "dry cleaning hangers shop",                ["commercial ad","model"],         "Hangers with bagged clothes", "gallery"),
   slot("concierge/errands-gallery-3", "images/services/concierge/errands-gallery-3.jpg", "Shopping bags delivery residential",    "Concierge & Estate Services", "shopping bags handed delivery residential", ["commercial ad","model"],        "Bags being handed off", "gallery"),
 ];
+
+// ── University slug-level overrides (priority over regex patterns) ──────────
+// One entry per article slug that needs targeted imagery.
+// These match exactly and run BEFORE the UNI_PATTERNS regexes.
+
+interface UniversityOverride {
+  slug: string;
+  query: string;
+  antiKeywords: string[];
+}
+
+const UNI_SLUG_OVERRIDES: UniversityOverride[] = [
+  // Lawn, Turf & Grounds
+  { slug: "mowing-height-colorado",
+    query: "tall grass blade close up macro mower",
+    antiKeywords: ["commercial ad","model","golf course","perfect lawn"] },
+
+  { slug: "aerate-overseed-colorado",
+    query: "lawn core aeration plugs holes",
+    antiKeywords: ["commercial ad","model","new sod"] },
+
+  { slug: "colorado-lawn-fertilization-schedule",
+    query: "fertilizer granules grass close up",
+    antiKeywords: ["commercial ad","model","spreader product shot"] },
+
+  { slug: "august-lawn-problems-colorado",
+    query: "drought stressed lawn brown patches",
+    antiKeywords: ["commercial ad","model","irrigation product"] },
+
+  { slug: "clay-soil-northern-colorado",
+    query: "cracked dry clay soil ground texture",
+    antiKeywords: ["commercial ad","tropical","muddy puddle"] },
+
+  // Landscape & Design
+  { slug: "native-plants-northern-colorado",
+    query: "blue grama grass native prairie plants",
+    antiKeywords: ["tropical","palm","english garden","manicured"] },
+
+  { slug: "drip-vs-spray-irrigation",
+    query: "drip irrigation emitter line garden",
+    antiKeywords: ["commercial product shot","model","sprinkler"] },
+
+  { slug: "yard-grading-drainage",
+    query: "french drain trench gravel pipe",
+    antiKeywords: ["commercial ad","flooding","disaster"] },
+
+  { slug: "outdoor-lighting-colorado",
+    query: "landscape path lighting evening dusk",
+    antiKeywords: ["holiday christmas","wedding","commercial venue"] },
+
+  { slug: "designing-for-water-restrictions",
+    query: "xeriscape drought tolerant garden rocks",
+    antiKeywords: ["tropical","palm","english garden"] },
+
+  // Fencing
+  { slug: "annual-fence-maintenance-colorado",
+    query: "weathered cedar fence wood grain",
+    antiKeywords: ["commercial ad","new fence","model"] },
+
+  { slug: "repair-leaning-fence-post",
+    query: "leaning fence post failed concrete",
+    antiKeywords: ["commercial ad","new fence","model"] },
+
+  { slug: "fence-post-depth-colorado",
+    query: "fence post hole depth concrete digging",
+    antiKeywords: ["commercial ad","model"] },
+
+  { slug: "cedar-vinyl-metal-fence-colorado",
+    query: "cedar wood fence detail close up grain",
+    antiKeywords: ["mansion","luxury","tropical"] },
+
+  // Property Maintenance
+  { slug: "winterize-irrigation-colorado",
+    query: "sprinkler head frost ice frozen",
+    antiKeywords: ["commercial ad","summer","model"] },
+
+  { slug: "spring-property-checklist",
+    query: "rake fallen branches yard cleanup",
+    antiKeywords: ["staged kids","commercial ad","model"] },
+
+  { slug: "clean-concrete-driveway",
+    query: "oil stain concrete driveway weathered",
+    antiKeywords: ["commercial ad","new concrete","model"] },
+
+  { slug: "gutter-maintenance-colorado",
+    query: "clogged gutter leaves debris roofline",
+    antiKeywords: ["commercial ad","new gutter","model"] },
+
+  // Seasonal Guides
+  { slug: "spring-yard-prep-colorado",
+    query: "early spring lawn dormant tools",
+    antiKeywords: ["staged kids","commercial ad","perfect lawn"] },
+
+  { slug: "colorado-summer-landscape-survival",
+    query: "drought stressed plants harsh sun",
+    antiKeywords: ["tropical","commercial ad","perfect lawn"] },
+
+  { slug: "winter-property-prep-colorado",
+    query: "snow covered house exterior mountain",
+    antiKeywords: ["holiday christmas","ski resort","tourist"] },
+
+  // Colorado Property Guide
+  { slug: "why-colorado-properties-different",
+    query: "front range foothills home exterior",
+    antiKeywords: ["mansion","tourist","ski resort","palm"] },
+
+  { slug: "colorado-water-restrictions-xeriscape",
+    query: "xeriscape gravel succulents native",
+    antiKeywords: ["tropical","palm","english garden"] },
+
+  { slug: "front-range-wind-property-effects",
+    query: "wind damaged fence broken board",
+    antiKeywords: ["disaster news","tornado","tropical storm"] },
+
+  { slug: "colorado-climate-property-guide",
+    query: "colorado home hailstorm sky",
+    antiKeywords: ["mansion","tourist","ski resort"] },
+
+  { slug: "what-makes-colorado-real-estate-different",
+    query: "front range foothills neighborhood aerial",
+    antiKeywords: ["mansion","tourist","ski resort","palm"] },
+
+  // HOA & Commercial
+  { slug: "document-maintenance-hoa-board",
+    query: "clipboard inspection notes property",
+    antiKeywords: ["model smiling","corporate meeting","handshake"] },
+
+  { slug: "commercial-industrial-property-management",
+    query: "industrial warehouse exterior overhead doors",
+    antiKeywords: ["dubai","skyscraper","port containers","palm"] },
+
+  { slug: "hoa-landscaping-standards",
+    query: "townhome community common area landscaping",
+    antiKeywords: ["mansion","luxury resort","palm","tropical"] },
+
+  { slug: "hiring-commercial-property-maintenance-contractor",
+    query: "contractor commercial building inspection",
+    antiKeywords: ["model smiling","handshake","corporate"] },
+
+  // Outdoor Structures
+  { slug: "composite-vs-wood-decking-colorado",
+    query: "composite deck board sample wood",
+    antiKeywords: ["tropical","oceanfront","resort"] },
+
+  { slug: "junk-haul-off-vs-dumpster-rental",
+    query: "roll off dumpster residential driveway",
+    antiKeywords: ["commercial waste site","disaster","model"] },
+
+  { slug: "retaining-walls-colorado",
+    query: "stacked stone retaining wall residential",
+    antiKeywords: ["commercial","parking lot","mansion"] },
+
+  // Property Management
+  { slug: "boots-on-ground-property-management",
+    query: "property manager walking tablet building",
+    antiKeywords: ["corporate office","model smiling","handshake"] },
+
+  { slug: "reduce-tenant-turnover-rental-property",
+    query: "for rent sign duplex residential exterior",
+    antiKeywords: ["mansion","luxury","palm","tropical"] },
+
+  // Investment Strategy & BRRRR
+  { slug: "brrrr-property-checklist-northern-colorado",
+    query: "distressed house exterior peeling paint",
+    antiKeywords: ["mansion","luxury","tropical","abandoned ruins"] },
+
+  // Renovation & Rehab ROI
+  { slug: "renovations-that-pay-back-northern-colorado",
+    query: "renovation tools paint cans drop cloth",
+    antiKeywords: ["luxury","magazine cover","staged"] },
+
+  { slug: "kitchen-bath-remodel-roi-northern-colorado",
+    query: "kitchen renovation new cabinets midrange",
+    antiKeywords: ["luxury","magazine","mansion","dream kitchen"] },
+
+  { slug: "flooring-rental-property-northern-colorado",
+    query: "luxury vinyl plank flooring installation",
+    antiKeywords: ["luxury home","magazine","mansion"] },
+
+  // Outdoor Living & Landscape
+  { slug: "landscape-roi-northern-colorado-home-value",
+    query: "front yard mature landscape colorado home",
+    antiKeywords: ["mansion","luxury resort","palm","tropical"] },
+
+  { slug: "deck-patio-cost-roi-colorado",
+    query: "wood deck backyard residential simple",
+    antiKeywords: ["tropical","oceanfront","resort","mansion"] },
+
+  { slug: "water-smart-landscaping-northern-colorado",
+    query: "drought tolerant native garden colorado",
+    antiKeywords: ["tropical","palm","english garden","manicured"] },
+];
+
+function getUniversityOverride(slug: string): { query: string; antiKeywords: string[] } | null {
+  const match = UNI_SLUG_OVERRIDES.find(o => o.slug === slug);
+  return match ? { query: match.query, antiKeywords: match.antiKeywords } : null;
+}
 
 // ── University slug → query mapping ──────────────────────────────────────────
 
@@ -367,10 +569,17 @@ const UNI_PATTERNS: UniversityPattern[] = [
 ];
 
 function getUniversityQuery(slug: string): { query: string; antiKeywords: string[] } {
+  // 1. Check exact slug overrides first (highest priority)
+  const override = getUniversityOverride(slug);
+  if (override) return override;
+
+  // 2. Fall back to regex patterns
   const s = slug.toLowerCase().replace(/_/g, "-");
   for (const p of UNI_PATTERNS) {
     if (p.test.test(s)) return { query: p.query, antiKeywords: p.antiKeywords };
   }
+
+  // 3. Generic fallback
   return { query: "colorado property residential", antiKeywords: ["tropical","palm","commercial"] };
 }
 

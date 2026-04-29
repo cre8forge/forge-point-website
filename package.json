@@ -18,7 +18,8 @@
     "hubspot:bootstrap": "tsx scripts/hubspot-bootstrap.ts",
     "images:source": "tsx scripts/image-source.ts",
     "images:apply": "tsx scripts/image-apply.ts",
-    "learn-more-links": "tsx scripts/apply-learn-more-links.ts"
+    "learn-more-links": "tsx scripts/apply-learn-more-links.ts",
+    "images:clear-rejected": "tsx scripts/clear-rejected-slots.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
