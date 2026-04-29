@@ -9,6 +9,7 @@ import { ServiceEstimatorCallout } from "@/components/sections/ServiceEstimatorC
 import { ServiceRelated } from "@/components/sections/ServiceRelated";
 import { getRelatedServices } from "@/lib/services-data";
 import { ServiceViewTracker } from "@/components/analytics/ServiceViewTracker";
+import { GoogleReviewBadge } from "@/components/ui/GoogleReviewBadge";
 
 export const metadata: Metadata = {
   title: "Property & Portfolio Management | Forge Point Property Services",
@@ -162,6 +163,9 @@ export default function PropertyManagementPage() {
 
         {/* ── Gallery ── */}
         <ServiceGallery images={GALLERY} />
+
+        {/* ── Google review badge ── */}
+        <GoogleReviewBadge />
 
         {/* ── Estimator callout ── */}
         <ServiceEstimatorCallout

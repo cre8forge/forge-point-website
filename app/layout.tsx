@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import {
   cinzel,
   barlowCondensed,
@@ -10,6 +11,7 @@ import { GTMHead, GTMBody } from "@/components/analytics/GTMScript";
 import { CookieBanner } from "@/components/analytics/CookieBanner";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { MetaPixel } from "@/components/analytics/MetaPixel";
+import { MobileCtaBar } from "@/components/ui/MobileCtaBar";
 
 const SITE_URL = "https://cre8forge.com";
 const SITE_NAME = "Forge Point Property Services";
@@ -75,7 +77,7 @@ export default function RootLayout({
       <head>
         <GTMHead />
       </head>
-      <body>
+      <body className="pb-14 md:pb-0">
         <GTMBody />
         {/* LocalBusiness structured data */}
         <script
@@ -119,9 +121,32 @@ export default function RootLayout({
           }}
         />
         {children}
+        <MobileCtaBar />
         <AnalyticsProvider />
         <MetaPixel />
         <CookieBanner />
+
+        {/* ── Crisp live chat (Flint) ── */}
+        <Script
+          id="crisp-chat"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.$crisp=[];
+              window.CRISP_WEBSITE_ID="e9d4d2db-adaa-41c9-b9e2-abf9496c8743";
+              (function(){
+                var d=document;
+                var s=d.createElement("script");
+                s.src="https://client.crisp.chat/l.js";
+                s.async=1;
+                d.getElementsByTagName("head")[0].appendChild(s);
+              })();
+              window.$crisp.push(["config","position:reverse",[false]]);
+              window.$crisp.push(["config","color:theme",["#C85A00"]]);
+              window.$crisp.push(["set","message:text",["Hi, I'm Flint — how can I help? Are you a homeowner, thinking of selling, or an investor?"]]);
+            `,
+          }}
+        />
       </body>
     </html>
   );

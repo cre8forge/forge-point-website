@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
@@ -28,6 +29,7 @@ type ServiceCard = {
 
 type Category = {
   label:       string;
+  photo:       string;    // Unsplash full URL
   description: string;
   accent?:     boolean;   // amber highlight for Advisory
   disclosure?: boolean;   // show RE license disclosure
@@ -38,6 +40,7 @@ const CATEGORIES: Category[] = [
   // ── 1. Forge Point Advisory ────────────────────────────────────
   {
     label:    "Forge Point Advisory",
+    photo:    "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80",
     accent:   true,
     disclosure: true,
     description:
@@ -79,6 +82,7 @@ const CATEGORIES: Category[] = [
   // ── 2. Property & Portfolio Management ─────────────────────────
   {
     label: "Property & Portfolio Management",
+    photo: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=900&q=80",
     description:
       "Over 4 million square feet of commercial and industrial space managed. Multifamily communities up to 115 tenants. Single-family homes handled with the personal attention individual owners deserve. Forge Point's management practice is built on documented systems, vetted vendors, and the judgment that only comes from years on the ground.",
     cards: [
@@ -113,6 +117,7 @@ const CATEGORIES: Category[] = [
   // ── 3. Custom Interiors ────────────────────────────────────────
   {
     label: "Custom Interiors",
+    photo: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=900&q=80",
     description:
       "Whole-home renovations, targeted remodels, and precision finish work — all delivered by the same crew from start to finish. No subcontractor roulette. No handoff gaps. Forge Point manages the build the same way we manage the property: with accountability at every stage.",
     cards: SERVICES_DATA.filter((s) =>
@@ -127,6 +132,7 @@ const CATEGORIES: Category[] = [
   // ── 4. Outdoor Living & Grounds ───────────────────────────────
   {
     label: "Outdoor Living & Grounds",
+    photo: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80",
     description:
       "From bespoke landscape design to week-in week-out grounds maintenance, Forge Point handles every inch of your property's exterior. We design it, build it, and maintain it — one company, one standard, one crew that knows your property.",
     cards: [
@@ -176,6 +182,7 @@ const CATEGORIES: Category[] = [
   // ── 5. Concierge & Estate Services ───────────────────────────
   {
     label: "Concierge & Estate Services",
+    photo: "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80",
     description:
       "For property owners, executives, and families who want every detail handled — without managing the people handling it. Forge Point's concierge practice covers the services that make a property feel like a home and a home feel like it runs itself. Discreet, consistent, and always a familiar face.",
     cards: [
@@ -243,11 +250,23 @@ export default function ServicesPage() {
 
                 {/* Category header */}
                 <div className={`mb-6 pb-5 border-b ${cat.accent ? "border-amber/20" : "border-white/8"}`}>
-                  <div className="flex items-center gap-3 mb-3">
-                    <h2 className={`font-condensed font-700 text-sm uppercase tracking-[0.2em] ${cat.accent ? "text-amber" : "text-orange"}`}>
-                      {cat.label}
-                    </h2>
-                    <div className="flex-1 border-t border-white/6" />
+
+                  {/* Category photo */}
+                  <div className="relative w-full aspect-[16/5] overflow-hidden mb-5 border border-white/8">
+                    <Image
+                      src={cat.photo}
+                      alt={`${cat.label} — Forge Point Property Services`}
+                      fill
+                      className="object-cover object-center"
+                      sizes="(max-width: 1200px) 100vw, 1152px"
+                    />
+                    <div className={`absolute inset-0 ${cat.accent ? "bg-[#0D1B2A]/55" : "bg-navy/50"}`} />
+                    {/* Label overlay */}
+                    <div className="absolute bottom-0 left-0 p-5">
+                      <span className={`font-condensed font-700 text-sm uppercase tracking-[0.2em] ${cat.accent ? "text-amber" : "text-orange"}`}>
+                        {cat.label}
+                      </span>
+                    </div>
                   </div>
 
                   <p className="font-barlow font-300 text-white/55 text-sm leading-relaxed max-w-3xl">

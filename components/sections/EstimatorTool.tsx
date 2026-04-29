@@ -279,6 +279,44 @@ export function EstimatorTool({
 
   const [quantities, setQuantities] = useState<Record<string, number>>({});
 
+  // ── Estimate email capture state ────────────────────────────────
+  const [captureEmail,     setCaptureEmail]     = useState("");
+  const [captureStatus,    setCaptureStatus]    = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [captureSubmitted, setCaptureSubmitted] = useState(false);
+
+  // Check sessionStorage on mount to avoid showing the capture twice
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem("forge_estimate_capture_submitted") === "true") {
+        setCaptureSubmitted(true);
+      }
+    } catch {}
+  }, []);
+
+  async function handleCaptureSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!captureEmail) return;
+    setCaptureStatus("loading");
+    try {
+      const estimateStr = `${fmt(total.low)} – ${fmt(total.high)}`;
+      const fd = new FormData();
+      fd.set("name",         "Estimate Capture");
+      fd.set("email",        captureEmail);
+      fd.set("description",  `Estimate saved from estimator: ${estimateStr}`);
+      fd.set("source",       "estimate_capture");
+      fd.set("pageUrl",      typeof window !== "undefined" ? window.location.href : "");
+      await fetch("/api/contact", { method: "POST", body: fd });
+      if (typeof window !== "undefined" && (window as any).$crisp) {
+        (window as any).$crisp.push(["set", "user:email", [captureEmail]]);
+      }
+      try { sessionStorage.setItem("forge_estimate_capture_submitted", "true"); } catch {}
+      setCaptureStatus("success");
+      setCaptureSubmitted(true);
+    } catch {
+      setCaptureStatus("error");
+    }
+  }
+
   useEffect(() => {
     const slug = searchParams.get("tab") ?? searchParams.get("category");
     if (slug) {
@@ -441,6 +479,52 @@ export function EstimatorTool({
                     </span>
                   </div>
                 </div>
+
+                {/* Email capture — shown once per session when result is visible */}
+                {!captureSubmitted && (
+                  <div
+                    className="mb-5 p-4 rounded-sm"
+                    style={{ background: "rgba(212,152,26,0.07)", borderLeft: "3px solid #D4981A" }}
+                  >
+                    <p className="font-condensed font-600 text-xs uppercase tracking-[0.15em] text-amber mb-1">
+                      Save Your Estimate
+                    </p>
+                    <p className="font-barlow font-300 text-xs text-white/60 leading-relaxed mb-3">
+                      Enter your email and we&apos;ll send you this estimate along with a free improvement
+                      recommendations report for your property.
+                    </p>
+                    {captureStatus === "success" ? (
+                      <p className="font-barlow font-300 text-xs text-amber">
+                        Sent! Check your inbox.
+                      </p>
+                    ) : (
+                      <form onSubmit={handleCaptureSubmit} className="flex gap-2">
+                        <input
+                          type="email"
+                          required
+                          value={captureEmail}
+                          onChange={(e) => setCaptureEmail(e.target.value)}
+                          placeholder="your@email.com"
+                          className="flex-1 min-w-0 bg-navy border border-white/20 text-white
+                                     placeholder:text-white/30 font-barlow font-300 text-xs
+                                     px-3 py-2 outline-none focus:border-amber/60 transition-colors"
+                        />
+                        <button
+                          type="submit"
+                          disabled={captureStatus === "loading"}
+                          className="flex-shrink-0 bg-[#C85A00] text-white font-condensed font-600
+                                     text-xs uppercase tracking-wide px-4 py-2 hover:bg-amber
+                                     transition-colors disabled:opacity-50"
+                        >
+                          {captureStatus === "loading" ? "…" : "Send →"}
+                        </button>
+                      </form>
+                    )}
+                    <p className="font-barlow font-300 text-[10px] text-white/30 mt-2">
+                      We won&apos;t share your email. Unsubscribe anytime.
+                    </p>
+                  </div>
+                )}
               </>
             )}
 

@@ -10,6 +10,8 @@ import { ServiceEstimatorCallout } from "@/components/sections/ServiceEstimatorC
 import { ServiceRelated } from "@/components/sections/ServiceRelated";
 import { SERVICES_DATA, getServiceBySlug, getRelatedServices } from "@/lib/services-data";
 import { ServiceViewTracker } from "@/components/analytics/ServiceViewTracker";
+import { GoogleReviewBadge } from "@/components/ui/GoogleReviewBadge";
+import { EngagementTrigger } from "@/components/EngagementTrigger";
 
 export function generateStaticParams() {
   return SERVICES_DATA.map((s) => ({ slug: s.slug }));
@@ -57,6 +59,7 @@ export default async function ServicePage({
     <>
       <Nav />
       <ServiceViewTracker name={service.name} slug={service.slug} />
+      <EngagementTrigger pageType="service" />
       <main>
         <ServiceHero
           name={service.name}
@@ -107,6 +110,7 @@ export default async function ServicePage({
         )}
 
         <ServiceGallery images={service.gallery} />
+        <GoogleReviewBadge />
         <ServiceEstimatorCallout
           serviceName={service.name}
           estimatorCategory={service.estimatorCategory}

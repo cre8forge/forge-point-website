@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { HOW_IT_WORKS } from "@/lib/site-data";
 
@@ -10,8 +11,20 @@ export function HowItWorksSection() {
           eyebrow="The Process"
           heading="How It Works"
           subheading="Simple process. No surprises. Just results."
-          className="mb-20"
+          className="mb-12"
         />
+
+        {/* Photo */}
+        <div className="relative w-full aspect-[16/6] overflow-hidden mb-16 border border-white/8">
+          <Image
+            src="https://images.unsplash.com/photo-1504307651254-35680f356dbe?auto=format&fit=crop&w=1600&q=80"
+            alt="Forge Point crew at work on a renovation project in Northern Colorado"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-navy/40" />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0 relative">
 

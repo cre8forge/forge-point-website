@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { prisma }               from "@/lib/prisma";
 import { Nav }                  from "@/components/layout/Nav";
 import { Footer }               from "@/components/layout/Footer";
 import { HeroSection }          from "@/components/sections/HeroSection";
@@ -10,6 +9,7 @@ import { ReviewsSection }       from "@/components/sections/ReviewsSection";
 import { ServiceAreaMap }       from "@/components/sections/ServiceAreaMap";
 import { UniversityPreview }    from "@/components/sections/UniversityPreview";
 import { CtaBanner }            from "@/components/sections/CtaBanner";
+import type { PreviewArticle }  from "@/components/sections/UniversityPreview";
 
 export const metadata: Metadata = {
   title: "Forge Point Property Services | Erie, CO",
@@ -25,19 +25,36 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function HomePage() {
-  // Fetch up to 3 published articles for the University preview.
-  // Featured articles are prioritized; falls back to most recent.
-  // Section is hidden entirely when fewer than 3 are published.
-  const featuredArticles = await prisma.universityArticle.findMany({
-    where:   { status: "PUBLISHED" },
-    include: { category: true },
-    orderBy: [{ featured: "desc" }, { publishedAt: "desc" }],
-    take:    3,
-  });
+// ── University preview articles ───────────────────────────────────────────────
+// Hardcoded so the section is always visible with the three priority articles.
+const UNIVERSITY_PREVIEW: PreviewArticle[] = [
+  {
+    slug:         "brrrr-strategy-northern-colorado",
+    title:        "The BRRRR Strategy in Northern Colorado: A Complete Field Guide",
+    excerpt:      "Buy, Rehab, Rent, Refinance, Repeat — how the strategy actually works in Colorado's Front Range market, what it costs, and where investors get it wrong.",
+    coverImage:   "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=75",
+    href:         "/university/investment-strategy/brrrr-strategy-northern-colorado",
+    categoryName: "Investment Strategy",
+  },
+  {
+    slug:         "renovations-that-pay-back-northern-colorado",
+    title:        "Which Renovations Actually Pay Back in Northern Colorado? A Landlord's Guide",
+    excerpt:      "Not every renovation dollar comes back at resale or lease-up. Here's what Northern Colorado buyers and tenants actually pay for.",
+    coverImage:   "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=600&q=75",
+    href:         "/university/renovation-rehab/renovations-that-pay-back-northern-colorado",
+    categoryName: "Renovation & Rehab ROI",
+  },
+  {
+    slug:         "boots-on-ground-property-management",
+    title:        "The Boots-on-Ground Model: What Real Property Management Actually Looks Like",
+    excerpt:      "Administrative management and operational management are not the same thing. Here's what it means to have a team physically at your property.",
+    coverImage:   "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=600&q=75",
+    href:         "/university/property-management/boots-on-ground-property-management",
+    categoryName: "Property Management",
+  },
+];
 
-  const showUniversity = featuredArticles.length >= 3;
-
+export default function HomePage() {
   return (
     <>
       <Nav />
@@ -46,9 +63,9 @@ export default async function HomePage() {
         <ServicesSection />
         <HowItWorksSection />
         <WhyForgePointSection />
-<ReviewsSection />
+        <ReviewsSection />
         <ServiceAreaMap />
-        {showUniversity && <UniversityPreview articles={featuredArticles} />}
+        <UniversityPreview articles={UNIVERSITY_PREVIEW} />
         <CtaBanner />
       </main>
       <Footer />

@@ -118,7 +118,7 @@ export function ServicesSection() {
               sizes="100vw"
             />
             {/* Dark navy overlay */}
-            <div className="absolute inset-0 bg-[#0C1929]/82" />
+            <div className="absolute inset-0 bg-[#0D1B2A]/60" />
 
             {/* Content */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8 lg:p-10">

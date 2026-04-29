@@ -6,35 +6,35 @@ import { SiteSearch } from "@/components/ui/SiteSearch";
 
 const SERVICE_GROUPS = [
   {
-    label: "Advisory",
+    label: "Forge Point Advisory",
     links: [
       { label: "Buyer Representation",          href: "/services/buyer-representation" },
       { label: "Seller Representation",         href: "/services/seller-representation" },
-      { label: "Acquisition Analysis",          href: "/services/investment-acquisition-analysis" },
-      { label: "Commercial Leasing",            href: "/services/commercial-leasing-advisory" },
+      { label: "Investment Acquisition Analysis",href: "/services/investment-acquisition-analysis" },
       { label: "Portfolio Strategy",            href: "/services/portfolio-strategy" },
-      { label: "1031 Exchange",                 href: "/services/1031-exchange" },
+      { label: "1031 Exchange Coordination",    href: "/services/1031-exchange" },
+      { label: "Commercial Leasing Advisory",   href: "/services/commercial-leasing-advisory" },
     ],
   },
   {
-    label: "Property Management",
+    label: "Property & Portfolio Management",
     links: [
-      { label: "Commercial & Industrial",       href: "/services/commercial-industrial-management" },
-      { label: "Multifamily & HOA",             href: "/services/multifamily-hoa-management" },
-      { label: "Single Family Homes",           href: "/services/single-family-management" },
-      { label: "Boots-on-Ground Response",      href: "/services/boots-on-ground-response" },
-      { label: "Maintenance Coordination",      href: "/services/maintenance-coordination" },
+      { label: "Commercial & Industrial Management", href: "/services/commercial-industrial-management" },
+      { label: "Multifamily & HOA Management",       href: "/services/multifamily-hoa-management" },
+      { label: "Single Family Home Management",      href: "/services/single-family-management" },
+      { label: "Boots-on-Ground Response",           href: "/services/boots-on-ground-response" },
+      { label: "Maintenance Coordination",           href: "/services/maintenance-coordination" },
     ],
   },
   {
     label: "Custom Interiors",
     links: [
       { label: "Renovation & Remodel",       href: "/services/renovation-remodel" },
-      { label: "Framing & Finishes",         href: "/services/framing-finishes" },
-      { label: "Kitchen & Bath Remodels",    href: "/services/kitchen-bath-more" },
       { label: "Basement Finishing",         href: "/services/basement-finishing" },
       { label: "Additions & Expansions",     href: "/services/additions-expansions" },
       { label: "Investment Property Rehab",  href: "/services/investment-property-rehab" },
+      { label: "Kitchen & Bath Remodels",    href: "/services/kitchen-bath-more" },
+      { label: "Framing & Finishes",         href: "/services/framing-finishes" },
       { label: "Flooring & Tile",            href: "/services/flooring-tile" },
     ],
   },
@@ -43,11 +43,11 @@ const SERVICE_GROUPS = [
     links: [
       { label: "Landscape Design & Install",  href: "/services/landscape-design-install" },
       { label: "Decks, Pergolas & Patios",    href: "/services/decks-pergolas-patios" },
-      { label: "Fencing & Retaining Walls",   href: "/services/fencing" },
+      { label: "Custom Water Features",       href: "/services/custom-water-features" },
+      { label: "Fencing",                    href: "/services/fencing" },
       { label: "Grounds Maintenance",         href: "/services/grounds-maintenance" },
-      { label: "Industrial Maintenance",      href: "/services/industrial-maintenance" },
-      { label: "Pressure Washing & Windows",  href: "/services/power-window-washing" },
-      { label: "Junk Haul Off & Cleanouts",   href: "/services/junk-haul-off" },
+      { label: "Pressure Washing",            href: "/services/power-window-washing" },
+      { label: "Junk Haul Off",               href: "/services/junk-haul-off" },
     ],
   },
   {
@@ -56,7 +56,7 @@ const SERVICE_GROUPS = [
       { label: "Estate Housekeeping",          href: "/services/housekeeping-cleaning" },
       { label: "Home Safety Checks",           href: "/services/home-safety-checks" },
       { label: "Mobile Auto Detailing",        href: "/services/mobile-auto-detailing" },
-      { label: "Yard & Pet Waste",             href: "/services/poop-scooping" },
+      { label: "Yard & Pet Waste Management",  href: "/services/poop-scooping" },
       { label: "Concierge Errands",            href: "/services/errand-services" },
     ],
   },
@@ -166,7 +166,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-muted font-barlow font-300">
           <div>
-            <p>© {new Date().getFullYear()} Forge Point Property Services · Aaron Dolph, Proprietor</p>
+            <p>© 2026 Forge Point Property Services · Operated by Forge Point Real Estate, LLC</p>
             <p className="text-[10px] text-white/25 mt-0.5">
               Aaron R. Dolph · Colorado Real Estate Broker · License #FA100100755 · Employing Broker: Triumph Real Estate Corporation #ER1325490
             </p>

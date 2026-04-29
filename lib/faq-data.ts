@@ -60,6 +60,62 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
 
+  // ── Forge Point Advisory ─────────────────────────────────────
+  {
+    slug:  "forge-point-advisory",
+    label: "Forge Point Advisory",
+    questions: [
+      {
+        question: "Is Forge Point a real estate brokerage or a property services company?",
+        answer:
+          "Both. Forge Point Advisory is our licensed Colorado real estate brokerage practice — buyer representation, seller representation, investment acquisition analysis, and commercial leasing. Forge Point Property Services is our full-service property operations arm — management, renovation, grounds, and estate services. Most clients use both sides of the business, which is what makes our model unique: the people advising your real estate transaction are the same people who have managed hundreds of properties like it.",
+      },
+      {
+        question: "Do you represent buyers and sellers in residential real estate?",
+        answer:
+          "Yes. Aaron Dolph is a licensed Colorado Real Estate Broker (License #FA100100755) operating under Triumph Real Estate Corporation. We represent homebuyers, move-up buyers, investors, and sellers across Northern Colorado. Our advantage over a traditional agent: we've managed properties like the ones you're buying or selling, so we see what most agents miss — deferred maintenance, realistic rental potential, and property-specific risk.",
+      },
+      {
+        question: "What is a Broker's Opinion of Value (BOV)?",
+        answer:
+          "A BOV is a professional assessment of a property's market value delivered as a written document — not a full certified appraisal, but a detailed market-grounded analysis. For residential property owners, it answers: what is this property worth today, what would improve its value, and what should you do before listing? We offer BOVs as a no-cost introductory service for qualified property owners. Contact us to request one.",
+      },
+      {
+        question: "Do I need to already own a property to use Forge Point Advisory?",
+        answer:
+          "No. We work with buyers at every stage — pre-purchase analysis, active representation, and acquisition coordination. We also work with owners evaluating whether to sell, hold, refinance, or execute a 1031 exchange. If you're thinking about a real estate decision, that's when to call us — not after you've already committed.",
+      },
+    ],
+  },
+
+  // ── Investment Strategy ───────────────────────────────────────
+  {
+    slug:  "investment-strategy",
+    label: "Investment Strategy",
+    questions: [
+      {
+        question: "What is the BRRRR strategy and does it work in Northern Colorado?",
+        answer:
+          "BRRRR stands for Buy, Rehab, Rent, Refinance, Repeat. The strategy involves acquiring a distressed property below market, renovating it to rental-ready condition, stabilizing it as a rental, and then cash-out refinancing to recover equity and repeat the cycle. It works in Northern Colorado, but market timing matters — entry price, rehab cost, and the refinance appraisal all need to align. We've supported dozens of BRRRR acquisitions on the Front Range and can walk you through what the numbers need to look like in today's market.",
+      },
+      {
+        question: "How do I analyze an investment property before buying?",
+        answer:
+          "At minimum, you need: cap rate (Net Operating Income ÷ purchase price), cash-on-cash return (annual cash flow ÷ total cash invested), a realistic deferred maintenance estimate, and current market rent comps. Where most investors go wrong is taking the seller's pro forma at face value. Forge Point Advisory provides independent acquisition analysis — a written report covering all of these factors with real-world assumptions, not optimistic seller projections.",
+      },
+      {
+        question: "What returns should I expect from a rental property in Northern Colorado?",
+        answer:
+          "This varies significantly by property type, location, and financing structure. Single-family homes in Northern Colorado have historically delivered cap rates of 4–7% depending on acquisition price and rental rates. Multifamily and commercial properties vary more widely. Cash-on-cash returns are heavily affected by financing terms. We can model specific properties with current numbers — contact us if you have a specific acquisition you're evaluating.",
+      },
+      {
+        question: "What is a 1031 exchange and who should use it?",
+        answer:
+          "A 1031 exchange allows investment property sellers to defer capital gains taxes by reinvesting the proceeds into a qualified replacement property within a strict timeline (45 days to identify, 180 days to close). It's one of the most powerful wealth-building tools available to real estate investors — but the timeline is unforgiving. If you're selling an investment property and have significant appreciation, a 1031 should be part of your decision. Call us before you close on the sale — the clock starts at closing.",
+      },
+    ],
+  },
+
   // ── Property Management ───────────────────────────────────────
   {
     slug:  "property-management",
@@ -108,10 +164,38 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     ],
   },
 
-  // ── Landscaping ──────────────────────────────────────────────
+  // ── Custom Interiors ─────────────────────────────────────────
   {
-    slug:  "landscaping",
-    label: "Landscaping",
+    slug:  "custom-interiors",
+    label: "Custom Interiors",
+    questions: [
+      {
+        question: "What interior renovation services do you offer?",
+        answer:
+          "Forge Point Custom Interiors handles whole-home renovations, targeted remodels, basement finishing, additions, investment property rehab, kitchen and bath remodels, framing and finish carpentry, and flooring and tile. All work is delivered by our own crew — no handoffs to subcontractors you've never met. For electrical, plumbing, and HVAC rough-in, we coordinate vetted licensed trade partners and manage the schedule on your behalf.",
+      },
+      {
+        question: "Do you do kitchen and bathroom remodels specifically?",
+        answer:
+          "Yes — kitchen and bath work is some of our most common project type. We handle cabinet installation, countertop fabrication and install, tile work, fixture replacement, lighting, and painting. We can work with your selections or help you source materials at trade pricing. Our renovation experience includes both cosmetic updates (new fixtures, paint, hardware) and full gut-and-rebuild remodels.",
+      },
+      {
+        question: "What is investment property rehab and how is it different from a standard renovation?",
+        answer:
+          "Investment property rehab is renovation scoped specifically for ROI — maximizing value or rent potential while controlling cost. It's faster, more budget-focused, and driven by what the local market actually values, not personal preference. We approach rental rehabs differently than primary home renovations: durable finishes over premium ones, functional kitchens and baths over aspirational upgrades, and attention to what buyers and tenants in your price range expect. We've done this work in Northern Colorado's market for 15+ years.",
+      },
+      {
+        question: "How do I know what renovations are worth doing before selling?",
+        answer:
+          "Our advisory practice answers this question specifically. A Broker's Opinion of Value assessment includes improvement recommendations with realistic ROI projections for your market. In Northern Colorado, kitchen and bath updates, fresh paint, and clean flooring almost always pay back. Major additions and luxury upgrades frequently don't — especially in lower and mid price ranges. Contact us for an honest presale assessment before you spend on renovations.",
+      },
+    ],
+  },
+
+  // ── Landscape & Outdoor Living ────────────────────────────────
+  {
+    slug:  "landscape-outdoor-living",
+    label: "Landscape & Outdoor Living",
     questions: [
       {
         question: "Sod or seed — which is better for my yard?",
@@ -404,6 +488,34 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
         question: "How much does a custom water feature cost?",
         answer:
           "A simple pondless waterfall with a small waterfall run starts around $3,500–$6,000 installed. A larger stream feature or naturalistic pond with boulders and planting runs $8,000–$20,000+. Decorative fountains vary widely by unit and site prep. All pricing is provided in a written proposal after a site visit — there are too many site-specific variables (excavation requirements, plumbing access, material selections) to quote accurately without seeing the property.",
+      },
+    ],
+  },
+
+  // ── Concierge & Estate ────────────────────────────────────────
+  {
+    slug:  "concierge-estate",
+    label: "Concierge & Estate",
+    questions: [
+      {
+        question: "What does your estate housekeeping service include?",
+        answer:
+          "Our estate housekeeping covers all interior cleaning tasks — kitchens, bathrooms, bedrooms, common areas, and high-touch surfaces — on a scheduled recurring basis. We work with a consistent team assigned to your home, so the same people handle your property every visit. They know your home, your preferences, and your standards without you re-explaining. Available weekly, bi-weekly, or monthly depending on your needs.",
+      },
+      {
+        question: "Do you offer home wellness checks for vacant or secondary properties?",
+        answer:
+          "Yes. Our home safety and wellness check service is designed for property owners who aren't always on-site — vacation homes, secondary residences, investor-owned properties between tenants, and primary homes while owners travel. We visit on a scheduled basis, inspect key systems (HVAC filters, water heaters, plumbing, security, exterior), and deliver a photo report. Issues are flagged immediately so you can act before small problems become expensive ones.",
+      },
+      {
+        question: "What does your mobile auto detailing service include?",
+        answer:
+          "We come to you — no drop-off, no waiting in line, no strangers with your keys. Our mobile detailing covers exterior wash and clay bar treatment, paint decontamination, interior vacuum and wipe-down, window cleaning, and tire and wheel cleaning. Full detail packages include compound polish, wax or paint sealant application, leather conditioning, and odor treatment. Available as a one-time service or on a maintenance schedule.",
+      },
+      {
+        question: "Is concierge service available as a standalone or only bundled with other services?",
+        answer:
+          "Both. Estate housekeeping, home safety checks, and mobile detailing can be purchased as standalone recurring services or as part of a bundled property care agreement. Clients who bundle multiple services receive preferred pricing and scheduling priority. Concierge services are available to existing Forge Point clients and new clients in our service area — contact us to discuss what your property needs.",
       },
     ],
   },

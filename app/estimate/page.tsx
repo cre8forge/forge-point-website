@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { EstimatorHero } from "@/components/sections/EstimatorHero";
 import { EstimatorTool } from "@/components/sections/EstimatorTool";
 import { Button } from "@/components/ui/Button";
+import { CrispHider } from "@/components/analytics/CrispHider";
 
 export const metadata: Metadata = {
   title: "Free Estimates",
@@ -250,6 +251,7 @@ export default async function EstimatePage({
 
   return (
     <>
+      <CrispHider />
       <Nav />
 
       <main>

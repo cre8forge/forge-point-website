@@ -7,7 +7,9 @@ import { Footer } from "@/components/layout/Footer";
 import { CtaBanner } from "@/components/sections/CtaBanner";
 import { ArticleRenderer } from "@/components/university/ArticleRenderer";
 import { ArticleCard } from "@/components/university/ArticleCard";
+import { UniversityContentUpgrade } from "@/components/university/UniversityContentUpgrade";
 import { User, Calendar } from "lucide-react";
+import { EngagementTrigger } from "@/components/EngagementTrigger";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -78,6 +80,7 @@ export default async function ArticlePage({ params }: Props) {
   return (
     <>
       <Nav />
+      <EngagementTrigger pageType="university" />
       <main className="bg-navy min-h-screen">
         <div className="pt-28 pb-0 px-6 border-b border-white/8">
           <div className="max-w-6xl mx-auto flex items-center gap-2 text-xs font-condensed font-600 uppercase tracking-widest text-white/40 pb-4">
@@ -128,7 +131,15 @@ export default async function ArticlePage({ params }: Props) {
               <span className="font-barlow font-300 text-xs">{readMinutes} min read</span>
             </div>
 
-            <ArticleRenderer content={article.content} />
+            <ArticleRenderer
+                content={article.content}
+                upgradePanel={
+                  <UniversityContentUpgrade
+                    category={article.category.slug}
+                    articleSlug={slug}
+                  />
+                }
+              />
           </article>
 
           <aside className="space-y-8">

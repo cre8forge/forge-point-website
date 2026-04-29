@@ -7,26 +7,44 @@ import { submitContactForm } from "@/app/contact/actions";
 import { analytics, buildEnhancedConversionData } from "@/lib/analytics";
 import { setAdvancedMatching } from "@/components/analytics/MetaPixel";
 
-// ── Service categories (matches estimator category names exactly) ──
+// ── Service categories ─────────────────────────────────────────────
+// Ordered by category group; displayed in 3-column grid.
 
 const SERVICE_CATEGORIES = [
-  "Landscape Design & Install",
-  "Grounds Maintenance",
-  "Fencing",
-  "Power & Window Washing",
-  "Industrial Maintenance",
-  "Property Management",
+  // Advisory
+  "Buyer Representation",
+  "Seller Representation",
+  "Investment Acquisition Analysis",
+  "1031 Exchange Coordination",
+  "Broker's Opinion of Value (BOV)",
+  // Property Management
+  "Single Family Home Management",
+  "Multifamily & HOA Management",
+  "Commercial & Industrial Management",
+  "Boots-on-Ground Response",
+  // Custom Interiors
   "Renovation & Remodel",
+  "Basement Finishing",
+  "Additions & Expansions",
+  "Investment Property Rehab",
+  "Kitchen & Bath Remodels",
   "Framing & Finishes",
-  "Kitchen, Bath & More",
+  "Flooring & Tile",
+  // Outdoor Living & Grounds
+  "Landscape Design & Install",
   "Decks, Pergolas & Patios",
   "Custom Water Features",
+  "Fencing",
+  "Grounds Maintenance",
+  "Pressure & Window Washing",
+  "Industrial Maintenance",
   "Junk Haul Off",
+  // Concierge & Estate
+  "Estate Housekeeping & Cleaning",
+  "Home Safety & Wellness Checks",
   "Mobile Auto Detailing",
-  "Housekeeping & Cleaning",
-  "Poop Scooping",
-  "Home Safety Checks",
-  "Errand Services",
+  "Yard & Pet Waste Management",
+  "Concierge Errands & Local Services",
   "Other / Not Sure",
 ];
 

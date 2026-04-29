@@ -2,7 +2,7 @@ const STATS = [
   { value: "Since 2010",  label: "In the Field" },
   { value: "20+",         label: "Cities Served" },
   { value: "Colorado",    label: "Native Team" },
-  { value: "Maintenance", label: "First & Foremost" },
+  { value: "Full",        label: "Service" },
 ] as const;
 
 export function ServiceAreaStory() {

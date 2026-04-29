@@ -4,17 +4,60 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 interface ArticleRendererProps {
-  content: string;
+  content:       string;
+  upgradePanel?: React.ReactNode; // injected after the 3rd H2 when provided
 }
 
 const VIDEO_MARKER = /\[VIDEO:([^\]]+)\]/;
 
+/**
+ * Split content at the third "## " heading line so we can inject
+ * a content upgrade panel mid-article.
+ */
+function splitAtThirdH2(content: string): [string, string] {
+  const lines = content.split("\n");
+  let h2Count = 0;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (/^##\s/.test(lines[i])) {
+      h2Count++;
+      if (h2Count === 3) {
+        const before = lines.slice(0, i).join("\n");
+        const after  = lines.slice(i).join("\n");
+        return [before, after];
+      }
+    }
+  }
+
+  // Fewer than 3 H2s — insert at 50% of lines
+  const midpoint = Math.floor(lines.length / 2);
+  return [lines.slice(0, midpoint).join("\n"), lines.slice(midpoint).join("\n")];
+}
+
 /** Split content on [VIDEO:ID] markers and render each part */
-export function ArticleRenderer({ content }: ArticleRendererProps) {
-  const parts = splitOnVideos(content);
+export function ArticleRenderer({ content, upgradePanel }: ArticleRendererProps) {
+  if (upgradePanel) {
+    const [before, after] = splitAtThirdH2(content);
+    return (
+      <div className="university-prose">
+        <MarkdownSection content={before} />
+        {upgradePanel}
+        {after && <MarkdownSection content={after} />}
+      </div>
+    );
+  }
 
   return (
     <div className="university-prose">
+      <MarkdownSection content={content} />
+    </div>
+  );
+}
+
+function MarkdownSection({ content }: { content: string }) {
+  const parts = splitOnVideos(content);
+  return (
+    <>
       {parts.map((part, i) =>
         part.type === "text" ? (
           <ReactMarkdown key={i} remarkPlugins={[remarkGfm]}>
@@ -32,7 +75,7 @@ export function ArticleRenderer({ content }: ArticleRendererProps) {
           </div>
         )
       )}
-    </div>
+    </>
   );
 }
 

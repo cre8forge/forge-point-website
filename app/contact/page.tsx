@@ -4,6 +4,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ContactHero } from "@/components/sections/ContactHero";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { CrispHider } from "@/components/analytics/CrispHider";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -19,6 +20,7 @@ export default async function ContactPage({
   const params = await searchParams;
   return (
     <>
+      <CrispHider />
       <Nav />
       <main>
         <ContactHero />

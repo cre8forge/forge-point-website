@@ -13,8 +13,8 @@ export function ServiceAreaHero() {
         </h1>
 
         <p className="font-cormorant italic font-300 text-amber text-xl md:text-2xl mb-10 max-w-2xl mx-auto">
-          Colorado natives providing landscaping and property maintenance
-          across Northern Colorado since 2010.
+          Northern Colorado&apos;s full-service property company — advisory, management, renovation,
+          grounds, and estate services across the Front Range.
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center">
