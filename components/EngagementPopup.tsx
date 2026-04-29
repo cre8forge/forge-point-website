@@ -50,6 +50,7 @@ export function EngagementPopup({ onClose }: EngagementPopupProps) {
   const [name,            setName]            = useState("");
   const [email,           setEmail]           = useState("");
   const [phone,           setPhone]           = useState("");
+  const [address,         setAddress]         = useState("");
   const [submitting,      setSubmitting]       = useState(false);
 
   // Auto-close after 4 seconds on the thanks step
@@ -77,11 +78,12 @@ export function EngagementPopup({ onClose }: EngagementPopupProps) {
       fd.set("name",             name);
       fd.set("email",            email);
       fd.set("phone",            phone);
+      fd.set("address",          address);
       fd.set("source",           "bov_popup");
       fd.set("selected_profile", selectedProfile ?? "");
       fd.set("pageUrl",          typeof window !== "undefined" ? window.location.href : "");
       fd.set("referralSource",   typeof document !== "undefined" ? document.referrer || "direct" : "direct");
-      fd.set("description",      `BOV popup lead — profile: ${selectedProfile}`);
+      fd.set("description",      `BOV popup lead — profile: ${selectedProfile} — property: ${address}`);
       await fetch("/api/contact", { method: "POST", body: fd });
       if (typeof window !== "undefined" && (window as any).$crisp) {
         (window as any).$crisp.push(["set", "user:email",    [email]]);
@@ -195,9 +197,20 @@ export function EngagementPopup({ onClose }: EngagementPopupProps) {
                 />
                 <input
                   type="tel"
-                  placeholder="Phone (optional)"
+                  required
+                  placeholder="Phone number"
                   value={phone}
                   onChange={e => setPhone(e.target.value)}
+                  className="w-full bg-[#0A1520] border border-white/15 text-white placeholder:text-white/30
+                             font-barlow font-300 text-sm px-4 py-3 rounded outline-none
+                             focus:border-amber/60 transition-colors"
+                />
+                <input
+                  type="text"
+                  required
+                  placeholder="Property address"
+                  value={address}
+                  onChange={e => setAddress(e.target.value)}
                   className="w-full bg-[#0A1520] border border-white/15 text-white placeholder:text-white/30
                              font-barlow font-300 text-sm px-4 py-3 rounded outline-none
                              focus:border-amber/60 transition-colors"
