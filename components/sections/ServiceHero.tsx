@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 interface ServiceHeroProps {
   name:      string;
   tagline:   string;
-  heroImage: string; // Unsplash photo ID
+  heroImage: string; // local image path (e.g. /images/services/advisory/buyer-rep-hero.jpg)
   category:  string;
 }
 
@@ -14,7 +14,7 @@ export function ServiceHero({ name, tagline, heroImage, category }: ServiceHeroP
     <section className="relative min-h-[60vh] flex items-end pb-16 pt-32 overflow-hidden">
       {/* Background image */}
       <Image
-        src={`https://images.unsplash.com/photo-${heroImage}?auto=format&fit=crop&w=1600&q=80`}
+        src={heroImage}
         alt={name}
         fill
         priority

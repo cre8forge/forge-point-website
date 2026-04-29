@@ -2,7 +2,7 @@ import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 
 interface GalleryImage {
-  id:  string; // Unsplash photo ID
+  id:  string; // local image path
   alt: string;
 }
 
@@ -31,7 +31,7 @@ export function ServiceGallery({ images }: ServiceGalleryProps) {
                          group"
             >
               <Image
-                src={`https://images.unsplash.com/photo-${img.id}?auto=format&fit=crop&w=800&q=80`}
+                src={img.id}
                 alt={img.alt}
                 fill
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"

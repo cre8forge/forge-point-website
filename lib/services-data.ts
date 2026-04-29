@@ -1,7 +1,7 @@
 // ================================================================
 // FORGE POINT — Service page definitions
-// One entry per service page. Photos are Unsplash IDs.
-// Swap photos from the admin Unsplash panel (Step 11).
+// One entry per service page. Photos are local paths under public/ (e.g. /images/services/…).
+// Images were migrated from Unsplash to local files by image-apply.ts.
 // ================================================================
 
 export interface ServiceIncludesItem {
@@ -10,7 +10,7 @@ export interface ServiceIncludesItem {
 }
 
 export interface ServiceGalleryImage {
-  id:  string; // Unsplash photo ID
+  id:  string; // local image path (from public/)
   alt: string;
 }
 
@@ -63,7 +63,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Whether you're buying your first home or your fifteenth investment property — we see what most agents miss, because we've managed what you're buying.",
     metaDescription:
       "Licensed Colorado real estate buyer representation for homebuyers, move-up buyers, and investors across Northern Colorado. Forge Point Real Estate — 15 years of Front Range market and property management experience.",
-    heroImage:       "1560518883-ce09059eeffa",
+    heroImage:       "/images/services/advisory/buyer-rep-hero.jpg",
     overviewHeading: "Buyer Representation — For Every Buyer, at Every Scale",
     overviewBody: [
       "Forge Point Real Estate represents buyers across the full spectrum — first-time homebuyers, move-up families, residential investors, and commercial acquirers — all across Northern Colorado and the Front Range. What sets us apart isn't just market knowledge: it's that we've managed the properties you're buying. We see deferred maintenance before the inspector writes it up. We recognize realistic rental potential versus a seller's optimistic pro forma. We know the HOA flags, the mechanical questions, and the neighborhood dynamics that a purely transactional agent won't think to raise.",
@@ -114,8 +114,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Transaction Management",          description: "Offer review, negotiation, contingency management, and contract-to-close coordination." },
     ],
     gallery: [
-      { id: "1560185893-a55b8a6f7e89",   alt: "Colorado home positioned for sale" },
-      { id: "1560518883-ce09059eeffa",   alt: "Northern Colorado residential property listing" },
+      { id: "/images/services/advisory/seller-rep-gallery-1.jpg",   alt: "Colorado home positioned for sale" },
+      { id: "/images/services/advisory/seller-rep-gallery-2.jpg",   alt: "Northern Colorado residential property listing" },
       { id: "1558618047-6e3b4b1ae965",   alt: "Curb appeal and presale preparation" },
     ],
     estimatorCategory: "property-management",
@@ -151,9 +151,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Written Acquisition Report",            description: "Delivered as a clear written document with a recommendation: proceed, negotiate, or pass — and why." },
     ],
     gallery: [
-      { id: "1560518883-ce09059eeffa",   alt: "Investment property acquisition — Northern Colorado" },
-      { id: "1560185893-a55b8a6f7e89",   alt: "Colorado Front Range investment property" },
-      { id: "1486325212027-8081e485255e", alt: "Colorado investment and acquisition analysis" },
+      { id: "/images/services/advisory/acquisition-gallery-1.jpg",   alt: "Investment property acquisition — Northern Colorado" },
+      { id: "/images/services/advisory/acquisition-gallery-2.jpg",   alt: "Colorado Front Range investment property" },
+      { id: "/images/services/advisory/acquisition-gallery-3.jpg", alt: "Colorado investment and acquisition analysis" },
     ],
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
@@ -174,13 +174,13 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Tenant representation and landlord advisory for commercial leases — we've sat on both sides of the table.",
     metaDescription:
       "Commercial leasing advisory for office, retail, industrial, and flex space across Northern Colorado. Tenant representation and landlord advisory backed by 4M+ sq ft of commercial management experience.",
-    heroImage:       "1486325212027-8081e485255e",
+    heroImage:       "/images/services/advisory/commercial-leasing-hero.jpg",
     overviewHeading: "Commercial Leasing — From Both Sides of the Table",
     overviewBody: [
       "Forge Point Real Estate provides tenant representation and landlord advisory for commercial leases across Northern Colorado — office, retail, industrial, and flex. Having managed over 4 million square feet of commercial space, we know what both sides of a commercial lease negotiation are thinking. That knowledge is worth more than a standard agent's market survey.",
       "Full service page content coming soon. Whether you're a tenant evaluating space or a landlord structuring a lease, contact us to discuss how we can represent your interests.",
     ],
-    overviewImage: "1486325212027-8081e485255e",
+    overviewImage: "/images/services/advisory/commercial-leasing-inline.jpg",
     includes: [
       { title: "Tenant Representation",         description: "Space search, lease negotiation, and tenant improvement coordination for office, retail, industrial, and flex tenants." },
       { title: "Landlord Leasing Advisory",     description: "Positioning, marketing strategy, tenant screening, and lease structuring advisory for commercial landlords." },
@@ -211,13 +211,13 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Hold, sell, refinance, or 1031 — think through the full picture before you move.",
     metaDescription:
       "Investment property portfolio strategy and disposition advisory for Colorado Front Range property owners. Hold-sell analysis, 1031 coordination, and refinance evaluation with CPA and attorney coordination.",
-    heroImage:       "1560185893-a55b8a6f7e89",
+    heroImage:       "/images/services/advisory/portfolio-hero.jpg",
     overviewHeading: "Portfolio Strategy — The Full Picture Before You Move",
     overviewBody: [
       "Forge Point Real Estate helps investment property owners think through portfolio decisions with the depth the stakes require — hold, sell, refinance, or 1031. We coordinate with your CPA and attorney, model the scenarios, and give you an informed recommendation. No transaction fee unless we represent the deal.",
       "Full service page content coming soon. If you're evaluating a hold-sell decision or planning a portfolio repositioning, contact us to start the conversation.",
     ],
-    overviewImage: "1486325212027-8081e485255e",
+    overviewImage: "/images/services/advisory/portfolio-inline.jpg",
     includes: [
       { title: "Hold-Sell Analysis",               description: "Scenario modeling for hold versus disposition — factoring current value, carry costs, depreciation recapture, and opportunity cost." },
       { title: "1031 Exchange Planning",            description: "Replacement property identification strategy, timeline planning, and coordination with your qualified intermediary." },
@@ -225,8 +225,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "CPA & Attorney Coordination",       description: "We work alongside your tax and legal advisors to ensure the financial and legal dimensions of your decision are fully accounted for." },
     ],
     gallery: [
-      { id: "1560185893-a55b8a6f7e89",   alt: "Colorado investment property portfolio" },
-      { id: "1486325212027-8081e485255e", alt: "Northern Colorado commercial property portfolio" },
+      { id: "/images/services/advisory/portfolio-gallery-1.jpg",   alt: "Colorado investment property portfolio" },
+      { id: "/images/services/advisory/portfolio-gallery-2.jpg", alt: "Northern Colorado commercial property portfolio" },
       { id: "1560518883-ce09059eeffa",   alt: "Portfolio strategy — Northern Colorado properties" },
     ],
     estimatorCategory: "property-management",
@@ -248,13 +248,13 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Time-sensitive and unforgiving — we coordinate replacement property identification and acquisition with the precision the timeline demands.",
     metaDescription:
       "1031 exchange coordination for Colorado investment property owners. Replacement property identification, analysis, and acquisition coordination backed by licensed real estate and property management experience.",
-    heroImage:       "1486325212027-8081e485255e",
+    heroImage:       "/images/services/advisory/1031-hero.jpg",
     overviewHeading: "1031 Exchange — Precision When the Clock Is Running",
     overviewBody: [
       "A 1031 exchange is one of the most powerful tax deferral tools available to investment property owners — and one of the most unforgiving if the timeline is mismanaged. Forge Point Real Estate coordinates the identification, analysis, and acquisition of 1031 replacement properties with the precision the 45-day identification and 180-day closing windows demand.",
       "Full service page content coming soon. If you have a property under contract for sale and are considering a 1031 exchange, contact us immediately — the clock starts at closing.",
     ],
-    overviewImage: "1560518883-ce09059eeffa",
+    overviewImage: "/images/services/advisory/1031-inline.jpg",
     includes: [
       { title: "Replacement Property Identification", description: "Active search and analysis of qualified replacement properties within the 45-day identification window." },
       { title: "Acquisition Analysis",               description: "Cap rate, cash-on-cash return, and condition assessment on replacement candidates before identification deadlines." },
@@ -262,9 +262,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Contract-to-Close Management",        description: "Offer writing, negotiation, and closing coordination calibrated to meet the 180-day exchange deadline." },
     ],
     gallery: [
-      { id: "1486325212027-8081e485255e", alt: "Colorado investment property for 1031 exchange" },
-      { id: "1560518883-ce09059eeffa",   alt: "1031 exchange replacement property — Northern Colorado" },
-      { id: "1560185893-a55b8a6f7e89",   alt: "1031 exchange coordination and property acquisition" },
+      { id: "/images/services/advisory/1031-gallery-1.jpg", alt: "Colorado investment property for 1031 exchange" },
+      { id: "/images/services/advisory/1031-gallery-2.jpg",   alt: "1031 exchange replacement property — Northern Colorado" },
+      { id: "/images/services/advisory/1031-gallery-3.jpg",   alt: "1031 exchange coordination and property acquisition" },
     ],
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
@@ -291,7 +291,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We specialize in properties across Northern Colorado where clay soils, high wind, and freeze-thaw cycles demand materials and techniques built for the region. Whether you're starting from scratch on a new build or refreshing an aging yard, we deliver designs that look great and actually hold up.",
       "Every project includes a detailed written proposal with a clear price range before we ever break ground."
     ],
-    overviewImage: "1558618047-6e3b4b1ae965",
+    overviewImage: "/images/services/outdoor/landscape-inline.jpg",
     includes: [
       { title: "Site Assessment & Custom Design",   description: "Full property walkthrough, drainage evaluation, and a design plan tailored to your soil, sun, and HOA requirements." },
       { title: "Grading & Drainage Prep",           description: "Proper grading protects your foundation and ensures water moves away from structures — critical in Colorado's clay-heavy soils." },
@@ -304,7 +304,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1558618666-fcd25c85cd64",   alt: "Lush landscaped yard after professional design and installation" },
-      { id: "1558618047-6e3b4b1ae965",   alt: "Garden bed with native Colorado plantings and stone edging" },
+      { id: "/images/services/outdoor/landscape-gallery-2.jpg",   alt: "Garden bed with native Colorado plantings and stone edging" },
       { id: "1416879595882-3373a0480b5b", alt: "Newly installed sod lawn with clean edging" },
     ],
     estimatorCategory: "landscape-design-install",
@@ -344,7 +344,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1558618666-fcd25c85cd64", alt: "Freshly mowed and edged residential lawn" },
-      { id: "1571954411453-2fc3f4f8c26d", alt: "Clean, well-maintained grounds of a commercial property" },
+      { id: "/images/services/outdoor/grounds-gallery-2.jpg", alt: "Clean, well-maintained grounds of a commercial property" },
       { id: "1558618047-6e3b4b1ae965",   alt: "Manicured landscape after seasonal clean-up" },
     ],
     estimatorCategory: "grounds-maintenance",
@@ -382,7 +382,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Repairs & Board Replacement",description: "Leaning posts, broken boards, damaged gates, and full section replacement. We repair all fence types." },
     ],
     gallery: [
-      { id: "1558618047-3c8c76ca7d04",   alt: "Clean white vinyl fence installed on a residential property" },
+      { id: "/images/services/outdoor/fencing-gallery-1.jpg",   alt: "Clean white vinyl fence installed on a residential property" },
       { id: "1570129477492-61a28b2f9e3f",   alt: "White vinyl picket fence on a Colorado property" },
       { id: "1558618666-fcd25c85cd64",   alt: "Ornamental iron fence and gate at a property entrance" },
     ],
@@ -517,14 +517,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Full-spectrum property management built on 15 years and millions of square feet of real experience.",
     metaDescription:
       "Professional property and portfolio management in Northern Colorado and Denver metro. Commercial and industrial portfolio management, multifamily communities up to 115 units, and personalized single-family home management. On-call boots-on-ground response for remote property owners.",
-    heroImage:       "1560185893-a55b8a6f7e89",
+    heroImage:       "/images/services/pm/pm-overview-hero.jpg",
     overviewHeading: "Property Management That Performs at Every Scale",
     overviewBody: [
       "Forge Point's property management practice spans three distinct property types — and our track record speaks across all of them. Over 4 million square feet of commercial and industrial space managed. Multifamily portfolios of up to 115 tenants. And single-family homes handled with the personal attention that individual owners and their tenants actually deserve.",
       "What separates a true property management partner from a vendor is depth: local market knowledge, reliable vendor relationships, documented systems, and the judgment that only comes from years on the ground. We bring all of that to every property we manage — regardless of size or type.",
       "We also offer a flexible on-call model for property owners who already have a management contract but need a trusted local point of contact for 24/7 response, emergency site visits, and coordination when their primary manager isn't physically available. Keep your existing manager — add Forge Point as your boots on the ground.",
     ],
-    overviewImage: "1558618047-6e3b4b1ae965",
+    overviewImage: "/images/services/pm/pm-overview-inline.jpg",
     includes: [
       { title: "Commercial & Industrial Management",  description: "Full-service management for office parks, retail centers, warehouses, and industrial facilities. We've managed 4M+ sq ft of commercial space — we know what owners, tenants, and inspectors expect at scale." },
       { title: "Multifamily & HOA Management",        description: "Community management for multifamily properties and HOA communities. Portfolios of up to 115 tenants handled with consistent systems, board-ready reporting, and responsive vendor coordination." },
@@ -565,7 +565,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "Commercial and industrial properties demand a different level of management rigor than residential — CAM reconciliation, longer lease terms, higher-stakes tenant relationships, and facilities that can't afford to be offline. Our team knows the difference between a landlord's obligation and a tenant's obligation, and we enforce both.",
       "We manage the full range of commercial and industrial assets: office parks, retail centers, flex space, warehouse and distribution facilities, and mixed-use properties. Single assets and multi-property portfolios both welcome.",
     ],
-    overviewImage: "1560185893-a55b8a6f7e89",
+    overviewImage: "/images/services/pm/commercial-industrial-inline.jpg",
     pullQuote: "We've managed over 4 million square feet of commercial and industrial space. That's not a marketing claim — it's the foundation of every decision we make on behalf of your property.",
     ctaPanel: {
       heading:  "Managing a Commercial Asset in Northern Colorado?",
@@ -584,9 +584,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Emergency & After-Hours Response",     description: "24/7 on-call response for property emergencies — site visits, vendor dispatch, and tenant notification handled immediately when issues arise outside business hours." },
     ],
     gallery: [
-      { id: "1486325212027-8081e485255e", alt: "Commercial office park exterior with well-maintained grounds and parking" },
-      { id: "1560518883-ce09059eeffa",   alt: "Industrial warehouse property under professional management" },
-      { id: "1560185893-a55b8a6f7e89",   alt: "Retail center property management in Northern Colorado" },
+      { id: "/images/services/pm/commercial-industrial-gallery-1.jpg", alt: "Commercial office park exterior with well-maintained grounds and parking" },
+      { id: "/images/services/pm/commercial-industrial-gallery-2.jpg",   alt: "Industrial warehouse property under professional management" },
+      { id: "/images/services/pm/commercial-industrial-gallery-3.jpg",   alt: "Retail center property management in Northern Colorado" },
     ],
     estimatorCategory: "property-management",
     related:  ["multifamily-hoa-management", "single-family-management", "industrial-maintenance"],
@@ -606,14 +606,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Community management for multifamily properties and HOAs — up to 115 units, handled with consistent systems and board-ready reporting.",
     metaDescription:
       "Multifamily and HOA management in Northern Colorado and Denver metro. Communities up to 115 units managed with board-ready reporting, responsive vendor coordination, and thorough common area oversight.",
-    heroImage:       "1560185893-a55b8a6f7e89",
+    heroImage:       "/images/services/pm/multifamily-hoa-hero.jpg",
     overviewHeading: "Multifamily & HOA Management — Systems, Reporting, Presence",
     overviewBody: [
       "Multifamily communities and HOAs don't run on good intentions — they run on consistent systems, clear communication, and someone who shows up. Forge Point has managed multifamily portfolios of up to 115 tenants and HOA communities with active boards that expect documentation, responsiveness, and professional vendor management.",
       "HOA boards deal with a rotating cast of well-meaning volunteers who inherit whatever the last board set up — or didn't. We bring standardized systems, written vendor contracts, documented inspection protocols, and financial reporting that makes board transitions manageable and board meetings productive.",
       "For multifamily owners, our approach is equally structured: every tenant gets a single point of contact, every maintenance request is tracked and resolved, and every owner gets consistent financial reporting that shows exactly how their asset is performing.",
     ],
-    overviewImage: "1486325212027-8081e485255e",
+    overviewImage: "/images/services/pm/multifamily-hoa-inline.jpg",
     pullQuote: "HOA boards and multifamily owners deserve reporting that reads like a business — not a list of complaints. We deliver the documentation, the transparency, and the accountability that professional management requires.",
     ctaPanel: {
       heading:  "HOA Board or Multifamily Owner?",
@@ -632,9 +632,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Emergency Response",                description: "On-call response for after-hours property and community emergencies. Site visits, vendor dispatch, and resident notification handled promptly." },
     ],
     gallery: [
-      { id: "1560185893-a55b8a6f7e89",   alt: "Multifamily apartment community with well-maintained grounds and entry" },
-      { id: "1486325212027-8081e485255e", alt: "HOA common area maintained to community standards" },
-      { id: "1558618666-fcd25c85cd64",   alt: "Residential community landscaping managed by Forge Point" },
+      { id: "/images/services/pm/multifamily-hoa-gallery-1.jpg",   alt: "Multifamily apartment community with well-maintained grounds and entry" },
+      { id: "/images/services/pm/multifamily-hoa-gallery-2.jpg", alt: "HOA common area maintained to community standards" },
+      { id: "/images/services/pm/multifamily-hoa-gallery-3.jpg",   alt: "Residential community landscaping managed by Forge Point" },
     ],
     estimatorCategory: "property-management",
     related:  ["commercial-industrial-management", "single-family-management", "grounds-maintenance"],
@@ -654,14 +654,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Personalized management for individual rental homes — a dedicated contact who knows your property, your tenants, and your preferences.",
     metaDescription:
       "Single family home management in Northern Colorado and Denver metro. Dedicated contact, documented inspections, maintenance coordination, and tenant relations for individual rental homes and small portfolios.",
-    heroImage:       "1560518883-ce09059eeffa",
+    heroImage:       "/images/services/pm/sfh-hero.jpg",
     overviewHeading: "Single Family Management — Personal, Not Transactional",
     overviewBody: [
       "Single family rental properties deserve better than a work order queue and a management company that treats them like an afterthought. Forge Point provides genuinely personalized management for individual rental homes and small portfolios — each property gets a dedicated point of contact who knows the address, the tenant history, the quirks of the mechanicals, and the owner's preferences.",
       "We handle the full scope of single family management: tenant communication, maintenance coordination, documented inspections, and consistent financial reporting. Owners who live out of state or are simply too busy to manage day-to-day get a true partner — not a transaction processor.",
       "Our management model means our incentives align with yours: a well-maintained, fully-tenanted property that generates reliable income and holds its value.",
     ],
-    overviewImage: "1558618047-6e3b4b1ae965",
+    overviewImage: "/images/services/pm/sfh-inline.jpg",
     pullQuote: "Your rental home isn't a line item. It's an asset — and it deserves a manager who treats it like one.",
     ctaPanel: {
       heading:  "Own a Rental Home in Northern Colorado?",
@@ -681,7 +681,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1560518883-ce09059eeffa",   alt: "Single family rental home with well-maintained curb appeal" },
-      { id: "1558618047-6e3b4b1ae965",   alt: "Residential rental property managed by Forge Point — Northern Colorado" },
+      { id: "/images/services/pm/sfh-gallery-2.jpg",   alt: "Residential rental property managed by Forge Point — Northern Colorado" },
       { id: "1560185893-a55b8a6f7e89",   alt: "Single family home exterior inspection and documentation" },
     ],
     estimatorCategory: "property-management",
@@ -773,9 +773,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Owner Reporting",                    description: "Monthly maintenance summary delivered with your financial statements — completed work, open items, costs, and any recurring issues that may require capital attention." },
     ],
     gallery: [
-      { id: "1558981403-c5f9899a28bc",   alt: "Property maintenance coordination and inspection in Northern Colorado" },
+      { id: "/images/services/pm/maintenance-coord-gallery-1.jpg",   alt: "Property maintenance coordination and inspection in Northern Colorado" },
       { id: "1504307651254-35680f356dbe", alt: "Contractor on-site for maintenance work at a managed property" },
-      { id: "1560518883-ce09059eeffa",   alt: "Property exterior maintenance and condition documentation" },
+      { id: "/images/services/pm/maintenance-coord-gallery-3.jpg",   alt: "Property exterior maintenance and condition documentation" },
     ],
     estimatorCategory: "property-management",
     related:  ["boots-on-ground-response", "single-family-management", "home-safety-checks"],
@@ -815,7 +815,7 @@ export const SERVICES_DATA: ServiceData[] = [
     gallery: [
       { id: "1503387762-592deb58ef4e", alt: "Modern home interior after full renovation" },
       { id: "1556909114-f6e7ad7d3136", alt: "Renovated kitchen with clean finishes and modern design" },
-      { id: "1504307651254-35680f356dbe", alt: "Framing in progress on a renovation project" },
+      { id: "/images/services/interiors/renovation-gallery-3.jpg", alt: "Framing in progress on a renovation project" },
     ],
     estimatorCategory: "renovation-remodel",
     related:  ["framing-finishes", "kitchen-bath-more", "decks-pergolas-patios"],
@@ -835,14 +835,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Structural framing and premium interior finishes — the bones and beauty of your build.",
     metaDescription:
       "Professional framing and interior finish work in Northern Colorado. Structural framing, drywall, trim carpentry, flooring, and painting for residential and commercial projects.",
-    heroImage:       "1504307651254-35680f356dbe",
+    heroImage:       "/images/services/interiors/framing-hero.jpg",
     overviewHeading: "Precision Framing. Crafted Finishes.",
     overviewBody: [
       "The quality of a building starts with its frame and ends with its finishes. Forge Point self-performs both — which means the crew that builds your walls is the same crew that sees them through to a finished, painted surface.",
       "We frame new construction, additions, and renovations to code, then carry the work through drywall, mud, paint, trim carpentry, and flooring installation. No hand-offs to sub-contractors who don't know the project — we own it from start to finish.",
       "Our finish carpenters take pride in the details: tight miters, level casings, consistent reveals, and paint that goes on smooth. These are the things you notice every day for the next twenty years.",
     ],
-    overviewImage: "1517022812379-23952977f6e7",
+    overviewImage: "/images/services/interiors/framing-inline.jpg",
     includes: [
       { title: "Structural & Partition Framing", description: "Load-bearing and non-structural wall framing for new builds, additions, and interior reconfigurations." },
       { title: "Drywall & Finishing",            description: "Hang, tape, mud, sand, and texture to level 4 or 5 finish. We don't rush the mud — it shows in the final product." },
@@ -852,7 +852,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Tile & Stone Work",              description: "Floor and wall tile installation for entryways, mudrooms, bathrooms, and kitchens. Straight lines, tight grout." },
     ],
     gallery: [
-      { id: "1504307651254-35680f356dbe", alt: "Framing in progress on a residential addition" },
+      { id: "/images/services/interiors/framing-gallery-1.jpg", alt: "Framing in progress on a residential addition" },
       { id: "1517022812379-23952977f6e7", alt: "Finished interior with trim and paint complete" },
       { id: "1558618047-3c8c76ca7d04", alt: "Clean finish work on new construction interior" },
     ],
@@ -880,7 +880,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "We handle full gut-and-rebuild transformations as well as targeted refreshes — new countertops and backsplash, cabinet refinishing, fixture replacement, and tile work. Tell us your budget and your goals, and we'll scope the work that makes the most sense.",
       "Every kitchen and bath project includes design consultation, material sourcing support, and a detailed written scope before work begins. You know exactly what you're getting before we start.",
     ],
-    overviewImage: "1552321554-5fefe8c9ef14",
+    overviewImage: "/images/services/interiors/kitchen-bath-inline.jpg",
     includes: [
       { title: "Cabinet Installation & Refinishing", description: "New cabinet installation, door replacement, and refinishing to modernize kitchens and baths without full replacement cost." },
       { title: "Countertops & Surfaces",             description: "Quartz, granite, butcher block, and solid surface countertop installation with proper undermount sink cutouts." },
@@ -891,8 +891,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1556909114-f6e7ad7d3136", alt: "Modern kitchen after full renovation with new cabinets and countertops" },
-      { id: "1552321554-5fefe8c9ef14", alt: "Renovated bathroom with tile and new fixtures" },
-      { id: "1556909196-b37f2d7b5e7e", alt: "Kitchen with new backsplash tile and countertops" },
+      { id: "/images/services/interiors/kitchen-bath-gallery-2.jpg", alt: "Renovated bathroom with tile and new fixtures" },
+      { id: "/images/services/interiors/kitchen-bath-gallery-3.jpg", alt: "Kitchen with new backsplash tile and countertops" },
     ],
     estimatorCategory: "kitchen-bath-more",
     related:  ["renovation-remodel", "framing-finishes", "grounds-maintenance"],
@@ -919,7 +919,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "Forge Point handles basement finishing from initial framing through final punch list — egress windows, insulation, framing, electrical rough-in coordination, drywall, flooring, trim, and paint. We pull permits, schedule inspections, and build to code so the space is legal, insurable, and marketable when you go to sell.",
       "We also work with investment property owners on basement conversions for ADU rental income — a growing opportunity in Northern Colorado's housing market.",
     ],
-    overviewImage: "1504307651254-35680f356dbe",
+    overviewImage: "/images/services/interiors/basement-inline.jpg",
     includes: [
       { title: "Egress Window Installation",          description: "Colorado requires egress windows in any basement bedroom. We cut, frame, and install compliant egress windows — handled in-house, not subbed out." },
       { title: "Framing & Partition Walls",           description: "Load-bearing assessment and non-structural partition framing to create your planned layout. Bedroom walls, bathroom enclosures, utility room separation." },
@@ -932,8 +932,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1600585154340-be6161a56a0c", alt: "Finished basement living space with clean drywall and LVP flooring" },
-      { id: "1504307651254-35680f356dbe", alt: "Basement framing in progress with partition walls roughed in" },
-      { id: "1556909114-f6e7ad7d3136",   alt: "Finished basement with egress window and clean paint" },
+      { id: "/images/services/interiors/basement-gallery-2.jpg", alt: "Basement framing in progress with partition walls roughed in" },
+      { id: "/images/services/interiors/basement-gallery-3.jpg",   alt: "Finished basement with egress window and clean paint" },
     ],
     estimatorCategory: "renovation-remodel",
     related:  ["renovation-remodel", "framing-finishes", "kitchen-bath-more"],
@@ -960,7 +960,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "Every addition starts with a detailed scope and permit drawings. We coordinate with structural engineers where required, pull all necessary permits, and schedule inspections from foundation through final. No gray-area work that creates problems at resale.",
       "Our project management approach means you have a single point of contact from design concept through move-in — not a general contractor managing a rotating cast of subcontractors you've never met.",
     ],
-    overviewImage: "1504307651254-35680f356dbe",
+    overviewImage: "/images/services/interiors/additions-inline.jpg",
     includes: [
       { title: "Room Additions",                       description: "Full room additions from foundation or slab through finished interior — new bedrooms, home offices, family rooms, and flex spaces." },
       { title: "Bump-Outs & Pop-Tops",                description: "Smaller structural expansions that maximize existing footprints — kitchen bump-outs, master bath expansions, entry additions." },
@@ -972,8 +972,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1503387762-592deb58ef4e", alt: "Residential addition framing in progress showing new room structure" },
-      { id: "1504307651254-35680f356dbe", alt: "Structural framing for home addition with new walls and ceiling joists" },
-      { id: "1600585154340-be6161a56a0c", alt: "Finished addition interior with new living space complete" },
+      { id: "/images/services/interiors/additions-gallery-2.jpg", alt: "Structural framing for home addition with new walls and ceiling joists" },
+      { id: "/images/services/interiors/additions-gallery-3.jpg", alt: "Finished addition interior with new living space complete" },
     ],
     estimatorCategory: "renovation-remodel",
     related:  ["renovation-remodel", "basement-finishing", "framing-finishes"],
@@ -992,14 +992,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "High-ROI renovations for rental properties and fix-and-flip projects — scoped by someone who has managed thousands of units.",
     metaDescription:
       "Investment property rehab and renovation in Northern Colorado. BRRRR rehabs, fix-and-flip, turnover renovations, and multifamily unit upgrades. ROI-focused scoping from a team with 15 years of property management experience.",
-    heroImage:       "1560185893-a55b8a6f7e89",
+    heroImage:       "/images/services/interiors/investment-rehab-hero.jpg",
     overviewHeading: "Rehab Scoped for Return, Not Aesthetics",
     overviewBody: [
       "Most contractors build what you ask for. Forge Point tells you what actually moves the needle on rent and resale — because we've managed the properties on the other side of the transaction for 15 years.",
       "Investment property rehab is a different discipline than primary residence renovation. The decisions are financial: which upgrades command higher rent, which finishes hold up to tenant wear, which improvements are required for code compliance, and which are vanity spending that never pays back.",
       "We scope, bid, and build investment property rehabs with ROI as the primary lens. Single-family rentals, multifamily units, BRRRR properties, and fix-and-flip projects across Northern Colorado.",
     ],
-    overviewImage: "1556909114-f6e7ad7d3136",
+    overviewImage: "/images/services/interiors/investment-rehab-inline.jpg",
     includes: [
       { title: "Turnover Renovation",               description: "Between-tenant unit refreshes — paint, flooring, fixtures, hardware, and punch list repairs. Scoped for durability and speed, not showmanship." },
       { title: "BRRRR Rehab",                       description: "Full-scope buy-rehab-rent-refinance-repeat renovations. We work with your ARV targets and build to appraisal." },
@@ -1010,8 +1010,8 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1560185893-a55b8a6f7e89", alt: "Investment rental property exterior with clean curb appeal" },
-      { id: "1556909114-f6e7ad7d3136", alt: "Renovated rental unit kitchen with new cabinets and countertops" },
-      { id: "1503387762-592deb58ef4e", alt: "Investment property renovation in progress, interior gut" },
+      { id: "/images/services/interiors/investment-rehab-gallery-2.jpg", alt: "Renovated rental unit kitchen with new cabinets and countertops" },
+      { id: "/images/services/interiors/investment-rehab-gallery-3.jpg", alt: "Investment property renovation in progress, interior gut" },
     ],
     estimatorCategory: "renovation-remodel",
     related:  ["renovation-remodel", "property-management", "buyer-representation"],
@@ -1049,8 +1049,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Heated Floor Systems",        description: "Electric radiant heat underlayment under tile for bathrooms and entryways — significant comfort upgrade for Colorado winters." },
     ],
     gallery: [
-      { id: "1588854337236-6889d631faa8", alt: "LVP flooring installation in progress in residential home" },
-      { id: "1556909114-f6e7ad7d3136",   alt: "Kitchen floor tile with clean grout lines and modern finish" },
+      { id: "/images/services/interiors/flooring-tile-gallery-1.jpg", alt: "LVP flooring installation in progress in residential home" },
+      { id: "/images/services/interiors/flooring-tile-gallery-2.jpg",   alt: "Kitchen floor tile with clean grout lines and modern finish" },
       { id: "1517022812379-23952977f6e7", alt: "Finished hardwood floor in bright residential living space" },
     ],
     estimatorCategory: "framing-finishes",
@@ -1087,7 +1087,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Railings & Stairs",           description: "Deck railings in composite, aluminum, cable, and glass systems. Built to IRC code with proper post spacing and attachment." },
     ],
     gallery: [
-      { id: "1591474200742-8e512e6f98f8", alt: "Wood deck with outdoor furniture and pergola" },
+      { id: "/images/services/outdoor/decks-gallery-1.jpg", alt: "Wood deck with outdoor furniture and pergola" },
       { id: "1568605114967-8130f3a36994",   alt: "Stone paver patio with outdoor seating area and landscaping" },
       { id: "1571954411453-2fc3f4f8c26d", alt: "Pergola with string lights over outdoor living space" },
     ],
@@ -1128,7 +1128,7 @@ export const SERVICES_DATA: ServiceData[] = [
     gallery: [
       { id: "1519710164239-da123dc03ef4", alt: "Garden water feature with natural pond and waterfall" },
       { id: "1544551763-46a013bb70d5", alt: "Pondless waterfall feature in residential garden" },
-      { id: "1558618047-6e3b4b1ae965",   alt: "Decorative fountain in landscaped patio setting" },
+      { id: "/images/services/outdoor/water-features-gallery-3.jpg",   alt: "Decorative fountain in landscaped patio setting" },
     ],
     estimatorCategory: "custom-water-features",
     related:  ["decks-pergolas-patios", "landscape-design-install", "grounds-maintenance"],
@@ -1168,7 +1168,7 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Donation & Recycling Coordination", description: "We sort and separate usable items for donation and recyclable materials to keep as much out of the landfill as possible." },
     ],
     gallery: [
-      { id: "1615672968435-75c1e5d17d62", alt: "Clean property after professional junk haul off" },
+      { id: "/images/services/outdoor/junk-gallery-1.jpg", alt: "Clean property after professional junk haul off" },
       { id: "1558618666-fcd25c85cd64",   alt: "Property cleanout in progress" },
       { id: "1486325212027-8081e485255e", alt: "Clean commercial property after debris removal" },
     ],
@@ -1188,14 +1188,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Professional vehicle detailing at your door — no drop-off, no waiting.",
     metaDescription:
       "Mobile auto detailing in Northern Colorado and Denver metro. Exterior wash, interior deep clean, and premium detail packages. We come to your home or office in Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1520340356584-f9917d1eea6f",
+    heroImage:       "/images/services/concierge/auto-detail-hero.jpg",
     overviewHeading: "Professional Detailing — At Your Location",
     overviewBody: [
       "A professionally detailed vehicle doesn't require a trip across town or half a day in a waiting room. Forge Point brings full detailing services to your home, office, or job site — everything we need is in the truck.",
       "We offer exterior-only washes for clients who want consistent vehicle cleanliness, full interior and exterior details for a top-to-bottom refresh, and premium packages that include paint decontamination, clay bar treatment, and sealant application for vehicles that deserve the full treatment.",
       "Every detail is done by hand with professional-grade products — no automated washes, no shortcuts. The result is a vehicle that's genuinely clean, not just rinsed.",
     ],
-    overviewImage: "1545327859-578be6a2561a",
+    overviewImage: "/images/services/concierge/auto-detail-inline.jpg",
     includes: [
       { title: "Exterior Hand Wash & Dry",        description: "Hand wash with pH-balanced soap and microfiber dry for a scratch-free finish on all painted surfaces, glass, and trim." },
       { title: "Wheel & Tire Detail",             description: "Wheel faces, barrels, and lug nuts cleaned. Tires dressed with a matte or satin finish tire dressing." },
@@ -1207,8 +1207,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Engine Bay Cleaning",             description: "Light degreasing and rinse of engine bay surfaces for visual presentation and easier maintenance inspection access." },
     ],
     gallery: [
-      { id: "1520340356584-f9917d1eea6f", alt: "Car being professionally detailed — clean shine on exterior" },
-      { id: "1545327859-578be6a2561a", alt: "Clean car interior after professional detailing" },
+      { id: "/images/services/concierge/auto-detail-gallery-1.jpg", alt: "Car being professionally detailed — clean shine on exterior" },
+      { id: "/images/services/concierge/auto-detail-gallery-2.jpg", alt: "Clean car interior after professional detailing" },
       { id: "1558618047-3c8c76ca7d04", alt: "Freshly detailed vehicle with a glossy exterior finish" },
     ],
     estimatorCategory: "mobile-auto-detailing",
@@ -1261,14 +1261,14 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Keep your yard clean, safe, and odor-free — without lifting a finger.",
     metaDescription:
       "Professional pet waste removal in Northern Colorado and Denver metro. Weekly and bi-weekly poop scooping for residential yards in Erie, Longmont, Boulder, Broomfield, and surrounding areas.",
-    heroImage:       "1558618666-fcd25c85cd64",
+    heroImage:       "/images/services/concierge/pet-waste-hero.jpg",
     overviewHeading: "Professional Pet Waste Removal — On Your Schedule",
     overviewBody: [
       "Pet ownership is a joy. Yard cleanup isn't. Forge Point provides recurring and one-time pet waste removal for residential properties across Northern Colorado and the Denver metro — a simple, affordable service that keeps your outdoor spaces clean, safe, and ready to actually use.",
       "Dog waste isn't just unpleasant — it's a genuine health concern. Pathogens including E. coli and parasites like giardia and roundworm can survive in soil for months and are easily tracked indoors. Regular professional removal keeps your yard sanitary for children, guests, and your other pets.",
       "We service your yard on your chosen schedule, bag all waste and remove it from the property, and send a notification when the job is done. No mess, no reminder calls, no checking whether they showed up.",
     ],
-    overviewImage: "1587300003388-59208cc962cb",
+    overviewImage: "/images/services/concierge/pet-waste-inline.jpg",
     includes: [
       { title: "Weekly Service",           description: "Scheduled weekly visits at a consistent day. One dog, two dogs, or a full pack — we keep pace with any yard." },
       { title: "Bi-Weekly Service",        description: "Every-other-week scheduling for smaller dogs or lower-traffic yards. Same thorough cleanup, less frequent visits." },
@@ -1278,9 +1278,9 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Service Notification",     description: "Automated notification after every completed visit so you always know the job is done." },
     ],
     gallery: [
-      { id: "1558618666-fcd25c85cd64",   alt: "Clean green lawn maintained with regular pet waste removal" },
-      { id: "1587300003388-59208cc962cb",   alt: "Happy dog in clean, well-maintained residential yard" },
-      { id: "1416879595882-3373a0480b5b",   alt: "Clean residential lawn ready for outdoor use" },
+      { id: "/images/services/concierge/pet-waste-gallery-1.jpg",   alt: "Clean green lawn maintained with regular pet waste removal" },
+      { id: "/images/services/concierge/pet-waste-gallery-2.jpg",   alt: "Happy dog in clean, well-maintained residential yard" },
+      { id: "/images/services/concierge/pet-waste-gallery-3.jpg",   alt: "Clean residential lawn ready for outdoor use" },
     ],
     estimatorCategory: "poop-scooping",
     related:  ["grounds-maintenance", "housekeeping-cleaning", "errand-services"],
@@ -1302,7 +1302,7 @@ export const SERVICES_DATA: ServiceData[] = [
       "A missed pipe leak, a storm-damaged window, a package on the porch for three days, a tripped breaker in an empty house — small issues become expensive problems when no one is watching. Our check service catches problems early and keeps you informed before they escalate.",
       "We also offer safety checks as an add-on to our housekeeping and grounds services — making each visit more valuable, especially for elderly clients, busy families, and property owners who want proactive hazard identification without scheduling a separate appointment. We know what to look for, and we look every time.",
     ],
-    overviewImage: "1560518883-ce09059eeffa",
+    overviewImage: "/images/services/concierge/home-safety-inline.jpg",
     includes: [
       { title: "Life Safety Device Checks",    description: "Smoke detectors, carbon monoxide detectors, and fire extinguishers verified functional and current. Battery replacement and documentation included as part of every scheduled visit." },
       { title: "Trip & Fall Hazard Assessment",description: "Identification of loose rugs, cluttered walkways, inadequate lighting, and other fall-risk conditions — particularly valuable for elderly clients and properties transitioning between tenants." },
@@ -1315,7 +1315,7 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
     gallery: [
       { id: "1558981403-c5f9899a28bc",   alt: "Home exterior security and safety check walkthrough" },
-      { id: "1484154218962-a197022b5858",   alt: "Property inspection in progress at a Northern Colorado home" },
+      { id: "/images/services/concierge/home-safety-gallery-2.jpg",   alt: "Property inspection in progress at a Northern Colorado home" },
       { id: "1560518883-ce09059eeffa",   alt: "Well-maintained home exterior in Northern Colorado" },
     ],
     estimatorCategory: "home-safety-checks",
@@ -1336,7 +1336,7 @@ export const SERVICES_DATA: ServiceData[] = [
     tagline:  "Local errands handled by a trusted neighbor — so you can focus on what matters.",
     metaDescription:
       "Professional errand services in Northern Colorado and Denver metro. Grocery shopping, prescription pickup, post office runs, returns, and local errand coordination in Erie, Longmont, Boulder, and surrounding areas.",
-    heroImage:       "1556742049-0cfed4f6a45d",
+    heroImage:       "/images/services/concierge/errands-hero.jpg",
     overviewHeading: "Your Local Errands, Handled Professionally",
     overviewBody: [
       "Time is the one resource you can't get back. Forge Point's errand service handles the local tasks that chip away at your day — grocery shopping, prescription pickup, post office runs, package returns, dry cleaning, and the dozen other small errands that pile up during a busy week.",
@@ -1353,8 +1353,8 @@ export const SERVICES_DATA: ServiceData[] = [
       { title: "Custom Local Errands",           description: "If it can be done locally, we can handle it. Hardware store pickups, specialty grocery runs, event supply runs, and more." },
     ],
     gallery: [
-      { id: "1556742049-0cfed4f6a45d", alt: "Professional errand service delivering groceries" },
-      { id: "1484154218962-a197022b5858", alt: "Grocery shopping being handled professionally" },
+      { id: "/images/services/concierge/errands-gallery-1.jpg", alt: "Professional errand service delivering groceries" },
+      { id: "/images/services/concierge/errands-gallery-2.jpg", alt: "Grocery shopping being handled professionally" },
       { id: "1560518883-ce09059eeffa", alt: "Package being delivered to a residential home" },
     ],
     estimatorCategory: "errand-services",
