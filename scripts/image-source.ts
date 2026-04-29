@@ -11,7 +11,10 @@
  * Resume: re-run the same command — already-sourced slots are skipped.
  */
 
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env.local", override: true }); // .env.local wins (gitignored secrets)
+
 import fs   from "fs";
 import path from "path";
 

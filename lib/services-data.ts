@@ -21,16 +21,22 @@ export interface ServiceCtaPanel {
   ctaLabel: string;
 }
 
+export interface LearnMoreLink {
+  title:        string;
+  slug:         string;   // UniversityArticle slug
+  categorySlug: string;   // UniversityCategory slug — used in /university/{cat}/{slug} URL
+}
+
 export interface ServiceData {
   slug:              string;
   name:              string;
   shortName:         string;     // used in nav dropdown, related cards
   tagline:           string;     // Cormorant italic under H1
   metaDescription:   string;
-  heroImage:         string;     // Unsplash photo ID
+  heroImage:         string;     // local image path (from public/)
   overviewHeading:   string;     // H2 with orange left-bar
   overviewBody:      string[];   // paragraphs
-  overviewImage:     string;     // Unsplash photo ID
+  overviewImage:     string;     // local image path (from public/)
   pullQuote?:        string;     // blockquote rendered between Includes and Gallery
   ctaPanel?:         ServiceCtaPanel; // CTA block rendered between pullQuote and Gallery
   includes:          ServiceIncludesItem[];
@@ -38,6 +44,7 @@ export interface ServiceData {
   estimatorCategory: string;     // matches EstimateCategory slug
   related:           string[];   // up to 3 other slugs
   category:          string;     // badge label
+  learnMoreLinks?:   LearnMoreLink[]; // inline University article links below overview body
   disclaimer?:       string;     // legal disclosure shown at bottom of page (Advisory services)
 }
 
@@ -77,6 +84,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
     category: "Advisory",
+    learnMoreLinks: [
+      { title: "How to Analyze a Rental Property in Northern Colorado", slug: "how-to-analyze-rental-property-northern-colorado", categorySlug: "investment-strategy" },
+      { title: "What Makes Colorado Real Estate Different",              slug: "what-makes-colorado-real-estate-different",        categorySlug: "colorado-living" },
+      { title: "Colorado Property Insurance Guide",                     slug: "colorado-property-insurance-guide",               categorySlug: "colorado-living" },
+    ],
     disclaimer: RE_DISCLAIMER,
   },
 
@@ -109,6 +121,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
     category: "Advisory",
+    learnMoreLinks: [
+      { title: "Kitchen & Bath Remodel ROI in Northern Colorado", slug: "kitchen-bath-remodel-roi-northern-colorado",  categorySlug: "renovation-rehab" },
+      { title: "Landscape ROI and Home Value in Northern Colorado", slug: "landscape-roi-northern-colorado-home-value", categorySlug: "outdoor-living" },
+      { title: "Renovations That Pay Back in Northern Colorado",   slug: "renovations-that-pay-back-northern-colorado", categorySlug: "renovation-rehab" },
+    ],
     disclaimer: RE_DISCLAIMER,
   },
 
@@ -141,6 +158,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
     category: "Advisory",
+    learnMoreLinks: [
+      { title: "How to Analyze a Rental Property in Northern Colorado", slug: "how-to-analyze-rental-property-northern-colorado", categorySlug: "investment-strategy" },
+      { title: "Commercial vs Residential Investment in Colorado",      slug: "commercial-vs-residential-investment-colorado",    categorySlug: "investment-strategy" },
+      { title: "Northern Colorado Rental Market 2026",                 slug: "northern-colorado-rental-market-2026",             categorySlug: "investment-strategy" },
+    ],
     disclaimer: RE_DISCLAIMER,
   },
 
@@ -173,6 +195,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
     category: "Advisory",
+    learnMoreLinks: [
+      { title: "Commercial vs Residential Investment in Colorado",    slug: "commercial-vs-residential-investment-colorado",     categorySlug: "investment-strategy" },
+      { title: "Commercial & Industrial Property Management",         slug: "commercial-industrial-property-management",         categorySlug: "property-management" },
+      { title: "Hiring a Commercial Property Maintenance Contractor", slug: "hiring-commercial-property-maintenance-contractor", categorySlug: "hoa-commercial" },
+    ],
     disclaimer: RE_DISCLAIMER,
   },
 
@@ -205,6 +232,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
     category: "Advisory",
+    learnMoreLinks: [
+      { title: "Hold, Sell, or Refinance a Rental Property", slug: "hold-sell-refinance-rental-property",  categorySlug: "investment-strategy" },
+      { title: "BRRRR Strategy in Northern Colorado",        slug: "brrrr-strategy-northern-colorado",     categorySlug: "investment-strategy" },
+      { title: "Northern Colorado Rental Market 2026",       slug: "northern-colorado-rental-market-2026", categorySlug: "investment-strategy" },
+    ],
     disclaimer: RE_DISCLAIMER,
   },
 
@@ -237,6 +269,10 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["property-management", "renovation-remodel", "grounds-maintenance"],
     category: "Advisory",
+    learnMoreLinks: [
+      { title: "1031 Exchange Colorado Guide",               slug: "1031-exchange-colorado-guide",          categorySlug: "investment-strategy" },
+      { title: "Hold, Sell, or Refinance a Rental Property", slug: "hold-sell-refinance-rental-property",   categorySlug: "investment-strategy" },
+    ],
     disclaimer: RE_DISCLAIMER,
   },
 
@@ -274,6 +310,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "landscape-design-install",
     related:  ["grounds-maintenance", "power-window-washing", "fencing"],
     category: "Landscaping",
+    learnMoreLinks: [
+      { title: "Planning a Colorado Landscape",                slug: "plan-colorado-landscape",                 categorySlug: "landscape-design" },
+      { title: "Native Plants for Northern Colorado",          slug: "native-plants-northern-colorado",         categorySlug: "landscape-design" },
+      { title: "Water-Smart Landscaping for Northern Colorado", slug: "water-smart-landscaping-northern-colorado", categorySlug: "outdoor-living" },
+    ],
   },
 
   // ── 2. Grounds Maintenance ───────────────────────────────────
@@ -309,6 +350,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "grounds-maintenance",
     related:  ["landscape-design-install", "power-window-washing", "hoa-commercial-property"],
     category: "Grounds",
+    learnMoreLinks: [
+      { title: "Colorado Lawn Fertilization Schedule",           slug: "colorado-lawn-fertilization-schedule",          categorySlug: "lawn-turf" },
+      { title: "Mowing Height in Colorado",                      slug: "mowing-height-colorado",                        categorySlug: "lawn-turf" },
+      { title: "Northern Colorado Property Maintenance Calendar", slug: "northern-colorado-property-maintenance-calendar", categorySlug: "property-maintenance" },
+    ],
   },
 
   // ── 3. Fencing ───────────────────────────────────────────────
@@ -343,6 +389,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "fencing",
     related:  ["landscape-design-install", "power-window-washing", "industrial-maintenance"],
     category: "Fencing",
+    learnMoreLinks: [
+      { title: "Cedar vs Vinyl vs Metal Fence in Colorado", slug: "cedar-vinyl-metal-fence-colorado",   categorySlug: "fencing" },
+      { title: "Fence Post Depth in Colorado",              slug: "fence-post-depth-colorado",           categorySlug: "fencing" },
+      { title: "Annual Fence Maintenance in Colorado",      slug: "annual-fence-maintenance-colorado",   categorySlug: "fencing" },
+    ],
   },
 
   // ── 4. Power & Window Washing ────────────────────────────────
@@ -377,6 +428,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "power-window-washing",
     related:  ["grounds-maintenance", "fencing", "landscape-design-install"],
     category: "Washing",
+    learnMoreLinks: [
+      { title: "Pressure vs Soft Wash",              slug: "pressure-vs-soft-wash",       categorySlug: "property-maintenance" },
+      { title: "How to Clean a Concrete Driveway",   slug: "clean-concrete-driveway",     categorySlug: "property-maintenance" },
+      { title: "Gutter Maintenance in Colorado",     slug: "gutter-maintenance-colorado", categorySlug: "property-maintenance" },
+    ],
   },
 
   // ── 5. Industrial Maintenance ────────────────────────────────
@@ -412,6 +468,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "industrial-maintenance",
     related:  ["property-management", "grounds-maintenance", "power-window-washing"],
     category: "Industrial",
+    learnMoreLinks: [
+      { title: "Commercial & Industrial Property Management",         slug: "commercial-industrial-property-management",         categorySlug: "property-management" },
+      { title: "Hiring a Commercial Property Maintenance Contractor", slug: "hiring-commercial-property-maintenance-contractor", categorySlug: "hoa-commercial" },
+      { title: "Pressure vs Soft Wash",                              slug: "pressure-vs-soft-wash",                             categorySlug: "property-maintenance" },
+    ],
   },
 
   // ── 6. HOA & Commercial Property Management ─────────────────
@@ -482,6 +543,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["grounds-maintenance", "home-safety-checks", "industrial-maintenance"],
     category: "Management",
+    learnMoreLinks: [
+      { title: "The Boots-on-Ground Model",                           slug: "boots-on-ground-property-management",            categorySlug: "property-management" },
+      { title: "How to Find a Property Manager in Northern Colorado", slug: "how-to-find-property-manager-northern-colorado",  categorySlug: "property-management" },
+      { title: "Property Management Cost in Northern Colorado",       slug: "property-management-cost-northern-colorado",      categorySlug: "property-management" },
+    ],
   },
 
   // ── 7a. Commercial & Industrial Management ──────────────────
@@ -525,6 +591,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["multifamily-hoa-management", "single-family-management", "industrial-maintenance"],
     category: "Management",
+    learnMoreLinks: [
+      { title: "Commercial & Industrial Property Management",         slug: "commercial-industrial-property-management",         categorySlug: "property-management" },
+      { title: "Hiring a Commercial Property Maintenance Contractor", slug: "hiring-commercial-property-maintenance-contractor", categorySlug: "hoa-commercial" },
+      { title: "Northern Colorado Property Maintenance Calendar",     slug: "northern-colorado-property-maintenance-calendar",   categorySlug: "property-maintenance" },
+    ],
   },
 
   // ── 7b. Multifamily & HOA Management ────────────────────────
@@ -568,6 +639,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["commercial-industrial-management", "single-family-management", "grounds-maintenance"],
     category: "Management",
+    learnMoreLinks: [
+      { title: "HOA Grounds Maintenance Contractor",        slug: "hoa-grounds-maintenance-contractor", categorySlug: "hoa-commercial" },
+      { title: "Documenting Maintenance for an HOA Board",  slug: "document-maintenance-hoa-board",     categorySlug: "hoa-commercial" },
+      { title: "HOA Landscaping Standards",                 slug: "hoa-landscaping-standards",          categorySlug: "hoa-commercial" },
+    ],
   },
 
   // ── 7c. Single Family Home Management ────────────────────────
@@ -611,6 +687,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["boots-on-ground-response", "maintenance-coordination", "investment-property-rehab"],
     category: "Management",
+    learnMoreLinks: [
+      { title: "Single-Family Property Management",                slug: "single-family-property-management",            categorySlug: "property-management" },
+      { title: "Reduce Tenant Turnover",                           slug: "reduce-tenant-turnover-rental-property",       categorySlug: "property-management" },
+      { title: "Your First Rental Property in Northern Colorado",  slug: "first-rental-property-northern-colorado",      categorySlug: "investment-strategy" },
+    ],
   },
 
   // ── 7d. Boots-on-Ground Response ─────────────────────────────
@@ -653,6 +734,10 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["single-family-management", "maintenance-coordination", "home-safety-checks"],
     category: "Management",
+    learnMoreLinks: [
+      { title: "The Boots-on-Ground Model",                      slug: "boots-on-ground-property-management",           categorySlug: "property-management" },
+      { title: "Northern Colorado Property Maintenance Calendar", slug: "northern-colorado-property-maintenance-calendar", categorySlug: "property-maintenance" },
+    ],
   },
 
   // ── 7e. Maintenance Coordination ─────────────────────────────
@@ -695,6 +780,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "property-management",
     related:  ["boots-on-ground-response", "single-family-management", "home-safety-checks"],
     category: "Management",
+    learnMoreLinks: [
+      { title: "Northern Colorado Property Maintenance Calendar",     slug: "northern-colorado-property-maintenance-calendar",   categorySlug: "property-maintenance" },
+      { title: "Hiring a Commercial Property Maintenance Contractor", slug: "hiring-commercial-property-maintenance-contractor", categorySlug: "hoa-commercial" },
+      { title: "Winter Property Prep in Colorado",                    slug: "winter-property-prep-colorado",                     categorySlug: "seasonal-guides" },
+    ],
   },
 
 
@@ -730,6 +820,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "renovation-remodel",
     related:  ["framing-finishes", "kitchen-bath-more", "decks-pergolas-patios"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "How to Plan a Home Renovation in Colorado",      slug: "how-to-plan-home-renovation-colorado",       categorySlug: "renovation-rehab" },
+      { title: "Renovations That Pay Back in Northern Colorado", slug: "renovations-that-pay-back-northern-colorado", categorySlug: "renovation-rehab" },
+      { title: "Flooring for Colorado Homes",                    slug: "flooring-colorado-homes-guide",              categorySlug: "custom-living" },
+    ],
   },
 
   // ── 9. Framing & Finishes ────────────────────────────────────
@@ -764,6 +859,10 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "framing-finishes",
     related:  ["renovation-remodel", "kitchen-bath-more", "decks-pergolas-patios"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "How to Plan a Home Renovation in Colorado",      slug: "how-to-plan-home-renovation-colorado",       categorySlug: "renovation-rehab" },
+      { title: "Renovations That Pay Back in Northern Colorado", slug: "renovations-that-pay-back-northern-colorado", categorySlug: "renovation-rehab" },
+    ],
   },
 
   // ── 10. Kitchen, Bath & More ─────────────────────────────────
@@ -798,6 +897,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "kitchen-bath-more",
     related:  ["renovation-remodel", "framing-finishes", "grounds-maintenance"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "Kitchen & Bath Remodel ROI in Northern Colorado", slug: "kitchen-bath-remodel-roi-northern-colorado", categorySlug: "renovation-rehab" },
+      { title: "Kitchen Remodel ROI in Colorado",                 slug: "kitchen-remodel-roi-colorado",               categorySlug: "custom-living" },
+      { title: "Flooring for Colorado Homes",                     slug: "flooring-colorado-homes-guide",              categorySlug: "custom-living" },
+    ],
   },
 
   // ── 10b. Basement Finishing ──────────────────────────────────
@@ -834,6 +938,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "renovation-remodel",
     related:  ["renovation-remodel", "framing-finishes", "kitchen-bath-more"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "Basement Finishing Cost & ROI in Northern Colorado", slug: "basement-finishing-cost-roi-northern-colorado", categorySlug: "renovation-rehab" },
+      { title: "Flooring for Colorado Homes",                        slug: "flooring-colorado-homes-guide",                 categorySlug: "custom-living" },
+      { title: "Renovations That Pay Back in Northern Colorado",     slug: "renovations-that-pay-back-northern-colorado",   categorySlug: "renovation-rehab" },
+    ],
   },
 
   // ── 10c. Additions & Expansions ─────────────────────────────
@@ -869,6 +978,10 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "renovation-remodel",
     related:  ["renovation-remodel", "basement-finishing", "framing-finishes"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "How to Plan a Home Renovation in Colorado",      slug: "how-to-plan-home-renovation-colorado",       categorySlug: "renovation-rehab" },
+      { title: "Renovations That Pay Back in Northern Colorado", slug: "renovations-that-pay-back-northern-colorado", categorySlug: "renovation-rehab" },
+    ],
   },
 
   // ── 10d. Investment Property Rehab ───────────────────────────
@@ -903,6 +1016,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "renovation-remodel",
     related:  ["renovation-remodel", "property-management", "buyer-representation"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "BRRRR Property Checklist for Northern Colorado", slug: "brrrr-property-checklist-northern-colorado",  categorySlug: "investment-strategy" },
+      { title: "Fix and Flip Scope in Northern Colorado",        slug: "fix-flip-scope-northern-colorado",            categorySlug: "renovation-rehab" },
+      { title: "Flooring a Rental Property in Northern Colorado", slug: "flooring-rental-property-northern-colorado", categorySlug: "renovation-rehab" },
+    ],
   },
 
   // ── 10e. Flooring & Tile ─────────────────────────────────────
@@ -938,6 +1056,10 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "framing-finishes",
     related:  ["framing-finishes", "kitchen-bath-more", "renovation-remodel"],
     category: "Custom Living",
+    learnMoreLinks: [
+      { title: "Flooring for Colorado Homes",                     slug: "flooring-colorado-homes-guide",              categorySlug: "custom-living" },
+      { title: "Flooring a Rental Property in Northern Colorado", slug: "flooring-rental-property-northern-colorado", categorySlug: "renovation-rehab" },
+    ],
   },
 
   // ── 11. Decks, Pergolas & Patios ─────────────────────────────
@@ -972,6 +1094,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "decks-pergolas-patios",
     related:  ["landscape-design-install", "custom-water-features", "fencing"],
     category: "Outdoor Living",
+    learnMoreLinks: [
+      { title: "Composite vs Wood Decking in Colorado",  slug: "composite-vs-wood-decking-colorado", categorySlug: "outdoor-living" },
+      { title: "Deck & Patio Cost and ROI in Colorado",  slug: "deck-patio-cost-roi-colorado",       categorySlug: "outdoor-living" },
+      { title: "Outdoor Lighting in Colorado",           slug: "outdoor-lighting-colorado",          categorySlug: "landscape-design" },
+    ],
   },
 
   // ── 12. Custom Water Features ─────────────────────────────────
@@ -1006,6 +1133,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "custom-water-features",
     related:  ["decks-pergolas-patios", "landscape-design-install", "grounds-maintenance"],
     category: "Outdoor Living",
+    learnMoreLinks: [
+      { title: "Adding a Water Feature in Colorado",       slug: "adding-water-feature-colorado-guide",  categorySlug: "outdoor-structures" },
+      { title: "Colorado Water Restrictions and Xeriscape", slug: "colorado-water-restrictions-xeriscape", categorySlug: "colorado-living" },
+      { title: "Designing for Water Restrictions",         slug: "designing-for-water-restrictions",     categorySlug: "landscape-design" },
+    ],
   },
 
   // ── 13. Junk Haul Off ─────────────────────────────────────────
@@ -1043,6 +1175,9 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "junk-haul-off",
     related:  ["grounds-maintenance", "property-management", "industrial-maintenance"],
     category: "Grounds & Estates",
+    learnMoreLinks: [
+      { title: "Junk Haul Off vs Dumpster Rental", slug: "junk-haul-off-vs-dumpster-rental", categorySlug: "outdoor-structures" },
+    ],
   },
 
   // ── 14. Mobile Auto Detailing ─────────────────────────────────────────────
@@ -1113,6 +1248,9 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "housekeeping-cleaning",
     related:  ["mobile-auto-detailing", "home-safety-checks", "junk-haul-off"],
     category: "Domestic Services",
+    learnMoreLinks: [
+      { title: "Northern Colorado Property Maintenance Calendar", slug: "northern-colorado-property-maintenance-calendar", categorySlug: "property-maintenance" },
+    ],
   },
 
   // ── 16. Poop Scooping ────────────────────────────────────────────────────
@@ -1183,6 +1321,11 @@ export const SERVICES_DATA: ServiceData[] = [
     estimatorCategory: "home-safety-checks",
     related:  ["property-management", "housekeeping-cleaning", "errand-services"],
     category: "Domestic Services",
+    learnMoreLinks: [
+      { title: "Winterizing a Northern Colorado Property",       slug: "winterizing-northern-colorado-property",          categorySlug: "property-maintenance" },
+      { title: "Northern Colorado Property Maintenance Calendar", slug: "northern-colorado-property-maintenance-calendar", categorySlug: "property-maintenance" },
+      { title: "Winter Property Prep in Colorado",               slug: "winter-property-prep-colorado",                   categorySlug: "seasonal-guides" },
+    ],
   },
 
   // ── 18. Errand Services ───────────────────────────────────────────────────

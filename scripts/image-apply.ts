@@ -23,7 +23,10 @@
  * Run:   npm run images:apply
  */
 
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env" });
+dotenv.config({ path: ".env.local", override: true }); // .env.local wins (gitignored secrets)
+
 import fs              from "fs";
 import path            from "path";
 import { execSync }    from "child_process";

@@ -71,6 +71,7 @@ export default async function ServicePage({
           heading={service.overviewHeading}
           body={service.overviewBody}
           overviewImage={service.overviewImage}
+          learnMoreLinks={service.learnMoreLinks}
         />
         <ServiceIncludes items={service.includes} />
 
