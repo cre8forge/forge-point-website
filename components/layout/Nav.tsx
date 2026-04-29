@@ -75,6 +75,7 @@ const navLinks = [
   { label: "Estimate",     href: "/estimate" },
   { label: "University",   href: "/university" },
   { label: "FAQ",          href: "/faq" },
+  { label: "About",        href: "/about" },
   { label: "Contact",      href: "/contact" },
 ];
 
