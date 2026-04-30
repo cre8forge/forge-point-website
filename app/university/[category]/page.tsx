@@ -23,7 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 3600;
+// force-dynamic: page is DB-driven, render on demand rather than at build time
+export const dynamic = "force-dynamic";
 
 export default async function CategoryPage({ params }: Props) {
   const { category } = await params;

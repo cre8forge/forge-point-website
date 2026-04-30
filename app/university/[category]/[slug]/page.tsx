@@ -36,7 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const revalidate = 3600;
+// force-dynamic: page is DB-driven, render on demand rather than at build time
+export const dynamic = "force-dynamic";
 
 function computeReadMinutes(content: string): number {
   const words = content.trim().split(/\s+/).length;
