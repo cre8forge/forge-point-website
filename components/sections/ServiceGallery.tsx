@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { resolveImage } from "@/lib/image-utils";
 
 interface GalleryImage {
   id:  string; // local image path
@@ -31,7 +32,7 @@ export function ServiceGallery({ images }: ServiceGalleryProps) {
                          group"
             >
               <Image
-                src={img.id}
+                src={resolveImage(img.id, 800)}
                 alt={img.alt}
                 fill
                 className="object-cover object-center transition-transform duration-500 group-hover:scale-105"

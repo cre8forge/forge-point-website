@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
+import { resolveImage } from "@/lib/image-utils";
 
 interface ServiceHeroProps {
   name:      string;
@@ -14,7 +15,7 @@ export function ServiceHero({ name, tagline, heroImage, category }: ServiceHeroP
     <section className="relative min-h-[60vh] flex items-end pb-16 pt-32 overflow-hidden">
       {/* Background image */}
       <Image
-        src={heroImage}
+        src={resolveImage(heroImage, 1400)}
         alt={name}
         fill
         priority

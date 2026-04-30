@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { resolveImage } from "@/lib/image-utils";
 
 export interface LearnMoreLink {
   title:        string;
@@ -60,7 +61,7 @@ export function ServiceOverview({ heading, body, overviewImage, learnMoreLinks }
         {/* Image */}
         <div className="relative aspect-[4/3] rounded-sm overflow-hidden border border-white/8">
           <Image
-            src={overviewImage}
+            src={resolveImage(overviewImage, 900)}
             alt={heading}
             fill
             className="object-cover object-center"
