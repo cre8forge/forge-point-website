@@ -12,6 +12,11 @@ import { CookieBanner } from "@/components/analytics/CookieBanner";
 import { AnalyticsProvider } from "@/components/analytics/AnalyticsProvider";
 import { MetaPixel } from "@/components/analytics/MetaPixel";
 import { MobileCtaBar } from "@/components/ui/MobileCtaBar";
+import {
+  SchemaScript,
+  buildLocalBusinessSchema,
+  buildWebSiteSchema,
+} from "@/lib/schema";
 
 const SITE_URL = "https://cre8forge.com";
 const SITE_NAME = "Forge Point Property Services";
@@ -79,47 +84,9 @@ export default function RootLayout({
       </head>
       <body className="pb-14 md:pb-0">
         <GTMBody />
-        {/* LocalBusiness structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              name: SITE_NAME,
-              url: SITE_URL,
-              telephone: "+17204191961",
-              email: "hello@cre8forge.com",
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "",
-                addressLocality: "Erie",
-                addressRegion: "CO",
-                postalCode: "80516",
-                addressCountry: "US",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: 40.0505,
-                longitude: -105.0419,
-              },
-              areaServed: [
-                "Erie", "Louisville", "Lafayette", "Longmont",
-                "Boulder", "Broomfield", "Brighton", "Frederick",
-                "Firestone", "Windsor",
-              ],
-              serviceType: [
-                "Landscaping", "Fencing", "Power Washing",
-                "Grounds Maintenance", "Property Management",
-                "Renovation & Remodel", "Framing & Finishes",
-                "Kitchen & Bath Remodeling", "Deck Construction",
-                "Pergola Installation", "Custom Water Features",
-                "Junk Removal",
-              ],
-              priceRange: "$$",
-            }),
-          }}
-        />
+        {/* Structured data — HomeAndConstructionBusiness + WebSite */}
+        <SchemaScript schema={buildLocalBusinessSchema()} />
+        <SchemaScript schema={buildWebSiteSchema()} />
         {children}
         <MobileCtaBar />
         <AnalyticsProvider />

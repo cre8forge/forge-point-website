@@ -1253,11 +1253,11 @@ export const SERVICES_DATA: ServiceData[] = [
     ],
   },
 
-  // ── 16. Poop Scooping ────────────────────────────────────────────────────
+  // ── 16. Yard & Pet Waste Management ─────────────────────────────────────
   {
     slug:     "poop-scooping",
-    name:     "Poop Scooping",
-    shortName:"Poop Scooping",
+    name:     "Yard & Pet Waste Management",
+    shortName:"Yard & Pet Waste",
     tagline:  "Keep your yard clean, safe, and odor-free — without lifting a finger.",
     metaDescription:
       "Professional pet waste removal in Northern Colorado and Denver metro. Weekly and bi-weekly poop scooping for residential yards in Erie, Longmont, Boulder, Broomfield, and surrounding areas.",

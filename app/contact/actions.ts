@@ -2,6 +2,8 @@
 
 import { prisma } from "@/lib/prisma";
 import { upsertContact, createDeal, createTask } from "@/lib/hubspot";
+import { sendFromHello } from "@/lib/resend";
+import { WelcomeEmail } from "@/emails/templates/Welcome";
 
 export type ContactResult = { success: true } | { success: false; error: string };
 
@@ -138,6 +140,29 @@ export async function submitContactForm(formData: FormData): Promise<ContactResu
       });
     } catch (hsErr) {
       console.error("[HubSpot] contact action error:", hsErr);
+    }
+
+    // ── Welcome email ─────────────────────────────────────────────────────────
+    // Non-fatal — a Resend outage never blocks the form submission.
+    try {
+      const [firstName] = name.trim().split(" ");
+      const source = (formData.get("source") as string | null)?.trim()
+        ?? (estimateDetails ? "estimate_form" : "contact_form");
+
+      await sendFromHello({
+        to:       email,
+        subject:  "Welcome to Forge Point",
+        template: WelcomeEmail({
+          firstName,
+          visitorProfile: serviceCategory ? "homeowner" : "unknown",
+        }),
+        tags: [
+          { name: "category", value: "welcome" },
+          { name: "source",   value: source },
+        ],
+      });
+    } catch (emailErr) {
+      console.error("[Resend] contact action welcome email error:", emailErr);
     }
 
     return { success: true };

@@ -12,6 +12,7 @@
     "db:generate": "prisma generate",
     "db:studio": "prisma studio",
     "db:seed": "tsx prisma/seed.ts",
+    "kb:check": "tsx scripts/crisp-kb-import.ts --dry --check",
     "kb:import": "tsx scripts/crisp-kb-import.ts",
     "kb:dry": "tsx scripts/crisp-kb-import.ts --dry",
     "kb:force": "tsx scripts/crisp-kb-import.ts --force",
@@ -27,6 +28,8 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.0.0",
     "@prisma/client": "^5.0.0",
+    "@react-email/components": "^1.0.12",
+    "@react-email/render": "^2.0.8",
     "@types/leaflet": "^1.9.21",
     "cloudinary": "^2.10.0",
     "clsx": "^2.1.1",
@@ -39,6 +42,7 @@
     "react-leaflet": "^4.2.1",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "resend": "^6.12.2",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {

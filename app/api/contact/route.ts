@@ -17,6 +17,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { upsertContact, createDeal, createTask } from "@/lib/hubspot";
+import { sendFromHello } from "@/lib/resend";
+import { WelcomeEmail } from "@/emails/templates/Welcome";
 
 // Minimal email check — catches obvious garbage without false-positives
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -101,6 +103,26 @@ export async function POST(req: NextRequest) {
       });
     } catch (hsErr) {
       console.error("[HubSpot] /api/contact error:", hsErr);
+    }
+
+    // ── Welcome email ─────────────────────────────────────────────────────────
+    // Non-fatal — a Resend outage never blocks the form submission.
+    try {
+      const [firstName] = name.split(" ");
+      await sendFromHello({
+        to:       email,
+        subject:  "Welcome to Forge Point",
+        template: WelcomeEmail({
+          firstName,
+          visitorProfile: profile || "unknown",
+        }),
+        tags: [
+          { name: "category", value: "welcome" },
+          { name: "source",   value: source },
+        ],
+      });
+    } catch (emailErr) {
+      console.error("[Resend] /api/contact welcome email error:", emailErr);
     }
 
     return NextResponse.json({ success: true });

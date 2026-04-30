@@ -22,28 +22,40 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "monthly",
   }));
 
-  const articles = await prisma.universityArticle.findMany({
-    where:   { status: "PUBLISHED" },
-    select:  { slug: true, updatedAt: true, category: { select: { slug: true } } },
-    orderBy: { updatedAt: "desc" },
-  });
+  // DB queries are wrapped in a try/catch so a transient Railway connectivity
+  // issue during Vercel's build doesn't kill the entire deployment.
+  // In the worst case the sitemap omits article/category URLs for that build
+  // and they get picked up on the next successful deploy.
+  let articleRoutes:  MetadataRoute.Sitemap = [];
+  let categoryRoutes: MetadataRoute.Sitemap = [];
 
-  const articleRoutes: MetadataRoute.Sitemap = articles.map((a) => ({
-    url:             `${BASE_URL}/university/${a.category.slug}/${a.slug}`,
-    lastModified:    a.updatedAt,
-    priority:        0.7,
-    changeFrequency: "monthly",
-  }));
+  try {
+    const [articles, categories] = await Promise.all([
+      prisma.universityArticle.findMany({
+        where:   { status: "PUBLISHED" },
+        select:  { slug: true, updatedAt: true, category: { select: { slug: true } } },
+        orderBy: { updatedAt: "desc" },
+      }),
+      prisma.universityCategory.findMany({
+        select: { slug: true },
+      }),
+    ]);
 
-  const categories = await prisma.universityCategory.findMany({
-    select: { slug: true },
-  });
+    articleRoutes = articles.map((a) => ({
+      url:             `${BASE_URL}/university/${a.category.slug}/${a.slug}`,
+      lastModified:    a.updatedAt,
+      priority:        0.7,
+      changeFrequency: "monthly",
+    }));
 
-  const categoryRoutes: MetadataRoute.Sitemap = categories.map((c) => ({
-    url:             `${BASE_URL}/university/${c.slug}`,
-    priority:        0.75,
-    changeFrequency: "weekly",
-  }));
+    categoryRoutes = categories.map((c) => ({
+      url:             `${BASE_URL}/university/${c.slug}`,
+      priority:        0.75,
+      changeFrequency: "weekly",
+    }));
+  } catch (err) {
+    console.warn("[sitemap] DB unreachable — article/category URLs omitted:", err);
+  }
 
   return [...STATIC_ROUTES, ...serviceRoutes, ...categoryRoutes, ...articleRoutes];
 }

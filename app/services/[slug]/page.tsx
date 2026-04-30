@@ -12,6 +12,11 @@ import { SERVICES_DATA, getServiceBySlug, getRelatedServices } from "@/lib/servi
 import { ServiceViewTracker } from "@/components/analytics/ServiceViewTracker";
 import { GoogleReviewBadge } from "@/components/ui/GoogleReviewBadge";
 import { EngagementTrigger } from "@/components/EngagementTrigger";
+import {
+  SchemaScript,
+  buildServiceSchema,
+  buildBreadcrumbSchema,
+} from "@/lib/schema";
 
 export function generateStaticParams() {
   return SERVICES_DATA.map((s) => ({ slug: s.slug }));
@@ -55,8 +60,16 @@ export default async function ServicePage({
 
   const related = getRelatedServices(service.related);
 
+  const breadcrumbs = [
+    { name: "Home",     url: "https://cre8forge.com" },
+    { name: "Services", url: "https://cre8forge.com/services" },
+    { name: service.name, url: `https://cre8forge.com/services/${service.slug}` },
+  ];
+
   return (
     <>
+      <SchemaScript schema={buildServiceSchema(service)} />
+      <SchemaScript schema={buildBreadcrumbSchema(breadcrumbs)} />
       <Nav />
       <ServiceViewTracker name={service.name} slug={service.slug} />
       <EngagementTrigger pageType="service" />

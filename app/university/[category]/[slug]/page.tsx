@@ -10,6 +10,11 @@ import { ArticleCard } from "@/components/university/ArticleCard";
 import { UniversityContentUpgrade } from "@/components/university/UniversityContentUpgrade";
 import { User, Calendar } from "lucide-react";
 import { EngagementTrigger } from "@/components/EngagementTrigger";
+import {
+  SchemaScript,
+  buildArticleSchema,
+  buildBreadcrumbSchema,
+} from "@/lib/schema";
 
 interface Props {
   params: Promise<{ category: string; slug: string }>;
@@ -77,8 +82,27 @@ export default async function ArticlePage({ params }: Props) {
 
   const readMinutes = computeReadMinutes(article.content);
 
+  const breadcrumbs = [
+    { name: "Home",                    url: "https://cre8forge.com" },
+    { name: "University",              url: "https://cre8forge.com/university" },
+    { name: article.category.name,    url: `https://cre8forge.com/university/${article.category.slug}` },
+    { name: article.title,            url: `https://cre8forge.com/university/${article.category.slug}/${article.slug}` },
+  ];
+
   return (
     <>
+      <SchemaScript schema={buildArticleSchema({
+        slug:         article.slug,
+        title:        article.title,
+        excerpt:      article.excerpt ?? "",
+        content:      article.content,
+        coverImage:   article.coverImage,
+        publishedAt:  article.publishedAt,
+        updatedAt:    article.updatedAt,
+        authorName:   article.authorName,
+        categorySlug: article.category.slug,
+      })} />
+      <SchemaScript schema={buildBreadcrumbSchema(breadcrumbs)} />
       <Nav />
       <EngagementTrigger pageType="university" />
       <main className="bg-navy min-h-screen">
