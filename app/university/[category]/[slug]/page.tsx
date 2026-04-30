@@ -47,31 +47,48 @@ function computeReadMinutes(content: string): number {
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
 
-  const [article, allCategories] = await Promise.all([
-    prisma.universityArticle.findUnique({
-      where: { slug },
-      include: { category: true },
-    }),
-    prisma.universityCategory.findMany({
-      orderBy: { sortOrder: "asc" },
-      include: {
-        _count: { select: { articles: { where: { status: "PUBLISHED" } } } },
-      },
-    }),
-  ]);
+  // All DB work is in an IIFE so TypeScript infers types from Prisma calls
+  // and a DB outage (e.g. Railway proxy rotation) gracefully returns null
+  // instead of crashing the build. force-dynamic means users always get a
+  // live render — the build-time notFound() is never user-facing.
+  const db = await (async () => {
+    try {
+      const [article, allCategories] = await Promise.all([
+        prisma.universityArticle.findUnique({
+          where:   { slug },
+          include: { category: true },
+        }),
+        prisma.universityCategory.findMany({
+          orderBy: { sortOrder: "asc" },
+          include: {
+            _count: { select: { articles: { where: { status: "PUBLISHED" } } } },
+          },
+        }),
+      ]);
 
-  if (!article || article.status !== "PUBLISHED") notFound();
+      if (!article || article.status !== "PUBLISHED") return null;
 
-  const related = await prisma.universityArticle.findMany({
-    where: {
-      categoryId: article.categoryId,
-      status: "PUBLISHED",
-      NOT: { id: article.id },
-    },
-    orderBy: [{ featured: "desc" }, { publishedAt: "desc" }],
-    take: 3,
-    include: { category: { select: { slug: true } } },
-  });
+      const related = await prisma.universityArticle.findMany({
+        where: {
+          categoryId: article.categoryId,
+          status:     "PUBLISHED",
+          NOT:        { id: article.id },
+        },
+        orderBy: [{ featured: "desc" }, { publishedAt: "desc" }],
+        take:    3,
+        include: { category: { select: { slug: true } } },
+      });
+
+      return { article, allCategories, related };
+    } catch (err) {
+      console.error("[university/article] DB error:", err);
+      return null;
+    }
+  })();
+
+  if (!db) notFound();
+
+  const { article, allCategories, related } = db;
 
   const publishDate = article.publishedAt
     ? new Intl.DateTimeFormat("en-US", {
